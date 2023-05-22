@@ -1,3 +1,9 @@
+import React from 'react'
+// import '../scss/_reset.scss'
+import '../scss/_main.scss'
+import { Link } from 'react-router-dom'
+
+
 function Main () {
     return(
 <div><nav>

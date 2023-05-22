@@ -1,0 +1,107 @@
+@use './reset.scss' as *;
+//HEADER
+
+.header {
+	margin-top: 10%;
+	&__position {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		text-align: center;
+		padding: 3em 0;
+	}
+	&__welcome-h1 {
+		font-size: 3.7em;
+		padding: 0.5em;
+		max-width: 100%;
+		min-height: 100%;
+	}
+	&__welcome-text {
+		font-size: 2rem;
+		color: $secondlyColor;
+	}
+	&__welcome-btn {
+		padding: 0.7em 1em;
+		margin: 1em;
+		border: 1px solid rgb(54, 48, 48);
+		border-radius: 1.2em;
+		font-size: 2rem;
+		background: none;
+	}
+	&__welcome-btn:hover {
+		cursor: pointer;
+	}
+}
+
+.nav {
+	position: fixed;
+	top: 0;
+	display: flex;
+	justify-content: flex-end;
+	width: 100%;
+	background-color: #a7a0af25;
+	&__burgericon {
+		display: none;
+		position: fixed;
+		top: 0;
+		margin: 10px 20px;
+		width: 50px;
+		height: 50px;
+		background-image: url('../icon/burger-icon.svg');
+		background-size: cover;
+	}
+
+	&__menu {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		flex-direction: row;
+		padding: 10px 25px;
+		margin: 5px 20px;
+		font-size: 2rem;
+		color: $secondlyColor;
+		&--register-btn {
+			padding: 0.7em 1em;
+			margin: 1em;
+			border: 1px solid rgb(54, 48, 48);
+			border-radius: 1.2em;
+			font-size: 2rem;
+		}
+		&--logo {
+			position: fixed;
+			top: 0;
+			left: 0;
+			margin: 20px 20px;
+			width: 50px;
+			height: 50px;
+			background-image: url('../icon/server-bolt.svg');
+			background-size: cover;
+		}
+	}
+	&__menu:hover {
+		cursor: pointer;
+	}
+}
+
+//MOBILE
+
+@media (max-width: 768px) {
+	.header {
+		margin-top: 50%;
+	}
+	.nav {
+		&__burgericon {
+			position: fixed;
+			right: 0;
+			top: 0;
+			display: block;
+		}
+		&__link {
+			display: none;
+			&--register-btn {
+				display: none;
+			}
+		}
+	}
+}
