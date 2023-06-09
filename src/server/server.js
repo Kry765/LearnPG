@@ -16,12 +16,11 @@ const pool = new Pool({
 })
 
 app.listen(port, () => {
-	console.log(`Server running on port ${port}`);
+	console.log(`Server running on port ${port}`)
 })
 
+//test server.js
 const getUser = 'SELECT * FROM users'
-const registerUser = 'INSERT INTO users (user_email, user_pwd) VALUES ($1, $2) RETURNING *'
-
 app.get('/test', (req, res) => {
 	pool
 		.query(getUser)
@@ -35,11 +34,17 @@ app.get('/test', (req, res) => {
 		})
 })
 
+//create user
 app.post('/register', (req, res) => {
-	pool.query(registerUser, values, (error, results) => {
+	const { user_email, user_pwd } = req.body
+	const registerUser = 'INSERT INTO users (user_email, user_pwd) VALUES ($1, $2)'
+	const values = [user_email, user_pwd]
+	pool.query(registerUser, values, (error, values) => {
 		if (error) {
 			throw error
+		} else {
+			console.log('ok')
 		}
-		res.status(201).send(`User added with ID: ${results.rows[0].id}`)
+		pool.end()
 	})
 })
