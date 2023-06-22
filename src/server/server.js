@@ -3,6 +3,9 @@ const app = express()
 const bodyParser = require('body-parser')
 const { Pool } = require('pg')
 const port = 4000
+const cors = require('cors')
+
+app.use(cors())
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -35,7 +38,7 @@ app.get('/test', (req, res) => {
 })
 
 //create user
-app.post('/register', (req, res) => {
+app.post('/create', (req, res) => {
 	const { user_email, user_pwd } = req.body
 	const registerUser = 'INSERT INTO users (user_email, user_pwd) VALUES ($1, $2)'
 	const values = [user_email, user_pwd]
@@ -45,6 +48,6 @@ app.post('/register', (req, res) => {
 		} else {
 			console.log('ok')
 		}
-		pool.end()
 	})
+	// pool.end()
 })

@@ -7,7 +7,7 @@ function Register() {
 	const handleSubmit = e => {
 		e.preventDefault()
 		const formData = { user_email, user_pwd }
-		fetch('/register', {
+		fetch('http://localhost:4000/create', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
