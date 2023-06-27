@@ -49,5 +49,19 @@ app.post('/create', (req, res) => {
 			console.log('ok')
 		}
 	})
-	// pool.end()
+})
+
+//login user
+app.post('/log', (req, res) => {
+	const { user_email, user_pwd } = req.body
+	const loginUser = 'SELECT * FROM users WHERE user_email = ? AND user_pwd = ?'
+	const values = [user_email, user_pwd]
+
+	pool.query(loginUser, values, (error, values) => {
+		if (error) {
+			throw error
+		} else {
+			console.log('ok')
+		}
+	})
 })
