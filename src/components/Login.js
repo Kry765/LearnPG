@@ -7,19 +7,20 @@ function Login() {
 	const handleSubmit = e => {
 		e.preventDefault()
 		const formData = { user_email, user_pwd }
-		fetch('http://localhost:4000/log', {
+		fetch('http://localhost:4000/login', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(formData),
 		})
-			.then(response => response.json())
-			.then(data => {
-				console.log(data)
+			.then(response => {
+				if (response.redirected) {
+					window.location.href = response.url // Przekierowanie do panelu głównego
+				}
 			})
 			.catch(error => {
-				console.error(error)
+				console.log(error)
 			})
 	}
 

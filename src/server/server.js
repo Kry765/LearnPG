@@ -52,16 +52,28 @@ app.post('/create', (req, res) => {
 })
 
 //login user
-app.post('/log', (req, res) => {
+app.post('/login', (req, res) => {
 	const { user_email, user_pwd } = req.body
-	const loginUser = 'SELECT * FROM users WHERE user_email = ? AND user_pwd = ?'
+	const loginUser = 'SELECT * FROM users WHERE user_email = $1'
 	const values = [user_email, user_pwd]
-
-	pool.query(loginUser, values, (error, values) => {
+	pool.query(loginUser, [values], (error, result) => {
 		if (error) {
-			throw error
-		} else {
-			console.log('ok')
+			return res.status(500).json({ message: 'Wystąpił błąd serwera' })
 		}
+
+		const users = result.rows[0]
+
+		if (!users) {
+			// console.log(users)
+			return res.status(401).json({ message: 'Nieprawidłowy login lub hasło' })
+		}
+		if (users.haslo !== haslo) {
+			return res.status(401).json({ message: 'Nieprawidłowy login lub hasło' })
+		}
+		res.redirect('/dashboard')
 	})
+})
+
+app.get('/dashboard', (req, res) => {
+	res.send('Panel główny')
 })
