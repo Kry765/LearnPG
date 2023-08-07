@@ -1,0 +1,18 @@
+@use './reset.scss' as *;
+@use './colors' as *;
+
+.nav {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	justify-content: flex-end;
+	background-color: $blue;
+	color: $white;
+	&__menu-item {
+		display: none;
+	}
+	&__burger-bar {
+		padding: 0.3em;
+		font-size: 3rem;
+	}
+}
