@@ -1,7 +1,7 @@
 const express = require('express')
 const User = require('../models/user')
 
-const createUser = () => {
+const createUser = app => {
 	app.post('/create', async (req, res) => {
 		try {
 			const { user_email, user_pwd } = req.body

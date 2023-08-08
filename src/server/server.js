@@ -3,8 +3,10 @@ const db = require('./database')
 const app = express()
 const cors = require('cors')
 const port = 4000
+const cookieParser = require('cookie-parser')
 
 app.use(express.json())
+app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }))
 
 //CORS
@@ -36,4 +38,8 @@ app.use('./modules/users', getUser) //WYZNACZNIK
 
 //REGISTER
 const createUser = require('./modules/createUser')
-app.use('./models/createUser', createUser)
+createUser(app)
+
+//LOGIN
+const loginUser = require('./modules/loginUser')
+loginUser(app)

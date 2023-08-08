@@ -1,34 +1,34 @@
 import React, { useState } from 'react'
-const API_URL = 'http://localhost:4000'
 
-function Login() {
+const Login = () => {
 	const [user_email, set_user_email] = useState('')
 	const [user_pwd, set_user_pwd] = useState('')
+	const [message, setMessage] = useState('')
 
-	const handleSubmit = e => {
+	const handleSubmit = async e => {
 		e.preventDefault()
-		fetch(`${API_URL}/log`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({ user_email, user_pwd }),
-		})
-			.then(response => {
-				if (response.ok) {
-					response.json(data => {
-						const token = data.token
-						// Store the token securely (e.g., in local storage or a secure cookie)
-						localStorage.setItem('token', token)
-						console.log('Zalogowano pomyślnie')
-					})
-				} else {
-					throw new Error('Nieprawidłowy login lub hasło')
-				}
+		try {
+			const response = await fetch('http://localhost:4000/signin', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ user_email, user_pwd }),
 			})
-			.catch(error => {
-				console.error('Error:', error.message)
-			})
+
+			if (response.ok) {
+				const data = await response.json()
+				localStorage.setItem('token', data.token)
+				window.location.href = '/Dashboard'
+			} else if (response.status === 401) {
+				console.log('Invalid credentials')
+			} else {
+				console.log('Error logging in')
+			}
+		} catch (error) {
+			setMessage('Network error')
+			console.error(error)
+		}
 	}
 
 	return (
