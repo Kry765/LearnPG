@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import '../scss/_register.scss'
-const API_URL = 'http://app:4000/create'
+const API_URL = 'http://localhost:4000/create'
 
 function Register() {
 	const [user_email, set_user_email] = useState('')
