@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import '../scss/style.scss'
 import '../scss/_register.scss'
+
 const API_URL = 'http://localhost:4000/create'
 
 function Register() {
@@ -30,32 +32,45 @@ function Register() {
 			<div className='wrapper register'>
 				<p>Sign in to Account</p>
 			</div>
-			<div className='wrapper register_form'>
+			<div className='wrapper'>
 				<form onSubmit={handleSubmit}>
+					<div className='register__block'>
+						<label>
+							<p>Email*</p>
+							<input
+								className='register__input'
+								type='text'
+								placeholder='email'
+								value={user_email}
+								onChange={event => {
+									set_user_email(event.target.value)
+								}}
+							/>
+						</label>
+					</div>
+
 					<div className='wrapper'>
-						<input
-							className='register__input'
-							type='text'
-							placeholder='email'
-							value={user_email}
-							onChange={event => {
-								set_user_email(event.target.value)
-							}}
-						/>
+						<div>
+							<label>
+								<p>Password*</p>
+
+								<input
+									className='register__input'
+									type='password'
+									placeholder='password'
+									value={user_pwd}
+									onChange={event => {
+										set_user_pwd(event.target.value)
+									}}
+								/>
+							</label>
+						</div>
 					</div>
 					<div className='wrapper'>
-						<input
-							className='register__input'
-							type='password'
-							placeholder='password'
-							value={user_pwd}
-							onChange={event => {
-								set_user_pwd(event.target.value)
-							}}
-						/>
-					</div>
-					<div className='wrapper'>
-						<input type='repeat password' className='register__input' placeholder='repeat password' />
+						<label>
+							<p>Repeat password</p>
+							<input type='repeat password' className='register__input' placeholder='repeat password' />
+						</label>
 					</div>
 					<div className='wrapper register__checkbox'>
 						<label>
