@@ -1,0 +1,60 @@
+@use './colors.scss' as *;
+@use './style.scss' as *;
+@import '../image/teoria.jpg';
+
+.dashboard {
+	background-color: #000;
+	height: 100%;
+
+	&__menu-items {
+		background-color: $dark;
+		color: $white;
+		width: 100%;
+		height: 10vh;
+		justify-content: flex-end;
+		position: relative;
+	}
+	&__menu-item {
+		padding: 20px;
+		display: none;
+		&--menu-logo {
+			position: fixed;
+			left: 0;
+			padding: 20px;
+		}
+	}
+	&__main {
+		margin-top: 1em;
+		flex-wrap: wrap;
+	}
+	&__menu-burger {
+		position: absolute;
+		right: 0;
+		top: 0;
+		margin: 0.5em;
+		font-size: 2.8rem;
+	}
+	&__section-box {
+		margin: 1em;
+		width: 350px;
+		height: 350px;
+		background-color: antiquewhite;
+		background-image: url('../image/teoria.jpg');
+		&--theory {
+			background-image: url('../image/teoria.jpg');
+			width: 100px;
+			height: 100px;
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.dashboard {
+		&__menu-item {
+			display: block;
+		}
+		&__menu-burger {
+			display: none;
+		}
+	}
+}
