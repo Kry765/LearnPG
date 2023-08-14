@@ -18,12 +18,14 @@ const Dashboard = () => {
 			<div className='dashboard__main wrapper'>
 				<div className='dashboard__section-box'>
 					<img src={Teoria} alt='Teoria' className='dashboard__section-box-image' />
-					<div className='dashboard__section-box-opacity'></div>
+					<div className='dashboard__section-box-opacity wrapper'>
+						<p className='dashboard__section-box--subtitle'>Teoria</p>
+					</div>
 				</div>
 				<div className='dashboard__section-box'>
 					<img src={Praktyka} alt='Praktyka' className='dashboard__section-box-image' />
 					<div className='dashboard__section-box-opacity wrapper'>
-						<p>Teoria</p>
+						<p className='dashboard__section-box--subtitle'>Praktyka</p>
 					</div>
 				</div>
 			</div>

@@ -39,7 +39,15 @@
 		height: 350px;
 		background-color: antiquewhite;
 		position: relative;
+		&--subtitle {
+			font-weight: bold;
+			text-transform: uppercase;
+			z-index: 5;
+			color: $dark;
+		}
+		
 	}
+
 	&__section-box-image {
 		width: 100%;
 		height: 100%;
@@ -49,7 +57,13 @@
 		top: 0;
 		width: 100%;
 		height: 100%;
-		background-color: rgba(255, 255, 255, 0.5);
+	}
+
+	&__section-box,
+	&__section-box-opacity:hover {
+		background-color: rgba(35, 49, 66, 0.5);
+		color: #fff;
+		cursor: pointer;
 	}
 }
 
