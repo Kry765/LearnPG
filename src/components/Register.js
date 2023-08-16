@@ -7,9 +7,27 @@ const API_URL = 'http://localhost:4000/create'
 function Register() {
 	const [user_email, set_user_email] = useState('')
 	const [user_pwd, set_user_pwd] = useState('')
+	const [repeatPwd, set_repeatPwd] = useState('')
+
+	const checkPassword = () => {
+		try {
+			if (user_pwd != repeatPwd) {
+				console.log('Passwords match: bad')
+			} else if (user_pwd == '' && repeatPwd == '') {
+				console.log('Passwords: puste')
+			}
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
+	const checkEmail = () => {
+		let regex = new RegExp('[a-z0-9]+@[a-z]+.[a-z]{2,3}')
+	}
 
 	const handleSubmit = e => {
 		e.preventDefault()
+		checkPassword()
 		const formData = { user_email, user_pwd }
 		fetch(`${API_URL}`, {
 			method: 'POST',
@@ -69,7 +87,14 @@ function Register() {
 					<div className='wrapper'>
 						<label>
 							<p>Repeat password</p>
-							<input type='repeat password' className='register__input' placeholder='repeat password' />
+							<input
+								type='password'
+								className='register__input'
+								placeholder='repeat password'
+								onChange={event => {
+									set_repeatPwd(event.target.value)
+								}}
+							/>
 						</label>
 					</div>
 					<div className='wrapper register__checkbox'>
