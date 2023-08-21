@@ -8,38 +8,34 @@ const cookieParser = require('cookie-parser')
 app.use(express.json())
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }))
-
-//CORS
 app.use(cors({ origin: 'http://localhost:3000' }))
 
-//TEST CONNECTION
 db.authenticate()
 	.then(() => {
 		console.log('Database connected')
-		return db.sync({ force: true })
+		return db.sync()
 	})
 	.then(() => {
-		console.log('Table ok')
+		const User = require('./models/user')
+		const Question = require('./models/question')
+		const Topic = require('./models/topic')
+		const Answer = require('./models/answer')
+
+		User.sync()
+		Question.sync()
+		Answer.sync()
+		Topic.sync()
+
 		app.listen(port, () => {
-			console.log(`App is running on port ${port}`)
+			console.log(`Server is running on port ${port}`)
 		})
 	})
-	.catch(err => {
-		console.error(err)
+	.catch(error => {
+		console.error(error)
 	})
 
-//CREATE TABLE
-const User = require('./models/user')
-app.use('./models/user', User)
-
-//GET TABLE
-const getUser = require('./modules/users') //WYZNACZNIK
-app.use('./modules/users', getUser) //WYZNACZNIK
-
-//REGISTER
 const createUser = require('./modules/createUser')
-createUser(app)
-
-//LOGIN
 const loginUser = require('./modules/loginUser')
+
+createUser(app)
 loginUser(app)

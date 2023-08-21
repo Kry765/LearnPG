@@ -1,23 +1,26 @@
 const db = require('../database')
 const { DataTypes } = require('sequelize')
-const User = db.define(
-	'user',
+
+const Topic = db.define(
+	'topic',
 	{
-		user_id: {
+		topic_id: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
 			primaryKey: true,
 		},
-		user_email: {
+		topic_name: {
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
-		user_pwd: {
+		topic_description: {
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
 	},
-	{ timestamps: false }
+	{
+		timestamps: false,
+	}
 )
 
-module.exports = User
+module.exports = Topic
