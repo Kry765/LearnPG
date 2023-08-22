@@ -36,6 +36,8 @@ db.authenticate()
 
 const createUser = require('./modules/createUser')
 const loginUser = require('./modules/loginUser')
+const getTopic = require('./modules/getTopic')
 
 createUser(app)
 loginUser(app)
+getTopic(app)

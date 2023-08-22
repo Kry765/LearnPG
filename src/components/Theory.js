@@ -1,17 +1,35 @@
+import React, { useState, useEffect } from 'react'
 
+export default function Theory() {
+	const [topics, setTopics] = useState([])
 
-export default function Practice() {
+	useEffect(() => {
+		fetchTopics()
+	}, [])
+
+	const fetchTopics = async () => {
+		try {
+			const response = await fetch('http://localhost:4000/score')
+			if (response.ok) {
+				const data = await response.json()
+				setTopics(data)
+			} else {
+				console.error('Error fetching topics:', response.statusText)
+			}
+		} catch (error) {
+			console.error('Error fetching topics:', error)
+		}
+	}
+
 	return (
 		<div>
 			<h1>Teoria</h1>
-			<div>
-				<div>1</div>
-				<div>2</div>
-				<div>3</div>
-				<div>4</div>
-				<div>5</div>
-				<div>6</div>
-			</div>
+				{topics.map((topic, index) => (
+					<div key={index}>
+						<strong>{topic.topic_name}</strong>: {topic.topic_description}
+					</div>
+					
+				))}
 		</div>
 	)
 }
