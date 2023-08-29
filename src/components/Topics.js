@@ -24,12 +24,11 @@ export default function Theory() {
 	return (
 		<div>
 			<h1>Teoria</h1>
-				{topics.map((topic, index) => (
-					<div key={index}>
-						<strong>{topic.topic_name}</strong>: {topic.topic_description}
-					</div>
-					
-				))}
+			{topics.map((topic, index) => (
+				<div key={index}>
+					<strong>{topic.topic_name}</strong>: {topic.topic_description}
+				</div>
+			))}
 		</div>
 	)
 }
