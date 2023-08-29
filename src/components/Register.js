@@ -8,23 +8,23 @@ const API_URL = 'http://localhost:4000/create'
 function Register() {
 	const [user_email, set_user_email] = useState('')
 	const [user_pwd, set_user_pwd] = useState('')
+	const [output, setOutput] = useState('')
 
-	const handleSubmit = e => {
+	const handleSubmit = async e => {
 		e.preventDefault()
 		const formData = { user_email, user_pwd }
-		axios
-			.post(`${API_URL}`, {
+		try {
+			const res = await axios.post(API_URL, formData, {
 				headers: {
 					'Content-Type': 'application/json',
 				},
-				body: JSON.stringify(formData),
 			})
-			.then(data => {
-				console.log(data)
-			})
-			.catch(error => {
-				console.error(error)
-			})
+			if (res.status == 201) setOutput('Konto zostało utworzone')
+			else if (res.status == 200) setOutput('Podany adres email jest już zajęty')
+			else if (res.status == 500) setOutput('Wystąpił błąd')
+		} catch (err) {
+			console.error(err)
+		}
 	}
 
 	return (
@@ -37,7 +37,9 @@ function Register() {
 					<div className='register__block'>
 						<div className='wrapper'>
 							<label>
-								<p>Email*</p>
+								<p>
+									Email<span className='red'>*</span>
+								</p>
 								<input
 									className='register__input'
 									type='text'
@@ -51,7 +53,9 @@ function Register() {
 						</div>
 						<div className='wrapper'>
 							<label>
-								<p>Password*</p>
+								<p>
+									Password<span className='red'>*</span>
+								</p>
 								<input
 									className='register__input'
 									type='password'
@@ -65,7 +69,9 @@ function Register() {
 						</div>
 						<div className='wrapper'>
 							<label>
-								<p>Repeat password</p>
+								<p>
+									Repeat password<span className='red'>*</span>
+								</p>
 								<input type='password' className='register__input' placeholder='repeat password' />
 							</label>
 						</div>
@@ -80,8 +86,8 @@ function Register() {
 								Register
 							</button>
 						</div>
-
 						<div className='register__login-link'>Do you have Account? Log in</div>
+						<p>{output}</p>
 					</div>
 				</form>
 			</div>
