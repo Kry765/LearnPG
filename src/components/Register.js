@@ -6,11 +6,18 @@ import axios from 'axios'
 const API_URL = 'http://localhost:4000/create'
 
 function Register() {
+	const validPassword = new RegExp('^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$')
 	const [user_email, set_user_email] = useState('')
 	const [user_pwd, set_user_pwd] = useState('')
 	const [output, setOutput] = useState('')
+	const [password, setPassword] = useState('')
+	const [repeat_pwd, set_repeat_pwd] = useState('')
 
 	const handleSubmit = async e => {
+		await emptyInput()
+		await checkEmail()
+		await changePwd()
+
 		e.preventDefault()
 		const formData = { user_email, user_pwd }
 		try {
@@ -26,6 +33,35 @@ function Register() {
 			console.error(err)
 		}
 	}
+
+	const changePwd = () => {
+		if (user_email == '' || user_pwd == '' || repeat_pwd == '') {
+			setOutput('Uzupełnij brakujące pola')
+		}
+	}
+
+	const emptyInput = () => {
+		if (repeat_pwd !== user_pwd) {
+			setOutput('Wprowadzone hasła są różne')
+		}
+	}
+
+	const checkEmail = () => {
+		const validEmail = new RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$')
+		if (!validEmail.test(user_email)) {
+			setOutput('Wprowadzony adres email jest nieprawidłowy')
+		}
+	}
+
+	const handlePassword = event => {
+		const pwd = event.target.value;
+		setPassword(pwd)
+		if (pwd.length >= 8) {
+			setPassword(`Wprowadzone hasło ma ${pwd}`)
+		}
+	}
+
+	handlePassword()
 
 	return (
 		<div>
@@ -72,8 +108,17 @@ function Register() {
 								<p>
 									Repeat password<span className='red'>*</span>
 								</p>
-								<input type='password' className='register__input' placeholder='repeat password' />
+								<input
+									type='password'
+									className='register__input'
+									placeholder='repeat password'
+									value={repeat_pwd}
+									onChange={event => {
+										set_repeat_pwd(event.target.value)
+									}}
+								/>
 							</label>
+							<p>{password}</p>
 						</div>
 						<div className='wrapper register__checkbox'>
 							<label>
