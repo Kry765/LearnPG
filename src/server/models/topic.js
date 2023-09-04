@@ -4,7 +4,7 @@ const { DataTypes } = require('sequelize')
 const Topic = db.define(
 	'topic',
 	{
-		topic_id: {
+		id: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
 			primaryKey: true,

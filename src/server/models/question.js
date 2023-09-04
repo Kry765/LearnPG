@@ -1,15 +1,14 @@
 const db = require('../database')
 const { DataTypes } = require('sequelize')
 
-const Question = db.define(
-	'question',
+const questions = db.define(
+	'questions',
 	{
-		question_id: {
-			type: DataTypes.INTEGER,
-			autoIncrement: true,
-			primaryKey: true,
-		},
 		question_name: {
+			type: DataTypes.STRING,
+			allowNull: false,
+		},
+		answer_input_correct: {
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
@@ -17,4 +16,14 @@ const Question = db.define(
 	{ timestamps: false }
 )
 
-module.exports = Question
+questions.associate = models => {
+	questions.belongsTo(models.topic, {
+		foreignKey: {
+			name: 'topic_id',
+			allowNull: false,
+		},
+		as: 'topic',
+	})
+}
+
+module.exports = questions

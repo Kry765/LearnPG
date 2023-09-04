@@ -17,14 +17,12 @@ db.authenticate()
 	})
 	.then(() => {
 		const User = require('./models/user')
-		const Question = require('./models/question')
 		const Topic = require('./models/topic')
-		const Answer = require('./models/answer')
+		const Question = require('./models/question')
 
 		User.sync()
-		Question.sync()
-		Answer.sync()
 		Topic.sync()
+		Question.sync()
 
 		app.listen(port, () => {
 			console.log(`Server is running on port ${port}`)
@@ -37,7 +35,9 @@ db.authenticate()
 const createUser = require('./modules/createUser')
 const loginUser = require('./modules/loginUser')
 const getTopic = require('./modules/getTopic')
+const getQuestion = require('./modules/getQuestion')
 
 createUser(app)
 loginUser(app)
 getTopic(app)
+getQuestion(app)

@@ -3,18 +3,31 @@
 @use './style.scss' as *;
 
 .nav {
-	display: flex;
-	align-items: center;
-	flex-direction: row;
+	position: fixed;
+	top: 0;
+	height: 10vh;
+	min-width: 100%;
 	justify-content: flex-end;
-	background-color: $blue;
+	background-color: rgba(54, 80, 108, 0.5);
 	color: $white;
-	&__menu-item {
-		display: none;
+	padding: 1em;
+	z-index: 5;
+	&__desktop-item {
+		margin: 1em;
+		display: block;
+		font-weight: bold;
+		font-size: 1.2rem;
+		text-decoration: uppercase;
+		transition: color 0.5s;
+	}
+	&__desktop-item:hover {
+		cursor: pointer;
+		color: $sky;
 	}
 	&__burger-bar {
 		padding: 0.3em;
 		font-size: 3rem;
+		display: none;
 	}
 }
 
