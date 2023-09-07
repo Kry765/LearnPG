@@ -3,7 +3,15 @@ import axios from 'axios'
 
 export default function OneTest() {
 	const [topics, setTopics] = useState([])
-	const [answer, setAnswer] = useState()
+	const [answer, setAnswer] = useState('')
+
+	const checkAnswer = (correctAnswer, userAnswer) => {
+		if (correctAnswer === userAnswer) {
+			console.log('ok')
+		} else {
+			console.log('no')
+		}
+	}
 
 	useEffect(() => {
 		getTopic()
@@ -29,14 +37,14 @@ export default function OneTest() {
 				{topics.map((topic, index) => (
 					<div key='index'>
 						<p>{topic.question_name}</p>
+						{topic.answer_input_correct}
 						<input
 							type='text'
-							value='answer'
-							onChange={event => {
-								setAnswer(event.target.value)
+							onChange={e => {
+								setAnswer(e.target.value)
 							}}
 						/>
-						<button onClick={checkAnswer}>Sprawdź odpowiedź</button>
+						<button onClick={() => checkAnswer(topic.answer_input_correct, answer)}>Sprawdź odpowiedź</button>
 					</div>
 				))}
 			</div>

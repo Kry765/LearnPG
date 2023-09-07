@@ -1,0 +1,19 @@
+.topics {
+	&__sections {
+		display: flex;
+		flex-direction: column;
+		padding: 1.2em;
+		margin: 1em;
+	}
+	&__section {
+		display: flex;
+		max-width: 25%;
+		border-bottom: 1px solid gray;
+	}
+	&__take-section {
+		display: none;
+	}
+	&__close-section {
+		display: block;
+	}
+}

@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from 'react'
+import { FaArrowDown } from 'react-icons/fa'
+import '../scss/style.scss'
+import '../scss/_topics.scss'
 
-export default function Theory() {
+export default function Topics() {
 	const [topics, setTopics] = useState([])
+	const [description, setDescription] = useState(false)
+
+	const takeDescription = () => {
+		setDescription(!description)
+	}
 
 	useEffect(() => {
 		fetchTopics()
@@ -22,11 +30,19 @@ export default function Theory() {
 	}
 
 	return (
-		<div>
-			<h1>Teoria</h1>
+		<div className='topics'>
+			<h1>Lista Tematów</h1>
 			{topics.map((topic, index) => (
-				<div key={index}>
-					<strong>{topic.topic_name}</strong>: {topic.topic_description}
+				<div className='topics__sections' key={index}>
+					<div className='topics__section'>
+						<div onClick={takeDescription}>
+							<span>{index + 1}. </span>
+							<span>{topic.topic_name}</span>
+							<div className={description ? 'topics__close-section' : 'topics__take-section'}>
+								<div>{topic.topic_description}</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			))}
 		</div>
