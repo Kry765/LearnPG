@@ -1,23 +1,49 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../scss/_main.scss'
-import { Link } from 'react-router-dom'
 import { RxHamburgerMenu } from 'react-icons/rx'
+import { FaDatabase } from 'react-icons/fa'
+import {useNavigate} from 'react-router-dom'
+import Register from './Register'
 
 function Main() {
+	const [openNav, setOpenNav] = useState('')
+	const navigate = useNavigate()
+
 	return (
 		<div>
 			<nav>
-				<div className='nav wrapper'>
-					<div className='nav__desktop-item'>Korzyści</div>
-					<div className='nav__desktop-item'>Kontakt</div>
-					<Link to='/Register' className='nav__desktop-item'>
-						Zaloguj się
-					</Link>
-					<Link to='/Register' className='nav__desktop-item'>
-						Zarejestruj się
-					</Link>
-					<div className='nav__burger-bar'>
-						<RxHamburgerMenu />
+				<div className='nav'>
+					<div className='nav__desktop-items'>
+						<div className='nav__desktop-item'>Korzyści</div>
+						<div className='nav__desktop-item'>Kontakt</div>
+						<div
+							className='nav__desktop-item'
+							onClick={() => {
+								navigate('/Login')
+							}}
+						>
+							Zaloguj się
+						</div>
+						<div className='nav__desktop-item'>Załóż konto</div>
+						<div className='nav__burger-bar'>
+							<RxHamburgerMenu
+								onClick={() => {
+									setOpenNav(!openNav)
+								}}
+							/>
+						</div>
+					</div>
+					<div className={openNav ? 'nav__mobile-items' : 'nav__close-mobile-items'}>
+						<div className='nav__mobile-item'>Strona Główna</div>
+						<div className='nav__mobile-item'>Korzyści</div>
+						<div className='nav__mobile-item'>Kontakt</div>
+						<div className='nav__mobile-item'>Zaloguj się</div>
+						<div className='nav__mobile-item'>Zalóż konto</div>
+					</div>
+					<div className='nav__logo'>
+						<span>
+							<FaDatabase />
+						</span>
 					</div>
 				</div>
 			</nav>
@@ -30,7 +56,7 @@ function Main() {
 						</div>
 					</div>
 				</section>
-				<section></section>
+				<section>oferta</section>
 			</main>
 		</div>
 	)
