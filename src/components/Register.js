@@ -6,7 +6,7 @@ import axios from 'axios'
 const API_URL = 'http://localhost:4000/create'
 
 function Register() {
-	const validPassword = new RegExp('^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$')
+	// const validPassword = new RegExp('^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$')
 	const [user_email, set_user_email] = useState('')
 	const [user_pwd, set_user_pwd] = useState('')
 	const [output, setOutput] = useState('')
@@ -53,15 +53,15 @@ function Register() {
 		}
 	}
 
-	const handlePassword = event => {
-		const pwd = event.target.value;
-		setPassword(pwd)
-		if (pwd.length >= 8) {
-			setPassword(`Wprowadzone hasło ma ${pwd}`)
-		}
-	}
+	// const handlePassword = event => {
+	// 	const pwd = event.target.value
+	// 	setPassword(pwd)
+	// 	if (pwd.length >= 8) {
+	// 		setPassword(`Wprowadzone hasło ma ${pwd}`)
+	// 	}
+	// }
 
-	handlePassword()
+	// handlePassword()
 
 	return (
 		<div>

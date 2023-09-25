@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 import '../scss/_main.scss'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { FaDatabase } from 'react-icons/fa'
-import {useNavigate} from 'react-router-dom'
-import Register from './Register'
+import { RiArrowDownSLine } from 'react-icons/ri'
+import { GrSync } from 'react-icons/gr'
+import { useNavigate } from 'react-router-dom'
+import { MdOutlineUpdate } from 'react-icons/md'
+import { SiTestcafe } from 'react-icons/si'
 
 function Main() {
 	const [openNav, setOpenNav] = useState('')
@@ -24,7 +27,14 @@ function Main() {
 						>
 							Zaloguj się
 						</div>
-						<div className='nav__desktop-item'>Załóż konto</div>
+						<div
+							className='nav__desktop-item'
+							onClick={() => {
+								navigate('/Register')
+							}}
+						>
+							Załóż konto
+						</div>
 						<div className='nav__burger-bar'>
 							<RxHamburgerMenu
 								onClick={() => {
@@ -37,8 +47,22 @@ function Main() {
 						<div className='nav__mobile-item'>Strona Główna</div>
 						<div className='nav__mobile-item'>Korzyści</div>
 						<div className='nav__mobile-item'>Kontakt</div>
-						<div className='nav__mobile-item'>Zaloguj się</div>
-						<div className='nav__mobile-item'>Zalóż konto</div>
+						<div
+							className='nav__mobile-item'
+							onClick={() => {
+								navigate('/Login')
+							}}
+						>
+							Zaloguj się
+						</div>
+						<div
+							className='nav__mobile-item'
+							onClick={() => {
+								navigate('/Register')
+							}}
+						>
+							Zalóż konto
+						</div>
 					</div>
 					<div className='nav__logo'>
 						<span>
@@ -52,11 +76,56 @@ function Main() {
 					<div className='header wrapper'>
 						<div className='header__opacity wrapper'>
 							<span className='header__title'>LearnPG</span>
-							<span className='header__subtitle'>Ucz się na bierząco postgresa, zdobądź dodatkową wiedzę</span>
+							<span className='header__subtitle'>
+								Ucz się na bierząco postgresa, zdobądź dodatkową wiedzę z zakresu relacyjnych baz danych
+							</span>
+							<div className='header__arrow-down'>
+								<RiArrowDownSLine />
+							</div>
 						</div>
 					</div>
 				</section>
-				<section>oferta</section>
+				<section>
+					<div>
+						<div className='offerts'>
+							<h1>Korzyści</h1>
+							<div className='offerts__cards wrapper'>
+								<div className='offerts__card'>
+									<span>Wygoda</span>
+									<div>
+										<SiTestcafe className='offerts__icon-card' />
+									</div>
+									<div>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam convallis, lectus eu auctor
+										scelerisque, enim enim ultricies arcu, at hendrerit tellus libero vitae eros.
+									</div>
+								</div>
+								<div className='offerts__card'>
+									<span>Aktualne</span>
+									<div>
+										<MdOutlineUpdate className='offerts__icon-card' />
+									</div>
+									<div>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam convallis, lectus eu auctor
+										scelerisque, enim enim ultricies arcu, at hendrerit tellus libero vitae eros.
+									</div>
+								</div>
+								<div className='offerts__card'>
+									<span>Testy</span>
+									<div>
+										<SiTestcafe className='offerts__icon-card' />
+									</div>
+									<div>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam convallis, lectus eu auctor
+										scelerisque, enim enim ultricies arcu, at hendrerit tellus libero vitae eros.
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section></section>
+				<footer></footer>
 			</main>
 		</div>
 	)

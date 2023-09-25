@@ -65,8 +65,11 @@
 }
 
 .header {
-	background-image: url('../image/main.jpeg');
-	height: 80vh;
+	background-image: url('../image/main.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	height: 90vh;
 	position: relative;
 	&__opacity {
 		flex-direction: column;
@@ -80,6 +83,9 @@
 
 	&__title,
 	&__subtitle {
+		margin: 0.5em;
+		padding: 0 2em;
+		text-align: center;
 		color: $white;
 	}
 
@@ -89,6 +95,35 @@
 	}
 	&__subtitle {
 		font-size: 1rem;
+	}
+	&__arrow-down {
+		position: absolute;
+		bottom: 0;
+		color: white;
+		font-size: 3rem;
+		font-weight: bold;
+	}
+}
+
+.offerts {
+	text-align: center;
+	margin: 2em 0;
+	&__cards {
+		flex-wrap: wrap;
+		margin: 2em;
+	}
+	&__card {
+		margin: 2em;
+		text-align: center;
+		padding: 1em;
+		border: 1px solid #2422226b;
+		border-radius: 25px;
+		width: 300px;
+		height: 400px;
+		overflow: hidden;
+	}
+	&__icon-card {
+		font-size: 12rem;
 	}
 }
 
