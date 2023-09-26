@@ -124,8 +124,30 @@ function Main() {
 						</div>
 					</div>
 				</section>
-				<section></section>
-				<footer></footer>
+				<footer>
+					<div className='footer'>
+						<div className='footer__description'>
+							<h3>Pomoc</h3>
+							<span>pomoc@learnpg.com</span>
+							<span>33 330 90 90</span>
+						</div>
+						<div className='footer__description'>
+							<h3>Menu</h3>
+							<span>Strona Główna</span>
+							<span>Zaloguj się</span>
+							<span>Załóż konto</span>
+							<span>Korzyści</span>
+						</div>
+						<div className='footer__description'>
+							<h3>Social Media</h3>
+							<span>Instagram</span>
+							<span>Facebook</span>
+							<span>YouTube</span>
+							<span>TikTok</span>
+							<span>LinkedIn</span>
+						</div>
+					</div>
+				</footer>
 			</main>
 		</div>
 	)
