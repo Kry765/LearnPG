@@ -1,0 +1,157 @@
+@use './reset' as *;
+@use './colors' as *;
+@use './style.scss' as *;
+
+.nav {
+	position: fixed;
+	top: 0;
+	max-height: 10%;
+	min-width: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	color: $white;
+	padding: 0.5em;
+	z-index: 5;
+	&__desktop-items {
+		display: flex;
+		justify-content: flex-end;
+		align-items: flex-end;
+	}
+
+	&__desktop-item {
+		display: none;
+		margin: 1em;
+		font-size: 1.2rem;
+		text-decoration: uppercase;
+		transition: color 0.5s;
+	}
+	&__mobile-items {
+		position: fixed;
+		top: 0;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: flex-end;
+		width: 110%;
+		height: 100%;
+		transform: translateX(-10%);
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+	&__close-mobile-items {
+		display: none;
+	}
+	&__mobile-item {
+		padding: 2em;
+	}
+	&__logo {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		padding: 1em;
+		font-size: 1.8rem;
+		transition: color 0.5s;
+	}
+	&__desktop-item:hover,
+	&__logo:hover {
+		cursor: pointer;
+		color: $sky;
+	}
+	&__burger-bar {
+		padding: 0.3em;
+		font-size: 3rem;
+		display: block;
+		z-index: 4;
+	}
+}
+
+.header {
+	background-image: url('../image/main.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	height: 90vh;
+	position: relative;
+	&__opacity {
+		flex-direction: column;
+		align-items: flex-end;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.6);
+	}
+
+	&__title,
+	&__subtitle {
+		margin: 0.5em;
+		padding: 0 2em;
+		text-align: center;
+		color: $white;
+	}
+
+	&__title {
+		font-weight: bold;
+		font-size: 3rem;
+	}
+	&__subtitle {
+		font-size: 1rem;
+	}
+	&__arrow-down {
+		position: absolute;
+		bottom: 0;
+		color: white;
+		font-size: 3rem;
+		font-weight: bold;
+	}
+}
+
+.offerts {
+	text-align: center;
+	margin: 2em 0;
+	&__cards {
+		flex-wrap: wrap;
+		margin: 2em;
+	}
+	&__card {
+		margin: 2em;
+		text-align: center;
+		padding: 1em;
+		border: 1px solid #2422226b;
+		border-radius: 25px;
+		width: 300px;
+		height: 400px;
+		overflow: hidden;
+	}
+	&__icon-card {
+		font-size: 12rem;
+	}
+}
+
+@media (min-width: 768px) {
+	.nav {
+		&__desktop-item {
+			display: block;
+		}
+		&__burger-bar,
+		&__mobile-items {
+			display: none;
+		}
+
+		&__logo {
+			display: block;
+		}
+	}
+}
+
+.footer {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	background-color: gray;
+	color: white;
+	width: 100%;
+	height: 100%;
+	&__description {
+		flex-direction: column;
+	}
+}

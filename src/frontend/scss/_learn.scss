@@ -1,0 +1,28 @@
+.learn {
+	display: flex;
+	flex-direction: row;
+	&__left-menu {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 25%;
+		height: 100vh;
+		background-color: #404040;
+		color: #fff;
+	}
+
+	&__right-menu {
+		color: #404040;
+	}
+
+	&__menu-item {
+		padding: 2em;
+	}
+	&__menu-item:hover {
+		cursor: pointer;
+	}
+	&__description {
+		padding: 1em;
+	}
+	
+}

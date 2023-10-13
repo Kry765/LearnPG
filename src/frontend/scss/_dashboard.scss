@@ -1,0 +1,18 @@
+@use '_colors.scss' as *;
+@use '_reset.scss' as *;
+
+.dashboard {
+	display: flex;
+
+	&__left-menu {
+		background-color: $dark;
+		max-width: 30%;
+		min-height: 100vh;
+	}
+	&__menu-item {
+		color: $white;
+		padding: 1.4em;
+		font-size: 1rem;
+	}
+	
+}
