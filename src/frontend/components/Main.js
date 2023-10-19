@@ -78,6 +78,7 @@ function Main() {
 			<main>
 				<section>
 					<div className='header'>
+						<div className='header__belt'></div>
 						<div className='header__left-box'>
 							<p className='header__title'>LearnPG</p>
 							<p className='header__subtitle'>Ucz się na bieżąco PostgreSQL</p>
@@ -87,6 +88,7 @@ function Main() {
 						<div className='header__right-box'>
 							<div>
 								<img src={cloud} alt='cloud' className='header__img' />
+								<div className='opacity-img'></div>
 							</div>
 						</div>
 						<div className='header__arrow-down'>
@@ -105,10 +107,7 @@ function Main() {
 									</div>
 								</div>
 								<div className='offerts__card-description'>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut tellus lacus. Sed mi ligula,
-										aliquam in ornare nec, porttitor egestas purus. Donec quis luctus nibh.
-									</p>
+									<p>Korzystaj z komputera bądź urządzenia mobilnego.</p>
 								</div>
 							</div>
 							<div className='offerts__section-card'>
@@ -117,28 +116,19 @@ function Main() {
 										<AiOutlineFieldTime className='offerts__icon' />
 									</div>
 								</div>
-								<div className='offerts__card-description'>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut tellus lacus. Sed mi ligula,
-									aliquam in ornare nec, porttitor egestas purus. Donec quis luctus nibh.
-								</div>
+								<div className='offerts__card-description'>Korzystaj o każdej porze i w każdym miejscu.</div>
 							</div>
 							<div className='offerts__section-card'>
 								<div className='offerts__card'>
 									<BsFillCalendarCheckFill className='offerts__icon' />
 								</div>
-								<div className='offerts__card-description'>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut tellus lacus. Sed mi ligula,
-									aliquam in ornare nec, porttitor egestas purus. Donec quis luctus nibh.
-								</div>
+								<div className='offerts__card-description'>Rozwijaj swoje kompetencje za pomocą testów.</div>
 							</div>
 							<div className='offerts__section-card'>
 								<div className='offerts__card'>
 									<AiFillSave className='offerts__icon' />
 								</div>
-								<div className='offerts__card-description'>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut tellus lacus. Sed mi ligula,
-									aliquam in ornare nec, porttitor egestas purus. Donec quis luctus nibh.
-								</div>
+								<div className='offerts__card-description'>Zapisuj swoje rezultaty i kontroluj swój proces nauki.</div>
 							</div>
 						</div>
 					</div>
