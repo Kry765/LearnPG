@@ -2,6 +2,18 @@
 @use './colors' as *;
 @use './style.scss' as *;
 
+//display
+//position //top right bottom left
+//displayflex / justifycontent / align-items /flex-direction
+//width / lub max-min
+//height
+//background-color
+//color
+//margin
+//padding
+//transition
+//z-index
+
 .wrapper {
 	display: flex;
 	justify-content: center;
@@ -92,15 +104,28 @@
 }
 
 .header {
+	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
 	min-height: 100vh;
+	overflow-y: hidden;
 	&__title,
 	&__subtitle {
 		padding: 1em 0;
 		color: $white;
+	}
+
+	&__belt {
+		position: absolute;
+		left: 50px;
+		top: -200px;
+		height: 150vh;
+		width: 15vw;
+		transform: rotate(45deg);
+		background-color: $green;
+		z-index: -1;
 	}
 
 	&__title {
@@ -116,12 +141,17 @@
 		justify-content: center;
 		flex-direction: column;
 		align-items: center;
+		overflow-y: hidden;
 	}
 	&__right-box {
 		margin: 1em;
 		max-width: 50%;
+		height: 100%;
 	}
 	&__img {
+		position: absolute;
+		right: 0;
+		top: 100px;
 		width: 500px;
 		display: none;
 	}
@@ -146,7 +176,7 @@
 
 .offerts {
 	margin: 3em 0;
-	max-height: 100vh;
+	max-height: 100%;
 	min-width: 100%;
 	&__cards {
 		display: flex;
@@ -174,45 +204,73 @@
 		color: $white;
 	}
 	&__card-description {
+		padding: 1em;
+		text-align: center;
+		height: 100px;
 		width: 200px;
 		color: $white;
 	}
 }
 
 .contact {
-	min-height: 100vh;
-	min-width: 100%;
+	min-height: 100%;
+	max-width: 100%;
+	display: flex;
+	flex-direction: row;
+	&__title {
+		color: $white;
+		text-align: center;
+	}
 	&__box-right {
 		display: flex;
-		justify-content: center;
-		align-items: center;
 		flex-direction: column;
+		margin: 2em 1em;
+		width: 50%;
 	}
 	&__input-email {
-		width: 50%;
+		padding: 15px;
+		margin: 1em 0;
+		width: 100%;
 		height: 50px;
 		border-radius: 15px;
 	}
 	&__textarea {
-		width: 50vw;
+		margin: 1em 0;
+		padding: 15px;
 		height: 300px;
 		border-radius: 15px;
+		width: 100%;
 	}
 	&__box-left {
-		width: 50vw;
-	}
-}
-
-.footer {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	background-color: gray;
-	color: white;
-	width: 100%;
-	height: 100%;
-	&__description {
+		font-size: 1.3rem;
+		color: $white;
+		padding: 1em;
+		display: flex;
+		justify-content: center;
 		flex-direction: column;
+		height: 600px;
+		width: 50%;
+		margin: 2em 1em;
+		background-color: $green;
+	}
+	&__contact-header {
+		margin: 1em;
+	}
+	&__btn {
+		margin: 1em 0;
+		width: 100%;
+		height: 10%;
+		border-radius: 15px;
+		font-size: 1rem;
+		background-color: $contrast-color;
+		color: $white;
+	}
+	&__description {
+		display: flex;
+		margin: 1em;
+	}
+	&__contact-icon {
+		margin: 0 1em;
 	}
 }
 
@@ -239,6 +297,10 @@
 	}
 
 	.header {
+		&__title {
+			text-align: center;
+			color: $white;
+		}
 		&__left-box {
 			display: flex;
 			justify-content: flex-start;
