@@ -1,0 +1,22 @@
+@use './colors' as *;
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: $dark;
+	font-size: 16px;
+	font-family: 'Poppins', sans-serif;
+}
+
+a,
+ul,
+li {
+	text-decoration: none;
+	color: #fff;
+}
