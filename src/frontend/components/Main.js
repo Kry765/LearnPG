@@ -9,7 +9,9 @@ import { BsFillCalendarCheckFill } from 'react-icons/bs'
 import { AiFillSave } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
 import cloud from '../image/cloud.jpg'
-
+import { FiMail } from 'react-icons/fi'
+import { AiFillPhone } from 'react-icons/ai'
+import { BsDiscord } from 'react-icons/bs'
 function Main() {
 	const [openNav, setOpenNav] = useState('')
 	const navigate = useNavigate()
@@ -142,40 +144,32 @@ function Main() {
 					</div>
 				</section>
 				<section>
+					<h1 className='contact__title'>Kontakt</h1>
 					<div className='contact'>
-						<h1>Kontakt</h1>
 						<div className='contact__box-right'>
-							<input type='text' className='contact__input-email' />
-							<textarea className='contact__textarea'></textarea>
+							<input type='text' className='contact__input-email' placeholder='Adres E-mail' />
+							<input type='text' className='contact__input-email' placeholder='Imię' />
+							<textarea className='contact__textarea' placeholder='Wyślij wiadomość'></textarea>
+							<button className='contact__btn'>Wyślij</button>
 						</div>
-						<div className='contact__box-left'></div>
+						<div className='contact__box-left'>
+							<h3 className='contact__contact-header'>Masz pytania badź problemy? Skontaktuj się z nami</h3>
+							<div className='contact__description'>
+								<FiMail className='contact__contact-icon' />
+								<p>krzysztofkleka91@gmail.com</p>
+							</div>
+							<div className='contact__description'>
+								<AiFillPhone className='contact__contact-icon' />
+								<p>+48 573 226 219</p>
+							</div>
+							<div className='contact__description'>
+								<BsDiscord className='contact__contact-icon' />
+								<p>Kry765#3886</p>
+							</div>
+						</div>
 					</div>
 				</section>
 			</main>
-			{/*	<footer>
-					<div className='footer'>
-						<div className='footer__description'>
-							<h3>Pomoc</h3>
-							<span>pomoc@learnpg.com</span>
-							<span>33 330 90 90</span>
-						</div>
-						<div className='footer__description'>
-							<h3>Menu</h3>
-							<span>Strona Główna</span>
-							<span>Zaloguj się</span>
-							<span>Załóż konto</span>
-							<span>Korzyści</span>
-						</div>
-						<div className='footer__description'>
-							<h3>Social Media</h3>
-							<span>Instagram</span>
-							<span>Facebook</span>
-							<span>YouTube</span>
-							<span>TikTok</span>
-							<span>LinkedIn</span>
-						</div>
-					</div>
-				</footer> */}
 		</div>
 	)
 }
