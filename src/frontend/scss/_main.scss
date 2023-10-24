@@ -111,6 +111,7 @@
 	width: 100%;
 	min-height: 100vh;
 	overflow-y: hidden;
+	background-color: rgba(64, 64, 64, 0.6);
 	&__title,
 	&__subtitle {
 		padding: 1em 0;
@@ -125,7 +126,7 @@
 		width: 15vw;
 		transform: rotate(45deg);
 		background-color: $green;
-		z-index: -1;
+		z-index: 1;
 	}
 
 	&__title {
@@ -142,18 +143,18 @@
 		flex-direction: column;
 		align-items: center;
 		overflow-y: hidden;
+		z-index: 2;
 	}
-	&__right-box {
-		margin: 1em;
-		max-width: 50%;
-		height: 100%;
-	}
-	&__img {
+	&__opacity-box {
 		position: absolute;
-		right: 0;
-		top: 100px;
-		width: 500px;
-		display: none;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		background-image: url('../image/cloud.jpg');
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+		z-index: -1;
 	}
 
 	&__btn {
@@ -164,6 +165,7 @@
 		background-color: $contrast-color;
 		font-size: 1rem;
 		font-weight: bold;
+		border: none;
 	}
 	&__arrow-down {
 		position: absolute;
@@ -303,8 +305,8 @@
 		}
 		&__left-box {
 			display: flex;
-			justify-content: flex-start;
-			align-items: flex-start;
+			justify-content: center;
+			align-items: center;
 			flex-direction: column;
 		}
 		&__img {

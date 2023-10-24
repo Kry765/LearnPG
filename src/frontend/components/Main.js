@@ -78,6 +78,7 @@ function Main() {
 			<main>
 				<section>
 					<div className='header'>
+						<div className='header__opacity-box'></div>
 						<div className='header__belt'></div>
 						<div className='header__left-box'>
 							<p className='header__title'>LearnPG</p>
@@ -85,12 +86,7 @@ function Main() {
 							<p className='header__subtitle'> Zdobądź dodatkową wiedzę z zakresu relacyjnych baz danych</p>
 							<button className='header__btn'>Rozpocznij nauke</button>
 						</div>
-						<div className='header__right-box'>
-							<div>
-								<img src={cloud} alt='cloud' className='header__img' />
-								<div className='opacity-img'></div>
-							</div>
-						</div>
+
 						<div className='header__arrow-down'>
 							<RiArrowDownSLine />
 						</div>
