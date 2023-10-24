@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import '../scss/style.scss'
 import '../scss/_login.scss'
 
 const Login = () => {
@@ -35,7 +34,7 @@ const Login = () => {
 
 	return (
 		<div>
-			<div className='wrapper login'>
+			<div className='login'>
 				<p>Login</p>
 			</div>
 			<div className='wrapper'>

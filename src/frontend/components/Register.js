@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import '../scss/style.scss'
 import '../scss/_register.scss'
 import axios from 'axios'
 
