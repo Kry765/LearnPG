@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import '../scss/_main.scss'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { FaDatabase } from 'react-icons/fa'
 import { RiArrowDownSLine } from 'react-icons/ri'
@@ -8,7 +7,6 @@ import { AiOutlineFieldTime } from 'react-icons/ai'
 import { BsFillCalendarCheckFill } from 'react-icons/bs'
 import { AiFillSave } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
-import cloud from '../image/cloud.jpg'
 import { FiMail } from 'react-icons/fi'
 import { AiFillPhone } from 'react-icons/ai'
 import { BsDiscord } from 'react-icons/bs'
@@ -86,14 +84,13 @@ function Main() {
 							<p className='header__subtitle'> Zdobądź dodatkową wiedzę z zakresu relacyjnych baz danych</p>
 							<button className='header__btn'>Rozpocznij nauke</button>
 						</div>
-
 						<div className='header__arrow-down'>
 							<RiArrowDownSLine />
 						</div>
-					</div> 
+					</div>
 				</section>
 				<section>
-					 <div className='offerts'>
+					<div className='offerts'>
 						<h1 className='title'>Korzyści</h1>
 						<div className='offerts__cards'>
 							<div className='offerts__section-card'>
@@ -127,10 +124,10 @@ function Main() {
 								<div className='offerts__card-description'>Zapisuj swoje rezultaty i kontroluj swój proces nauki.</div>
 							</div>
 						</div>
-					</div> 
+					</div>
 				</section>
 				<section>
-					 <h1 className='contact__title'>Kontakt</h1>
+					<h1 className='contact__title'>Kontakt</h1>
 					<div className='contact'>
 						<div className='contact__box-right'>
 							<input type='text' className='contact__input-email' placeholder='Adres E-mail' />
@@ -139,7 +136,7 @@ function Main() {
 							<button className='contact__btn'>Wyślij</button>
 						</div>
 						<div className='contact__box-left'>
-							<h3 className='contact__contact-header'>Masz pytania badź problemy? Skontaktuj się z nami</h3>
+							<h3 className='contact__contact-header'>Masz jakieś pytania? Skontaktuj się z nami</h3>
 							<div className='contact__description'>
 								<FiMail className='contact__contact-icon' />
 								<p>krzysztofkleka91@gmail.com</p>
@@ -153,7 +150,7 @@ function Main() {
 								<p>Kry765#3886</p>
 							</div>
 						</div>
-					</div> 
+					</div>
 				</section>
 			</main>
 			<footer>
