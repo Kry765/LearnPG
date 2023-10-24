@@ -90,10 +90,10 @@ function Main() {
 						<div className='header__arrow-down'>
 							<RiArrowDownSLine />
 						</div>
-					</div>
+					</div> 
 				</section>
 				<section>
-					<div className='offerts'>
+					 <div className='offerts'>
 						<h1 className='title'>Korzyści</h1>
 						<div className='offerts__cards'>
 							<div className='offerts__section-card'>
@@ -127,10 +127,10 @@ function Main() {
 								<div className='offerts__card-description'>Zapisuj swoje rezultaty i kontroluj swój proces nauki.</div>
 							</div>
 						</div>
-					</div>
+					</div> 
 				</section>
 				<section>
-					<h1 className='contact__title'>Kontakt</h1>
+					 <h1 className='contact__title'>Kontakt</h1>
 					<div className='contact'>
 						<div className='contact__box-right'>
 							<input type='text' className='contact__input-email' placeholder='Adres E-mail' />
@@ -153,9 +153,14 @@ function Main() {
 								<p>Kry765#3886</p>
 							</div>
 						</div>
-					</div>
+					</div> 
 				</section>
 			</main>
+			<footer>
+				<div className='footer'>
+					<p>Kry765 2023 | &copy; Wszelkie prawa zastrzeżone</p>
+				</div>
+			</footer>
 		</div>
 	)
 }
