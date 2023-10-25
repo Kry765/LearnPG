@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import '../scss/_register.scss'
+import { FaDatabase } from 'react-icons/fa'
 import axios from 'axios'
 
 const API_URL = 'http://localhost:4000/create'
@@ -64,13 +65,21 @@ function Register() {
 
 	return (
 		<div>
-			<div className='wrapper register'>
-				<p>Sign in to Account</p>
+			<div className='nav'>
+				<div className='nav__register-items'>
+					<div className='nav__register-logo'>
+						<FaDatabase />
+					</div>
+					<div className='nav__register-items'>Strona Główna</div>
+				</div>
 			</div>
-			<div className='wrapper'>
+			<div className=' register__header'>
+				<h1>Zarejestruj się</h1>
+			</div>
+			<div className='register'>
 				<form onSubmit={handleSubmit}>
 					<div className='register__block'>
-						<div className='wrapper'>
+						<div className=''>
 							<label>
 								<p>
 									Email<span className='red'>*</span>
@@ -78,7 +87,7 @@ function Register() {
 								<input
 									className='register__input'
 									type='text'
-									placeholder='email'
+									placeholder='Adres email'
 									value={user_email}
 									onChange={event => {
 										set_user_email(event.target.value)
@@ -86,15 +95,15 @@ function Register() {
 								/>
 							</label>
 						</div>
-						<div className='wrapper'>
+						<div>
 							<label>
 								<p>
-									Password<span className='red'>*</span>
+									Hasło<span className='red'>*</span>
 								</p>
 								<input
 									className='register__input'
 									type='password'
-									placeholder='password'
+									placeholder='Hasło'
 									value={user_pwd}
 									onChange={event => {
 										set_user_pwd(event.target.value)
@@ -102,15 +111,15 @@ function Register() {
 								/>
 							</label>
 						</div>
-						<div className='wrapper'>
+						<div>
 							<label>
 								<p>
-									Repeat password<span className='red'>*</span>
+									Powtórz hasło<span className='red'>*</span>
 								</p>
 								<input
 									type='password'
 									className='register__input'
-									placeholder='repeat password'
+									placeholder='Powtórz hasło'
 									value={repeat_pwd}
 									onChange={event => {
 										set_repeat_pwd(event.target.value)
@@ -119,18 +128,20 @@ function Register() {
 							</label>
 							<p>{password}</p>
 						</div>
-						<div className='wrapper register__checkbox'>
+						<div className='register__checkbox'>
 							<label>
-								<span className='register__check'>Accept rule</span>
+								<span className='register__check'>Akceptuje regulamin</span>
 								<input className='register__check' type='checkbox' />
 							</label>
 						</div>
-						<div className='wrapper'>
+						<div>
 							<button type='submit' className='register__btn'>
-								Register
+								Zarejestruj się
 							</button>
 						</div>
-						<div className='register__login-link'>Do you have Account? Log in</div>
+						<div>
+							Posiadasz już konto? <span className='register__login-link'>Zaloguj się</span>
+						</div>
 						<p>{output}</p>
 					</div>
 				</form>

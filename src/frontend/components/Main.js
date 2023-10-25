@@ -10,6 +10,8 @@ import { useNavigate } from 'react-router-dom'
 import { FiMail } from 'react-icons/fi'
 import { AiFillPhone } from 'react-icons/ai'
 import { BsDiscord } from 'react-icons/bs'
+import '../scss/_main.scss';
+
 function Main() {
 	const [openNav, setOpenNav] = useState('')
 	const navigate = useNavigate()
