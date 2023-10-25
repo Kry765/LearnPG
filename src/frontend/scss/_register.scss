@@ -1,22 +1,30 @@
 @use './_reset.scss' as *;
 @use './_colors.scss' as *;
 
-.register {
-	background-color: $dark;
-	color: #fff;
-	justify-content: flex-start;
-	align-items: flex-end;
-	padding: 20px;
-	font-size: 1.2rem;
-	max-width: 100%;
-	height: 10vh;
+.nav {
+	&__register-items {
+		display: flex;
+		justify-content: center;
+	}
+}
 
+.register {
+	&__header {
+		text-align: center;
+		margin-top: 200px;
+	}
 	&__block {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
 		margin: 2em;
 	}
 
 	&__input {
 		border-radius: 15px;
+		min-width: 40vw;
+		background-color: $gray;
 		padding: 1em;
 		margin: 1.5em 0;
 		border: 1px solid rgba(0, 0, 0, 0.3);
@@ -29,11 +37,16 @@
 		margin: 0.3em;
 	}
 	&__btn {
-		border: 1px solid rgba(0, 0, 0, 0.3);
-		background: none;
+		background-color: $contrast-color;
+		color: $white;
+		font-weight: bold;
 		border-radius: 20px;
-		min-width: 75%;
+		min-width: 40vw;
 		min-height: 50px;
 		margin: 1.5em;
+	}
+	&__login-link {
+		font-weight: bold;
+		color: $contrast-color;
 	}
 }
