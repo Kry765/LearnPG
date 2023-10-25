@@ -1,27 +1,53 @@
 @use './_reset.scss' as *;
 @use './_colors.scss' as *;
 
-.login {
-	display: flex;
-	justify-content: flex-start;
-	align-items: flex-end;
-	padding: 20px;
-	font-size: 1.2rem;
+.nav {
 	max-width: 100%;
-	height: 20vh;
+	min-height: 10%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	&__login-items {
+		display: flex;
+		justify-content: flex-end;
+	}
+	&__login-item {
+		font-size: 1.4rem;
+		padding: 1em;
+	}
+	&__logo {
+		position: fixed;
+		top: 0;
+		right: 0;
+	}
+}
+.login {
+	margin-top: 250px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.2rem;
+	&__header {
+		margin-bottom: 2em;
+		text-align: center;
+	}
+
 	&__input {
+		background-color: $gray;
+		width: 60vw;
 		border-radius: 15px;
 		padding: 1em;
-		margin: 1.5em 0;
+		margin: 1em 0;
 		border: 1px solid rgba(0, 0, 0, 0.3);
 	}
 	&__btn {
+		font-weight: bold;
 		background-color: $contrast-color;
 		border: none;
 		color: #fff;
 		text-transform: uppercase;
 		border-radius: 20px;
-		min-width: 100%;
+		min-width: 60%;
 		min-height: 50px;
 		margin: 1.5em;
 		transition: background-color 0.8s;
@@ -31,7 +57,15 @@
 		background-color: $sky;
 	}
 	&__block {
-		margin: 0.5em 0;
-		padding: 0.5em;
+		margin: 0.2em 0;
+		padding: 1em;
+		display: flex;
+		justify-content: center;
+	}
+	&__register-link {
+		color: $contrast-color;
+	}
+	&__important {
+		color: red;
 	}
 }

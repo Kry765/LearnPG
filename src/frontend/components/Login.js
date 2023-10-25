@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import '../scss/_login.scss'
+import { FaDatabase } from 'react-icons/fa'
 
 const Login = () => {
 	const [user_email, set_user_email] = useState('')
@@ -34,18 +35,24 @@ const Login = () => {
 
 	return (
 		<div>
-			<div className='login'>
-				<div>Logo</div>
+			<div className='nav'>
+				<div className='nav__login-items'>
+					<div className='nav__logo'>
+						<FaDatabase />
+					</div>
+					<div className='nav__login-item'>Strona Główna</div>
+				</div>
 			</div>
-			<div className='wrapper'>
+			<div className='login'>
 				<form onSubmit={handleSubmit}>
+					<h1 className='login__header'>Zaloguj się</h1>
 					<div className='login__block'>
 						<label>
-							Email<span className='login__important'>*</span>
+							Email<span className='login__important'> *</span>
 							<input
 								className='wrapper login__input'
 								type='text'
-								placeholder='Enter your email'
+								placeholder='Podaj swój adres email'
 								value={user_email}
 								onChange={event => {
 									set_user_email(event.target.value)
@@ -56,23 +63,27 @@ const Login = () => {
 					<div className='wrapper'>
 						<div className='login__block'>
 							<label>
-								Password<span className='login__important'>*</span>
+								Hasło<span className='login__important'> *</span>
 								<input
 									className='wrapper login__input'
 									type='password'
-									placeholder='Enter your password'
+									placeholder='Podaj hasło'
 									value={user_pwd}
 									onChange={event => {
 										set_user_pwd(event.target.value)
 									}}
 								/>
+								<p>Zresetuj hasło</p>
 							</label>
 						</div>
 					</div>
 					<div className='wrapper'>
 						<button className='login__btn' type='submit'>
-							Login
+							Zaloguj się
 						</button>
+						<p>
+							Nie posiadasz konta? <span className='login__register-link'>Zaloguj się</span>
+						</p>
 					</div>
 				</form>
 			</div>

@@ -64,13 +64,19 @@ function Register() {
 
 	return (
 		<div>
-			<div className='wrapper register'>
-				<p>Sign in to Account</p>
+			<div className='nav'>
+				<div className='nav__register-items'>
+					<div></div>
+					<div className='nav__register-items'>Strona Główna</div>
+				</div>
 			</div>
-			<div className='wrapper'>
+			<div className=' register'>
+				<h1>Zarejestruj się</h1>
+			</div>
+			<div className=''>
 				<form onSubmit={handleSubmit}>
 					<div className='register__block'>
-						<div className='wrapper'>
+						<div className=''>
 							<label>
 								<p>
 									Email<span className='red'>*</span>
@@ -86,7 +92,7 @@ function Register() {
 								/>
 							</label>
 						</div>
-						<div className='wrapper'>
+						<div>
 							<label>
 								<p>
 									Password<span className='red'>*</span>
@@ -102,7 +108,7 @@ function Register() {
 								/>
 							</label>
 						</div>
-						<div className='wrapper'>
+						<div>
 							<label>
 								<p>
 									Repeat password<span className='red'>*</span>
@@ -119,13 +125,13 @@ function Register() {
 							</label>
 							<p>{password}</p>
 						</div>
-						<div className='wrapper register__checkbox'>
+						<div className='register__checkbox'>
 							<label>
 								<span className='register__check'>Accept rule</span>
 								<input className='register__check' type='checkbox' />
 							</label>
 						</div>
-						<div className='wrapper'>
+						<div>
 							<button type='submit' className='register__btn'>
 								Register
 							</button>
