@@ -22,12 +22,14 @@ li {
 	color: #fff;
 }
 
-.wrapper {
+//flex
+.flex-center {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.red {
-	color: #ff0000;
+.title-section {
+	text-align: center;
+	padding: 1em;
 }

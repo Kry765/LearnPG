@@ -1,24 +1,5 @@
-@use './reset' as *;
+@use './_reset' as *;
 @use './colors' as *;
-
-//display
-//position //top right bottom left
-//displayflex / justifycontent / align-items /flex-direction
-//width / lub max-min
-//height
-//background-color
-//color
-//margin
-//padding
-//transition
-//z-index
-
-.wrapper {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-}
 
 .title {
 	color: $white;
@@ -35,14 +16,9 @@
 	color: $white;
 	padding: 0.5em;
 	z-index: 5;
-	&__desktop-items {
-		display: flex;
-		justify-content: flex-end;
-		align-items: flex-end;
-	}
 
 	&__desktop-item {
-		display: none;
+		display: block;
 		margin: 1em;
 		font-size: 1.2rem;
 		text-decoration: uppercase;
@@ -50,7 +26,7 @@
 		font-weight: bold;
 		&--blue-contrast,
 		&--gray-contrast {
-			display: none;
+			display: block;
 			margin: 1em;
 			padding: 0.5em 2em;
 			border-radius: 15px;
@@ -63,12 +39,12 @@
 	}
 
 	&__mobile-items {
+		position: fixed;
+		top: 0;
 		display: flex;
 		justify-content: center;
 		flex-direction: column;
 		align-items: flex-end;
-		position: fixed;
-		top: 0;
 		width: 110%;
 		height: 100%;
 		background-color: rgba(0, 0, 0, 0.5);
@@ -81,10 +57,10 @@
 		padding: 2em;
 	}
 	&__logo {
-		display: none;
 		position: fixed;
 		top: 0;
 		left: 0;
+		display: block;
 		padding: 1em;
 		font-size: 1.8rem;
 		transition: color 0.5s;
@@ -97,16 +73,13 @@
 	&__burger-bar {
 		padding: 0.3em;
 		font-size: 3rem;
-		display: block;
+		display: none;
 		z-index: 4;
 	}
 }
 
 .header {
 	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	width: 100%;
 	min-height: 100vh;
 	overflow-y: hidden;
@@ -126,22 +99,20 @@
 		transform: rotate(45deg);
 		background-color: $green;
 		z-index: 1;
-		display: none;
+		display: block;
+		opacity: 0.6;
 	}
 
-	&__title {
+	&__title-header {
 		font-weight: bold;
-		font-size: 3rem;
+		font-size: 4rem;
 	}
 	&__subtitle {
 		font-size: 1rem;
 		color: #ccc;
 	}
 	&__left-box {
-		display: flex;
-		justify-content: center;
 		flex-direction: column;
-		align-items: center;
 		overflow-y: hidden;
 		z-index: 2;
 	}
@@ -193,9 +164,6 @@
 		height: 100%;
 	}
 	&__card {
-		display: flex;
-		justify-content: center;
-		align-items: center;
 		min-height: 350px;
 		border-radius: 15px;
 		width: 200px;
@@ -215,23 +183,10 @@
 }
 
 .contact {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	flex-direction: row;
 	min-height: 100%;
 	max-width: 100%;
-	&__title {
-		color: $white;
-		text-align: center;
-		padding: 1em;
-	}
-	&__box-right {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		width: 100%;
-	}
+
 	&__input-email {
 		background-color: $gray;
 		padding: 15px;
@@ -248,13 +203,17 @@
 		border-radius: 15px;
 		width: 80%;
 	}
+	&__box-right {
+		width: 100%;
+		flex-direction: column;
+	}
 	&__box-left {
-		text-align: center;
+		display: flex;
+		align-items: flex-start;
+		justify-content: center;
 		font-size: 1.3rem;
 		color: $white;
 		padding: 1em;
-		display: flex;
-		justify-content: center;
 		flex-direction: column;
 		height: 400px;
 		width: 80%;
@@ -276,37 +235,44 @@
 	}
 	&__description {
 		display: flex;
+		justify-content: flex-start;
+		align-items: flex-start;
 		margin: 1em;
 	}
 	&__contact-icon {
 		margin: 0 1em;
 	}
 }
+.footer {
+	max-width: 100%;
+	padding: 2em;
+	text-align: center;
+}
 
-@media (min-width: 992px) {
+@media (max-width: 992px) {
 	.nav {
 		&__desktop-item {
-			display: block;
+			display: none;
 
 			&--gray-contrast {
-				display: block;
+				display: none;
 			}
 			&--blue-contrast {
-				display: block;
+				display: none;
 			}
 		}
 		&__burger-bar,
 		&__mobile-items {
-			display: none;
+			display: block;
 		}
 
 		&__logo {
-			display: block;
+			display: none;
 		}
 	}
 
 	.header {
-		&__title {
+		&__title-header {
 			text-align: center;
 			color: $white;
 		}
@@ -320,14 +286,14 @@
 			display: block;
 		}
 		&__belt {
-			display: block;
+			display: none;
 		}
 	}
 
 	.contact {
 		display: flex;
 		align-items: center;
-		flex-direction: row;
+		flex-direction: column;
 		justify-content: center;
 	}
 
