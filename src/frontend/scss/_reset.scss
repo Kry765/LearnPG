@@ -29,6 +29,12 @@ li {
 	align-items: center;
 }
 
+.flex-end {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
 .title-section {
 	text-align: center;
 	padding: 1em;
@@ -105,3 +111,4 @@ li {
 .space-auth {
 	margin: 0.3em;
 }
+

@@ -2,9 +2,28 @@
 @use './colors' as *;
 
 .title {
-	color: $white;
+	position: relative;
 	font-style: 2rem;
-	text-align: center;
+	padding: 2em 4.2em;
+}
+.title::before {
+	position: absolute;
+	content: '';
+	width: 20px;
+	height: 25%;
+	margin: 0 -1em;
+	background-color: $green;
+	z-index: -1;
+}
+
+.btn {
+	background-color: $contrast-color;
+	color: $white;
+	border-radius: 15px;
+	font-size: 1rem;
+	font-weight: bold;
+	border: none;
+	margin: 1em 0;
 }
 
 .nav {
@@ -13,15 +32,14 @@
 	max-height: 10%;
 	min-width: 100%;
 	background-color: $dark;
-	color: $white;
 	padding: 0.5em;
 	z-index: 5;
 
 	&__desktop-item {
 		display: block;
 		margin: 1em;
-		font-size: 1.2rem;
-		text-decoration: uppercase;
+		font-size: 1rem;
+		padding: 0.5em 2em;
 		transition: color 0.5s;
 		font-weight: bold;
 		&--blue-contrast,
@@ -29,7 +47,7 @@
 			display: block;
 			margin: 1em;
 			padding: 0.5em 2em;
-			border-radius: 15px;
+			border-radius: 10px;
 			background-color: $contrast-color;
 			font-weight: bold;
 		}
@@ -41,14 +59,17 @@
 	&__mobile-items {
 		position: fixed;
 		top: 0;
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		align-items: flex-end;
-		width: 110%;
-		height: 100%;
-		background-color: rgba(0, 0, 0, 0.5);
-		transform: translateX(-10%);
+		display: none;
+	}
+	&__mobile-item {
+		display: none;
+	}
+	&__bottom-line {
+		margin: 5px 3%;
+		width: 50%;
+		height: 3px;
+		border-radius: 5px;
+		background-color: $white;
 	}
 	&__close-mobile-items {
 		display: none;
@@ -80,27 +101,13 @@
 
 .header {
 	position: relative;
-	width: 100%;
+	max-width: 100vw;
 	min-height: 100vh;
-	overflow-y: hidden;
-	background-color: rgba(64, 64, 64, 0.6);
+	background-color: rgba(64, 64, 64, 0.7);
 	&__title,
 	&__subtitle {
 		padding: 1em 0;
 		color: $white;
-	}
-
-	&__belt {
-		position: absolute;
-		left: 50px;
-		top: -200px;
-		height: 150vh;
-		width: 15vw;
-		transform: rotate(45deg);
-		background-color: $green;
-		z-index: 1;
-		display: block;
-		opacity: 0.6;
 	}
 
 	&__title-header {
@@ -108,8 +115,8 @@
 		font-size: 4rem;
 	}
 	&__subtitle {
-		font-size: 1rem;
-		color: #ccc;
+		font-size: 1.2rem;
+		color: $white;
 	}
 	&__left-box {
 		flex-direction: column;
@@ -123,20 +130,13 @@
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-position: center;
-		height: 100%;
-		width: 100%;
+		min-height: 100%;
+		min-width: 100%;
 		z-index: -1;
 	}
 
-	&__btn {
-		margin: 2em 0;
+	&__register-btn {
 		padding: 1em 2em;
-		border-radius: 15px;
-		color: $white;
-		background-color: $contrast-color;
-		font-size: 1rem;
-		font-weight: bold;
-		border: none;
 	}
 	&__arrow-down {
 		position: absolute;
@@ -164,10 +164,23 @@
 		height: 100%;
 	}
 	&__card {
+		position: relative;
 		min-height: 350px;
 		border-radius: 15px;
 		width: 200px;
 		background-color: $gray;
+	}
+	&__card::before {
+		position: absolute;
+		left: -6px;
+		bottom: -6px;
+		content: '';
+		border: 10px solid $green;
+		min-height: 100%;
+		min-width: 100%;
+		z-index: -1;
+		border-radius: 15px;
+		filter: blur(4px);
 	}
 	&__icon {
 		font-size: 5rem;
@@ -186,22 +199,24 @@
 	flex-direction: row;
 	min-height: 100%;
 	max-width: 100%;
-
-	&__input-email {
+	&__input {
+		font-family: 'Poppins', sans-serif;
 		background-color: $gray;
+		color: $white;
 		padding: 15px;
 		margin: 1em 0;
-		width: 80%;
-		height: 50px;
+		border: none;
 		border-radius: 15px;
+		width: 80%;
+	}
+
+	&__email {
+		position: relative;
+		height: 50px;
 	}
 	&__textarea {
-		background-color: $gray;
-		margin: 1em 0;
-		padding: 15px;
+		resize: none;
 		height: 300px;
-		border-radius: 15px;
-		width: 80%;
 	}
 	&__box-right {
 		width: 100%;
@@ -210,11 +225,11 @@
 	&__box-left {
 		display: flex;
 		align-items: flex-start;
+		flex-direction: column;
 		justify-content: center;
-		font-size: 1.3rem;
+		font-size: 1.2rem;
 		color: $white;
 		padding: 1em;
-		flex-direction: column;
 		height: 400px;
 		width: 80%;
 		margin: 2em 1em;
@@ -223,20 +238,12 @@
 	&__contact-header {
 		margin: 1em;
 	}
-	&__btn {
-		font-weight: bold;
-		margin: 1em 0;
+	&__contact-btn {
 		width: 80%;
 		height: 60px;
-		border-radius: 15px;
-		font-size: 1rem;
-		background-color: $contrast-color;
-		color: $white;
 	}
 	&__description {
 		display: flex;
-		justify-content: flex-start;
-		align-items: flex-start;
 		margin: 1em;
 	}
 	&__contact-icon {
@@ -263,7 +270,21 @@
 		}
 		&__burger-bar,
 		&__mobile-items {
-			display: block;
+			display: flex;
+			justify-content: center;
+			align-items: flex-start;
+			flex-direction: column;
+			font-weight: bold;
+		}
+		&__mobile-items {
+			width: 110%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.7);
+			transform: translateX(25%);
+		}
+		&__mobile-item {
+			display: flex;
+			justify-content: flex-end;
 		}
 
 		&__logo {
@@ -272,6 +293,7 @@
 	}
 
 	.header {
+		width: 100%;
 		&__title-header {
 			text-align: center;
 			color: $white;
@@ -299,6 +321,5 @@
 
 	.footer {
 		padding: 2em;
-		text-align: center;
 	}
 }
