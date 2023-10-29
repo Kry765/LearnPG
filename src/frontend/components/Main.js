@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom'
 import { FiMail } from 'react-icons/fi'
 import { AiFillPhone } from 'react-icons/ai'
 import { BsDiscord } from 'react-icons/bs'
-import '../scss/_main.scss';
+import '../scss/_main.scss'
 
 function Main() {
 	const [openNav, setOpenNav] = useState('')
@@ -20,7 +20,7 @@ function Main() {
 		<div>
 			<nav>
 				<div className='nav'>
-					<div className='nav__desktop-items'>
+					<div className='flex-end'>
 						<div className='nav__desktop-item'>Korzyści</div>
 						<div className='nav__desktop-item'>Kontakt</div>
 						<div
@@ -49,8 +49,11 @@ function Main() {
 					</div>
 					<div className={openNav ? 'nav__mobile-items' : 'nav__close-mobile-items'}>
 						<div className='nav__mobile-item'>Strona Główna</div>
+						<div className='nav__bottom-line'></div>
 						<div className='nav__mobile-item'>Korzyści</div>
+						<div className='nav__bottom-line'></div>
 						<div className='nav__mobile-item'>Kontakt</div>
+						<div className='nav__bottom-line'></div>
 						<div
 							className='nav__mobile-item'
 							onClick={() => {
@@ -59,6 +62,7 @@ function Main() {
 						>
 							Zaloguj się
 						</div>
+						<div className='nav__bottom-line'></div>
 						<div
 							className='nav__mobile-item'
 							onClick={() => {
@@ -67,6 +71,7 @@ function Main() {
 						>
 							Zalóż konto
 						</div>
+						<div className='nav__bottom-line'></div>
 					</div>
 					<div className='nav__logo'>
 						<span>
@@ -77,14 +82,13 @@ function Main() {
 			</nav>
 			<main>
 				<section>
-					<div className='header'>
+					<div className='flex-center header'>
 						<div className='header__opacity-box'></div>
-						<div className='header__belt'></div>
-						<div className='header__left-box'>
-							<p className='header__title'>LearnPG</p>
+						<div className='flex-center header__left-box'>
+							<h1 className='header__title-header'>LearnPG</h1>
 							<p className='header__subtitle'>Ucz się na bieżąco PostgreSQL</p>
 							<p className='header__subtitle'> Zdobądź dodatkową wiedzę z zakresu relacyjnych baz danych</p>
-							<button className='header__btn'>Rozpocznij nauke</button>
+							<button className='header__register-btn btn'>Rozpocznij nauke</button>
 						</div>
 						<div className='header__arrow-down'>
 							<RiArrowDownSLine />
@@ -93,10 +97,10 @@ function Main() {
 				</section>
 				<section>
 					<div className='offerts'>
-						<h1 className='title'>Korzyści</h1>
+						<h2 className='title'>Korzyści</h2>
 						<div className='offerts__cards'>
 							<div className='offerts__section-card'>
-								<div className='offerts__card'>
+								<div className='flex-center offerts__card'>
 									<div>
 										<MdOutlineTouchApp className='offerts__icon' />
 									</div>
@@ -106,7 +110,7 @@ function Main() {
 								</div>
 							</div>
 							<div className='offerts__section-card'>
-								<div className='offerts__card'>
+								<div className='flex-center offerts__card'>
 									<div>
 										<AiOutlineFieldTime className='offerts__icon' />
 									</div>
@@ -114,13 +118,13 @@ function Main() {
 								<div className='offerts__card-description'>Korzystaj o każdej porze i w każdym miejscu.</div>
 							</div>
 							<div className='offerts__section-card'>
-								<div className='offerts__card'>
+								<div className='flex-center offerts__card'>
 									<BsFillCalendarCheckFill className='offerts__icon' />
 								</div>
 								<div className='offerts__card-description'>Rozwijaj swoje kompetencje za pomocą testów.</div>
 							</div>
 							<div className='offerts__section-card'>
-								<div className='offerts__card'>
+								<div className='flex-center offerts__card '>
 									<AiFillSave className='offerts__icon' />
 								</div>
 								<div className='offerts__card-description'>Zapisuj swoje rezultaty i kontroluj swój proces nauki.</div>
@@ -129,13 +133,15 @@ function Main() {
 					</div>
 				</section>
 				<section>
-					<h1 className='contact__title'>Kontakt</h1>
-					<div className='contact'>
-						<div className='contact__box-right'>
-							<input type='text' className='contact__input-email' placeholder='Adres E-mail' />
-							<input type='text' className='contact__input-email' placeholder='Imię' />
-							<textarea className='contact__textarea' placeholder='Wyślij wiadomość'></textarea>
-							<button className='contact__btn'>Wyślij</button>
+					<div>
+						<h2 className='title'>Kontakt</h2>
+					</div>
+					<div className='flex-center contact'>
+						<div className='flex-center contact__box-right'>
+							<input type='text' className='contact__input contact__email' placeholder='Adres E-mail' />
+							<input type='text' className='contact__input contact__email' placeholder='Imię' />
+							<textarea className='contact__input contact__textarea' placeholder='Wyślij wiadomość'></textarea>
+							<button className='contact__contact-btn btn'>Wyślij</button>
 						</div>
 						<div className='contact__box-left'>
 							<h3 className='contact__contact-header'>Masz jakieś pytania? Skontaktuj się z nami</h3>
@@ -156,7 +162,7 @@ function Main() {
 				</section>
 			</main>
 			<footer>
-				<div className='footer'>
+				<div className='footer flex-center'>
 					<p>Kry765 2023 | &copy; Wszelkie prawa zastrzeżone</p>
 				</div>
 			</footer>

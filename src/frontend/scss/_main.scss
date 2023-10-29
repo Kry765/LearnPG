@@ -1,29 +1,29 @@
-@use './reset' as *;
+@use './_reset' as *;
 @use './colors' as *;
 
-//display
-//position //top right bottom left
-//displayflex / justifycontent / align-items /flex-direction
-//width / lub max-min
-//height
-//background-color
-//color
-//margin
-//padding
-//transition
-//z-index
-
-.wrapper {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
+.title {
+	position: relative;
+	font-style: 2rem;
+	padding: 2em 4.2em;
+}
+.title::before {
+	position: absolute;
+	content: '';
+	width: 20px;
+	height: 25%;
+	margin: 0 -1em;
+	background-color: $green;
+	z-index: -1;
 }
 
-.title {
+.btn {
+	background-color: $contrast-color;
 	color: $white;
-	font-style: 2rem;
-	text-align: center;
+	border-radius: 15px;
+	font-size: 1rem;
+	font-weight: bold;
+	border: none;
+	margin: 1em 0;
 }
 
 .nav {
@@ -32,28 +32,22 @@
 	max-height: 10%;
 	min-width: 100%;
 	background-color: $dark;
-	color: $white;
 	padding: 0.5em;
 	z-index: 5;
-	&__desktop-items {
-		display: flex;
-		justify-content: flex-end;
-		align-items: flex-end;
-	}
 
 	&__desktop-item {
-		display: none;
+		display: block;
 		margin: 1em;
-		font-size: 1.2rem;
-		text-decoration: uppercase;
+		font-size: 1rem;
+		padding: 0.5em 2em;
 		transition: color 0.5s;
 		font-weight: bold;
 		&--blue-contrast,
 		&--gray-contrast {
-			display: none;
+			display: block;
 			margin: 1em;
 			padding: 0.5em 2em;
-			border-radius: 15px;
+			border-radius: 10px;
 			background-color: $contrast-color;
 			font-weight: bold;
 		}
@@ -63,16 +57,19 @@
 	}
 
 	&__mobile-items {
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		align-items: flex-end;
 		position: fixed;
 		top: 0;
-		width: 110%;
-		height: 100%;
-		background-color: rgba(0, 0, 0, 0.5);
-		transform: translateX(-10%);
+		display: none;
+	}
+	&__mobile-item {
+		display: none;
+	}
+	&__bottom-line {
+		margin: 5px 3%;
+		width: 50%;
+		height: 3px;
+		border-radius: 5px;
+		background-color: $white;
 	}
 	&__close-mobile-items {
 		display: none;
@@ -81,10 +78,10 @@
 		padding: 2em;
 	}
 	&__logo {
-		display: none;
 		position: fixed;
 		top: 0;
 		left: 0;
+		display: block;
 		padding: 1em;
 		font-size: 1.8rem;
 		transition: color 0.5s;
@@ -97,51 +94,32 @@
 	&__burger-bar {
 		padding: 0.3em;
 		font-size: 3rem;
-		display: block;
+		display: none;
 		z-index: 4;
 	}
 }
 
 .header {
 	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
+	max-width: 100vw;
 	min-height: 100vh;
-	overflow-y: hidden;
-	background-color: rgba(64, 64, 64, 0.6);
+	background-color: rgba(64, 64, 64, 0.7);
 	&__title,
 	&__subtitle {
 		padding: 1em 0;
 		color: $white;
 	}
 
-	&__belt {
-		position: absolute;
-		left: 50px;
-		top: -200px;
-		height: 150vh;
-		width: 15vw;
-		transform: rotate(45deg);
-		background-color: $green;
-		z-index: 1;
-		display: none;
-	}
-
-	&__title {
+	&__title-header {
 		font-weight: bold;
-		font-size: 3rem;
+		font-size: 4rem;
 	}
 	&__subtitle {
-		font-size: 1rem;
-		color: #ccc;
+		font-size: 1.2rem;
+		color: $white;
 	}
 	&__left-box {
-		display: flex;
-		justify-content: center;
 		flex-direction: column;
-		align-items: center;
 		overflow-y: hidden;
 		z-index: 2;
 	}
@@ -152,20 +130,13 @@
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-position: center;
-		height: 100%;
-		width: 100%;
+		min-height: 100%;
+		min-width: 100%;
 		z-index: -1;
 	}
 
-	&__btn {
-		margin: 2em 0;
+	&__register-btn {
 		padding: 1em 2em;
-		border-radius: 15px;
-		color: $white;
-		background-color: $contrast-color;
-		font-size: 1rem;
-		font-weight: bold;
-		border: none;
 	}
 	&__arrow-down {
 		position: absolute;
@@ -193,13 +164,23 @@
 		height: 100%;
 	}
 	&__card {
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		position: relative;
 		min-height: 350px;
 		border-radius: 15px;
 		width: 200px;
 		background-color: $gray;
+	}
+	&__card::before {
+		position: absolute;
+		left: -6px;
+		bottom: -6px;
+		content: '';
+		border: 10px solid $green;
+		min-height: 100%;
+		min-width: 100%;
+		z-index: -1;
+		border-radius: 15px;
+		filter: blur(4px);
 	}
 	&__icon {
 		font-size: 5rem;
@@ -215,47 +196,40 @@
 }
 
 .contact {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	flex-direction: row;
 	min-height: 100%;
 	max-width: 100%;
-	&__title {
-		color: $white;
-		text-align: center;
-		padding: 1em;
-	}
-	&__box-right {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		width: 100%;
-	}
-	&__input-email {
+	&__input {
+		font-family: 'Poppins', sans-serif;
 		background-color: $gray;
+		color: $white;
 		padding: 15px;
 		margin: 1em 0;
-		width: 80%;
-		height: 50px;
+		border: none;
 		border-radius: 15px;
+		width: 80%;
+	}
+
+	&__email {
+		position: relative;
+		height: 50px;
 	}
 	&__textarea {
-		background-color: $gray;
-		margin: 1em 0;
-		padding: 15px;
+		resize: none;
 		height: 300px;
-		border-radius: 15px;
-		width: 80%;
+	}
+	&__box-right {
+		width: 100%;
+		flex-direction: column;
 	}
 	&__box-left {
-		text-align: center;
-		font-size: 1.3rem;
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
+		justify-content: center;
+		font-size: 1.2rem;
 		color: $white;
 		padding: 1em;
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
 		height: 400px;
 		width: 80%;
 		margin: 2em 1em;
@@ -264,15 +238,9 @@
 	&__contact-header {
 		margin: 1em;
 	}
-	&__btn {
-		font-weight: bold;
-		margin: 1em 0;
+	&__contact-btn {
 		width: 80%;
 		height: 60px;
-		border-radius: 15px;
-		font-size: 1rem;
-		background-color: $contrast-color;
-		color: $white;
 	}
 	&__description {
 		display: flex;
@@ -282,31 +250,51 @@
 		margin: 0 1em;
 	}
 }
+.footer {
+	max-width: 100%;
+	padding: 2em;
+	text-align: center;
+}
 
-@media (min-width: 992px) {
+@media (max-width: 992px) {
 	.nav {
 		&__desktop-item {
-			display: block;
+			display: none;
 
 			&--gray-contrast {
-				display: block;
+				display: none;
 			}
 			&--blue-contrast {
-				display: block;
+				display: none;
 			}
 		}
 		&__burger-bar,
 		&__mobile-items {
-			display: none;
+			display: flex;
+			justify-content: center;
+			align-items: flex-start;
+			flex-direction: column;
+			font-weight: bold;
+		}
+		&__mobile-items {
+			width: 110%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.7);
+			transform: translateX(25%);
+		}
+		&__mobile-item {
+			display: flex;
+			justify-content: flex-end;
 		}
 
 		&__logo {
-			display: block;
+			display: none;
 		}
 	}
 
 	.header {
-		&__title {
+		width: 100%;
+		&__title-header {
 			text-align: center;
 			color: $white;
 		}
@@ -320,19 +308,18 @@
 			display: block;
 		}
 		&__belt {
-			display: block;
+			display: none;
 		}
 	}
 
 	.contact {
 		display: flex;
 		align-items: center;
-		flex-direction: row;
+		flex-direction: column;
 		justify-content: center;
 	}
 
 	.footer {
 		padding: 2em;
-		text-align: center;
 	}
 }

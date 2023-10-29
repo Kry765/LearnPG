@@ -22,12 +22,93 @@ li {
 	color: #fff;
 }
 
-.wrapper {
+//flex
+.flex-center {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
-.red {
+.flex-end {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.title-section {
+	text-align: center;
+	padding: 1em;
+}
+
+.flex-column {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.complete {
 	color: #ff0000;
 }
+
+.input-auth {
+	background-color: $gray;
+	min-width: 60vw;
+	border-radius: 15px;
+	padding: 1em;
+	margin: 1em 0;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.link-auth {
+	color: $contrast-color;
+	font-weight: bold;
+}
+
+.btn-auth {
+	background-color: $contrast-color;
+	color: #fff;
+	margin: 1.5em;
+	min-width: 50%;
+	min-height: 50px;
+	font-weight: bold;
+	text-transform: uppercase;
+	border: none;
+	transition: background-color 0.8s;
+	border-radius: 20px;
+}
+
+.btn-auth:hover {
+	cursor: pointer;
+	background-color: $sky;
+}
+
+.nav-auth {
+	max-width: 100%;
+	min-height: 10%;
+	&__auth-items {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	&__auth-item {
+		font-size: 1.4rem;
+		padding: 1em;
+		&--close {
+			padding: 0.5em;
+			font-size: 2.4em;
+		}
+	}
+}
+
+.box-auth {
+	position: fixed;
+	top: 0;
+	min-height: 90vh;
+	max-width: 100vw;
+}
+
+.space-auth {
+	margin: 0.3em;
+}
+
