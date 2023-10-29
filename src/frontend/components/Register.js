@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import '../scss/_register.scss'
+import '../scss/_reset.scss'
 import { FaDatabase } from 'react-icons/fa'
 import axios from 'axios'
+import { AiOutlineClose } from 'react-icons/ai'
 
 const API_URL = 'http://localhost:4000/create'
 
@@ -65,27 +66,27 @@ function Register() {
 
 	return (
 		<div>
-			<div className='nav'>
-				<div className='nav__register-items'>
-					<div className='nav__register-logo'>
+			<div className='nav-auth'>
+				<div className='nav-auth__auth-items'>
+					<div className='nav-auth__auth-item'>
 						<FaDatabase />
 					</div>
-					<div className='nav__register-items'>Strona Główna</div>
+					<div className='nav-auth__auth-item--close'>
+						<AiOutlineClose />
+					</div>
 				</div>
 			</div>
-			<div className=' register__header'>
-				<h1>Zarejestruj się</h1>
-			</div>
-			<div className='register'>
-				<form onSubmit={handleSubmit}>
-					<div className='register__block'>
-						<div className=''>
+			<div className='flex-center'>
+				<div className='flex-center box-auth'>
+					<form onSubmit={handleSubmit}>
+						<h1 className='title-section'>Zarejestruj się</h1>
+						<div className='flex-column'>
 							<label>
 								<p>
-									Email<span className='red'>*</span>
+									Email<span className='complete'>*</span>
 								</p>
 								<input
-									className='register__input'
+									className='input-auth'
 									type='text'
 									placeholder='Adres email'
 									value={user_email}
@@ -94,57 +95,55 @@ function Register() {
 									}}
 								/>
 							</label>
-						</div>
-						<div>
-							<label>
-								<p>
-									Hasło<span className='red'>*</span>
-								</p>
-								<input
-									className='register__input'
-									type='password'
-									placeholder='Hasło'
-									value={user_pwd}
-									onChange={event => {
-										set_user_pwd(event.target.value)
-									}}
-								/>
-							</label>
-						</div>
-						<div>
-							<label>
-								<p>
-									Powtórz hasło<span className='red'>*</span>
-								</p>
-								<input
-									type='password'
-									className='register__input'
-									placeholder='Powtórz hasło'
-									value={repeat_pwd}
-									onChange={event => {
-										set_repeat_pwd(event.target.value)
-									}}
-								/>
-							</label>
-							<p>{password}</p>
-						</div>
-						<div className='register__checkbox'>
-							<label>
-								<span className='register__check'>Akceptuje regulamin</span>
-								<input className='register__check' type='checkbox' />
-							</label>
-						</div>
-						<div>
-							<button type='submit' className='register__btn'>
+							<div className='space-auth'>
+								<label>
+									<p>
+										Hasło<span className='complete'>*</span>
+									</p>
+									<input
+										className='input-auth'
+										type='password'
+										placeholder='Hasło'
+										value={user_pwd}
+										onChange={event => {
+											set_user_pwd(event.target.value)
+										}}
+									/>
+								</label>
+							</div>
+							<div className='space-auth'>
+								<label>
+									<p>
+										Powtórz hasło<span className='complete'>*</span>
+									</p>
+									<input
+										type='password'
+										className='input-auth'
+										placeholder='Powtórz hasło'
+										value={repeat_pwd}
+										onChange={event => {
+											set_repeat_pwd(event.target.value)
+										}}
+									/>
+								</label>
+								<p>{password}</p>
+							</div>
+							<div className='space-auth'>
+								<label>
+									<span className='register__check'>Akceptuje regulamin</span>
+									<input className='register__check' type='checkbox' />
+								</label>
+							</div>
+							<button type='submit' className='btn-auth'>
 								Zarejestruj się
 							</button>
+							<div>
+								Posiadasz już konto? <span className='link-auth'>Zaloguj się</span>
+							</div>
+							<div>{output}</div>
 						</div>
-						<div>
-							Posiadasz już konto? <span className='register__login-link'>Zaloguj się</span>
-						</div>
-						<p>{output}</p>
-					</div>
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
 	)

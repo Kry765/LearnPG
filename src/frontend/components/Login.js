@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import '../scss/_login.scss'
+import '../scss/_reset.scss'
 import { FaDatabase } from 'react-icons/fa'
+import { AiOutlineClose } from 'react-icons/ai'
 
 const Login = () => {
 	const [user_email, set_user_email] = useState('')
@@ -35,57 +36,65 @@ const Login = () => {
 
 	return (
 		<div>
-			<div className='nav'>
-				<div className='nav__login-items'>
-					<div className='nav__logo'>
+			<div className='nav-auth'>
+				<div className='nav-auth__auth-items'>
+					<div className='nav-auth__auth-item'>
 						<FaDatabase />
 					</div>
-					<div className='nav__login-item'>Strona Główna</div>
+					<div className='nav-auth__auth-item--close'>
+						<AiOutlineClose />
+					</div>
 				</div>
 			</div>
-			<div className='login'>
-				<form onSubmit={handleSubmit}>
-					<h1 className='login__header'>Zaloguj się</h1>
-					<div className='login__block'>
-						<label>
-							Email<span className='login__important'> *</span>
-							<input
-								className='wrapper login__input'
-								type='text'
-								placeholder='Podaj swój adres email'
-								value={user_email}
-								onChange={event => {
-									set_user_email(event.target.value)
-								}}
-							/>
-						</label>
-					</div>
-					<div className='wrapper'>
-						<div className='login__block'>
-							<label>
-								Hasło<span className='login__important'> *</span>
-								<input
-									className='wrapper login__input'
-									type='password'
-									placeholder='Podaj hasło'
-									value={user_pwd}
-									onChange={event => {
-										set_user_pwd(event.target.value)
-									}}
-								/>
+			<div className='flex-center'>
+				<div className='flex-center box-auth'>
+					<form onSubmit={handleSubmit}>
+						<h1 className='title-section'>Zaloguj się</h1>
+						<div className='flex-column'>
+							<div className='space-auth'>
+								<label>
+									<p>
+										Email<span className='complete'> *</span>
+									</p>
+									<input
+										className='input-auth'
+										type='text'
+										placeholder='Podaj swój adres email'
+										value={user_email}
+										onChange={event => {
+											set_user_email(event.target.value)
+										}}
+									/>
+								</label>
+							</div>
+							<div className='space-auth'>
+								<label>
+									<p>
+										Hasło<span className='complete'> *</span>
+									</p>
+									<input
+										className='input-auth'
+										type='password'
+										placeholder='Podaj hasło'
+										value={user_pwd}
+										onChange={event => {
+											set_user_pwd(event.target.value)
+										}}
+									/>
+								</label>
 								<p>Zresetuj hasło</p>
-							</label>
+							</div>
 						</div>
-					</div>
-					<div className='wrapper'>
-						<button className='login__btn' type='submit'>
-							Zaloguj się
-						</button>
-						<p>
-							Nie posiadasz konta? <span className='login__register-link'>Zaloguj się</span>
-						</p>
-					</div>
-				</form>
+						<div className='flex-column'>
+							<button className='btn-auth' type='submit'>
+								Zaloguj się
+							</button>
+							<p>
+								Nie posiadasz konta? <span className='link-auth'>Zaloguj się</span>
+							</p>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 	)
