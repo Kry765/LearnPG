@@ -35,6 +35,12 @@ li {
 	align-items: center;
 }
 
+.flex-between {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
 .title-section {
 	text-align: center;
 	padding: 1em;
@@ -111,4 +117,3 @@ li {
 .space-auth {
 	margin: 0.3em;
 }
-
