@@ -19,10 +19,12 @@ db.authenticate()
 		const User = require('./models/user')
 		const Topic = require('./models/topic')
 		const OpenQuestion = require('./models/open_question')
+		const CloseQuestion = require('./models/close_question')
 
 		User.sync()
 		Topic.sync()
 		OpenQuestion.sync()
+		CloseQuestion.sync()
 
 		app.listen(port, () => {
 			console.log(`Server is running on port ${port}`)
@@ -36,8 +38,10 @@ const createUser = require('./connection/createUser')
 const loginUser = require('./connection/loginUser')
 const getTopic = require('./connection/getTopic')
 const qetOpenQuestion = require('./connection/getOpenquestion')
+const getCloseQuestion = require('./connection/getCloseQuestions')
 
 qetOpenQuestion(app)
+getCloseQuestion(app)
 createUser(app)
 loginUser(app)
 getTopic(app)
