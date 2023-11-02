@@ -13,19 +13,19 @@ const CloseQuestion = db.define(
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
-		answerA: {
+		answer_a: {
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
-		answerB: {
+		answer_b: {
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
-		answerC: {
+		answer_c: {
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
-		correctAnswer: {
+		correct_answer: {
 			type: DataTypes.ENUM('A', 'B', 'C'),
 			allowNull: false,
 			defaultValue: 'A',
