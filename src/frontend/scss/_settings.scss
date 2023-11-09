@@ -1,0 +1,14 @@
+@use './reset' as *;
+@use './colors' as *;
+
+.settings {
+	width: 80vh;
+	&__btn {
+		margin: 1em;
+		background-color: $gray;
+		color: $white;
+		min-width: 80%;
+		height: 20px;
+		border: none;
+	}
+}
