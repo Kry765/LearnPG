@@ -59,6 +59,7 @@ li {
 
 .input-auth {
 	background-color: $gray;
+	color: $white;
 	min-width: 60vw;
 	border-radius: 15px;
 	padding: 1em;
@@ -69,6 +70,11 @@ li {
 .link-auth {
 	color: $contrast-color;
 	font-weight: bold;
+	transition: color 1s;
+}
+.link-auth:hover {
+	cursor: pointer;
+	color: $green;
 }
 
 .btn-auth {
@@ -86,7 +92,7 @@ li {
 
 .btn-auth:hover {
 	cursor: pointer;
-	background-color: $sky;
+	background-color: $green;
 }
 
 .nav-auth {
@@ -100,10 +106,20 @@ li {
 	&__auth-item {
 		font-size: 1.4rem;
 		padding: 1em;
+		transition: color 1s;
 		&--close {
 			padding: 0.5em;
 			font-size: 2.4em;
+			transition: color 1s;
 		}
+		&--close:hover {
+			cursor: pointer;
+			color: $green;
+		}
+	}
+	&__auth-item:hover {
+		cursor: pointer;
+		color: $green;
 	}
 }
 
@@ -116,4 +132,8 @@ li {
 
 .space-auth {
 	margin: 0.3em;
+}
+
+.output {
+	padding: 1em;
 }

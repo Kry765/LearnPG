@@ -7,6 +7,14 @@ const Login = () => {
 	const [user_email, set_user_email] = useState('')
 	const [user_pwd, set_user_pwd] = useState('')
 	const [message, setMessage] = useState('')
+	const [output, setOutput] = useState('')
+
+	const checkEmail = () => {
+		const validEmail = new RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$')
+		if (!validEmail.test(user_email)) {
+			setOutput('Wprowadzony adres email jest nieprawidłowy')
+		}
+	}
 
 	const handleSubmit = async e => {
 		e.preventDefault()
@@ -20,6 +28,7 @@ const Login = () => {
 			})
 
 			if (response.ok) {
+				checkEmail()
 				const data = await response.json()
 				localStorage.setItem('token', data.token)
 				window.location.href = '/Dashboard'
@@ -92,6 +101,7 @@ const Login = () => {
 							<p>
 								Nie posiadasz konta? <span className='link-auth'>Zaloguj się</span>
 							</p>
+							<div className='output'>{output}</div>
 						</div>
 					</form>
 				</div>
