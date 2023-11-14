@@ -1,12 +1,27 @@
 import '../scss/_dashboard.scss'
 import { FaDatabase } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
 import { AiFillHome } from 'react-icons/ai'
 import { AiTwotoneSetting } from 'react-icons/ai'
 import { BiSolidHelpCircle } from 'react-icons/bi'
 import { FaPowerOff } from 'react-icons/fa'
+import { useEffect } from 'react'
+import { isLogin, outLogin } from '../../backend/guard/ProtectLink'
+import { useNavigate } from 'react-router-dom'
 
 function Dashboard() {
+	const navigate = useNavigate()
+
+	useEffect(() => {
+		if (!isLogin()) {
+			navigate('/Login')
+		}
+	}, [navigate])
+
+	const handleLoggout = () => {
+		outLogin()
+		navigate('/Login')
+	}
+
 	return (
 		<div className='dashboard'>
 			<div className='dashboard__left-menu'>
@@ -29,7 +44,9 @@ function Dashboard() {
 						</div>
 						<div className='dashboard__position-icon'>
 							<FaPowerOff />
-							<div className='dashboard__menu-item'>Wyloguj się</div>
+							<div className='dashboard__menu-item' onClick={handleLoggout}>
+								Wyloguj się
+							</div>
 						</div>
 					</div>
 				</div>

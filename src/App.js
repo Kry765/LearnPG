@@ -7,7 +7,6 @@ import Exam from './frontend/components/Exam'
 import Settings from './frontend/components/Settings'
 import ResultCloseQuestion from './frontend/components/ResultCloseQuestion'
 import Lab from './frontend/components/Lab'
-
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 function App() {

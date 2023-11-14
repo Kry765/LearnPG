@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import '../scss/_reset.scss'
 import { FaDatabase } from 'react-icons/fa'
 import { AiOutlineClose } from 'react-icons/ai'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
+	const navigate = useNavigate()
 	const [user_email, set_user_email] = useState('')
 	const [user_pwd, set_user_pwd] = useState('')
 	const [message, setMessage] = useState('')
@@ -99,7 +101,15 @@ const Login = () => {
 								Zaloguj się
 							</button>
 							<p>
-								Nie posiadasz konta? <span className='link-auth'>Zaloguj się</span>
+								Nie posiadasz konta?{' '}
+								<span
+									className='link-auth'
+									onClick={() => {
+										navigate('../register')
+									}}
+								>
+									Zarejestruj się
+								</span>
 							</p>
 							<div className='output'>{output}</div>
 						</div>
