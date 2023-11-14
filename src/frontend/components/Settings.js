@@ -1,27 +1,12 @@
-import '../scss/_dashboard.scss'
+import '../scss/_settings.scss'
 import { FaDatabase } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 import { AiFillHome } from 'react-icons/ai'
 import { AiTwotoneSetting } from 'react-icons/ai'
 import { BiSolidHelpCircle } from 'react-icons/bi'
 import { FaPowerOff } from 'react-icons/fa'
-import { useEffect } from 'react'
-import { isLogin, outLogin } from '../../backend/guard/ProtectLink'
-import { useNavigate } from 'react-router-dom'
 
 function Dashboard() {
-	const navigate = useNavigate()
-
-	useEffect(() => {
-		if (!isLogin()) {
-			navigate('/Login')
-		}
-	}, [navigate])
-
-	const handleLoggout = () => {
-		outLogin()
-		navigate('/Login')
-	}
-
 	return (
 		<div className='dashboard'>
 			<div className='dashboard__left-menu'>
@@ -44,25 +29,27 @@ function Dashboard() {
 						</div>
 						<div className='dashboard__position-icon'>
 							<FaPowerOff />
-							<div className='dashboard__menu-item' onClick={handleLoggout}>
-								Wyloguj się
-							</div>
+							<div className='dashboard__menu-item'>Wyloguj się</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div className=''>
-				<h3>Witaj użytkowniku</h3>
-				<p>Co zamierzasz zrobić</p>
-			</div>
-			<div className='section flex-between'>
-				<div className='section__theory flex-center'>
-					<div className='section__color-photo'></div>
-					<p className='section__card-description'>Rozpocznij naukę</p>
+			<div className='settings'>
+				<h3>Ustawienia</h3>
+				<div>
+					<button className='settings__btn'>Zresetuj hasło</button>
 				</div>
-				<div className='section__exam flex-center'>
-					<div className='section__color-photo'></div>
-					<p className='section__card-description'>Rozpocznij egzamin</p>
+				<div>
+					<button className='settings__btn'>Zmień Adres Email</button>
+				</div>
+				<div>
+					<button className='settings__btn'>Zmień Nick</button>
+				</div>
+				<div>
+					<button className='settings__btn'>Wyzer punkty</button>
+				</div>
+				<div>
+					<button className='settings__btn'>Skasuj konto</button>
 				</div>
 			</div>
 		</div>

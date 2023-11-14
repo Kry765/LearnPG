@@ -42,6 +42,7 @@
 		padding: 0.5em 2em;
 		transition: color 0.5s;
 		font-weight: bold;
+
 		&--blue-contrast,
 		&--gray-contrast {
 			display: block;
@@ -50,9 +51,18 @@
 			border-radius: 10px;
 			background-color: $contrast-color;
 			font-weight: bold;
+			transition: background-color 1s;
 		}
 		&--gray-contrast {
 			background-color: $gray;
+		}
+		&--blue-contrast:hover {
+			cursor: pointer;
+			background-color: $green;
+		}
+		&--gray-contrast:hover {
+			cursor: pointer;
+			background-color: $green;
 		}
 	}
 
@@ -137,13 +147,24 @@
 
 	&__register-btn {
 		padding: 1em 2em;
+		transition: background-color 0.5s;
+	}
+	&__register-btn:hover {
+		cursor: pointer;
+		background-color: $green;
 	}
 	&__arrow-down {
 		position: absolute;
 		bottom: 0;
+		left: 50%;
 		color: white;
 		font-size: 3rem;
 		font-weight: bold;
+		transition: color 1s;
+	}
+	&__arrow-down:hover {
+		color: $green;
+		cursor: pointer;
 	}
 }
 
@@ -200,6 +221,7 @@
 	min-height: 100%;
 	max-width: 100%;
 	&__input {
+		position: relative;
 		font-family: 'Poppins', sans-serif;
 		background-color: $gray;
 		color: $white;
@@ -248,6 +270,14 @@
 	}
 	&__contact-icon {
 		margin: 0 1em;
+	}
+
+	&__arrow-down {
+		position: absolute;
+		left: 50%;
+		color: white;
+		font-size: 3rem;
+		font-weight: bold;
 	}
 }
 .footer {

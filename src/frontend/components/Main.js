@@ -11,6 +11,7 @@ import { FiMail } from 'react-icons/fi'
 import { AiFillPhone } from 'react-icons/ai'
 import { BsDiscord } from 'react-icons/bs'
 import '../scss/_main.scss'
+import { Link, animateScroll as scroll } from 'react-scroll'
 
 function Main() {
 	const [openNav, setOpenNav] = useState('')
@@ -21,8 +22,16 @@ function Main() {
 			<nav>
 				<div className='nav'>
 					<div className='flex-end'>
-						<div className='nav__desktop-item'>Korzyści</div>
-						<div className='nav__desktop-item'>Kontakt</div>
+						<div className='nav__desktop-item'>
+							<Link to='offerts' smooth={true} duration={500}>
+								Korzyści
+							</Link>
+						</div>
+						<div className='nav__desktop-item'>
+							<Link to='contact' smooth={true} duration={500}>
+								Kontakt
+							</Link>
+						</div>
 						<div
 							className='nav__desktop-item--gray-contrast'
 							onClick={() => {
@@ -75,23 +84,34 @@ function Main() {
 					</div>
 					<div className='nav__logo'>
 						<span>
-							<FaDatabase />
+							<Link to='home' smooth={true} duration={500}>
+								<FaDatabase />
+							</Link>
 						</span>
 					</div>
 				</div>
 			</nav>
 			<main>
 				<section>
-					<div className='flex-center header'>
+					<div className='flex-center header' id='home'>
 						<div className='header__opacity-box'></div>
 						<div className='flex-center header__left-box'>
 							<h1 className='header__title-header'>LearnPG</h1>
 							<p className='header__subtitle'>Ucz się na bieżąco PostgreSQL</p>
 							<p className='header__subtitle'> Zdobądź dodatkową wiedzę z zakresu relacyjnych baz danych</p>
-							<button className='header__register-btn btn'>Rozpocznij nauke</button>
+							<button
+								className='header__register-btn btn'
+								onClick={() => {
+									navigate('/Register')
+								}}
+							>
+								Rozpocznij nauke
+							</button>
 						</div>
-						<div className='header__arrow-down'>
-							<RiArrowDownSLine />
+						<div className='header__arrow-down' id='offerts'>
+							<Link to='offerts' smooth={true} duration={500}>
+								<RiArrowDownSLine />
+							</Link>
 						</div>
 					</div>
 				</section>
@@ -130,11 +150,18 @@ function Main() {
 								<div className='offerts__card-description'>Zapisuj swoje rezultaty i kontroluj swój proces nauki.</div>
 							</div>
 						</div>
+						<div className='contact__arrow-down' id='offerts'>
+							<Link to='contact' smooth={true} duration={500}>
+								<RiArrowDownSLine />
+							</Link>
+						</div>
 					</div>
 				</section>
 				<section>
 					<div>
-						<h2 className='title'>Kontakt</h2>
+						<h2 className='title' id='contact'>
+							Kontakt
+						</h2>
 					</div>
 					<div className='flex-center contact'>
 						<div className='flex-center contact__box-right'>

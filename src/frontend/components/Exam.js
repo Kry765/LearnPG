@@ -1,14 +1,16 @@
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useEffect, useHistory, useState } from 'react'
 
 function Exam() {
 	const API_URL = 'http://localhost:4000'
 	const [questions, setQuestions] = useState([])
 	const [currentQuestion, setCurrentQuestion] = useState(0)
 	const [selectedAnswer, setSelectedAnswer] = useState(null)
+	const [results, setResults] = useState({ correct: 0})
+	const history = useHistory()
 
 	const nextQuestion = () => {
-		setSelectedAnswer(null) // Reset odpowiedzi przy zmianie pytania
+		setSelectedAnswer(null) 
 		setCurrentQuestion(prevQuestion => prevQuestion + 1)
 	}
 
@@ -37,10 +39,8 @@ function Exam() {
 			})
 			.catch(err => {
 				console.error(err)
-				// Dodaj obsługę błędów lub komunikat do użytkownika w przypadku niepowodzenia pobrania danych
 			})
-	}, [currentQuestion]) // Odświeżanie danych przy zmianie numeru pytania
-
+	}, [currentQuestion]) 
 	return (
 		<div>
 			<div>Egzamin z działu:</div>

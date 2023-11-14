@@ -17,6 +17,9 @@ const User = db.define(
 			type: DataTypes.STRING(80),
 			allowNull: false,
 		},
+		user_point: {
+			type: DataTypes.INTEGER,
+		},
 	},
 	{ timestamps: false }
 )

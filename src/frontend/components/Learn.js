@@ -1,23 +1,22 @@
-import '../scss/_learn.scss'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import '../scss/_learn.scss'
 
-function Learn() {
+const Learn = () => {
 	const API_URL = 'http://localhost:4000'
 
 	const [topics, setTopics] = useState([])
-	const [handleTopic, setHandleTopics] = useState(null)
+	const [handleTopic, setHandleTopic] = useState(null)
 
 	const handleItem = index => {
-		setHandleTopics(topics[index])
+		setHandleTopic(topics[index])
 	}
 
 	const getDescription = () => {
 		if (handleTopic) {
-			return handleTopic.topic_description
+			return handleTopic.topic_description.split('\n').map((line, index) => <div key={index}>{line}</div>)
 		}
-
-		return ''
+		return null
 	}
 
 	useEffect(() => {
@@ -31,7 +30,7 @@ function Learn() {
 					console.log(err)
 				})
 		}
-	})
+	}, [topics])
 
 	return (
 		<div className='learn'>
@@ -52,6 +51,7 @@ function Learn() {
 				<h1>Rozpocznij nauke</h1>
 				<h3>Wybierz interesujące cię zagadnienie</h3>
 				<div className='learn__description'>{getDescription()}</div>
+				<button>Sprawdź wiedzę</button>
 			</div>
 		</div>
 	)
