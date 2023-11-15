@@ -42,27 +42,34 @@ function Dashboard() {
 							<BiSolidHelpCircle />
 							<div className='dashboard__menu-item'>Pomoc</div>
 						</div>
-						<div className='dashboard__position-icon'>
+						<div className='dashboard__position-icon' onClick={handleLoggout}>
 							<FaPowerOff />
-							<div className='dashboard__menu-item' onClick={handleLoggout}>
-								Wyloguj się
-							</div>
+							<div className='dashboard__menu-item'>Wyloguj się</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div className=''>
-				<h3>Witaj użytkowniku</h3>
-				<p>Co zamierzasz zrobić</p>
-			</div>
+
 			<div className='section flex-between'>
-				<div className='section__theory flex-center'>
-					<div className='section__color-photo'></div>
-					<p className='section__card-description'>Rozpocznij naukę</p>
-				</div>
-				<div className='section__exam flex-center'>
-					<div className='section__color-photo'></div>
-					<p className='section__card-description'>Rozpocznij egzamin</p>
+				<div className='section__dashboard-box'>
+					<div className='section__welcome-text'>
+						<h2>Witaj Użytkowniku</h2>
+						<p>Co działamy?</p>
+					</div>
+					<div className='section__theory flex-center'>
+						<div className='section__color-photo'></div>
+						<p className='section__card-description'>Rozpocznij naukę</p>
+					</div>
+					<div className='section__exam flex-center'>
+						<div className='section__color-photo'></div>
+						<p className='section__card-description'>Rozpocznij egzamin</p>
+					</div>
+					<div className='section__score flex-center'>
+						<p className='section__card-description'>Zdobyte punkty</p>
+					</div>
+					<div className='section__score flex-center'>
+						<p className='section__card-description'>Zdobyte punkty</p>
+					</div>
 				</div>
 			</div>
 		</div>
