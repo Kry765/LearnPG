@@ -1,4 +1,5 @@
 import Main from './frontend/components/Main'
+import Reset from './frontend/components/Reset'
 import Register from './frontend/components/Register'
 import Login from './frontend/components/Login'
 import Dashboard from './frontend/components/Dashboard'
@@ -17,6 +18,7 @@ function App() {
 					<Route path='/' element={<Main />} />
 					<Route path='/Register' element={<Register />} />
 					<Route path='/Login' element={<Login />} />
+					<Route path='/Reset' element={<Reset />} />
 					<Route path='/Dashboard' element={<Dashboard />} />
 					<Route path='/Dashboard/Settings' element={<Settings />} />
 					<Route path='/Dashboard/Learn' element={<Learn />} />
