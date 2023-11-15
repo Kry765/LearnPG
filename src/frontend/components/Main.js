@@ -11,11 +11,24 @@ import { FiMail } from 'react-icons/fi'
 import { AiFillPhone } from 'react-icons/ai'
 import { BsDiscord } from 'react-icons/bs'
 import '../scss/_main.scss'
+import emailjs from 'emailjs-com'
 import { Link, animateScroll as scroll } from 'react-scroll'
 
 function Main() {
 	const [openNav, setOpenNav] = useState('')
 	const navigate = useNavigate()
+
+	const sendEmail = e => {
+		e.preventDefault()
+		emailjs.sendForm('service_ivvbak9', 'template_rlainun', e.target, 'OXIurWGg9OpDvDAzF').then(
+			result => {
+				window.location.reload()
+			},
+			error => {
+				console.log(error.text)
+			}
+		)
+	}
 
 	return (
 		<div>
@@ -158,34 +171,45 @@ function Main() {
 					</div>
 				</section>
 				<section>
-					<div>
-						<h2 className='title' id='contact'>
-							Kontakt
-						</h2>
-					</div>
-					<div className='flex-center contact'>
-						<div className='flex-center contact__box-right'>
-							<input type='text' className='contact__input contact__email' placeholder='Adres E-mail' />
-							<input type='text' className='contact__input contact__email' placeholder='Imię' />
-							<textarea className='contact__input contact__textarea' placeholder='Wyślij wiadomość'></textarea>
-							<button className='contact__contact-btn btn'>Wyślij</button>
+					<form onSubmit={sendEmail}>
+						<div>
+							<h2 className='title' id='contact'>
+								Kontakt
+							</h2>
 						</div>
-						<div className='contact__box-left'>
-							<h3 className='contact__contact-header'>Masz jakieś pytania? Skontaktuj się z nami</h3>
-							<div className='contact__description'>
-								<FiMail className='contact__contact-icon' />
-								<p>krzysztofkleka91@gmail.com</p>
+						<div className='flex-center contact'>
+							<div className='flex-center contact__box-right'>
+								<input
+									type='text'
+									className='contact__input contact__email'
+									placeholder='Adres E-mail'
+									name='from_name'
+								/>
+								<input type='text' name='to_name' className='contact__input contact__email' placeholder='Imię' />
+								<textarea
+									className='contact__input contact__textarea'
+									name='message'
+									placeholder='Wyślij wiadomość'
+								></textarea>
+								<button className='contact__contact-btn btn'>Wyślij</button>
 							</div>
-							<div className='contact__description'>
-								<AiFillPhone className='contact__contact-icon' />
-								<p>+48 573 226 219</p>
-							</div>
-							<div className='contact__description'>
-								<BsDiscord className='contact__contact-icon' />
-								<p>Kry765#3886</p>
+							<div className='contact__box-left'>
+								<h3 className='contact__contact-header'>Masz jakieś pytania? Skontaktuj się z nami</h3>
+								<div className='contact__description'>
+									<FiMail className='contact__contact-icon' />
+									<p>krzysztofkleka91@gmail.com</p>
+								</div>
+								<div className='contact__description'>
+									<AiFillPhone className='contact__contact-icon' />
+									<p>+48 573 226 219</p>
+								</div>
+								<div className='contact__description'>
+									<BsDiscord className='contact__contact-icon' />
+									<p>Kry765#3886</p>
+								</div>
 							</div>
 						</div>
-					</div>
+					</form>
 				</section>
 			</main>
 			<footer>
