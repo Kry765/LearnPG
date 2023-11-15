@@ -3,6 +3,7 @@
 
 .dashboard {
 	display: flex;
+	max-height: 100vh;
 	&__icon {
 		position: fixed;
 		padding: 1em;
@@ -14,6 +15,7 @@
 		min-height: 100vh;
 	}
 	&__menu {
+		max-width: 100%;
 		background-color: $gray;
 		display: flex;
 		justify-content: center;
@@ -44,7 +46,9 @@
 }
 
 .section {
+	max-width: 100%;
 	margin: 2em;
+	flex-wrap: wrap;
 	&__theory {
 		position: relative;
 		font-weight: bold;
@@ -82,5 +86,44 @@
 	}
 	&__card-description {
 		z-index: 1;
+	}
+	&__score {
+		margin: 2em;
+		width: 400px;
+		height: 200px;
+		background-color: $green;
+		border-radius: 15px;
+	}
+}
+
+@media (max-width: 768px) {
+	.dashboard {
+		&__menu-item {
+			display: none;
+		}
+		&__icon {
+			padding: 0.5em;
+		}
+	}
+
+	.section {
+		&__welcome-text {
+			text-align: center;
+		}
+		&__theory {
+			width: 200px;
+			height: 100px;
+		}
+		&__exam {
+			width: 200px;
+			height: 100px;
+		}
+		&__score {
+			margin: 2em;
+			width: 200px;
+			height: 100px;
+			background-color: $green;
+			border-radius: 15px;
+		}
 	}
 }

@@ -5,7 +5,7 @@ import { AiOutlineClose } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
 import { checkLogin } from '../../backend/guard/ProtectLink'
 
-const Login = () => {
+const Reset = () => {
 	useEffect(() => {
 		if (checkLogin()) {
 			navigate('../Dashboard')
@@ -23,33 +23,14 @@ const Login = () => {
 		const validEmail = new RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$')
 		if (!validEmail.test(user_email)) {
 			setOutput('Wprowadzony adres email jest nieprawidłowy')
+		} else {
+			setOutput('Twoja prośba o zresetowanie hasła została wysłana')
 		}
 	}
 
 	const handleSubmit = async e => {
 		e.preventDefault()
-		try {
-			const response = await fetch('http://localhost:4000/signin', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify({ user_email, user_pwd }),
-			})
-
-			if (response.ok) {
-				checkEmail()
-				const data = await response.json()
-				localStorage.setItem('token', data.token)
-				window.location.href = '/Dashboard'
-			} else if (response.status === 401) {
-				setOutput('Nieprawidłowy adres E-mail lub hasło')
-			} else {
-				setOutput('Wystąpił błąd')
-			}
-		} catch (error) {
-			console.error(error)
-		}
+		checkEmail()
 	}
 
 	return (
@@ -75,13 +56,11 @@ const Login = () => {
 			<div className='flex-center'>
 				<div className='flex-center box-auth'>
 					<form onSubmit={handleSubmit}>
-						<h1 className='title-section'>Zaloguj się</h1>
+						<h1 className='title-section'>Zresetuj hasło</h1>
 						<div className='flex-column'>
 							<div className='space-auth'>
 								<label>
-									<p>
-										Email<span className='complete'> *</span>
-									</p>
+									<p>Email</p>
 									<input
 										className='input-auth'
 										type='text'
@@ -93,34 +72,10 @@ const Login = () => {
 									/>
 								</label>
 							</div>
-							<div className='space-auth'>
-								<label>
-									<p>
-										Hasło<span className='complete'> *</span>
-									</p>
-									<input
-										className='input-auth'
-										type='password'
-										placeholder='Podaj hasło'
-										value={user_pwd}
-										onChange={event => {
-											set_user_pwd(event.target.value)
-										}}
-									/>
-								</label>
-								<div
-									className='reset-pwd'
-									onClick={() => {
-										navigate('/reset')
-									}}
-								>
-									Zresetuj hasło
-								</div>
-							</div>
 						</div>
 						<div className='flex-column'>
 							<button className='btn-auth' type='submit'>
-								Zaloguj się
+								Zresetuj hasło
 							</button>
 							<p>
 								Nie posiadasz konta?{' '}
@@ -142,4 +97,4 @@ const Login = () => {
 	)
 }
 
-export default Login
+export default Reset
