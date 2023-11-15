@@ -70,11 +70,23 @@ function Main() {
 						</div>
 					</div>
 					<div className={openNav ? 'nav__mobile-items' : 'nav__close-mobile-items'}>
-						<div className='nav__mobile-item'>Strona Główna</div>
+						<div className='nav__mobile-item'>
+							<Link to='home' smooth={true} duration={500}>
+								Strona Główna
+							</Link>
+						</div>
 						<div className='nav__bottom-line'></div>
-						<div className='nav__mobile-item'>Korzyści</div>
+						<div className='nav__mobile-item'>
+							<Link to='offerts' smooth={true} duration={500}>
+								Korzyści
+							</Link>
+						</div>
 						<div className='nav__bottom-line'></div>
-						<div className='nav__mobile-item'>Kontakt</div>
+						<div className='nav__mobile-item'>
+							<Link to='contact' smooth={true} duration={500}>
+								Kontakt
+							</Link>
+						</div>
 						<div className='nav__bottom-line'></div>
 						<div
 							className='nav__mobile-item'
@@ -121,14 +133,14 @@ function Main() {
 								Rozpocznij nauke
 							</button>
 						</div>
-						<div className='header__arrow-down' id='offerts'>
+						<div className='header__arrow-down'>
 							<Link to='offerts' smooth={true} duration={500}>
 								<RiArrowDownSLine />
 							</Link>
 						</div>
 					</div>
 				</section>
-				<section>
+				<section id='offerts'>
 					<div className='offerts'>
 						<h2 className='title'>Korzyści</h2>
 						<div className='offerts__cards'>
@@ -197,11 +209,11 @@ function Main() {
 								<h3 className='contact__contact-header'>Masz jakieś pytania? Skontaktuj się z nami</h3>
 								<div className='contact__description'>
 									<FiMail className='contact__contact-icon' />
-									<p>krzysztofkleka91@gmail.com</p>
+									<span>krzysztofkleka91@gmail.com</span>
 								</div>
 								<div className='contact__description'>
 									<AiFillPhone className='contact__contact-icon' />
-									<p>+48 573 226 219</p>
+									<p>+48 123 456 789</p>
 								</div>
 								<div className='contact__description'>
 									<BsDiscord className='contact__contact-icon' />

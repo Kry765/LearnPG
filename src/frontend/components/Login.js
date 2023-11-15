@@ -1,10 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../scss/_reset.scss'
 import { FaDatabase } from 'react-icons/fa'
 import { AiOutlineClose } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
+import { checkLogin } from '../../backend/guard/ProtectLink'
 
 const Login = () => {
+	useEffect(() => {
+		if (checkLogin()) {
+			navigate('../Dashboard')
+		} else {
+			navigate('./')
+		}
+	})
+
 	const navigate = useNavigate()
 	const [user_email, set_user_email] = useState('')
 	const [user_pwd, set_user_pwd] = useState('')
@@ -35,12 +44,12 @@ const Login = () => {
 				localStorage.setItem('token', data.token)
 				window.location.href = '/Dashboard'
 			} else if (response.status === 401) {
-				console.log('Invalid credentials')
+				setOutput('Nieprawidłowy adres E-mail lub hasło')
 			} else {
-				console.log('Error logging in')
+				setOutput('Wystąpił błąd')
 			}
 		} catch (error) {
-			setMessage('Network error')
+			setMessage('Wystąpił błąd')
 			console.error(error)
 		}
 	}
