@@ -77,7 +77,14 @@ function Dashboard() {
 					</button>
 				</div>
 				<div>
-					<button className='settings__btn'>Zresetuj hasło</button>
+					<button
+						className='settings__btn'
+						onClick={() => {
+							navigate('./ResetPwd')
+						}}
+					>
+						Zresetuj hasło
+					</button>
 				</div>
 				<div>
 					<button className='settings__btn'>Zmień Nick</button>
@@ -86,9 +93,14 @@ function Dashboard() {
 					<button className='settings__btn'>Wyzer punkty</button>
 				</div>
 				<div>
-					<button className='settings__btn' onClick={() => {
+					<button
+						className='settings__btn'
+						onClick={() => {
 							navigate('./DeleteUser')
-						}}>Skasuj konto</button>
+						}}
+					>
+						Skasuj konto
+					</button>
 				</div>
 			</div>
 		</div>

@@ -11,6 +11,7 @@ import ResetEmail from './frontend/components/ResetEmail'
 import ResultCloseQuestion from './frontend/components/ResultCloseQuestion'
 import Lab from './frontend/components/Lab'
 import DeleteUser from './frontend/components/DeleteUser'
+import ResetPwd from './frontend/components/ResetPwd'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
 					<Route path='/Dashboard/Exam' element={<Exam />} />
 					<Route path='/Dashboard/Results' element={<ResultCloseQuestion />} />
 					<Route path='/Dashboard/Help' element={<Help />} />
+					<Route path='/Dashboard/Settings/ResetPwd' element={<ResetPwd />} />
 					<Route path='/Dashboard/Settings/ResetEmail' element={<ResetEmail />} />
 					<Route path='/Dashboard/Settings/DeleteUser' element={<DeleteUser />} />
 				</Routes>
