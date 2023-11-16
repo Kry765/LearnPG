@@ -2,13 +2,38 @@
 @use './colors' as *;
 
 .settings {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 	width: 80vh;
 	&__btn {
 		margin: 1em;
 		background-color: $gray;
 		color: $white;
-		min-width: 80%;
+		width: 30vw;
+		min-height: 40px;
 		height: 20px;
 		border: none;
+		border-radius: 15px;
+		transition: background-color 0.7s;
+	}
+	&__btn:hover {
+		cursor: pointer;
+		background-color: $green;
+	}
+}
+
+@media (max-width: 992px) {
+	.dashboard {
+		&__menu-item {
+			display: none;
+		}
+	}
+
+	.settings {
+		&__btn {
+			width: 40vw;
+		}
 	}
 }
