@@ -30,4 +30,3 @@ const loginUser = app => {
 }
 
 module.exports = loginUser
-//test
