@@ -5,7 +5,6 @@ const deleteUserHandler = app => {
 		const { email } = req.body
 		try {
 			await User.destroy({ where: { user_email: email } })
-			alert('Konto zostało skasowane')
 			res.status(200).json({ message: 'skasowane' })
 		} catch (err) {
 			console.log(err)
