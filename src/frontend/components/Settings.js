@@ -51,7 +51,7 @@ function Dashboard() {
 						<div
 							className='dashboard__position-icon'
 							onClick={() => {
-								navigate('/dashboard/help')
+								navigate('../help')
 							}}
 						>
 							<BiSolidHelpCircle />
@@ -86,9 +86,14 @@ function Dashboard() {
 					<button className='settings__btn'>Wyzer punkty</button>
 				</div>
 				<div>
-					<button className='settings__btn' onClick={() => {
+					<button
+						className='settings__btn'
+						onClick={() => {
 							navigate('./DeleteUser')
-						}}>Skasuj konto</button>
+						}}
+					>
+						Skasuj konto
+					</button>
 				</div>
 			</div>
 		</div>
