@@ -22,6 +22,10 @@
 		cursor: pointer;
 		background-color: $green;
 	}
+
+	&__help {
+		display: none;
+	}
 }
 
 @media (max-width: 992px) {
