@@ -6,11 +6,11 @@ function Exam() {
 	const [questions, setQuestions] = useState([])
 	const [currentQuestion, setCurrentQuestion] = useState(0)
 	const [selectedAnswer, setSelectedAnswer] = useState(null)
-	const [results, setResults] = useState({ correct: 0})
-	const history = useHistory()
+	const [results, setResults] = useState({ correct: 0 })
+	// const history = useHistory()
 
 	const nextQuestion = () => {
-		setSelectedAnswer(null) 
+		setSelectedAnswer(null)
 		setCurrentQuestion(prevQuestion => prevQuestion + 1)
 	}
 
@@ -40,7 +40,7 @@ function Exam() {
 			.catch(err => {
 				console.error(err)
 			})
-	}, [currentQuestion]) 
+	}, [currentQuestion])
 	return (
 		<div>
 			<div>Egzamin z działu:</div>

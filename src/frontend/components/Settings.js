@@ -38,11 +38,11 @@ function Dashboard() {
 						<div
 							className='dashboard__position-icon'
 							onClick={() => {
-								navigate('/')
+								navigate('/dashboard')
 							}}
 						>
 							<AiFillHome />
-							<div className='dashboard__menu-item'>Strona Główna</div>
+							<div className='dashboard__menu-item'>Panel Główny</div>
 						</div>
 						<div className='dashboard__position-icon'>
 							<AiTwotoneSetting />
@@ -51,7 +51,7 @@ function Dashboard() {
 						<div
 							className='dashboard__position-icon'
 							onClick={() => {
-								navigate('../help')
+								navigate('/dashboard/help')
 							}}
 						>
 							<BiSolidHelpCircle />
@@ -77,7 +77,14 @@ function Dashboard() {
 					</button>
 				</div>
 				<div>
-					<button className='settings__btn'>Zresetuj hasło</button>
+					<button
+						className='settings__btn'
+						onClick={() => {
+							navigate('./resetPwd')
+						}}
+					>
+						Zresetuj hasło
+					</button>
 				</div>
 				<div>
 					<button className='settings__btn'>Zmień Nick</button>

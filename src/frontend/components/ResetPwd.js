@@ -1,31 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import '../scss/_reset.scss'
 import '../scss/_reset-email.scss'
-import { FaDatabase } from 'react-icons/fa'
-import { AiOutlineClose } from 'react-icons/ai'
-import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
-function ResetEmail() {
+function ResetPwd() {
 	const API_URL = 'http://localhost:4000'
-	const [new_email, set_new_email] = useState('')
+	const [repeat_pwd, set_repeat_pwd] = useState('')
+	const [user_pwd, set_user_pwd] = useState('')
 	const [output, setOutput] = useState('')
 
-	const checkEmail = () => {
-		const validEmail = new RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$')
-		if (!validEmail.test(new_email)) {
-			setOutput('Wprowadzony adres email jest nieprawidłowy')
-		} else {
-			setOutput('Twoja prośba o zresetowanie hasła została wysłana')
+	const checkPwd = () => {
+		if (repeat_pwd !== user_pwd) {
+			setOutput('Wprowadzone hasła są różne')
 		}
 	}
 
 	const handleSubmit = async e => {
 		e.preventDefault()
-		checkEmail()
+		await checkPwd()
 		try {
-			await axios.post(API_URL + '/resetpwd', {
-				new_email: new_email,
+			await axios.post(API_URL + '/resetuserpwd', {
+				pwd: user_pwd,
 			})
 			setOutput('Adres email został zaktualizowany')
 		} catch (err) {
@@ -39,17 +34,29 @@ function ResetEmail() {
 			<div className='flex-center'>
 				<div className='flex-center box-auth'>
 					<form onSubmit={handleSubmit}>
-						<h1 className='title-section'>Zmień E-mail</h1>
+						<h1 className='title-section'>Zmień hasło</h1>
 						<div className='flex-column'>
 							<div className='space-auth'>
 								<label>
-									<p>Nowy Email</p>
+									<p>Wprowadź hasło</p>
 									<input
 										className='input-auth'
-										type='text'
-										placeholder='Podaj nowy adres email'
-										value={new_email}
-										onChange={event => set_new_email(event.target.value)}
+										type='password'
+										placeholder='Wprowadź hasło'
+										value={user_pwd}
+										onChange={event => set_user_pwd(event.target.value)}
+									/>
+								</label>
+							</div>
+							<div className='space-auth'>
+								<label>
+									<p>Powtórz hasło</p>
+									<input
+										className='input-auth'
+										type='password'
+										placeholder='Powtórz hasło'
+										value={repeat_pwd}
+										onChange={event => set_repeat_pwd(event.target.value)}
 									/>
 								</label>
 							</div>
@@ -67,4 +74,4 @@ function ResetEmail() {
 	)
 }
 
-export default ResetEmail
+export default ResetPwd

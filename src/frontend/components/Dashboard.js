@@ -37,11 +37,11 @@ function Dashboard() {
 						<div
 							className='dashboard__position-icon'
 							onClick={() => {
-								navigate('/')
+								navigate('/dashboard')
 							}}
 						>
 							<AiFillHome />
-							<div className='dashboard__menu-item'>Strona Główna</div>
+							<div className='dashboard__menu-item'>Panel Główny</div>
 						</div>
 						<div
 							className='dashboard__position-icon'
@@ -72,7 +72,12 @@ function Dashboard() {
 			<div className='section'>
 				<div className='section flex-between'>
 					<div className='section__dashboard-box'>
-						<div className='section__theory flex-center'>
+						<div
+							className='section__theory flex-center'
+							onClick={() => {
+								navigate('/dashboard/learn')
+							}}
+						>
 							<div className='section__color-photo'></div>
 							<p className='section__card-description'>Rozpocznij naukę</p>
 						</div>
@@ -85,7 +90,12 @@ function Dashboard() {
 			<div className='section'>
 				<div className='section flex-between'>
 					<div className='section__dashboard-box'>
-						<div className='section__exam flex-center'>
+						<div
+							className='section__exam flex-center'
+							onClick={() => {
+								navigate('/dashboard/exam')
+							}}
+						>
 							<div className='section__color-photo'></div>
 							<p className='section__card-description'>Rozpocznij egzamin</p>
 						</div>

@@ -10,6 +10,7 @@ import Settings from './frontend/components/Settings'
 import ResetEmail from './frontend/components/ResetEmail'
 import ResultCloseQuestion from './frontend/components/ResultCloseQuestion'
 import Lab from './frontend/components/Lab'
+import ResetPwd from './frontend/components/ResetPwd'
 import DeleteUser from './frontend/components/DeleteUser'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
@@ -31,6 +32,7 @@ function App() {
 					<Route path='/Dashboard/Help' element={<Help />} />
 					<Route path='/Dashboard/Settings/ResetEmail' element={<ResetEmail />} />
 					<Route path='/Dashboard/Settings/DeleteUser' element={<DeleteUser />} />
+					<Route path='/Dashboard/Settings/ResetPwd' element={<ResetPwd />} />
 				</Routes>
 			</Router>
 		</div>

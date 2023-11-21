@@ -6,7 +6,6 @@ const resetEmailHandler = app => {
 
 		try {
 			await User.update({ user_email: new_email }, { where: {} })
-
 			console.log('Adres email został zaktualizowany')
 			res.status(200).json({ message: 'Adres email został zaktualizowany' })
 		} catch (err) {

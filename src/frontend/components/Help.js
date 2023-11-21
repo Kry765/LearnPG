@@ -5,11 +5,23 @@ import { AiFillHome } from 'react-icons/ai'
 import { AiTwotoneSetting } from 'react-icons/ai'
 import { BiSolidHelpCircle } from 'react-icons/bi'
 import { useNavigate } from 'react-router-dom'
-
+import { isLogin, outLogin } from './../../backend/guard/ProtectLink'
+import { useEffect } from 'react'
 import { FaPowerOff } from 'react-icons/fa'
 
 function Help() {
 	const navigate = useNavigate()
+
+	useEffect(() => {
+		if (!isLogin()) {
+			navigate('/Login')
+		}
+	}, [navigate])
+
+	const handleLoggout = () => {
+		outLogin()
+		navigate('/Login')
+	}
 	return (
 		<div>
 			<div className='dashboard'>
@@ -26,26 +38,31 @@ function Help() {
 							<div
 								className='dashboard__position-icon'
 								onClick={() => {
-									navigate('/')
+									navigate('/dashboard')
 								}}
 							>
 								<AiFillHome />
-								<div className='dashboard__menu-item'>Strona Główna</div>
-							</div>
-							<div className='dashboard__position-icon'>
-								<AiTwotoneSetting />
-								<div className='dashboard__menu-item'>Ustawienia</div>
+								<div className='dashboard__menu-item'>Panel Główny</div>
 							</div>
 							<div
 								className='dashboard__position-icon'
 								onClick={() => {
-									navigate('../help')
+									navigate('/dashboard/settings')
 								}}
 							>
+								<AiTwotoneSetting />
+								<div className='dashboard__menu-item'>Ustawienia</div>
+							</div>
+							<div className='dashboard__position-icon'>
 								<BiSolidHelpCircle />
 								<div className='dashboard__menu-item'>Pomoc</div>
 							</div>
-							<div className='dashboard__position-icon'>
+							<div
+								className='dashboard__position-icon'
+								onClick={() => {
+									handleLoggout()
+								}}
+							>
 								<FaPowerOff />
 								<div className='dashboard__menu-item'>Wyloguj się</div>
 							</div>
