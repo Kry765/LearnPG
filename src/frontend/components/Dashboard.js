@@ -2,18 +2,34 @@ import '../scss/_dashboard.scss'
 import { FaDatabase } from 'react-icons/fa'
 import { AiFillHome } from 'react-icons/ai'
 import { AiTwotoneSetting } from 'react-icons/ai'
+import axios from 'axios'
 import { BiSolidHelpCircle } from 'react-icons/bi'
 import { FaPowerOff } from 'react-icons/fa'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { isLogin, outLogin } from '../../backend/guard/ProtectLink'
 import { useNavigate } from 'react-router-dom'
 
 function Dashboard() {
+	const API_URL = 'http://localhost:4000'
 	const navigate = useNavigate()
+	const [Motivation, setMotivation] = useState('')
+	const [Author, setAuthor] = useState('')
 
 	useEffect(() => {
 		if (!isLogin()) {
 			navigate('/Login')
+		} else {
+			axios
+				.get(API_URL + '/getmotivations')
+				.then(res => {
+					const randomMotivation = res.data[Math.floor(Math.random() * res.data.length)]
+
+					setMotivation(randomMotivation.motivation_text)
+					setAuthor(randomMotivation.motivation_author)
+				})
+				.catch(err => {
+					console.log(err)
+				})
 		}
 	}, [navigate])
 
@@ -82,7 +98,8 @@ function Dashboard() {
 							<p className='section__card-description'>Rozpocznij naukę</p>
 						</div>
 						<div className='section__score flex-center'>
-							<p className='section__card-description'>Zdobyte punkty</p>
+							<p className='section__card-description'>Zdobyte punkty:</p>
+							<p>0/100</p>
 						</div>
 					</div>
 				</div>
@@ -100,7 +117,10 @@ function Dashboard() {
 							<p className='section__card-description'>Rozpocznij egzamin</p>
 						</div>
 						<div className='section__score flex-center'>
-							<p className='section__card-description'>Cytat na dziś</p>
+							<p className='section__card-description'>
+								<p>{Motivation}</p>
+								<p>{Author}</p>
+							</p>
 						</div>
 					</div>
 				</div>
