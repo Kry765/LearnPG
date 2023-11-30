@@ -1,0 +1,66 @@
+@use '_colors.scss' as *;
+
+.exam {
+	&__exam-lists {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	&__question-nr {
+		font-weight: bold;
+	}
+
+	&__header {
+		margin: 3em;
+	}
+
+	&__exam-list {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: $gray;
+		color: $white;
+		width: 80vw;
+		height: 50px;
+		margin: 2em 0;
+		border-radius: 15px;
+	}
+
+	&__exam-check {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	&__radio {
+		display: flex;
+		position: absolute;
+		margin: 0 1em;
+		width: 20px;
+		height: 20px;
+		left: 0px;
+		border: none;
+		background-color: black;
+	}
+
+	&__exam-btn {
+		background-color: $gray;
+		color: $white;
+		border: none;
+		margin: 1em 2em;
+		width: 200px;
+		height: 40px;
+		border-radius: 15px;
+		&--next {
+			background-color: $contrast-color;
+			color: $white;
+			border: none;
+			margin: 1em 2em;
+			width: 200px;
+			height: 40px;
+			border-radius: 15px;
+		}
+	}
+}

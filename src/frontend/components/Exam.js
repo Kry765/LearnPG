@@ -1,4 +1,7 @@
 import axios from 'axios'
+import '../scss/_reset.scss'
+import '../scss/_exam.scss'
+
 import { useEffect, useHistory, useState } from 'react'
 
 function Exam() {
@@ -23,11 +26,9 @@ function Exam() {
 		if (questions[currentQuestion]) {
 			const correctAnswer = questions[currentQuestion].correct_answer
 			const selectedOption = String.fromCharCode(65 + selectedAnswer)
-
 			const isAnswerCorrect = selectedOption === correctAnswer
-			alert(isAnswerCorrect ? 'Poprawna odpowiedź!' : 'Niestety, odpowiedź niepoprawna.')
-		} else {
-			alert('Coś poszło nie tak. Spróbuj ponownie później.')
+
+			alert(isAnswerCorrect ? 'Poprawna odpowiedź! otrzymujesz punkt' : 'Niestety, odpowiedź niepoprawna.')
 		}
 	}
 
@@ -42,46 +43,52 @@ function Exam() {
 			})
 	}, [currentQuestion])
 	return (
-		<div>
-			<div>Egzamin z działu:</div>
-			<div>
-				<p></p>
-			</div>
+		<div className='exam'>
+			<h2 className='exam__header'>Egzamin z działu:</h2>
 			{questions.length > 0 && (
-				<div>
-					<div>Pytanie nr. {currentQuestion + 1}</div>
-					<label>
-						<input
-							type='radio'
-							value='0'
-							checked={selectedAnswer === 0}
-							onChange={e => setSelectedAnswer(Number(e.target.value))}
-						/>
-						A. {questions[currentQuestion].answer_a}
-					</label>
-
-					<label>
-						<input
-							type='radio'
-							value='1'
-							checked={selectedAnswer === 1}
-							onChange={e => setSelectedAnswer(Number(e.target.value))}
-						/>
-						B. {questions[currentQuestion].answer_b}
-					</label>
-
-					<label>
-						<input
-							type='radio'
-							value='2'
-							checked={selectedAnswer === 2}
-							onChange={e => setSelectedAnswer(Number(e.target.value))}
-						/>
-						C. {questions[currentQuestion].answer_c}
-					</label>
-
-					<input type='button' value='sprawdz' onClick={checkQuestion} />
-					<input type='button' value='dalej' onClick={nextQuestion} />
+				<div className='exam__exam-lists'>
+					<div className='exam__question-nr'>Pytanie nr. {currentQuestion + 1}</div>
+					<div className='exam__exam-list'>
+						<label>
+							<input
+								className='exam__radio'
+								type='radio'
+								value='0'
+								checked={selectedAnswer === 0}
+								onChange={e => setSelectedAnswer(Number(e.target.value))}
+							/>
+							A. {questions[currentQuestion].answer_a}
+						</label>
+					</div>
+					<div className='exam__exam-list'>
+						<label>
+							<input
+								className='exam__radio'
+								type='radio'
+								value='1'
+								checked={selectedAnswer === 1}
+								onChange={e => setSelectedAnswer(Number(e.target.value))}
+							/>
+							B. {questions[currentQuestion].answer_b}
+						</label>
+					</div>
+					<div className='exam__exam-list'>
+						<label>
+							<input
+								className='exam__radio'
+								type='radio'
+								value='2'
+								checked={selectedAnswer === 2}
+								onChange={e => setSelectedAnswer(Number(e.target.value))}
+							/>
+							C. {questions[currentQuestion].answer_c}
+						</label>
+					</div>
+					<div className='exam__exam-check'>
+						<input className='exam__exam-btn' type='button' value='sprawdz' onClick={checkQuestion} />
+						<input className='exam__exam-btn--next' type='button' value='dalej' onClick={nextQuestion} />
+					</div>
+					<div></div>
 				</div>
 			)}
 		</div>

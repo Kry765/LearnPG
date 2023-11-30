@@ -14,6 +14,7 @@ function Dashboard() {
 	const navigate = useNavigate()
 	const [Motivation, setMotivation] = useState('')
 	const [Author, setAuthor] = useState('')
+	const [point, setPoint] = useState(0)
 
 	useEffect(() => {
 		if (!isLogin()) {
@@ -26,6 +27,14 @@ function Dashboard() {
 
 					setMotivation(randomMotivation.motivation_text)
 					setAuthor(randomMotivation.motivation_author)
+				})
+				.catch(err => {
+					console.log(err)
+				})
+			axios
+				.get(API_URL + '/getscore')
+				.then(res => {
+					setPoint(res.data[0].point)
 				})
 				.catch(err => {
 					console.log(err)
@@ -99,7 +108,7 @@ function Dashboard() {
 						</div>
 						<div className='section__score flex-center'>
 							<p className='section__card-description'>Zdobyte punkty:</p>
-							<p>0/100</p>
+							<p>{point}/100</p>
 						</div>
 					</div>
 				</div>

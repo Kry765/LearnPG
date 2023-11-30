@@ -10,6 +10,7 @@ const createUser = app => {
 			const newUser = await User.create({
 				user_email: user_email,
 				user_pwd: hash,
+				user_point: 0,
 			})
 
 			res.status(201).json(newUser)

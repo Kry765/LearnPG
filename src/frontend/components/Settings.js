@@ -87,9 +87,6 @@ function Dashboard() {
 					</button>
 				</div>
 				<div>
-					<button className='settings__btn'>Zmień Nick</button>
-				</div>
-				<div>
 					<button className='settings__btn'>Wyzer punkty</button>
 				</div>
 				<div>
