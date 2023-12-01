@@ -8,7 +8,7 @@ import Learn from './frontend/components/Learn'
 import Exam from './frontend/components/Exam'
 import Settings from './frontend/components/Settings'
 import ResetEmail from './frontend/components/ResetEmail'
-import ResultCloseQuestion from './frontend/components/ResultCloseQuestion'
+import ResultsCloseQuestion from './frontend/components/ResultsCloseQuestion'
 import Lab from './frontend/components/Lab'
 import ResetPwd from './frontend/components/ResetPwd'
 import DeleteUser from './frontend/components/DeleteUser'
@@ -28,7 +28,7 @@ function App() {
 					<Route path='/Dashboard/Learn' element={<Learn />} />
 					<Route path='/Dashboard/Learn/Lab' element={<Lab />} />
 					<Route path='/Dashboard/Exam' element={<Exam />} />
-					<Route path='/Dashboard/Results' element={<ResultCloseQuestion />} />
+					<Route path='/Dashboard/Exam/ResultsCloseQuestion' element={<ResultsCloseQuestion />} />
 					<Route path='/Dashboard/Help' element={<Help />} />
 					<Route path='/Dashboard/Settings/ResetEmail' element={<ResetEmail />} />
 					<Route path='/Dashboard/Settings/DeleteUser' element={<DeleteUser />} />

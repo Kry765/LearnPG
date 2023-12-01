@@ -1,4 +1,4 @@
-function ResultCloseQuestion() {
+function ResultsCloseQuestion() {
 	return (
 		<div>
 			<h1>Wyniki Egzaminu</h1>
@@ -7,4 +7,4 @@ function ResultCloseQuestion() {
 	)
 }
 
-export default ResultCloseQuestion
+export default ResultsCloseQuestion
