@@ -9,6 +9,10 @@ const OpenQuestion = db.define(
 			autoIncrement: true,
 			primaryKey: true,
 		},
+		question_id: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+		},
 		question: {
 			type: DataTypes.STRING,
 			allowNull: false,

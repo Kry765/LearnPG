@@ -9,7 +9,7 @@ import Exam from './frontend/components/Exam'
 import Settings from './frontend/components/Settings'
 import ResetEmail from './frontend/components/ResetEmail'
 import ResultsCloseQuestion from './frontend/components/ResultsCloseQuestion'
-import Lab from './frontend/components/Lab'
+import LearnTest from './frontend/components/LearnTest'
 import ResetPwd from './frontend/components/ResetPwd'
 import DeleteUser from './frontend/components/DeleteUser'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
@@ -26,7 +26,7 @@ function App() {
 					<Route path='/Dashboard' element={<Dashboard />} />
 					<Route path='/Dashboard/Settings' element={<Settings />} />
 					<Route path='/Dashboard/Learn' element={<Learn />} />
-					<Route path='/Dashboard/Learn/Lab' element={<Lab />} />
+					<Route path='/Dashboard/Learn/LearnTest/:topic_id' element={<LearnTest />} />
 					<Route path='/Dashboard/Exam' element={<Exam />} />
 					<Route path='/Dashboard/Exam/ResultsCloseQuestion' element={<ResultsCloseQuestion />} />
 					<Route path='/Dashboard/Help' element={<Help />} />

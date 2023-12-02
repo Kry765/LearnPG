@@ -1,12 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import '../scss/_learn.scss'
+import { useNavigate } from 'react-router-dom'
 
 const Learn = () => {
 	const API_URL = 'http://localhost:4000'
 
 	const [topics, setTopics] = useState([])
 	const [handleTopic, setHandleTopic] = useState(null)
+	const navigate = useNavigate()
+
+	const takeMeTest = () => {
+		if (handleTopic && handleTopic.question_id) {
+			navigate(`/Dashboard/Learn/LearnTest/${handleTopic.question_id}`)
+		} else {
+			console.log('handleTopic lub handleTopic.question_id jest falsy')
+		}
+	}
 
 	const handleItem = index => {
 		setHandleTopic(topics[index])
@@ -50,8 +60,10 @@ const Learn = () => {
 			<div className='learn__right-menu'>
 				<h1>Rozpocznij nauke</h1>
 				<h3>Wybierz interesujące cię zagadnienie</h3>
-				<div className='learn__description'>{getDescription()}</div>
-				<button>Sprawdź wiedzę</button>
+				<div className='learn__description'>
+					<p>{getDescription()}</p>
+				</div>
+				<button onClick={takeMeTest}>Sprawdź wiedzę</button>
 			</div>
 		</div>
 	)
