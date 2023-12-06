@@ -63,12 +63,14 @@ function LearnTest() {
 			navigate('/Dashboard/Exam/ResultsCloseQuestion')
 		} else {
 			axios
-				.get(API_URL + '/getopenquestion/${question_id}')
+				.post(`${API_URL}/getopenquestion/${question_id}`)
 				.then(res => {
 					setQuestions(res.data)
 				})
 				.catch(err => {
 					console.error(err)
+					// Log the error details
+					console.log('Error details:', err.response)
 				})
 		}
 	}, [currentQuestion])

@@ -1,8 +1,13 @@
 const Question = require('../models/open_question')
 
 const getOpenQuestion = app => {
-	app.get('/getopenquestion/:question_id', (req, res) => {
+	app.post('/getopenquestion/:question_id', (req, res) => {
 		const { question_id } = req.params
+
+		// Check if question_id is not provided or not a number
+		if (!question_id || isNaN(question_id)) {
+			return res.status(400).json({ error: 'Invalid question ID' })
+		}
 
 		Question.findOne({
 			where: { question_id },

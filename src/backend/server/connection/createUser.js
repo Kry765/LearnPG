@@ -22,3 +22,4 @@ const createUser = app => {
 }
 
 module.exports = createUser
+

@@ -95,43 +95,36 @@ function Dashboard() {
 			</div>
 
 			<div className='section'>
-				<div className='section flex-between'>
-					<div className='section__dashboard-box'>
-						<div
-							className='section__theory flex-center'
-							onClick={() => {
-								navigate('/dashboard/learn')
-							}}
-						>
-							<div className='section__color-photo'></div>
-							<p className='section__card-description'>Rozpocznij naukę</p>
-						</div>
-						<div className='section__score flex-center'>
-							<p className='section__card-description'>Zdobyte punkty:</p>
-							<p>{point}/100</p>
-						</div>
-					</div>
+				<div
+					className='section__theory flex-center'
+					onClick={() => {
+						navigate('/dashboard/learn')
+					}}
+				>
+					<div className='section__color-photo'></div>
+					<p className='section__card-description'>Rozpocznij naukę</p>
+				</div>
+				<div className='section__score flex-center'>
+					<p className='section__card-description'>Zdobyte punkty:</p>
+					<p>{point}/100</p>
 				</div>
 			</div>
-			<div className='section'>
-				<div className='section flex-between'>
-					<div className='section__dashboard-box'>
-						<div
-							className='section__exam flex-center'
-							onClick={() => {
-								navigate('/dashboard/exam')
-							}}
-						>
-							<div className='section__color-photo'></div>
-							<p className='section__card-description'>Rozpocznij egzamin</p>
-						</div>
-						<div className='section__score flex-center'>
-							<p className='section__card-description'>
-								<p>{Motivation}</p>
-								<p>{Author}</p>
-							</p>
-						</div>
-					</div>
+
+			<div className='section__dashboard-box'>
+				<div
+					className='section__exam flex-center'
+					onClick={() => {
+						navigate('/dashboard/exam')
+					}}
+				>
+					<div className='section__color-photo'></div>
+					<p className='section__card-description'>Rozpocznij egzamin</p>
+				</div>
+				<div className='section__score flex-center'>
+					<p className='section__card-description'>
+						<p>{Motivation}</p>
+						<p>{Author}</p>
+					</p>
 				</div>
 			</div>
 		</div>
