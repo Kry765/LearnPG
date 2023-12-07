@@ -3,7 +3,6 @@
 
 .dashboard {
 	display: flex;
-	max-height: 100vh;
 	&__icon {
 		position: fixed;
 		padding: 1em;
@@ -12,7 +11,8 @@
 	&__left-menu {
 		background-color: $dark;
 		min-width: 20%;
-		min-height: 100vh;
+		height: 100%;
+		top: 0;
 	}
 	&__menu {
 		max-width: 100%;
@@ -46,52 +46,39 @@
 }
 
 .section {
-	max-width: 100%;
-	margin: 2em;
-	&__theory {
-		position: relative;
-		font-weight: bold;
-		width: 400px;
-		height: 200px;
-		background-image: url('../image/learnicon.jpg');
-		background-position: center;
-		background-size: cover;
-		border-radius: 15px;
+	min-width: 80%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	&__card {
+		width: 500px;
+		height: 250px;
+		background-color: $green;
 		margin: 2em;
-	}
-	&__exam {
-		position: relative;
-		font-weight: bold;
-		margin: 2em;
-		width: 400px;
-		height: 200px;
-		background-image: url('../image/test_icon.jpg');
-		background-position: center;
-		background-size: cover;
 		border-radius: 15px;
+		&--gray {
+			display: flex;
+			justify-content: center;
+			align-items: flex-start;
+			flex-direction: column;
+			width: 500px;
+			height: 250px;
+			margin: 2em;
+			border-radius: 15px;
+			background-color: $gray;
+		}
 	}
-	&__color-photo {
-		position: absolute;
+	&__left-box,
+	&__right-box {
 		width: 100%;
-		height: 100%;
-		background-color: rgba(0, 0, 0, 0.5);
-		border-radius: 15px;
-		transition: background-color 3s;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
 	}
-	&__color-photo:hover {
-		cursor: pointer;
-		background-color: $green;
-		opacity: 0.5;
-	}
-	&__card-description {
-		z-index: 1;
-	}
-	&__score {
-		margin: 2em;
-		width: 400px;
-		height: 200px;
-		background-color: $green;
-		border-radius: 15px;
+	&__motivate {
+		padding: 1em;
 	}
 }
 
@@ -102,27 +89,6 @@
 		}
 		&__icon {
 			padding: 0.5em;
-		}
-	}
-
-	.section {
-		&__welcome-text {
-			text-align: center;
-		}
-		&__theory {
-			width: 200px;
-			height: 100px;
-		}
-		&__exam {
-			width: 200px;
-			height: 100px;
-		}
-		&__score {
-			margin: 2em;
-			width: 200px;
-			height: 100px;
-			background-color: $green;
-			border-radius: 15px;
 		}
 	}
 }

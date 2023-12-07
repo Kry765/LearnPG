@@ -93,38 +93,36 @@ function Dashboard() {
 					</div>
 				</div>
 			</div>
-
 			<div className='section'>
-				<div
-					className='section__theory flex-center'
-					onClick={() => {
-						navigate('/dashboard/learn')
-					}}
-				>
-					<div className='section__color-photo'></div>
-					<p className='section__card-description'>Rozpocznij naukę</p>
+				<div className='section__left-box'>
+					<div
+						className='section__card'
+						onClick={() => {
+							navigate('/dashboard/learn')
+						}}
+					>
+						<div></div>
+						<p>Rozpocznij naukę</p>
+					</div>
+					<div className='section__card'>
+						<p>Zdobyte punkty:</p>
+						<p>{point}/100</p>
+					</div>
 				</div>
-				<div className='section__score flex-center'>
-					<p className='section__card-description'>Zdobyte punkty:</p>
-					<p>{point}/100</p>
-				</div>
-			</div>
-
-			<div className='section__dashboard-box'>
-				<div
-					className='section__exam flex-center'
-					onClick={() => {
-						navigate('/dashboard/exam')
-					}}
-				>
-					<div className='section__color-photo'></div>
-					<p className='section__card-description'>Rozpocznij egzamin</p>
-				</div>
-				<div className='section__score flex-center'>
-					<p className='section__card-description'>
-						<p>{Motivation}</p>
-						<p>{Author}</p>
-					</p>
+				<div className='section__right-box'>
+					<div
+						className='section__card'
+						onClick={() => {
+							navigate('/dashboard/exam')
+						}}
+					>
+						<div></div>
+						<p>Rozpocznij egzamin</p>
+					</div>
+					<div className='section__card--gray'>
+						<em className='section__motivate'>"{Motivation}"</em>
+						<em className='section__motivate'>{Author}</em>
+					</div>
 				</div>
 			</div>
 		</div>
