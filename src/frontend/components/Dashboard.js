@@ -50,13 +50,6 @@ function Dashboard() {
 	return (
 		<div className='dashboard'>
 			<div className='dashboard__left-menu'>
-				<div className='dashboard__icon'>
-					<FaDatabase
-						onClick={() => {
-							navigate('/')
-						}}
-					/>
-				</div>
 				<div className='dashboard__menu'>
 					<div className='dashboard__menu-items'>
 						<div
@@ -70,7 +63,7 @@ function Dashboard() {
 						</div>
 						<div
 							className='dashboard__position-icon'
-							onClick={() => {
+								onClick={() => {
 								navigate('./settings')
 							}}
 						>
@@ -94,15 +87,19 @@ function Dashboard() {
 				</div>
 			</div>
 			<div className='section'>
+				<div className='section__hello-word'>
+					<h3>Witaj użytkowniku</h3>
+					<p>Od czego dziś zaczynamy</p>	
+				</div>
 				<div className='section__left-box'>
 					<div
+					
 						className='section__card'
 						onClick={() => {
 							navigate('/dashboard/learn')
 						}}
-					>
-						<div></div>
-						<p>Rozpocznij naukę</p>
+					>Rozpocznij naukę
+						<div className='section__opacity-card'></div>
 					</div>
 					<div className='section__card'>
 						<p>Zdobyte punkty:</p>
@@ -116,7 +113,7 @@ function Dashboard() {
 							navigate('/dashboard/exam')
 						}}
 					>
-						<div></div>
+						<div className='section__opacity-exam-card'></div>	
 						<p>Rozpocznij egzamin</p>
 					</div>
 					<div className='section__card--gray'>

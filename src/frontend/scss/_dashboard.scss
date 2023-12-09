@@ -9,8 +9,10 @@
 		font-size: 2.4rem;
 	}
 	&__left-menu {
+		position: sticky;
+		top: 0;
 		background-color: $dark;
-		min-width: 20%;
+		min-width: 10%;
 		height: 100%;
 		top: 0;
 	}
@@ -52,9 +54,16 @@
 	align-items: center;
 	flex-direction: column;
 	&__card {
-		width: 500px;
-		height: 250px;
-		background-color: $green;
+		overflow: hidden;
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		min-width: 40%;
+		height: 150px;
+		background-color: rgba(13, 115, 119, 0.5);
+		font-weight: bold;
 		margin: 2em;
 		border-radius: 15px;
 		&--gray {
@@ -62,12 +71,52 @@
 			justify-content: center;
 			align-items: flex-start;
 			flex-direction: column;
-			width: 500px;
-			height: 250px;
+			width: 40%;
+			height: 150px;
 			margin: 2em;
 			border-radius: 15px;
 			background-color: $gray;
 		}
+	}
+	&__card:hover{
+		cursor: pointer;
+		background-color: rgba(0, 247, 255, 0.5);
+	}
+	&__text-card{
+		position: absolute;
+		z-index: 2;
+		color: #fff
+	}
+	&__opacity-card{
+		z-index: -2;
+		position: absolute;
+		top: 0;
+		height: 100%;
+		background-image: url('../image/learnicon.jpg');
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+		min-width: 100%;
+		border-radius: 15px;
+	}
+	&__opacity-exam-card{
+		z-index: -2;
+		position: absolute;
+		top: 0;
+		height: 100%;
+		background-image: url('../image/test_icon.jpg');
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+		min-width: 100%;
+		border-radius: 15px;
+	}
+	&__hello-word{
+		display: flex;
+		justify-content: flex-start;
+		flex-direction: column;
+		align-items: flex-start;
+		width: 85%;
 	}
 	&__left-box,
 	&__right-box {
@@ -90,5 +139,15 @@
 		&__icon {
 			padding: 0.5em;
 		}
+	}
+
+	.section{
+		&__card{
+			width: 100%;
+		&--gray{
+			width: 100%;
+		}
+		}
+
 	}
 }
