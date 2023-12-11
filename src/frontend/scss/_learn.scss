@@ -1,17 +1,35 @@
+@use '_colors.scss' as *;
+@use '_reset.scss' as *;
+
 .learn {
+	position: relative;
 	display: flex;
-	flex-direction: row;
+
+	&__navigation {
+		background-color: black;
+		max-height: 100%;
+		display: flex;
+		align-items: center;
+	}
+	&__position {
+		position: sticky;
+		min-height: 100%;
+	}
 	&__left-menu {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: 25%;
+		width: 550px;
 		height: 100vh;
 		background-color: #404040;
 		color: #fff;
 	}
 	&__right-menu {
-		color: #404040;
+		color: $white;
+		padding: 1em 2em;
+	}
+	&__header-space {
+		margin: 30px;
 	}
 
 	&__menu-item {
@@ -21,6 +39,25 @@
 		cursor: pointer;
 	}
 	&__description {
+		color: #fff;
 		padding: 1em;
+	}
+	&__left-menu {
+		position: sticky;
+		top: 0;
+		background-color: $gray;
+		min-width: 10%;
+		min-height: 100%;
+		top: 0;
+	}
+	&__btn {
+		background-color: $contrast-color;
+		color: $white;
+		width: 20%;
+		height: 40px;
+		padding: 10px 25px;
+		border-radius: 15px;
+		border: none;
+		margin-bottom: 20px;
 	}
 }

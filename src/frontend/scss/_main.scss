@@ -157,6 +157,8 @@
 		background-color: $green;
 	}
 	&__arrow-down {
+		position: fixed;
+		bottom: 0;
 		padding-top: 1em;
 		display: flex;
 		justify-content: flex-end;
@@ -165,6 +167,7 @@
 		font-size: 3rem;
 		font-weight: bold;
 		transition: color 1s;
+		scroll-behavior: smooth;
 	}
 	&__arrow-down:hover {
 		color: $green;
@@ -185,7 +188,7 @@
 	}
 	&__section-card {
 		margin: 1em;
-		padding: 1em;
+		padding: 2em;
 		height: 100%;
 	}
 	&__card {
@@ -291,6 +294,8 @@
 	}
 }
 .footer {
+	background-color: $dark;
+	z-index: 105;
 	max-width: 100%;
 	padding: 2em;
 	text-align: center;
@@ -361,5 +366,6 @@
 
 	.footer {
 		padding: 2em;
+		z-index: 100;
 	}
 }

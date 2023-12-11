@@ -1,4 +1,4 @@
-import Main from './frontend/components/Main'
+import StartingPage from './frontend/components/StartingPage'
 import Help from './frontend/components/Help'
 import Reset from './frontend/components/Reset'
 import Register from './frontend/components/Register'
@@ -19,7 +19,7 @@ function App() {
 		<div className='App'>
 			<Router>
 				<Routes>
-					<Route path='/' element={<Main />} />
+					<Route path='/' element={<StartingPage />} />
 					<Route path='/Register' element={<Register />} />
 					<Route path='/Login' element={<Login />} />
 					<Route path='/Reset' element={<Reset />} />
@@ -40,5 +40,3 @@ function App() {
 }
 
 export default App
-
-

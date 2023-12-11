@@ -14,8 +14,9 @@ import '../scss/_main.scss'
 import emailjs from 'emailjs-com'
 import { Link, animateScroll as scroll } from 'react-scroll'
 
-function Main() {
+function StartingPage() {
 	const [openNav, setOpenNav] = useState('')
+	const [scroll, setScroll] = useState(1000)
 	const navigate = useNavigate()
 
 	const sendEmail = e => {
@@ -28,6 +29,13 @@ function Main() {
 				console.log(error.text)
 			}
 		)
+	}
+
+	const scrollDown = () => {
+		window.scrollBy({
+			top: scroll,
+			behavior: 'smooth',
+		})
 	}
 
 	return (
@@ -133,11 +141,9 @@ function Main() {
 								Rozpocznij nauke
 							</button>
 						</div>
-						<div className='header__arrow-down'>
-							<Link to='offerts' smooth={true} duration={500}>
-								<RiArrowDownSLine />
-							</Link>
-						</div>
+						<a className='header__arrow-down'>
+							<RiArrowDownSLine onClick={scrollDown} />
+						</a>
 					</div>
 				</section>
 				<section id='offerts'>
@@ -174,11 +180,6 @@ function Main() {
 								</div>
 								<div className='offerts__card-description'>Zapisuj swoje rezultaty i kontroluj swój proces nauki.</div>
 							</div>
-						</div>
-						<div className='contact__arrow-down' id='offerts'>
-							<Link to='contact' smooth={true} duration={500}>
-								<RiArrowDownSLine />
-							</Link>
 						</div>
 					</div>
 				</section>
@@ -233,4 +234,4 @@ function Main() {
 	)
 }
 
-export default Main
+export default StartingPage
