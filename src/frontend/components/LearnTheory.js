@@ -8,8 +8,9 @@ import { AiTwotoneSetting } from 'react-icons/ai'
 import { BiSolidHelpCircle } from 'react-icons/bi'
 import { FaPowerOff } from 'react-icons/fa'
 import { isLogin, outLogin } from '../../backend/guard/ProtectLink'
+import { RxHamburgerMenu } from 'react-icons/rx'
 
-const Learn = () => {
+const LearnTheory = () => {
 	const API_URL = 'http://localhost:4000'
 	const [topics, setTopics] = useState([])
 	const [handleTopic, setHandleTopic] = useState(null)
@@ -58,35 +59,44 @@ const Learn = () => {
 
 	return (
 		<div className='learn'>
-			<div className='learn__navigation'>
+			<div className='learn__mobile-menu'>
 				<div>
-					<div
-						onClick={() => {
-							navigate('/dashboard')
-						}}
-					>
-						<AiFillHome />
-					</div>
-					<div
-						onClick={() => {
-							navigate('./settings')
-						}}
-					>
-						<AiTwotoneSetting />
-					</div>
-					<div
-						onClick={() => {
-							navigate('/dashboard/help')
-						}}
-					>
-						<BiSolidHelpCircle />
-					</div>
-					<div onClick={handleLoggout}>
-						<FaPowerOff />
-					</div>
+					<RxHamburgerMenu className='learn__mobile-item' />
+				</div>
+				<div>
+					<AiTwotoneSetting className='learn__mobile-item' />
 				</div>
 			</div>
-			<div className='learn__position'>
+			<div className='learn__box--sticky-menu'>
+				<div
+					className='learn__space-icon'
+					onClick={() => {
+						navigate('/dashboard')
+					}}
+				>
+					<AiFillHome />
+				</div>
+				<div
+					className='learn__space-icon'
+					onClick={() => {
+						navigate('./settings')
+					}}
+				>
+					<AiTwotoneSetting />
+				</div>
+				<div
+					className='learn__space-icon'
+					onClick={() => {
+						navigate('/dashboard/help')
+					}}
+				>
+					<BiSolidHelpCircle />
+				</div>
+				<div className='learn__space-icon' onClick={handleLoggout}>
+					<FaPowerOff />
+				</div>
+			</div>
+			<div className='learn__box--sticky-section'>
 				<div className='learn__menu-items'>
 					{topics.map((topic, index) => (
 						<div
@@ -99,20 +109,22 @@ const Learn = () => {
 					))}
 				</div>
 			</div>
-			<div className='learn__right-menu'>
-				<h1 className='learn__header-space'>Rozpocznij nauke</h1>
-				<h3 className='learn__header-space'>Wybierz interesujące cię zagadnienie</h3>
-				<div className='learn__description'>
+			<div className='learn__description'>
+				<h1>Rozpocznij nauke</h1>
+				<h3>Wybierz interesujące cię zagadnienie</h3>
+				<div>
 					<p>{getDescription()}</p>
 				</div>
 				<div className='flex-center'>
-					<button onClick={takeMeTest} className='learn__btn'>
-						Sprawdź wiedzę
-					</button>
+					{handleTopic && (
+						<button className='learn__btn' onClick={takeMeTest}>
+							Sprawdź wiedzę
+						</button>
+					)}
 				</div>
 			</div>
 		</div>
 	)
 }
 
-export default Learn
+export default LearnTheory

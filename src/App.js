@@ -4,7 +4,7 @@ import Reset from './frontend/components/Reset'
 import Register from './frontend/components/Register'
 import Login from './frontend/components/Login'
 import Dashboard from './frontend/components/Dashboard'
-import Learn from './frontend/components/Learn'
+import LearnTheory from './frontend/components/LearnTheory'
 import Exam from './frontend/components/Exam'
 import Settings from './frontend/components/Settings'
 import ResetEmail from './frontend/components/ResetEmail'
@@ -25,7 +25,7 @@ function App() {
 					<Route path='/Reset' element={<Reset />} />
 					<Route path='/Dashboard' element={<Dashboard />} />
 					<Route path='/Dashboard/Settings' element={<Settings />} />
-					<Route path='/Dashboard/Learn' element={<Learn />} />
+					<Route path='/Dashboard/Leartheory' element={<LearnTheory />} />
 					<Route path='/Dashboard/Learn/LearnTest/:topic_id' element={<LearnTest />} />
 					<Route path='/Dashboard/Exam' element={<Exam />} />
 					<Route path='/Dashboard/Exam/ResultsCloseQuestion' element={<ResultsCloseQuestion />} />

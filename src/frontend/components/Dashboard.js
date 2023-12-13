@@ -63,7 +63,7 @@ function Dashboard() {
 						</div>
 						<div
 							className='dashboard__position-icon'
-								onClick={() => {
+							onClick={() => {
 								navigate('./settings')
 							}}
 						>
@@ -89,16 +89,16 @@ function Dashboard() {
 			<div className='section'>
 				<div className='section__hello-word'>
 					<h3>Witaj użytkowniku</h3>
-					<p>Od czego dziś zaczynamy</p>	
+					<p>Od czego dziś zaczynamy</p>
 				</div>
 				<div className='section__left-box'>
 					<div
-					
 						className='section__card'
 						onClick={() => {
-							navigate('/dashboard/learn')
+							navigate('/dashboard/Leartheory')
 						}}
-					>Rozpocznij naukę
+					>
+						Rozpocznij naukę
 						<div className='section__opacity-card'></div>
 					</div>
 					<div className='section__card'>
@@ -113,7 +113,7 @@ function Dashboard() {
 							navigate('/dashboard/exam')
 						}}
 					>
-						<div className='section__opacity-exam-card'></div>	
+						<div className='section__opacity-exam-card'></div>
 						<p>Rozpocznij egzamin</p>
 					</div>
 					<div className='section__card--gray'>
