@@ -14,6 +14,7 @@ const LearnTheory = () => {
 	const API_URL = 'http://localhost:4000'
 	const [topics, setTopics] = useState([])
 	const [handleTopic, setHandleTopic] = useState(null)
+	const [openSettings, setOpenSettings] = useState('')
 	const navigate = useNavigate()
 
 	const handleLoggout = () => {
@@ -59,12 +60,12 @@ const LearnTheory = () => {
 
 	return (
 		<div className='learn'>
-			<div className='learn__mobile-menu'>
+			<div className='learn__mobile-settings-menu'>
 				<div>
-					<RxHamburgerMenu className='learn__mobile-item' />
+					<RxHamburgerMenu />
 				</div>
 				<div>
-					<AiTwotoneSetting className='learn__mobile-item' />
+					<AiTwotoneSetting />
 				</div>
 			</div>
 			<div className='learn__box--sticky-menu'>

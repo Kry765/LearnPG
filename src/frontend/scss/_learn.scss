@@ -8,7 +8,17 @@
 		margin: 2em 0;
 		transition: color 1s;
 	}
+	&__menu-item {
+		padding: 2em;
+		transition: 0.5s color;
+	}
+	&__menu-item:hover {
+		cursor: pointer;
+		color: $green;
+	}
+
 	&__btn {
+		transition: 0.7s background-color;
 		padding: 1em;
 		background-color: $contrast-color;
 		color: $white;
@@ -16,6 +26,11 @@
 		border: none;
 		width: 50%;
 	}
+	&__btn:hover {
+		cursor: pointer;
+		background-color: $green;
+	}
+
 	&__space-icon:hover {
 		cursor: pointer;
 		color: $green;
@@ -53,12 +68,12 @@
 			background-color: black;
 		}
 	}
-
-	&__menu-item {
-		padding: 2em;
+	&__mobile-settings-menu {
+		display: none;
 	}
-	&__menu-item:hover {
-		cursor: pointer;
+
+	&__menu-settings-item {
+		padding: 2em;
 	}
 }
 
@@ -71,6 +86,9 @@
 				display: none;
 			}
 		}
+		&__description {
+			margin-top: 125px;
+		}
 		&__mobile-menu {
 			position: fixed;
 			background-color: black;
@@ -81,8 +99,26 @@
 			justify-content: space-between;
 			align-items: center;
 		}
-		&__description {
-			margin-top: 15%;
+		&__mobile-item {
+			display: none;
+			font-size: 2em;
+			color: $white;
+			transition: 1s color;
+		}
+		&__mobile-item:hover {
+			color: $green;
+			cursor: pointer;
+		}
+		&__mobile-settings-menu {
+			position: fixed;
+			top: 0;
+			width: 100%;
+			background-color: black;
+			display: block;
+			display: flex;
+			justify-content: space-between;
+			font-size: 3.2em;
+			padding: 0.2em;
 		}
 	}
 }
