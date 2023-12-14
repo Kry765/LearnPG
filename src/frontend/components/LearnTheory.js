@@ -23,10 +23,13 @@ const LearnTheory = () => {
 	}
 
 	const takeMeTest = () => {
+		console.log('handleTopic:', handleTopic)
+		console.log('question_id:', handleTopic && handleTopic.question_id)
+
 		if (handleTopic && handleTopic.question_id) {
-			navigate(`/Dashboard/Learn/LearnTest/${handleTopic.question_id}`)
+			navigate(`/Dashboard/Learn/LearnTest/${handleTopic.question_id}`) 
 		} else {
-			console.log('handleTopic lub handleTopic.question_id jest falsy')
+			console.log('handleTopic or handleTopic.question_id is falsy')
 		}
 	}
 

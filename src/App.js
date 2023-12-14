@@ -26,7 +26,7 @@ function App() {
 					<Route path='/Dashboard' element={<Dashboard />} />
 					<Route path='/Dashboard/Settings' element={<Settings />} />
 					<Route path='/Dashboard/Leartheory' element={<LearnTheory />} />
-					<Route path='/Dashboard/Learn/LearnTest/:topic_id' element={<LearnTest />} />
+					<Route path='/Dashboard/Learn/LearnTest/:question_id' element={<LearnTest />} />
 					<Route path='/Dashboard/Exam' element={<Exam />} />
 					<Route path='/Dashboard/Exam/ResultsCloseQuestion' element={<ResultsCloseQuestion />} />
 					<Route path='/Dashboard/Help' element={<Help />} />
