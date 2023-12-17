@@ -83,19 +83,19 @@ function StartingPage() {
 								Strona Główna
 							</Link>
 						</div>
-						<div className='nav__bottom-line'></div>
+						<div className='bottom-line'></div>
 						<div className='nav__mobile-item'>
 							<Link to='offerts' smooth={true} duration={500}>
 								Korzyści
 							</Link>
 						</div>
-						<div className='nav__bottom-line'></div>
+						<div className='bottom-line'></div>
 						<div className='nav__mobile-item'>
 							<Link to='contact' smooth={true} duration={500}>
 								Kontakt
 							</Link>
 						</div>
-						<div className='nav__bottom-line'></div>
+						<div className='bottom-line'></div>
 						<div
 							className='nav__mobile-item'
 							onClick={() => {
@@ -104,7 +104,7 @@ function StartingPage() {
 						>
 							Zaloguj się
 						</div>
-						<div className='nav__bottom-line'></div>
+						<div className='bottom-line'></div>
 						<div
 							className='nav__mobile-item'
 							onClick={() => {
@@ -113,7 +113,7 @@ function StartingPage() {
 						>
 							Zalóż konto
 						</div>
-						<div className='nav__bottom-line'></div>
+						<div className='ottom-line'></div>
 					</div>
 					<div className='nav__logo'>
 						<span>

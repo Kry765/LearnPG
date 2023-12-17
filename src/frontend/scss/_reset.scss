@@ -125,6 +125,18 @@ li {
 	}
 }
 
+.bottom-line {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	transform: translate(-50%);
+	margin: 5px 5%;
+	width: 80%;
+	height: 3px;
+	border-radius: 5px;
+	background-color: $white;
+}
+
 .box-auth {
 	position: fixed;
 	top: 0;

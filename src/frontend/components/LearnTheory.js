@@ -27,7 +27,7 @@ const LearnTheory = () => {
 		console.log('question_id:', handleTopic && handleTopic.question_id)
 
 		if (handleTopic && handleTopic.question_id) {
-			navigate(`/Dashboard/Learn/LearnTest/${handleTopic.question_id}`) 
+			navigate(`/Dashboard/Learn/LearnTest/${handleTopic.question_id}`)
 		} else {
 			console.log('handleTopic or handleTopic.question_id is falsy')
 		}
@@ -67,7 +67,7 @@ const LearnTheory = () => {
 				<div>
 					<RxHamburgerMenu />
 				</div>
-				<div>
+				<div onClick={() => setOpenSettings(!openSettings)}>
 					<AiTwotoneSetting />
 				</div>
 			</div>
@@ -112,6 +112,43 @@ const LearnTheory = () => {
 						</div>
 					))}
 				</div>
+			</div>
+			<div className={openSettings ? 'learn__mobile-settings' : 'learn__mobile-settings--close'}>
+				<div
+					className='learn__space-icon'
+					onClick={() => {
+						navigate('/dashboard')
+					}}
+				>
+					<AiFillHome />
+					Panel Główny
+				</div>
+				<div className='bottom-line'></div>
+				<div
+					className='learn__space-icon'
+					onClick={() => {
+						navigate('./settings')
+					}}
+				>
+					<AiTwotoneSetting />
+					Ustawienia
+				</div>
+				<div className='bottom-line'></div>
+				<div
+					className='learn__space-icon'
+					onClick={() => {
+						navigate('/dashboard/help')
+					}}
+				>
+					<BiSolidHelpCircle />
+					Pomoc
+				</div>
+				<div className='bottom-line'></div>
+				<div className='learn__space-icon' onClick={handleLoggout}>
+					<FaPowerOff />
+					Wyloguj się
+				</div>
+				<div className='bottom-line'></div>
 			</div>
 			<div className='learn__description'>
 				<h1>Rozpocznij nauke</h1>
