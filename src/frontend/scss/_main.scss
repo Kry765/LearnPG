@@ -74,7 +74,7 @@
 	&__mobile-item {
 		display: none;
 	}
-	
+
 	&__close-mobile-items {
 		display: none;
 	}
@@ -100,6 +100,9 @@
 		font-size: 3rem;
 		display: none;
 		z-index: 4;
+	}
+	&__close-icon {
+		display: none;
 	}
 }
 
@@ -319,7 +322,7 @@
 			width: 110%;
 			height: 100%;
 			background-color: rgba(0, 0, 0, 0.7);
-			transform: translateX(25%);
+			transform: translateX(-5%);
 		}
 		&__mobile-item {
 			display: flex;
@@ -328,6 +331,11 @@
 
 		&__logo {
 			display: none;
+		}
+		&__close-icon {
+			&--active {
+				display: block;
+			}
 		}
 	}
 

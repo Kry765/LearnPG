@@ -15,6 +15,7 @@ const LearnTheory = () => {
 	const [topics, setTopics] = useState([])
 	const [handleTopic, setHandleTopic] = useState(null)
 	const [openSettings, setOpenSettings] = useState('')
+	const [openSections, setOpenSections] = useState('')
 	const navigate = useNavigate()
 
 	const handleLoggout = () => {
@@ -113,7 +114,7 @@ const LearnTheory = () => {
 					))}
 				</div>
 			</div>
-			<div className={openSettings ? 'learn__mobile-settings' : 'learn__mobile-settings--close'}>
+			<div className={openSettings ? 'learn__mobile-settings--close' : 'learn__mobile-settings'}>
 				<div
 					className='learn__space-icon'
 					onClick={() => {

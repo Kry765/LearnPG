@@ -9,6 +9,7 @@ import { AiFillSave } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
 import { FiMail } from 'react-icons/fi'
 import { AiFillPhone } from 'react-icons/ai'
+import { AiOutlineClose } from 'react-icons/ai'
 import { BsDiscord } from 'react-icons/bs'
 import '../scss/_main.scss'
 import emailjs from 'emailjs-com'
@@ -17,6 +18,7 @@ import { Link, animateScroll as scroll } from 'react-scroll'
 function StartingPage() {
 	const [openNav, setOpenNav] = useState('')
 	const [scroll, setScroll] = useState(1000)
+	const [changeIcon, setChangeIcon] = useState('')
 	const navigate = useNavigate()
 
 	const sendEmail = e => {
@@ -71,10 +73,15 @@ function StartingPage() {
 						</div>
 						<div className='nav__burger-bar'>
 							<RxHamburgerMenu
+								className={changeIcon ? 'nav__mobile-items' : 'nav__close-mobile-items'}
 								onClick={() => {
 									setOpenNav(!openNav)
+									setChangeIcon(!changeIcon)
 								}}
 							/>
+						</div>
+						<div>
+							<AiOutlineClose className='nav__close-icon' />
 						</div>
 					</div>
 					<div className={openNav ? 'nav__mobile-items' : 'nav__close-mobile-items'}>
@@ -83,19 +90,19 @@ function StartingPage() {
 								Strona Główna
 							</Link>
 						</div>
-						<div className='bottom-line'></div>
+
 						<div className='nav__mobile-item'>
 							<Link to='offerts' smooth={true} duration={500}>
 								Korzyści
 							</Link>
 						</div>
-						<div className='bottom-line'></div>
+
 						<div className='nav__mobile-item'>
 							<Link to='contact' smooth={true} duration={500}>
 								Kontakt
 							</Link>
 						</div>
-						<div className='bottom-line'></div>
+
 						<div
 							className='nav__mobile-item'
 							onClick={() => {
@@ -104,7 +111,7 @@ function StartingPage() {
 						>
 							Zaloguj się
 						</div>
-						<div className='bottom-line'></div>
+
 						<div
 							className='nav__mobile-item'
 							onClick={() => {
@@ -113,7 +120,6 @@ function StartingPage() {
 						>
 							Zalóż konto
 						</div>
-						<div className='ottom-line'></div>
 					</div>
 					<div className='nav__logo'>
 						<span>

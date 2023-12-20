@@ -50,38 +50,45 @@ function Dashboard() {
 	return (
 		<div className='dashboard'>
 			<div className='dashboard__left-menu'>
+				<div className='dashboard__icon'>
+					<FaDatabase
+						onClick={() => {
+							navigate('/')
+						}}
+					/>
+				</div>
 				<div className='dashboard__menu'>
 					<div className='dashboard__menu-items'>
 						<div
-							className='dashboard__position-icon'
+							className='dashboard__menu-item'
 							onClick={() => {
 								navigate('/dashboard')
 							}}
 						>
-							<AiFillHome />
-							<div className='dashboard__menu-item'>Panel Główny</div>
+							<AiFillHome className='dashboard__menu-icons' />
+							<p className='dashboard__menu-icon-description'>Panel Główny</p>
 						</div>
 						<div
-							className='dashboard__position-icon'
+							className='dashboard__menu-item'
 							onClick={() => {
 								navigate('./settings')
 							}}
 						>
-							<AiTwotoneSetting />
-							<div className='dashboard__menu-item'>Ustawienia</div>
+							<AiTwotoneSetting className='dashboard__menu-icons' />
+							<p className='dashboard__menu-icon-description'>Ustawienia</p>
 						</div>
 						<div
-							className='dashboard__position-icon'
+							className='dashboard__menu-item'
 							onClick={() => {
 								navigate('/dashboard/help')
 							}}
 						>
-							<BiSolidHelpCircle />
-							<div className='dashboard__menu-item'>Pomoc</div>
+							<BiSolidHelpCircle className='dashboard__menu-icons' />
+							<p className='dashboard__menu-icon-description'>Pomoc</p>
 						</div>
-						<div className='dashboard__position-icon' onClick={handleLoggout}>
-							<FaPowerOff />
-							<div className='dashboard__menu-item'>Wyloguj się</div>
+						<div className='dashboard__menu-item' onClick={handleLoggout}>
+							<FaPowerOff className='dashboard__menu-icons' />
+							<p className='dashboard__menu-icon-description'>Wyloguj się</p>
 						</div>
 					</div>
 				</div>
@@ -101,7 +108,7 @@ function Dashboard() {
 						Rozpocznij naukę
 						<div className='section__opacity-card'></div>
 					</div>
-					<div className='section__card'>
+					<div className='section__card--point'>
 						<p>Zdobyte punkty:</p>
 						<p>{point}/100</p>
 					</div>
