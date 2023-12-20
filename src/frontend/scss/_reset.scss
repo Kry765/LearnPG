@@ -155,3 +155,92 @@ li {
 .output {
 	padding: 1em;
 }
+
+//navigation dashboard
+.navigation {
+	display: flex;
+	&__icon {
+		position: fixed;
+		padding: 1em;
+		font-size: 2.4rem;
+		color: $white;
+		transition: color 0.5s;
+	}
+	&__icon:hover {
+		cursor: pointer;
+		color: $green;
+	}
+
+	&__left-menu {
+		position: sticky;
+		top: 0;
+		background-color: $dark;
+		min-width: 20%;
+		height: 100%;
+		top: 0;
+	}
+	&__menu {
+		max-width: 100%;
+		background-color: $gray;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	&__menu-item:hover,
+	&__position-icon:hover {
+		color: $green;
+		cursor: pointer;
+	}
+
+	&__menu-items {
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	&__menu-item {
+		margin: 2em 1em;
+		display: flex;
+		align-items: center;
+		color: $white;
+		padding: 1.4em;
+		font-size: 1rem;
+		transition: color 0.7s;
+	}
+	&__menu-icons {
+		margin: 0em 10px;
+	}
+}
+
+@media (max-width: 768px) {
+	.navigation {
+		display: flex;
+		&__icon {
+			display: none;
+		}
+		&__menu-icons {
+			margin: 0em 10px;
+		}
+		&__menu-icon-description {
+			display: none;
+		}
+	}
+
+	.section {
+		&__dashboard {
+			&__menu-items {
+				display: block;
+				color: $white;
+			}
+		}
+		&__card {
+			width: 100%;
+			&--gray {
+				width: 100%;
+			}
+			&--point {
+				width: 100%;
+			}
+		}
+	}
+}

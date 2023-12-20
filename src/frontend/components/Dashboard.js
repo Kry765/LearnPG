@@ -48,47 +48,47 @@ function Dashboard() {
 	}
 
 	return (
-		<div className='dashboard'>
-			<div className='dashboard__left-menu'>
-				<div className='dashboard__icon'>
+		<div className='navigation'>
+			<div className='navigation__left-menu'>
+				<div className='navigation__icon'>
 					<FaDatabase
 						onClick={() => {
 							navigate('/')
 						}}
 					/>
 				</div>
-				<div className='dashboard__menu'>
-					<div className='dashboard__menu-items'>
+				<div className='navigation__menu'>
+					<div className='navigation__menu-items'>
 						<div
-							className='dashboard__menu-item'
+							className='navigation__menu-item'
 							onClick={() => {
 								navigate('/dashboard')
 							}}
 						>
-							<AiFillHome className='dashboard__menu-icons' />
-							<p className='dashboard__menu-icon-description'>Panel Główny</p>
+							<AiFillHome className='navigation__menu-icons' />
+							<p className='navigation__menu-icon-description'>Panel Główny</p>
 						</div>
 						<div
-							className='dashboard__menu-item'
+							className='navigation__menu-item'
 							onClick={() => {
 								navigate('./settings')
 							}}
 						>
-							<AiTwotoneSetting className='dashboard__menu-icons' />
-							<p className='dashboard__menu-icon-description'>Ustawienia</p>
+							<AiTwotoneSetting className='navigation__menu-icons' />
+							<p className='navigation__menu-icon-description'>Ustawienia</p>
 						</div>
 						<div
-							className='dashboard__menu-item'
+							className='navigation__menu-item'
 							onClick={() => {
 								navigate('/dashboard/help')
 							}}
 						>
-							<BiSolidHelpCircle className='dashboard__menu-icons' />
-							<p className='dashboard__menu-icon-description'>Pomoc</p>
+							<BiSolidHelpCircle className='navigation__menu-icons' />
+							<p className='navigation__menu-icon-description'>Pomoc</p>
 						</div>
-						<div className='dashboard__menu-item' onClick={handleLoggout}>
-							<FaPowerOff className='dashboard__menu-icons' />
-							<p className='dashboard__menu-icon-description'>Wyloguj się</p>
+						<div className='navigation__menu-item' onClick={handleLoggout}>
+							<FaPowerOff className='navigation__menu-icons' />
+							<p className='navigation__menu-icon-description'>Wyloguj się</p>
 						</div>
 					</div>
 				</div>

@@ -24,42 +24,41 @@ function Dashboard() {
 	}
 
 	return (
-		<div className='dashboard'>
-			<div className='dashboard__left-menu'>
-				<div className='dashboard__icon'>
+		<div className='navigation'>
+			<div className='navigation__left-menu'>
+				<div className='navigation__icon'>
 					<FaDatabase
 						onClick={() => {
 							navigate('/')
 						}}
 					/>
 				</div>
-				<div className='dashboard__menu'>
-					<div className='dashboard__menu-items'>
+				<div className='navigation__menu'>
+					<div className='navigation__menu-items'>
 						<div
-							className='dashboard__position-icon'
+							className='navigation__menu-item'
 							onClick={() => {
 								navigate('/dashboard')
 							}}
 						>
-							<AiFillHome />
-							<div className='dashboard__menu-item'>Panel Główny</div>
+							<AiFillHome className='navigation__menu-icons' />
+							<div className='navigation__menu-icon-description'>Panel Główny</div>
 						</div>
-						<div className='dashboard__position-icon'>
-							<AiTwotoneSetting />
-							<div className='dashboard__menu-item'>Ustawienia</div>
+						<div className='navigation__menu-item'>
+							<AiTwotoneSetting className='navigation__menu-icons' />
+							<div className='navigation__menu-icon-description'>Ustawienia</div>
 						</div>
-						<div
-							className='dashboard__position-icon'
+						<div className='navigation__menu-item'
 							onClick={() => {
 								navigate('/dashboard/help')
 							}}
 						>
-							<BiSolidHelpCircle />
-							<div className='dashboard__menu-item'>Pomoc</div>
+							<BiSolidHelpCircle className='navigation__menu-icons' />
+							<div className='navigation__menu-icon-description'>Pomoc</div>
 						</div>
-						<div className='dashboard__position-icon' onClick={handleLoggout}>
-							<FaPowerOff />
-							<div className='dashboard__menu-item'>Wyloguj się</div>
+						<div className='navigation__menu-item' onClick={handleLoggout}>
+							<FaPowerOff className='navigation__menu-icons' />
+							<div className='navigation__menu-icon-description'>Wyloguj się</div>
 						</div>
 					</div>
 				</div>
