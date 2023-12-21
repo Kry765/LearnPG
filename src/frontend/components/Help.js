@@ -22,81 +22,70 @@ function Help() {
 		outLogin()
 		navigate('/Login')
 	}
+
 	return (
 		<div>
-			<div className='dashboard'>
-				<div className='dashboard__left-menu'>
-					<div className='dashboard__icon'>
+			<div className='navigation'>
+				<div className='navigation__left-menu'>
+					<div className='navigation__icon'>
 						<FaDatabase
 							onClick={() => {
 								navigate('/')
 							}}
 						/>
 					</div>
-					<div className='dashboard__menu'>
-						<div className='dashboard__menu-items'>
+					<div className='navigation__menu'>
+						<div className='navigation__menu-items'>
 							<div
-								className='dashboard__position-icon'
+								className='navigation__menu-item'
 								onClick={() => {
 									navigate('/dashboard')
 								}}
 							>
-								<AiFillHome />
-								<div className='dashboard__menu-item'>Panel Główny</div>
+								<AiFillHome className='navigation__menu-icons' />
+								<div className='navigation__menu-icon-description'>Panel Główny</div>
 							</div>
 							<div
-								className='dashboard__position-icon'
+								className='navigation__menu-item'
 								onClick={() => {
 									navigate('/dashboard/settings')
 								}}
 							>
-								<AiTwotoneSetting />
-								<div className='dashboard__menu-item'>Ustawienia</div>
-							</div>
-							<div className='dashboard__position-icon'>
-								<BiSolidHelpCircle />
-								<div className='dashboard__menu-item'>Pomoc</div>
+								<AiTwotoneSetting className='navigation__menu-icons' />
+								<div className='navigation__menu-icon-description'>Ustawienia</div>
 							</div>
 							<div
-								className='dashboard__position-icon'
+								className='navigation__menu-item'
 								onClick={() => {
-									handleLoggout()
+									navigate('/dashboard/help')
 								}}
 							>
-								<FaPowerOff />
-								<div className='dashboard__menu-item'>Wyloguj się</div>
+								<BiSolidHelpCircle className='navigation__menu-icons' />
+								<div className='navigation__menu-icon-description'>Pomoc</div>
+							</div>
+							<div className='navigation__menu-item' onClick={handleLoggout}>
+								<FaPowerOff className='navigation__menu-icons' />
+								<div className='navigation__menu-icon-description'>Wyloguj się</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div className='settings'>
-					<h3>Ustawienia</h3>
+				<div className='href'>
+					<h3>FAQ</h3>
 					<div>
-						<button className='settings__btn'>Gdzie moge skierować pytania lub wątpliwości?</button>
-						<div className='settings__help'>
-							Wszelkie pytania lub błędy należy zgłaszać adres mailowy biuro@learnpg.com
-						</div>
+						<button className='href__btn'>Gdzie moge skierować pytania lub wątpliwości?</button>
 					</div>
 					<div>
-						<button className='settings__btn'>Czy istnieje możliwość zmiany adresu mail lub hasła?</button>
-						<div className='settings__help'>Adres mailowy lub hasło można zmienić w zakładce ustawienia</div>
+						<button className='href__btn'>Czy istnieje możliwość zmiany adresu mail lub hasła?</button>
 					</div>
 					<div>
-						<button className='settings__btn'>Czy treść która znajduje się na stronie jest aktualna?</button>
-						<div className='settings__help'>
-							Treść która znajduję się wyszczególnych działach jest zaczerpnięta z oficjalnej dokumentacji Postgresa
-						</div>
+						<button className='href__btn'>Czy treść która znajduje się na stronie jest aktualna?</button>
 					</div>
 					<div>
-						<button className='settings__btn'>Co mogę zrobić z zebranymi punktami?</button>
-						<div>Przyznane punkty można wymienić u prowadzącego na ocenę z aktywności</div>
+						<button className='href__btn'>Co mogę zrobić z zebranymi punktami?</button>
 					</div>
-					<div className='settings__help'>
-						<button className='settings__btn'>Czy moje dane są bezpiecznie?</button>
-						<div className='settings__help'>
-							Twoje dane takie jak login, hasło lub adres mailowy jest przechowywany na bazie danych która jest
-							hashowana. Dzięki czemu ciężko jest takie dane odszyfrować
-						</div>
+					<div>
+						<button className='href__btn'>Czy moje dane są bezpiecznie?</button>
 					</div>
 				</div>
 			</div>

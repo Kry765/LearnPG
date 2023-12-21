@@ -212,6 +212,30 @@ li {
 	}
 }
 
+//dashboard btn
+.href {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	max-width: 100%;
+	&__btn {
+		margin: 1em;
+		background-color: $gray;
+		color: $white;
+		min-width: 75vw;
+		min-height: 40px;
+		height: 20px;
+		border: none;
+		border-radius: 15px;
+		transition: background-color 0.7s;
+	}
+	&__btn:hover {
+		cursor: pointer;
+		background-color: $green;
+	}
+}
+
 @media (max-width: 768px) {
 	.navigation {
 		display: flex;

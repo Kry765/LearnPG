@@ -48,7 +48,8 @@ function Dashboard() {
 							<AiTwotoneSetting className='navigation__menu-icons' />
 							<div className='navigation__menu-icon-description'>Ustawienia</div>
 						</div>
-						<div className='navigation__menu-item'
+						<div
+							className='navigation__menu-item'
 							onClick={() => {
 								navigate('/dashboard/help')
 							}}
@@ -63,11 +64,11 @@ function Dashboard() {
 					</div>
 				</div>
 			</div>
-			<div className='settings'>
+			<div className='href'>
 				<h3>Ustawienia</h3>
 				<div>
 					<button
-						className='settings__btn'
+						className='href__btn'
 						onClick={() => {
 							navigate('./resetEmail')
 						}}
@@ -77,7 +78,7 @@ function Dashboard() {
 				</div>
 				<div>
 					<button
-						className='settings__btn'
+						className='href__btn'
 						onClick={() => {
 							navigate('./resetPwd')
 						}}
@@ -86,11 +87,11 @@ function Dashboard() {
 					</button>
 				</div>
 				<div>
-					<button className='settings__btn'>Wyzer punkty</button>
+					<button className='href__btn'>Wyzeruj punkty</button>
 				</div>
 				<div>
 					<button
-						className='settings__btn'
+						className='href__btn'
 						onClick={() => {
 							navigate('./DeleteUser')
 						}}
