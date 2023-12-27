@@ -1,5 +1,13 @@
 @use './_reset' as *;
-@use './colors' as *;
+@use './_colors' as *;
+@use './animations' as *;
+a {
+	transition: 0.5s color;
+}
+
+a:hover {
+	color: $green;
+}
 
 .title {
 	position: relative;
@@ -29,9 +37,10 @@
 .nav {
 	position: fixed;
 	top: 0;
-	max-height: 15%;
+	min-height: 10%;
 	min-width: 100%;
 	background-color: $dark;
+	opacity: 2;
 	padding: 0.5em;
 	z-index: 5;
 
@@ -101,9 +110,6 @@
 		display: none;
 		z-index: 4;
 	}
-	&__close-icon {
-		display: none;
-	}
 }
 
 .header {
@@ -154,9 +160,10 @@
 		background-color: $green;
 	}
 	&__arrow-down {
+		animation: arrowUpDown 2s infinite;
 		position: fixed;
 		bottom: 0;
-		padding-top: 1em;
+		padding: 0.5em 2em;
 		display: flex;
 		justify-content: flex-end;
 		align-items: flex-end;
@@ -165,6 +172,7 @@
 		font-weight: bold;
 		transition: color 1s;
 		scroll-behavior: smooth;
+		z-index: 5;
 	}
 	&__arrow-down:hover {
 		color: $green;
@@ -183,10 +191,16 @@
 		flex-direction: row;
 		flex-wrap: wrap;
 	}
+
 	&__section-card {
 		margin: 1em;
 		padding: 2em;
 		height: 100%;
+		transition: 1s transform;
+	}
+	&__section-card:hover {
+		transform: scale(1.2);
+		// z-index: 5;
 	}
 	&__card {
 		position: relative;
@@ -195,6 +209,7 @@
 		width: 200px;
 		background-color: $gray;
 	}
+
 	&__card::before {
 		position: absolute;
 		left: -6px;
@@ -280,15 +295,6 @@
 	&__contact-icon {
 		margin: 0 0.3em;
 	}
-
-	&__arrow-down {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		color: white;
-		font-size: 3rem;
-		font-weight: bold;
-	}
 }
 .footer {
 	background-color: $dark;
@@ -317,12 +323,23 @@
 			align-items: flex-start;
 			flex-direction: column;
 			font-weight: bold;
+			transition: 1s color;
+		}
+		&__burger-bar:hover {
+			cursor: pointer;
+			color: $green;
 		}
 		&__mobile-items {
-			width: 110%;
+			animation: moveMenuRight 1s ease-in-out;
+			padding: 0 3em;
+			width: 85%;
 			height: 100%;
-			background-color: rgba(0, 0, 0, 0.7);
+			background-color: rgba(0, 0, 0, 0.9);
 			transform: translateX(-5%);
+		}
+		&__mobile-items:hover {
+			cursor: pointer;
+			color: $contrast-color;
 		}
 		&__mobile-item {
 			display: flex;

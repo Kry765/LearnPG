@@ -1,0 +1,21 @@
+@use '../scss/_colors' as *;
+@use '../scss/_reset' as *;
+
+@keyframes arrowUpDown {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-10%);
+	}
+}
+
+@keyframes moveMenuRight {
+	0% {
+		transform: translateX(-105%);
+	}
+	100% {
+		transform: translateX(-5%);
+	}
+}

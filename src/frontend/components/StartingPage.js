@@ -17,7 +17,7 @@ import { Link, animateScroll as scroll } from 'react-scroll'
 
 function StartingPage() {
 	const [openNav, setOpenNav] = useState('')
-	const [scroll, setScroll] = useState(1000)
+	const [scroll, setScroll] = useState(900)
 	const [changeIcon, setChangeIcon] = useState('')
 	const navigate = useNavigate()
 
@@ -72,16 +72,23 @@ function StartingPage() {
 							Załóż konto
 						</div>
 						<div className='nav__burger-bar'>
-							<RxHamburgerMenu
-								className={changeIcon ? 'nav__mobile-items' : 'nav__close-mobile-items'}
-								onClick={() => {
-									setOpenNav(!openNav)
-									setChangeIcon(!changeIcon)
-								}}
-							/>
-						</div>
-						<div>
-							<AiOutlineClose className='nav__close-icon' />
+							{changeIcon ? (
+								<AiOutlineClose
+									className='nav__close-icon'
+									onClick={() => {
+										setOpenNav(false)
+										setChangeIcon(false)
+									}}
+								/>
+							) : (
+								<RxHamburgerMenu
+									className={openNav ? 'nav__mobile-items' : ''}
+									onClick={() => {
+										setOpenNav(!openNav)
+										setChangeIcon(true)
+									}}
+								/>
+							)}
 						</div>
 					</div>
 					<div className={openNav ? 'nav__mobile-items' : 'nav__close-mobile-items'}>
@@ -147,9 +154,11 @@ function StartingPage() {
 								Rozpocznij nauke
 							</button>
 						</div>
-						<a className='header__arrow-down'>
-							<RiArrowDownSLine onClick={scrollDown} />
-						</a>
+						<div className='header__arrow-down'>
+							<a>
+								<RiArrowDownSLine onClick={scrollDown} />
+							</a>
+						</div>
 					</div>
 				</section>
 				<section id='offerts'>
