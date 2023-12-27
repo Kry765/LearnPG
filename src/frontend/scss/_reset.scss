@@ -22,6 +22,19 @@ li {
 	color: #fff;
 }
 
+input {
+	color: #fff;
+	border: none;
+}
+
+input:focus-visible {
+	outline: 3px solid $green;
+}
+
+::-webkit-input-placeholder {
+	color: $white;
+}
+
 //flex
 .flex-center {
 	display: flex;
@@ -61,12 +74,10 @@ li {
 
 .input-auth {
 	background-color: $gray;
-	color: $white;
 	min-width: 60vw;
 	border-radius: 15px;
 	padding: 1em;
 	margin: 1em 0;
-	border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .link-auth {

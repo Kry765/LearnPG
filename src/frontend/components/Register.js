@@ -15,44 +15,30 @@ function Register() {
 	const [password, setPassword] = useState('')
 	const [repeat_pwd, set_repeat_pwd] = useState('')
 
-	const changePwd = () => {
-		if (user_email === '' || user_pwd === '' || repeat_pwd === '') {
-			setOutput('Uzupełnij brakujące pola')
-		}
-	}
-
-	const emptyInput = () => {
-		if (repeat_pwd !== user_pwd) {
-			setOutput('Wprowadzone hasła są różne')
-		}
-	}
-
-	const checkEmail = () => {
-		const validEmail = new RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$')
-		if (!validEmail.test(user_email)) {
-			setOutput('Wprowadzony adres email jest nieprawidłowy')
-		}
-	}
-
 	const handleSubmit = async e => {
 		e.preventDefault()
-		const formData = { user_email, user_pwd }
 
+		const formData = { user_email, user_pwd }
 		try {
+			const validEmail = new RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$')
+			if (user_email === '' || user_pwd === '' || repeat_pwd === '') {
+				return setOutput('Uzupełnij brakujące pola')
+			} else if (!validEmail.test(user_email)) {
+				return setOutput('Wprowadzony adres email jest nieprawidłowy')
+			} else if (repeat_pwd !== user_pwd) {
+				return setOutput('Wprowadzone hasła są różne')
+			}
 			const res = await axios.post(API_URL, formData, {
 				headers: {
 					'Content-Type': 'application/json',
 				},
 			})
 			if (res.status === 201) {
-				setOutput('Konto zostało utworzone')
-				await emptyInput()
-				await checkEmail()
-				await changePwd()
+				return setOutput('Konto zostało utworzone')
 			} else if (res.status === 200) {
-				setOutput('Podany adres email jest już zajęty')
+				return setOutput('Podany adres email jest już zajęty')
 			} else if (res.status === 500) {
-				setOutput('Wystąpił błąd')
+				return setOutput('Wystąpił błąd')
 			}
 		} catch (err) {
 			console.error(err)
@@ -63,7 +49,6 @@ function Register() {
 		const pwd = event.target.value
 		setPassword(pwd)
 		if (pwd.length >= 8) {
-			setPassword(`Wprowadzone hasło ma ${pwd}`)
 		}
 	}
 
