@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react'
 import React, { useState } from 'react'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { FaDatabase } from 'react-icons/fa'
@@ -16,21 +17,30 @@ import emailjs from 'emailjs-com'
 import { Link, animateScroll as scroll } from 'react-scroll'
 
 function StartingPage() {
+	const [user_email, set_user_email] = useState('')
+	const [output, setOutput] = useState('')
 	const [openNav, setOpenNav] = useState('')
 	const [scroll, setScroll] = useState(900)
 	const [changeIcon, setChangeIcon] = useState('')
 	const navigate = useNavigate()
+	const error = false
 
 	const sendEmail = e => {
 		e.preventDefault()
-		emailjs.sendForm('service_ivvbak9', 'template_rlainun', e.target, 'OXIurWGg9OpDvDAzF').then(
-			result => {
-				window.location.reload()
-			},
-			error => {
-				console.log(error.text)
-			}
-		)
+
+		const validEmail = new RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$')
+		if (!validEmail.test(user_email)) {
+			return setOutput('Wprowadzony adres email jest nieprawidłowy')
+		} else {
+			emailjs.sendForm('service_ivvbak9', 'template_rlainun', e.target, 'OXIurWGg9OpDvDAzF').then(
+				result => {
+					window.location.reload()
+				},
+				error => {
+					console.log(error.text)
+				}
+			)
+		}
 	}
 
 	const scrollDown = () => {
@@ -41,7 +51,7 @@ function StartingPage() {
 	}
 
 	return (
-		<div>
+		<React.Fragment>
 			<nav>
 				<div className='nav'>
 					<div className='flex-end'>
@@ -140,8 +150,8 @@ function StartingPage() {
 			<main>
 				<section>
 					<div className='flex-center header' id='home'>
-						<div className='header__opacity-box'></div>
-						<div className='flex-center header__left-box'>
+						<div className='flex-center header__box'>
+							<div className='header__opactiy-box'></div>
 							<h1 className='header__title-header'>LearnPG</h1>
 							<p className='header__subtitle'>Ucz się na bieżąco PostgreSQL</p>
 							<p className='header__subtitle'> Zdobądź dodatkową wiedzę z zakresu relacyjnych baz danych</p>
@@ -163,6 +173,8 @@ function StartingPage() {
 				</section>
 				<section id='offerts'>
 					<div className='offerts'>
+						<div className='belt-right'></div>
+						<div className='belt-left'></div>
 						<h2 className='title'>Korzyści</h2>
 						<div className='offerts__cards'>
 							<div className='offerts__section-card'>
@@ -200,18 +212,17 @@ function StartingPage() {
 				</section>
 				<section>
 					<form onSubmit={sendEmail}>
-						<div>
-							<h2 className='title' id='contact'>
-								Kontakt
-							</h2>
-						</div>
+						<h2 className='title' id='contact'>
+							Kontakt
+						</h2>
 						<div className='flex-center contact'>
 							<div className='flex-center contact__box-right'>
 								<input
 									type='text'
-									className='contact__input contact__email'
+									className={`contact__error ${error ? 'contact__input' : 'contact__input--error'}`}
 									placeholder='Adres E-mail'
 									name='from_name'
+									value={user_email}
 								/>
 								<input type='text' name='to_name' className='contact__input contact__email' placeholder='Imię' />
 								<textarea
@@ -219,6 +230,8 @@ function StartingPage() {
 									name='message'
 									placeholder='Wyślij wiadomość'
 								></textarea>
+								<p>Przed wysłaniem wiadomości uzupełnij pola</p>
+								{output}
 								<button className='contact__contact-btn btn'>Wyślij</button>
 							</div>
 							<div className='contact__box-left'>
@@ -241,11 +254,9 @@ function StartingPage() {
 				</section>
 			</main>
 			<footer>
-				<div className='footer flex-center'>
-					<p>Kry765 2023 | &copy; Wszelkie prawa zastrzeżone</p>
-				</div>
+				<p className='footer'>Kry765 2023 | &copy; Wszelkie prawa zastrzeżone</p>
 			</footer>
-		</div>
+		</React.Fragment>
 	)
 }
 

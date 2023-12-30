@@ -9,9 +9,9 @@
 }
 
 body {
-	background-color: $dark;
+	background-color: $strong-white;
+	color: $gray;
 	font-size: 16px;
-	color: $white;
 	font-family: 'Poppins', sans-serif;
 }
 
@@ -19,20 +19,22 @@ a,
 ul,
 li {
 	text-decoration: none;
-	color: #fff;
 }
 
-input {
-	color: #fff;
+input,
+textarea {
+	background-color: $white;
+	color: $gray;
 	border: none;
 }
 
-input:focus-visible {
+input:focus-visible,
+textarea:focus-visible {
 	outline: 3px solid $green;
 }
 
 ::-webkit-input-placeholder {
-	color: $white;
+	color: $gray;
 }
 
 //flex
@@ -106,6 +108,28 @@ input:focus-visible {
 .btn-auth:hover {
 	cursor: pointer;
 	background-color: $green;
+}
+
+//decorate
+.belt-right {
+	position: absolute;
+	top: 0;
+	left: 90%;
+	transform: rotate(45deg);
+	background-color: $green;
+	opacity: 0.8;
+	width: 400px;
+	height: 400px;
+}
+.belt-left {
+	position: absolute;
+	top: 80%;
+	right: 90%;
+	transform: rotate(45deg);
+	background-color: $green;
+	opacity: 0.8;
+	width: 400px;
+	height: 400px;
 }
 
 .nav-auth {
@@ -265,7 +289,6 @@ input:focus-visible {
 		&__dashboard {
 			&__menu-items {
 				display: block;
-				color: $white;
 			}
 		}
 		&__card {
