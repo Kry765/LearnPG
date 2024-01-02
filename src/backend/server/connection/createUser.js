@@ -7,13 +7,18 @@ const createUser = app => {
 			const { user_email, user_pwd } = req.body
 			const saltRounds = 5
 			const hash = await bcrypt.hash(user_pwd, saltRounds)
-			const newUser = await User.create({
-				user_email: user_email,
-				user_pwd: hash,
-				user_point: 0,
-			})
-
-			res.status(201).json(newUser)
+			const existingUser = await User.findOne({ user_email })
+			if (existingUser) {
+				console.log('Email already exists:', user_email)
+				return res.status(200).json({ message: 'Email already exists' })
+			} else {
+				const newUser = await User.create({
+					user_email: user_email,
+					user_pwd: hash,
+					user_point: 0,
+				})
+				res.status(201).json(newUser)
+			}
 		} catch (err) {
 			console.error(err)
 			res.status(500).json({ err: 'Error creating user' })
@@ -22,4 +27,3 @@ const createUser = app => {
 }
 
 module.exports = createUser
-

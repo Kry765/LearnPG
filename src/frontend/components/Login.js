@@ -74,6 +74,8 @@ const Login = () => {
 			</div>
 			<div className='flex-center'>
 				<div className='flex-center box-auth'>
+					<div className='belt-auth-right'></div>
+					<div className='belt-auth-left'></div>
 					<form onSubmit={handleSubmit}>
 						<h1 className='title-section'>Zaloguj się</h1>
 						<div className='flex-column'>
@@ -108,14 +110,6 @@ const Login = () => {
 										}}
 									/>
 								</label>
-								<div
-									className='reset-pwd'
-									onClick={() => {
-										navigate('/reset')
-									}}
-								>
-									Zresetuj hasło
-								</div>
 							</div>
 						</div>
 						<div className='flex-column'>

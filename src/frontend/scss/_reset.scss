@@ -75,7 +75,7 @@ textarea:focus-visible {
 }
 
 .input-auth {
-	background-color: $gray;
+	background-color: $white;
 	min-width: 60vw;
 	border-radius: 15px;
 	padding: 1em;
@@ -131,6 +131,30 @@ textarea:focus-visible {
 	width: 400px;
 	height: 400px;
 }
+.belt-auth-right {
+	z-index: -3;
+	position: absolute;
+	bottom: -1700px;
+	right: -1700px;
+	transform: rotate(45deg);
+	background-color: $green;
+	opacity: 0.8;
+	width: 2000px;
+	height: 2000px;
+}
+
+.belt-auth-left {
+	z-index: -3;
+	position: fixed;
+	top: -400px;
+	left: -400px;
+	transform: rotate(45deg);
+	background-color: $green;
+	opacity: 0.8;
+	width: 600px;
+	height: 600px;
+}
+
 
 .nav-auth {
 	max-width: 100%;
@@ -141,6 +165,7 @@ textarea:focus-visible {
 		align-items: center;
 	}
 	&__auth-item {
+		z-index: 5;
 		font-size: 1.4rem;
 		padding: 1em;
 		transition: color 1s;

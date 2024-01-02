@@ -28,11 +28,13 @@ function Register() {
 			} else if (repeat_pwd !== user_pwd) {
 				return setOutput('Wprowadzone hasła są różne')
 			}
+
 			const res = await axios.post(API_URL, formData, {
 				headers: {
 					'Content-Type': 'application/json',
 				},
 			})
+
 			if (res.status === 201) {
 				return setOutput('Konto zostało utworzone')
 			} else if (res.status === 200) {
@@ -42,13 +44,6 @@ function Register() {
 			}
 		} catch (err) {
 			console.error(err)
-		}
-	}
-
-	const handlePassword = event => {
-		const pwd = event.target.value
-		setPassword(pwd)
-		if (pwd.length >= 8) {
 		}
 	}
 
@@ -74,6 +69,8 @@ function Register() {
 			</div>
 			<div className='flex-center'>
 				<div className='flex-center box-auth'>
+					<div className='belt-auth-right'></div>
+					<div className='belt-auth-left'></div>
 					<form onSubmit={handleSubmit}>
 						<h1 className='title-section'>Zarejestruj się</h1>
 						<div className='flex-column'>

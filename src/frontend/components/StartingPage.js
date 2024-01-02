@@ -18,6 +18,8 @@ import { Link, animateScroll as scroll } from 'react-scroll'
 
 function StartingPage() {
 	const [user_email, set_user_email] = useState('')
+	const [user_input, set_user_input] = useState('')
+	const [user_textarea, set_user_textarea] = useState('')
 	const [output, setOutput] = useState('')
 	const [openNav, setOpenNav] = useState('')
 	const [scroll, setScroll] = useState(900)
@@ -29,7 +31,9 @@ function StartingPage() {
 		e.preventDefault()
 
 		const validEmail = new RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$')
-		if (!validEmail.test(user_email)) {
+		if (user_email === '' || user_input === '' || user_textarea === '') {
+			return setOutput('Uzupełnij brakujące pola')
+		} else if (!validEmail.test(user_email)) {
 			return setOutput('Wprowadzony adres email jest nieprawidłowy')
 		} else {
 			emailjs.sendForm('service_ivvbak9', 'template_rlainun', e.target, 'OXIurWGg9OpDvDAzF').then(
@@ -219,16 +223,32 @@ function StartingPage() {
 							<div className='flex-center contact__box-right'>
 								<input
 									type='text'
-									className={`contact__error ${error ? 'contact__input' : 'contact__input--error'}`}
+									className={`contact__error ${error ? 'contact__input--error' : 'contact__input'}`}
 									placeholder='Adres E-mail'
 									name='from_name'
 									value={user_email}
+									onChange={event => {
+										set_user_email(event.target.value)
+									}}
 								/>
-								<input type='text' name='to_name' className='contact__input contact__email' placeholder='Imię' />
+								<input
+									type='text'
+									name='to_name'
+									className='contact__input contact__email'
+									placeholder='Imię'
+									value={user_input}
+									onChange={event => {
+										set_user_input(event.target.value)
+									}}
+								/>
 								<textarea
 									className='contact__input contact__textarea'
 									name='message'
 									placeholder='Wyślij wiadomość'
+									value={user_textarea}
+									onChange={event => {
+										set_user_textarea(event.target.value)
+									}}
 								></textarea>
 								<p>Przed wysłaniem wiadomości uzupełnij pola</p>
 								{output}
