@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import '../scss/_reset.scss'
-import '../scss/_reset-email.scss'
 import axios from 'axios'
+import { AiOutlineClose } from 'react-icons/ai'
+import { FaDatabase } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
 
 function ResetPwd() {
 	const API_URL = 'http://localhost:4000'
+	const navigate = useNavigate()
 	const [user_pwd, set_user_pwd] = useState('')
 	const [repeat_pwd, set_repeat_pwd] = useState('')
 	const [output, setOutput] = useState('')
@@ -29,6 +32,22 @@ function ResetPwd() {
 
 	return (
 		<div>
+			<div className='nav-auth__auth-items'>
+				<div className='nav-auth__auth-item'>
+					<FaDatabase
+						onClick={() => {
+							navigate('/')
+						}}
+					/>
+				</div>
+				<div className='nav-auth__auth-item--close'>
+					<AiOutlineClose
+						onClick={() => {
+							navigate('/dashboard/settings')
+						}}
+					/>
+				</div>
+			</div>
 			<div className='flex-center'>
 				<div className='flex-center box-auth'>
 					<div className='belt-auth-right'></div>

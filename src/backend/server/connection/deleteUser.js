@@ -6,7 +6,7 @@ const deleteUserHandler = app => {
 		try {
 			await User.destroy({ where: { user_email: email } })
 			alert('Konto zostało skasowane')
-			res.status(200).json({ message: 'skasowane' })
+			res.status(200).json({ message: 'skasowane', redirect: '/' })
 		} catch (err) {
 			console.log(err)
 			res.status(500).json({ message: 'Wystąpił błąd podczas usuwania konta' })

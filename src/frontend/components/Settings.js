@@ -90,7 +90,7 @@ function Dashboard() {
 					<button
 						className='href__btn'
 						onClick={() => {
-							navigate('./form')
+							navigate('../Dashboard/form')
 						}}
 					>
 						Skontaktuj się

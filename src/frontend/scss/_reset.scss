@@ -295,6 +295,29 @@ textarea:focus-visible {
 	}
 }
 
+//form-contact-us
+.max-form {
+	width: 70vw;
+	font-family: 'Poppins', sans-serif;
+	padding: 15px;
+	margin: 1em 0;
+	border-radius: 15px;
+}
+
+.form-input {
+	font-family: 'Poppins', sans-serif;
+	padding: 15px;
+	margin: 1em 0;
+	border-radius: 15px;
+	width: 80%;
+}
+
+.form-textarea {
+	font-family: 'Poppins', sans-serif;
+	resize: none;
+	height: 300px;
+}
+
 @media (max-width: 768px) {
 	.navigation {
 		display: flex;

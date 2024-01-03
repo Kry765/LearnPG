@@ -241,32 +241,7 @@ a:hover {
 	flex-direction: row;
 	min-height: 100%;
 	max-width: 100%;
-	&__input {
-		position: relative;
-		font-family: 'Poppins', sans-serif;
-		padding: 15px;
-		margin: 1em 0;
-		border-radius: 15px;
-		width: 80%;
-		&--error {
-			border: rgba(122, 13, 13, 0.733) 3px solid;
-			position: relative;
-			font-family: 'Poppins', sans-serif;
-			padding: 15px;
-			margin: 1em 0;
-			border-radius: 15px;
-			width: 80%;
-		}
-	}
 
-	&__email {
-		position: relative;
-		height: 50px;
-	}
-	&__textarea {
-		resize: none;
-		height: 300px;
-	}
 	&__box-right {
 		width: 100%;
 		flex-direction: column;

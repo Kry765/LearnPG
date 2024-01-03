@@ -1,8 +1,8 @@
 import StartingPage from './frontend/components/StartingPage'
 import Help from './frontend/components/Help'
-import Reset from './frontend/components/Reset'
 import Register from './frontend/components/Register'
 import Login from './frontend/components/Login'
+import Form from './frontend/components/Form'
 import Dashboard from './frontend/components/Dashboard'
 import LearnTheory from './frontend/components/LearnTheory'
 import Exam from './frontend/components/Exam'
@@ -22,17 +22,17 @@ function App() {
 					<Route path='/' element={<StartingPage />} />
 					<Route path='/Register' element={<Register />} />
 					<Route path='/Login' element={<Login />} />
-					<Route path='/Reset' element={<Reset />} />
 					<Route path='/Dashboard' element={<Dashboard />} />
-					<Route path='/Dashboard/Settings' element={<Settings />} />
-					<Route path='/Dashboard/Leartheory' element={<LearnTheory />} />
-					<Route path='/Dashboard/Learn/LearnTest/:question_id' element={<LearnTest />} />
-					<Route path='/Dashboard/Exam' element={<Exam />} />
-					<Route path='/Dashboard/Exam/ResultsCloseQuestion' element={<ResultsCloseQuestion />} />
 					<Route path='/Dashboard/Help' element={<Help />} />
+					<Route path='/Dashboard/Form' element={<Form />} />
+					<Route path='/Dashboard/Settings' element={<Settings />} />
 					<Route path='/Dashboard/Settings/ResetEmail' element={<ResetEmail />} />
 					<Route path='/Dashboard/Settings/DeleteUser' element={<DeleteUser />} />
 					<Route path='/Dashboard/Settings/ResetPwd' element={<ResetPwd />} />
+					<Route path='/Dashboard/Exam' element={<Exam />} />
+					<Route path='/Dashboard/Exam/ResultsCloseQuestion' element={<ResultsCloseQuestion />} />
+					<Route path='/Dashboard/Leartheory' element={<LearnTheory />} />
+					<Route path='/Dashboard/Learn/LearnTest/:question_id' element={<LearnTest />} />
 				</Routes>
 			</Router>
 		</div>

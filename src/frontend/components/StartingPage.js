@@ -12,6 +12,7 @@ import { FiMail } from 'react-icons/fi'
 import { AiFillPhone } from 'react-icons/ai'
 import { AiOutlineClose } from 'react-icons/ai'
 import { BsDiscord } from 'react-icons/bs'
+import { chceckCorrectEmail } from '../../backend/guard/Script'
 import '../scss/_main.scss'
 import emailjs from 'emailjs-com'
 import { Link, animateScroll as scroll } from 'react-scroll'
@@ -223,7 +224,7 @@ function StartingPage() {
 							<div className='flex-center contact__box-right'>
 								<input
 									type='text'
-									className={`contact__error ${error ? 'contact__input--error' : 'contact__input'}`}
+									className='form-input'
 									placeholder='Adres E-mail'
 									name='from_name'
 									value={user_email}
@@ -234,7 +235,7 @@ function StartingPage() {
 								<input
 									type='text'
 									name='to_name'
-									className='contact__input contact__email'
+									className='form-input'
 									placeholder='Imię'
 									value={user_input}
 									onChange={event => {
@@ -242,7 +243,7 @@ function StartingPage() {
 									}}
 								/>
 								<textarea
-									className='contact__input contact__textarea'
+									className='form-input form-textarea'
 									name='message'
 									placeholder='Wyślij wiadomość'
 									value={user_textarea}

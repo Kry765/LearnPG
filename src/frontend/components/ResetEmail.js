@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import '../scss/_reset.scss'
-import '../scss/_reset-email.scss'
 import { FaDatabase } from 'react-icons/fa'
 import { AiOutlineClose } from 'react-icons/ai'
 import { useNavigate } from 'react-router-dom'
@@ -8,6 +7,7 @@ import axios from 'axios'
 
 function ResetEmail() {
 	const API_URL = 'http://localhost:4000'
+	const navigate = useNavigate()
 	const [new_email, set_new_email] = useState('')
 	const [output, setOutput] = useState('')
 
@@ -36,6 +36,24 @@ function ResetEmail() {
 
 	return (
 		<div>
+			<div className='nav-auth'>
+				<div className='nav-auth__auth-items'>
+					<div className='nav-auth__auth-item'>
+						<FaDatabase
+							onClick={() => {
+								navigate('/')
+							}}
+						/>
+					</div>
+					<div className='nav-auth__auth-item--close'>
+						<AiOutlineClose
+							onClick={() => {
+								navigate('/dashboard/settings')
+							}}
+						/>
+					</div>
+				</div>
+			</div>
 			<div className='flex-center'>
 				<div className='flex-center box-auth'>
 					<div className='belt-auth-right'></div>
