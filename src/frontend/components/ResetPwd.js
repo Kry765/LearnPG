@@ -5,24 +5,22 @@ import axios from 'axios'
 
 function ResetPwd() {
 	const API_URL = 'http://localhost:4000'
-	const [repeat_pwd, set_repeat_pwd] = useState('')
 	const [user_pwd, set_user_pwd] = useState('')
+	const [repeat_pwd, set_repeat_pwd] = useState('')
 	const [output, setOutput] = useState('')
 
-	const checkPwd = () => {
-		if (repeat_pwd !== user_pwd) {
-			setOutput('Wprowadzone hasła są różne')
-		}
-	}
-
-	const handleSubmit = async e => {
+	const handleSubmit = e => {
 		e.preventDefault()
-		await checkPwd()
+
 		try {
-			await axios.post(API_URL + '/resetuserpwd', {
-				pwd: user_pwd,
-			})
-			setOutput('Adres email został zaktualizowany')
+			if (repeat_pwd !== user_pwd) {
+				setOutput('Wprowadzone hasła są różne')
+			} else {
+				axios.post(API_URL + '/resetuserpwd', {
+					user_pwd: user_pwd,
+				})
+				setOutput('Adres email został zaktualizowany')
+			}
 		} catch (err) {
 			console.error(err)
 			setOutput('Wystąpił błąd podczas aktualizacji adresu email')
@@ -33,6 +31,8 @@ function ResetPwd() {
 		<div>
 			<div className='flex-center'>
 				<div className='flex-center box-auth'>
+					<div className='belt-auth-right'></div>
+					<div className='belt-auth-left'></div>
 					<form onSubmit={handleSubmit}>
 						<h1 className='title-section'>Zmień hasło</h1>
 						<div className='flex-column'>

@@ -2,7 +2,7 @@ const User = require('../models/user')
 const bcrypt = require('bcrypt')
 const resetPassword = app => {
 	app.post('/resetuserpwd', async (req, res) => {
-		const { pwd, repeat_pwd } = req.body
+		const { user_pwd } = req.body
 		try {
 			console.log('ok')
 			const saltRounds = 5

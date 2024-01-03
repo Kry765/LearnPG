@@ -38,6 +38,8 @@ function ResetEmail() {
 		<div>
 			<div className='flex-center'>
 				<div className='flex-center box-auth'>
+					<div className='belt-auth-right'></div>
+					<div className='belt-auth-left'></div>
 					<form onSubmit={handleSubmit}>
 						<h1 className='title-section'>Zmień E-mail</h1>
 						<div className='flex-column'>

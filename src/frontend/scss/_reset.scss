@@ -155,7 +155,6 @@ textarea:focus-visible {
 	height: 600px;
 }
 
-
 .nav-auth {
 	max-width: 100%;
 	min-height: 10%;
@@ -228,27 +227,27 @@ textarea:focus-visible {
 	}
 	&__icon:hover {
 		cursor: pointer;
-		color: $green;
+		color: $contrast-color;
 	}
 
 	&__left-menu {
 		position: sticky;
 		top: 0;
-		background-color: $dark;
+		background-color: $contrast-color;
 		min-width: 20%;
 		height: 100%;
 		top: 0;
 	}
 	&__menu {
 		max-width: 100%;
-		background-color: $gray;
+		background-color: $green;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 	}
 	&__menu-item:hover,
 	&__position-icon:hover {
-		color: $green;
+		color: $contrast-color;
 		cursor: pointer;
 	}
 
@@ -281,7 +280,7 @@ textarea:focus-visible {
 	max-width: 100%;
 	&__btn {
 		margin: 1em;
-		background-color: $gray;
+		background-color: $green;
 		color: $white;
 		min-width: 75vw;
 		min-height: 40px;
@@ -292,7 +291,7 @@ textarea:focus-visible {
 	}
 	&__btn:hover {
 		cursor: pointer;
-		background-color: $green;
+		background-color: $contrast-color;
 	}
 }
 

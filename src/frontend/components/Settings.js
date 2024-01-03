@@ -87,6 +87,16 @@ function Dashboard() {
 					</button>
 				</div>
 				<div>
+					<button
+						className='href__btn'
+						onClick={() => {
+							navigate('./form')
+						}}
+					>
+						Skontaktuj się
+					</button>
+				</div>
+				<div>
 					<button className='href__btn'>Wyzeruj punkty</button>
 				</div>
 				<div>
