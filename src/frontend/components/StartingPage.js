@@ -1,4 +1,3 @@
-import { lazy, Suspense } from 'react'
 import React, { useState } from 'react'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { FaDatabase } from 'react-icons/fa'
@@ -12,9 +11,8 @@ import { FiMail } from 'react-icons/fi'
 import { AiFillPhone } from 'react-icons/ai'
 import { AiOutlineClose } from 'react-icons/ai'
 import { BsDiscord } from 'react-icons/bs'
-import { chceckCorrectEmail } from '../../backend/guard/Script'
+import { checkCorrectEmail, checkEmptyInput, sendEmail } from '../../backend/guard/Script'
 import '../scss/_main.scss'
-import emailjs from 'emailjs-com'
 import { Link, animateScroll as scroll } from 'react-scroll'
 
 function StartingPage() {
@@ -26,25 +24,22 @@ function StartingPage() {
 	const [scroll, setScroll] = useState(900)
 	const [changeIcon, setChangeIcon] = useState('')
 	const navigate = useNavigate()
-	const error = false
 
-	const sendEmail = e => {
-		e.preventDefault()
+	const handleSendMessage = async form => {
+		const checkEmail = checkCorrectEmail(user_email)
+		const checkInput = checkEmptyInput(user_email, user_input, user_textarea)
 
-		const validEmail = new RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$')
-		if (user_email === '' || user_input === '' || user_textarea === '') {
-			return setOutput('Uzupełnij brakujące pola')
-		} else if (!validEmail.test(user_email)) {
-			return setOutput('Wprowadzony adres email jest nieprawidłowy')
-		} else {
-			emailjs.sendForm('service_ivvbak9', 'template_rlainun', e.target, 'OXIurWGg9OpDvDAzF').then(
-				result => {
-					window.location.reload()
-				},
-				error => {
-					console.log(error.text)
-				}
-			)
+		if (checkInput || checkEmail) {
+			setOutput(checkEmail || checkInput)
+			return
+		}
+
+		try {
+			await sendEmail(form)
+			setOutput('Mail wysłany')
+		} catch (error) {
+			setOutput('Wystąpił błąd')
+			console.error(error)
 		}
 	}
 
@@ -216,7 +211,12 @@ function StartingPage() {
 					</div>
 				</section>
 				<section>
-					<form onSubmit={sendEmail}>
+					<form
+						onSubmit={e => {
+							e.preventDefault()
+							handleSendMessage(e)
+						}}
+					>
 						<h2 className='title' id='contact'>
 							Kontakt
 						</h2>
