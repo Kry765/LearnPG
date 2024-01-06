@@ -1,8 +1,7 @@
 import '../scss/_dashboard.scss'
-
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { isLogin } from '../../backend/guard/ProtectLink'
+import { useAuthNavigation } from '../../backend/guard/ProtectLink'
 import { useNavigate } from 'react-router-dom'
 import { DashboardNav } from './DashboardNav'
 
@@ -12,32 +11,30 @@ function Dashboard() {
 	const [Motivation, setMotivation] = useState('')
 	const [Author, setAuthor] = useState('')
 	const [point, setPoint] = useState(0)
+	const checkUser = useAuthNavigation()
 
 	useEffect(() => {
-		if (!isLogin()) {
-			navigate('/Login')
-		} else {
-			axios
-				.get(API_URL + '/getmotivations')
-				.then(res => {
-					const randomMotivation = res.data[Math.floor(Math.random() * res.data.length)]
+		checkUser()
+		axios
+			.get(API_URL + '/getmotivations')
+			.then(res => {
+				const randomMotivation = res.data[Math.floor(Math.random() * res.data.length)]
 
-					setMotivation(randomMotivation.motivation_text)
-					setAuthor(randomMotivation.motivation_author)
-				})
-				.catch(err => {
-					console.log(err)
-				})
-			axios
-				.get(API_URL + '/getscore')
-				.then(res => {
-					setPoint(res.data[0].point)
-				})
-				.catch(err => {
-					console.log(err)
-				})
-		}
-	}, [navigate])
+				setMotivation(randomMotivation.motivation_text)
+				setAuthor(randomMotivation.motivation_author)
+			})
+			.catch(err => {
+				console.log(err)
+			})
+		axios
+			.get(API_URL + '/getscore')
+			.then(res => {
+				setPoint(res.data[0].point)
+			})
+			.catch(err => {
+				console.log(err)
+			})
+	}, [])
 
 	return (
 		<div className='navigation'>

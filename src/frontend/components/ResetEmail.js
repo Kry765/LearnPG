@@ -1,14 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import '../scss/_reset.scss'
 import { FaDatabase, AiOutlineClose } from '../../backend/guard/Icons'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { useAuthNavigation } from '../../backend/guard/ProtectLink'
+import { useEffect } from 'react'
 
 function ResetEmail() {
 	const API_URL = 'http://localhost:4000'
 	const navigate = useNavigate()
 	const [new_email, set_new_email] = useState('')
 	const [output, setOutput] = useState('')
+	const checkUser = useAuthNavigation()
+
+	useEffect(() => {
+		checkUser()
+	}, [])
 
 	const checkEmail = () => {
 		const validEmail = new RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$')

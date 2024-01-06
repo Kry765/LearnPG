@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import '../scss/_reset.scss'
 import axios from 'axios'
 import { FaDatabase, AiOutlineClose } from '../../backend/guard/Icons'
@@ -12,7 +12,7 @@ function Register() {
 	const [user_email, set_user_email] = useState('')
 	const [user_pwd, set_user_pwd] = useState('')
 	const [output, setOutput] = useState('')
-	const [password, setPassword] = useState('')
+	const [password] = useState('')
 	const [repeat_pwd, set_repeat_pwd] = useState('')
 
 	const handleSubmit = async e => {

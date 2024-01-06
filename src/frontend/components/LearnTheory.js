@@ -5,19 +5,24 @@ import '../scss/_learn.scss'
 import { useNavigate } from 'react-router-dom'
 import '../scss/_dashboard.scss'
 import { AiFillHome, AiTwotoneSetting, BiSolidHelpCircle, FaPowerOff, RxHamburgerMenu } from '../../backend/guard/Icons'
+import { useAuthNavigation } from '../../backend/guard/ProtectLink'
 
 const LearnTheory = () => {
 	const API_URL = 'http://localhost:4000'
 	const [topics, setTopics] = useState([])
 	const [handleTopic, setHandleTopic] = useState(null)
 	const [openSettings, setOpenSettings] = useState('')
-	const [openSections, setOpenSections] = useState('')
 	const navigate = useNavigate()
 
 	const handleLoggout = () => {
 		outLogin()
 		navigate('/Login')
 	}
+
+	const checkUser = useAuthNavigation()
+	useEffect(() => {
+		checkUser()
+	}, [])
 
 	const takeMeTest = () => {
 		console.log('handleTopic:', handleTopic)

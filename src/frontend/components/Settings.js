@@ -1,17 +1,15 @@
 import '../scss/_settings.scss'
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
-import { isLogin, outLogin } from '../../backend/guard/ProtectLink'
+import { useAuthNavigation } from '../../backend/guard/ProtectLink'
 import { DashboardNav } from './DashboardNav'
 
 function Dashboard() {
 	const navigate = useNavigate()
-
+	const checkUser = useAuthNavigation()
 	useEffect(() => {
-		if (!isLogin()) {
-			navigate('/Login')
-		}
-	}, [navigate])
+		checkUser()
+	}, [])
 
 	return (
 		<div className='navigation'>

@@ -1,5 +1,4 @@
-import Dashboard from './Dashboard'
-import { isLogin, outLogin } from '../../backend/guard/ProtectLink'
+import { outLogin } from '../../backend/guard/ProtectLink'
 import { useNavigate } from 'react-router-dom'
 import { FaDatabase, AiFillHome, AiTwotoneSetting, BiSolidHelpCircle, FaPowerOff } from '../../backend/guard/Icons'
 
@@ -23,7 +22,7 @@ export function DashboardNav() {
 					<div
 						className='navigation__menu-item'
 						onClick={() => {
-							navigate('/dashboard')
+							navigate('../dashboard')
 						}}
 					>
 						<AiFillHome className='navigation__menu-icons' />
@@ -32,7 +31,7 @@ export function DashboardNav() {
 					<div
 						className='navigation__menu-item'
 						onClick={() => {
-							navigate('./settings')
+							navigate('../dashboard/settings')
 						}}
 					>
 						<AiTwotoneSetting className='navigation__menu-icons' />
@@ -41,7 +40,7 @@ export function DashboardNav() {
 					<div
 						className='navigation__menu-item'
 						onClick={() => {
-							navigate('/dashboard/help')
+							navigate('../dashboard/help')
 						}}
 					>
 						<BiSolidHelpCircle className='navigation__menu-icons' />

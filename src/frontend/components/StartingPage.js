@@ -15,7 +15,7 @@ import {
 import { useNavigate } from 'react-router-dom'
 import { checkCorrectEmail, checkEmptyInput, sendEmail } from '../../backend/guard/Script'
 import '../scss/_main.scss'
-import { Link, animateScroll as scroll } from 'react-scroll'
+import { Link } from 'react-scroll'
 
 function StartingPage() {
 	const [user_email, set_user_email] = useState('')
@@ -23,7 +23,7 @@ function StartingPage() {
 	const [user_textarea, set_user_textarea] = useState('')
 	const [output, setOutput] = useState('')
 	const [openNav, setOpenNav] = useState('')
-	const [scroll, setScroll] = useState(900)
+	const [scroll] = useState(900)
 	const [changeIcon, setChangeIcon] = useState('')
 	const navigate = useNavigate()
 
@@ -35,7 +35,6 @@ function StartingPage() {
 			setOutput(checkEmail || checkInput)
 			return
 		}
-
 		try {
 			await sendEmail(form)
 			setOutput('Mail wysłany')

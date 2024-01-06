@@ -1,12 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import '../scss/_reset.scss'
 import { FaDatabase, AiOutlineClose } from '../../backend/guard/Icons'
 import { useNavigate } from 'react-router-dom'
+import { useAuthNavigation } from '../../backend/guard/ProtectLink'
+import { useEffect } from 'react'
 
 export default function Form() {
 	const navigate = useNavigate()
-	const [output, setOutput] = useState('')
+	const [output] = useState('')
 	const [user_textarea, set_user_textarea] = useState('')
+
+	const checkUser = useAuthNavigation()
+	useEffect(() => {
+		checkUser()
+	}, [])
 
 	return (
 		<div>
