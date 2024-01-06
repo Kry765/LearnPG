@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../scss/_reset.scss'
-import { FaDatabase } from 'react-icons/fa'
-import { AiOutlineClose } from 'react-icons/ai'
+import { FaDatabase, AiOutlineClose } from '../../backend/guard/Icons'
 import { useNavigate } from 'react-router-dom'
 
 export default function Form() {

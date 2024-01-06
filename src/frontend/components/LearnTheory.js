@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { outLogin } from '../../backend/guard/ProtectLink'
 import axios from 'axios'
 import '../scss/_learn.scss'
 import { useNavigate } from 'react-router-dom'
 import '../scss/_dashboard.scss'
-import { AiFillHome } from 'react-icons/ai'
-import { AiTwotoneSetting } from 'react-icons/ai'
-import { BiSolidHelpCircle } from 'react-icons/bi'
-import { FaPowerOff } from 'react-icons/fa'
-import { isLogin, outLogin } from '../../backend/guard/ProtectLink'
-import { RxHamburgerMenu } from 'react-icons/rx'
+import { AiFillHome, AiTwotoneSetting, BiSolidHelpCircle, FaPowerOff, RxHamburgerMenu } from '../../backend/guard/Icons'
 
 const LearnTheory = () => {
 	const API_URL = 'http://localhost:4000'

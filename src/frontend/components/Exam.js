@@ -3,11 +3,7 @@ import '../scss/_reset.scss'
 import '../scss/_exam.scss'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { FaDatabase } from 'react-icons/fa'
-import { AiFillHome } from 'react-icons/ai'
-import { AiTwotoneSetting } from 'react-icons/ai'
-import { BiSolidHelpCircle } from 'react-icons/bi'
-import { FaPowerOff } from 'react-icons/fa'
+import { AiFillHome, AiTwotoneSetting, BiSolidHelpCircle, FaPowerOff } from '../../backend/guard/Icons'
 import { isLogin, outLogin } from '../../backend/guard/ProtectLink'
 
 function Exam() {

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../scss/_reset.scss'
 import axios from 'axios'
-import { AiOutlineClose } from 'react-icons/ai'
-import { FaDatabase } from 'react-icons/fa'
+import { AiOutlineClose, FaDatabase } from '../../backend/guard/Icons'
 import { useNavigate } from 'react-router-dom'
 
 function ResetPwd() {

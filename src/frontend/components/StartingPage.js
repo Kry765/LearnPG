@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
-import { RxHamburgerMenu } from 'react-icons/rx'
-import { FaDatabase } from 'react-icons/fa'
-import { RiArrowDownSLine } from 'react-icons/ri'
-import { MdOutlineTouchApp } from 'react-icons/md'
-import { AiOutlineFieldTime } from 'react-icons/ai'
-import { BsFillCalendarCheckFill } from 'react-icons/bs'
-import { AiFillSave } from 'react-icons/ai'
+import {
+	RxHamburgerMenu,
+	FaDatabase,
+	RiArrowDownSLine,
+	MdOutlineTouchApp,
+	AiOutlineFieldTime,
+	BsFillCalendarCheckFill,
+	AiFillSave,
+	FiMail,
+	AiFillPhone,
+	AiOutlineClose,
+	BsDiscord,
+} from '../../backend/guard/Icons'
 import { useNavigate } from 'react-router-dom'
-import { FiMail } from 'react-icons/fi'
-import { AiFillPhone } from 'react-icons/ai'
-import { AiOutlineClose } from 'react-icons/ai'
-import { BsDiscord } from 'react-icons/bs'
 import { checkCorrectEmail, checkEmptyInput, sendEmail } from '../../backend/guard/Script'
 import '../scss/_main.scss'
 import { Link, animateScroll as scroll } from 'react-scroll'

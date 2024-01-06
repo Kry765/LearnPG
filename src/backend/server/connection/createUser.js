@@ -8,9 +8,8 @@ const createUser = app => {
 			const saltRounds = 5
 			const hash = await bcrypt.hash(user_pwd, saltRounds)
 			const existingUser = await User.findOne({ user_email })
-			if (existingUser) {
-				console.log('Email already exists:', user_email)
-				return res.status(200).json({ message: 'Email already exists' })
+			if (res.status === 200) {
+				return setOutput('Podany adres email jest już zajęty')
 			} else {
 				const newUser = await User.create({
 					user_email: user_email,

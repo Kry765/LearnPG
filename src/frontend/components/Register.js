@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import '../scss/_reset.scss'
-import { FaDatabase } from 'react-icons/fa'
 import axios from 'axios'
-import { AiOutlineClose } from 'react-icons/ai'
+import { FaDatabase, AiOutlineClose } from '../../backend/guard/Icons'
 import { useNavigate } from 'react-router-dom'
+import { checkCorrectEmail, checkEmptyInput, checkRepeatPassword } from '../../backend/guard/Script'
 
 const API_URL = 'http://localhost:4000/create'
 
@@ -17,18 +17,14 @@ function Register() {
 
 	const handleSubmit = async e => {
 		e.preventDefault()
-
+		const handleCheckEmail = checkCorrectEmail(user_email)
+		const handleCheckPasword = checkRepeatPassword(user_pwd, repeat_pwd)
+		const handleCheckEmptyInput = checkEmptyInput(user_email, user_pwd, repeat_pwd)
+		if (handleCheckEmptyInput || handleCheckPasword || handleCheckEmail) {
+			return setOutput(handleCheckEmptyInput || handleCheckEmail || handleCheckPasword)
+		}
 		const formData = { user_email, user_pwd }
 		try {
-			const validEmail = new RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$')
-			if (user_email === '' || user_pwd === '' || repeat_pwd === '') {
-				return setOutput('Uzupełnij brakujące pola')
-			} else if (!validEmail.test(user_email)) {
-				return setOutput('Wprowadzony adres email jest nieprawidłowy')
-			} else if (repeat_pwd !== user_pwd) {
-				return setOutput('Wprowadzone hasła są różne')
-			}
-
 			const res = await axios.post(API_URL, formData, {
 				headers: {
 					'Content-Type': 'application/json',

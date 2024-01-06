@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import '../scss/_reset.scss'
-import { FaDatabase } from 'react-icons/fa'
-import { AiOutlineClose } from 'react-icons/ai'
+import { AiOutlineClose, FaDatabase } from '../../backend/guard/Icons'
 import { useNavigate } from 'react-router-dom'
 import { checkLogin } from '../../backend/guard/ProtectLink'
 
@@ -19,36 +19,31 @@ const Login = () => {
 	const [user_pwd, set_user_pwd] = useState('')
 	const [output, setOutput] = useState('')
 
-	const checkEmail = () => {
-		const validEmail = new RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$')
-		if (!validEmail.test(user_email)) {
-			setOutput('Wprowadzony adres email jest nieprawidłowy')
-		}
-	}
-
 	const handleSubmit = async e => {
 		e.preventDefault()
 		try {
-			const response = await fetch('http://localhost:4000/signin', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
+			const response = await axios.post(
+				'http://localhost:4000/signin',
+				{
+					user_email,
+					user_pwd,
 				},
-				body: JSON.stringify({ user_email, user_pwd }),
-			})
+				{
+					headers: {
+						'Content-Type': 'application/json',
+					},
+				}
+			)
 
-			if (response.ok) {
-				checkEmail()
-				const data = await response.json()
+			if (response.status === 200) {
+				const data = response.data
 				localStorage.setItem('token', data.token)
 				window.location.href = '/Dashboard'
-			} else if (response.status === 401) {
-				setOutput('Nieprawidłowy adres E-mail lub hasło')
 			} else {
-				setOutput('Wystąpił błąd')
+				return setOutput('Wystąpił błąd')
 			}
 		} catch (error) {
-			console.error(error)
+			setOutput('Nieprawidłowy adres E-mail lub hasło')
 		}
 	}
 
