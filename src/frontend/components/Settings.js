@@ -1,9 +1,8 @@
 import '../scss/_settings.scss'
-import { FaDatabase, AiFillHome, AiTwotoneSetting, BiSolidHelpCircle } from '../../backend/guard/Icons'
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
-import { FaPowerOff } from 'react-icons/fa'
 import { isLogin, outLogin } from '../../backend/guard/ProtectLink'
+import { DashboardNav } from './DashboardNav'
 
 function Dashboard() {
 	const navigate = useNavigate()
@@ -14,52 +13,9 @@ function Dashboard() {
 		}
 	}, [navigate])
 
-	const handleLoggout = () => {
-		outLogin()
-		navigate('/Login')
-	}
-
 	return (
 		<div className='navigation'>
-			<div className='navigation__left-menu'>
-				<div className='navigation__icon'>
-					<FaDatabase
-						onClick={() => {
-							navigate('/')
-						}}
-					/>
-				</div>
-				<div className='navigation__menu'>
-					<div className='navigation__menu-items'>
-						<div
-							className='navigation__menu-item'
-							onClick={() => {
-								navigate('/dashboard')
-							}}
-						>
-							<AiFillHome className='navigation__menu-icons' />
-							<div className='navigation__menu-icon-description'>Panel Główny</div>
-						</div>
-						<div className='navigation__menu-item'>
-							<AiTwotoneSetting className='navigation__menu-icons' />
-							<div className='navigation__menu-icon-description'>Ustawienia</div>
-						</div>
-						<div
-							className='navigation__menu-item'
-							onClick={() => {
-								navigate('/dashboard/help')
-							}}
-						>
-							<BiSolidHelpCircle className='navigation__menu-icons' />
-							<div className='navigation__menu-icon-description'>Pomoc</div>
-						</div>
-						<div className='navigation__menu-item' onClick={handleLoggout}>
-							<FaPowerOff className='navigation__menu-icons' />
-							<div className='navigation__menu-icon-description'>Wyloguj się</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			<DashboardNav />
 			<div className='href'>
 				<h3>Ustawienia</h3>
 				<div>

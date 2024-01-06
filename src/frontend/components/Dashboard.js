@@ -1,9 +1,10 @@
 import '../scss/_dashboard.scss'
-import { FaDatabase, AiFillHome, AiTwotoneSetting, BiSolidHelpCircle, FaPowerOff } from '../../backend/guard/Icons'
+
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { isLogin, outLogin } from '../../backend/guard/ProtectLink'
+import { isLogin } from '../../backend/guard/ProtectLink'
 import { useNavigate } from 'react-router-dom'
+import { DashboardNav } from './DashboardNav'
 
 function Dashboard() {
 	const API_URL = 'http://localhost:4000'
@@ -38,57 +39,9 @@ function Dashboard() {
 		}
 	}, [navigate])
 
-	const handleLoggout = () => {
-		outLogin()
-		navigate('/Login')
-	}
-
 	return (
 		<div className='navigation'>
-			<div className='navigation__left-menu'>
-				<div className='navigation__icon'>
-					<FaDatabase
-						onClick={() => {
-							navigate('/')
-						}}
-					/>
-				</div>
-				<div className='navigation__menu'>
-					<div className='navigation__menu-items'>
-						<div
-							className='navigation__menu-item'
-							onClick={() => {
-								navigate('/dashboard')
-							}}
-						>
-							<AiFillHome className='navigation__menu-icons' />
-							<p className='navigation__menu-icon-description'>Panel Główny</p>
-						</div>
-						<div
-							className='navigation__menu-item'
-							onClick={() => {
-								navigate('./settings')
-							}}
-						>
-							<AiTwotoneSetting className='navigation__menu-icons' />
-							<p className='navigation__menu-icon-description'>Ustawienia</p>
-						</div>
-						<div
-							className='navigation__menu-item'
-							onClick={() => {
-								navigate('/dashboard/help')
-							}}
-						>
-							<BiSolidHelpCircle className='navigation__menu-icons' />
-							<p className='navigation__menu-icon-description'>Pomoc</p>
-						</div>
-						<div className='navigation__menu-item' onClick={handleLoggout}>
-							<FaPowerOff className='navigation__menu-icons' />
-							<p className='navigation__menu-icon-description'>Wyloguj się</p>
-						</div>
-					</div>
-				</div>
-			</div>
+			<DashboardNav />
 			<div className='section'>
 				<div className='section__hello-word'>
 					<h3>Witaj użytkowniku</h3>
