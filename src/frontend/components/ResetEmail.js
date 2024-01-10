@@ -4,6 +4,7 @@ import { FaDatabase, AiOutlineClose } from '../../backend/guard/Icons'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useAuthNavigation } from '../../backend/guard/ProtectLink'
+import { checkCorrectEmail } from './../../backend/guard/Script'
 import { useEffect } from 'react'
 
 function ResetEmail() {
@@ -17,18 +18,14 @@ function ResetEmail() {
 		checkUser()
 	}, [])
 
-	const checkEmail = () => {
-		const validEmail = new RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$')
-		if (!validEmail.test(new_email)) {
-			setOutput('Wprowadzony adres email jest nieprawidłowy')
-		} else {
-			setOutput('Twoja prośba o zresetowanie hasła została wysłana')
-		}
-	}
-
 	const handleSubmit = async e => {
+		const handleCheckEmail = checkCorrectEmail(new_email)
+
 		e.preventDefault()
-		checkEmail()
+		if (handleCheckEmail) {
+			return setOutput(handleCheckEmail)
+		}
+
 		try {
 			await axios.post(API_URL + '/resetpwd', {
 				new_email: new_email,

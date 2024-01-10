@@ -112,14 +112,15 @@ textarea:focus-visible {
 
 //decorate
 .belt-right {
-	position: absolute;
-	top: 0;
+	position: fixed;
+	top: 90%;
 	left: 90%;
 	transform: rotate(45deg);
 	background-color: $green;
 	opacity: 0.8;
 	width: 400px;
 	height: 400px;
+	overflow: hidden;
 }
 .belt-left {
 	position: absolute;
@@ -130,17 +131,19 @@ textarea:focus-visible {
 	opacity: 0.8;
 	width: 400px;
 	height: 400px;
+	overflow: hidden;
 }
 .belt-auth-right {
 	z-index: -3;
-	position: absolute;
-	bottom: -1700px;
-	right: -1700px;
+	position: fixed;
+	top: 450px;
+	left: 1500px;
 	transform: rotate(45deg);
 	background-color: $green;
 	opacity: 0.8;
-	width: 2000px;
-	height: 2000px;
+	width: 1000px;
+	height: 1000px;
+	overflow: hidden;
 }
 
 .belt-auth-left {
@@ -153,6 +156,7 @@ textarea:focus-visible {
 	opacity: 0.8;
 	width: 600px;
 	height: 600px;
+	overflow: hidden;
 }
 
 .nav-auth {
@@ -197,10 +201,12 @@ textarea:focus-visible {
 }
 
 .box-auth {
-	position: fixed;
+	position: relative;
 	top: 0;
-	min-height: 90vh;
 	max-width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	padding: 2em;
 }
 
 .space-auth {
@@ -220,9 +226,10 @@ textarea:focus-visible {
 	display: flex;
 	&__icon {
 		position: fixed;
+		right: 0;
 		padding: 1em;
 		font-size: 2.4rem;
-		color: $white;
+		color: $gray;
 		transition: color 0.5s;
 	}
 	&__icon:hover {
@@ -252,7 +259,10 @@ textarea:focus-visible {
 	}
 
 	&__menu-items {
-		height: 100vh;
+		position: sticky;
+		top: 0;
+		width: 25vh;
+		min-height: 103vh;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;

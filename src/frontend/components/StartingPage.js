@@ -1,4 +1,8 @@
 import React, { useState } from 'react'
+import { Link } from 'react-scroll'
+import { useNavigate } from 'react-router-dom'
+import { checkCorrectEmail, checkEmptyInput, sendEmail } from '../../backend/guard/Script'
+import '../scss/_main.scss'
 import {
 	RxHamburgerMenu,
 	FaDatabase,
@@ -12,10 +16,6 @@ import {
 	AiOutlineClose,
 	BsDiscord,
 } from '../../backend/guard/Icons'
-import { useNavigate } from 'react-router-dom'
-import { checkCorrectEmail, checkEmptyInput, sendEmail } from '../../backend/guard/Script'
-import '../scss/_main.scss'
-import { Link } from 'react-scroll'
 
 function StartingPage() {
 	const [user_email, set_user_email] = useState('')

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { outLogin } from '../../backend/guard/ProtectLink'
 import axios from 'axios'
-import '../scss/_learn.scss'
 import { useNavigate } from 'react-router-dom'
 import '../scss/_dashboard.scss'
+import '../scss/_learn.scss'
 import { AiFillHome, AiTwotoneSetting, BiSolidHelpCircle, FaPowerOff, RxHamburgerMenu } from '../../backend/guard/Icons'
 import { useAuthNavigation } from '../../backend/guard/ProtectLink'
 
