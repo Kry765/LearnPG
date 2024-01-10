@@ -122,35 +122,27 @@ const LearnTheory = () => {
 						navigate('/dashboard')
 					}}
 				>
-					<AiFillHome />
 					Panel Główny
 				</div>
-				<div className='bottom-line'></div>
 				<div
 					className='learn__space-icon'
 					onClick={() => {
 						navigate('./settings')
 					}}
 				>
-					<AiTwotoneSetting />
 					Ustawienia
 				</div>
-				<div className='bottom-line'></div>
 				<div
 					className='learn__space-icon'
 					onClick={() => {
 						navigate('/dashboard/help')
 					}}
 				>
-					<BiSolidHelpCircle />
 					Pomoc
 				</div>
-				<div className='bottom-line'></div>
 				<div className='learn__space-icon' onClick={handleLoggout}>
-					<FaPowerOff />
 					Wyloguj się
 				</div>
-				<div className='bottom-line'></div>
 			</div>
 			<div className='learn__description'>
 				<h1>Rozpocznij nauke</h1>

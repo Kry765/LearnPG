@@ -5,6 +5,7 @@
 	position: relative;
 	display: flex;
 	&__space-icon {
+		color: white;
 		padding: 2em 2em;
 		transition: color 1s;
 	}
@@ -14,7 +15,7 @@
 	}
 	&__menu-item:hover {
 		cursor: pointer;
-		color: $green;
+		color: $contrast-color;
 	}
 	&__mobile-settings {
 		display: none;
@@ -47,7 +48,7 @@
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
-		background-color: black;
+		background-color: $green;
 		&--sticky-menu {
 			position: sticky;
 			display: flex;
@@ -68,7 +69,9 @@
 			top: 0;
 			height: 100vh;
 			min-width: 5vw;
-			background-color: black;
+			background-color: $green;
+			color: $white;
+			font-weight: bold;
 		}
 	}
 	&__mobile-settings-menu {
@@ -99,7 +102,7 @@
 			width: 100vw;
 			height: 100vh;
 			margin-top: 100px;
-			background-color: rgba(0, 0, 0, 0.9);
+			background-color: $green;
 			color: #fff;
 			&--close {
 				display: none;
@@ -107,7 +110,7 @@
 		}
 		&__mobile-menu {
 			position: fixed;
-			background-color: black;
+			background-color: $green;
 			width: 100%;
 			height: 50px;
 			padding: 1em;
@@ -129,7 +132,8 @@
 			position: fixed;
 			top: 0;
 			width: 100%;
-			background-color: black;
+			background-color: $green;
+			color: $white;
 			display: block;
 			display: flex;
 			justify-content: space-between;
