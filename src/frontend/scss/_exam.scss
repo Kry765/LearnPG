@@ -1,4 +1,6 @@
 @use '_colors.scss' as *;
+@use '_reset.scss' as *;
+
 .flex-exam {
 	display: flex;
 	flex-direction: row;
@@ -6,6 +8,18 @@
 .exam {
 	width: 100%;
 	padding: 2em;
+	&__input {
+		margin-top: 1em;
+		border-radius: 15px;
+		width: 80vw;
+		height: 5vh;
+		padding: 1em 2em;
+		font-size: 1.2rem;
+	}
+	&__question {
+		font-size: 1.2rem;
+		font-weight: bold;
+	}
 	&__exam-lists {
 		display: flex;
 		justify-content: center;
