@@ -5,7 +5,7 @@
 	position: relative;
 	display: flex;
 	&__space-icon {
-		color: white;
+		color: $white;
 		padding: 2em 2em;
 		transition: color 1s;
 	}
@@ -61,7 +61,7 @@
 			top: 0;
 			height: 100vh;
 			min-width: 5vw;
-			background-color: $gray;
+			background-color: $green;
 		}
 		&--sticky-section {
 			position: sticky;
@@ -72,7 +72,7 @@
 			top: 0;
 			height: 100vh;
 			min-width: 5vw;
-			background-color: $green;
+			background-color: $gray;
 			color: $white;
 			font-weight: bold;
 		}
