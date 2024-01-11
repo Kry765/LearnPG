@@ -241,7 +241,7 @@ textarea:focus-visible {
 		position: sticky;
 		top: 0;
 		background-color: $contrast-color;
-		min-width: 20%;
+		max-width: 20%;
 		height: 100%;
 		top: 0;
 	}
@@ -292,7 +292,7 @@ textarea:focus-visible {
 		margin: 1em;
 		background-color: $green;
 		color: $white;
-		min-width: 75vw;
+		min-width: 50vw;
 		min-height: 40px;
 		height: 20px;
 		border: none;

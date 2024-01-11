@@ -1,9 +1,11 @@
 export const checkInputAnswer = (answer, question) => {
 	const transformAnswer = answer.toLowerCase()
 	const transformCorrectAnswer = question.correct_answer.toLowerCase()
-	if (transformAnswer == transformCorrectAnswer) {
-		console.log('ok')
+	if (transformAnswer == '') {
+		return 'Podana odpowiedź jest błędna'
+	} else if (transformAnswer == transformCorrectAnswer) {
+		return 'Poprawna odpowiedź, otrzymujesz punkt!'
 	} else {
-		console.log('no')
+		return 'Podana odpowiedź jest błędna'
 	}
 }
