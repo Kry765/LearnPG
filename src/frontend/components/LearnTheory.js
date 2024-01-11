@@ -67,10 +67,10 @@ const LearnTheory = () => {
 		<div className='learn'>
 			<div className='learn__mobile-settings-menu'>
 				<div>
-					<RxHamburgerMenu />
+					<RxHamburgerMenu className='learn__mobile-icon' />
 				</div>
-				<div onClick={() => setOpenSettings(!openSettings)}>
-					<AiTwotoneSetting />
+				<div onClick={() => setOpenSettings(!openSettings)} className='learn__mobile-icon'>
+					<AiTwotoneSetting className='learn__mobile-icon' />
 				</div>
 			</div>
 			<div className='learn__box--sticky-menu'>
@@ -115,9 +115,9 @@ const LearnTheory = () => {
 					))}
 				</div>
 			</div>
-			<div className={openSettings ? 'learn__mobile-settings--close' : 'learn__mobile-settings'}>
+			<div className={openSettings ? 'learn__mobile-settings' : 'learn__mobile-settings--close'}>
 				<div
-					className='learn__space-icon'
+					className='learn__mobile-setting'
 					onClick={() => {
 						navigate('/dashboard')
 					}}
@@ -125,7 +125,7 @@ const LearnTheory = () => {
 					Panel Główny
 				</div>
 				<div
-					className='learn__space-icon'
+					className='learn__mobile-setting'
 					onClick={() => {
 						navigate('./settings')
 					}}
@@ -133,14 +133,14 @@ const LearnTheory = () => {
 					Ustawienia
 				</div>
 				<div
-					className='learn__space-icon'
+					className='learn__mobile-setting'
 					onClick={() => {
 						navigate('/dashboard/help')
 					}}
 				>
 					Pomoc
 				</div>
-				<div className='learn__space-icon' onClick={handleLoggout}>
+				<div className='learn__mobile-setting' onClick={handleLoggout}>
 					Wyloguj się
 				</div>
 			</div>
