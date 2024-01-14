@@ -1,8 +1,8 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { checkInputAnswer } from '../../backend/guard/ExamScript'
-import { DashboardNav } from './DashboardNav'
+import { checkInputAnswer } from '../../../../backend/guard/ExamScript'
+import { DashboardNav } from '../StartPage/DashboardNav'
 
 function LearnTest() {
 	const API_URL = 'http://localhost:4000'

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import '../scss/_settings.scss'
-import { useAuthNavigation } from '../../backend/guard/ProtectLink'
-import { DashboardNav } from './DashboardNav'
+import '../../../scss/_reset.scss'
+import { useAuthNavigation } from '../../../../backend/guard/ProtectLink'
+import { DashboardNav } from '../StartPage/DashboardNav'
 
 function Help() {
 	const API_URL = 'http://localhost:4000'
@@ -20,7 +20,7 @@ function Help() {
 
 	const handleFaqItem = index => {
 		setHandleFaq(faqs[index])
-		setIsDescriptionVisible(false) // Ukryj opis po wybraniu nowego FAQ
+		setIsDescriptionVisible(false)
 	}
 
 	useEffect(() => {

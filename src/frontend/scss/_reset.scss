@@ -224,9 +224,12 @@ textarea:focus-visible {
 //navigation dashboard
 .navigation {
 	display: flex;
+	min-height: 100%;
+	max-width: 100%;
 	&__icon {
 		position: fixed;
 		right: 0;
+		top: 0;
 		padding: 1em;
 		font-size: 2.4rem;
 		color: $gray;
@@ -240,9 +243,8 @@ textarea:focus-visible {
 	&__left-menu {
 		position: sticky;
 		top: 0;
-		background-color: $contrast-color;
 		max-width: 20%;
-		height: 100%;
+		max-height: 100vh;
 		top: 0;
 	}
 	&__menu {
@@ -262,7 +264,7 @@ textarea:focus-visible {
 		position: sticky;
 		top: 0;
 		width: 25vh;
-		min-height: 103vh;
+		min-height: 100vh;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -288,11 +290,12 @@ textarea:focus-visible {
 	align-items: center;
 	flex-direction: column;
 	max-width: 100%;
+	max-height: 100%;
 	&__btn {
 		margin: 1em;
 		background-color: $green;
 		color: $white;
-		min-width: 50vw;
+		min-width: 75vw;
 		min-height: 40px;
 		height: 20px;
 		border: none;
@@ -326,6 +329,11 @@ textarea:focus-visible {
 	font-family: 'Poppins', sans-serif;
 	resize: none;
 	height: 300px;
+}
+
+.static-nav {
+	position: fixed;
+	top: 0;
 }
 
 @media (max-width: 768px) {

@@ -1,7 +1,7 @@
-import '../scss/_dashboard.scss'
+import '../../../scss/_reset.scss'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { useAuthNavigation } from '../../backend/guard/ProtectLink'
+import { useAuthNavigation } from '../../../../backend/guard/ProtectLink'
 import { useNavigate } from 'react-router-dom'
 import { DashboardNav } from './DashboardNav'
 

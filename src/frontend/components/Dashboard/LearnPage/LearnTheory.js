@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import '../scss/_dashboard.scss'
-import '../scss/_learn.scss'
-import { useAuthNavigation, outLogin } from '../../backend/guard/ProtectLink'
-import { AiFillHome, AiTwotoneSetting, BiSolidHelpCircle, FaPowerOff, RxHamburgerMenu } from '../../backend/guard/Icons'
+import '../../../scss/_dashboard.scss'
+import '../../../scss/_reset.scss'
+import '../../../scss/_learn.scss'
+import { useAuthNavigation, outLogin } from '../../../../backend/guard/ProtectLink'
+import {
+	AiFillHome,
+	AiTwotoneSetting,
+	BiSolidHelpCircle,
+	FaPowerOff,
+	RxHamburgerMenu,
+} from '../../../../backend/guard/Icons'
 import LearnMenuTopics from './LearnMenuTopics'
 import LearnTestBtn from './LearnTestBtn'
 import LearnGetDescription from './LearnGetDescription'

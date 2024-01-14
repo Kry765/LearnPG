@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import '../scss/_reset.scss'
-import { AiOutlineClose, FaDatabase } from '../../backend/guard/Icons'
+import '../../scss/_reset.scss'
+import { AiOutlineClose, FaDatabase } from '../../../backend/guard/Icons'
 import { useNavigate } from 'react-router-dom'
-import { isLogin } from '../../backend/guard/ProtectLink'
+import { isLogin } from '../../../backend/guard/ProtectLink'
 
 const Login = () => {
 	useEffect(() => {

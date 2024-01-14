@@ -22,7 +22,7 @@ export const checkRepeatPassword = (user_pwd, repeat_pwd) => {
 	}
 }
 
-//send Mai
+//send Mail
 export const sendEmail = async form => {
 	emailjs.sendForm('service_uch3syy', 'template_rlainun', form.target, 'OXIurWGg9OpDvDAzF').then(
 		result => {

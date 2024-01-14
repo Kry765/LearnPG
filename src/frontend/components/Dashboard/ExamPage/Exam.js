@@ -1,10 +1,10 @@
 import axios from 'axios'
-import '../scss/_reset.scss'
-import '../scss/_exam.scss'
+import '../../../scss/_reset.scss'
+import '../../../scss/_exam.scss'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { AiFillHome, AiTwotoneSetting, BiSolidHelpCircle, FaPowerOff } from '../../backend/guard/Icons'
-import { isLogin, outLogin } from '../../backend/guard/ProtectLink'
+import { AiFillHome, AiTwotoneSetting, BiSolidHelpCircle, FaPowerOff } from '../../../../backend/guard/Icons'
+import { isLogin, outLogin } from '../../../../backend/guard/ProtectLink'
 
 function Exam() {
 	const API_URL = 'http://localhost:4000'

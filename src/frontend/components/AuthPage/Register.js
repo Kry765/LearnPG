@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import '../scss/_reset.scss'
+import '../../scss/_reset.scss'
 import axios from 'axios'
-import { FaDatabase, AiOutlineClose } from '../../backend/guard/Icons'
+import { FaDatabase, AiOutlineClose } from '../../../backend/guard/Icons'
 import { useNavigate } from 'react-router-dom'
-import { checkCorrectEmail, checkEmptyInput, checkRepeatPassword } from '../../backend/guard/Script'
+import { checkCorrectEmail, checkEmptyInput, checkRepeatPassword } from '../../../backend/guard/Script'
 
 const API_URL = 'http://localhost:4000/create'
 

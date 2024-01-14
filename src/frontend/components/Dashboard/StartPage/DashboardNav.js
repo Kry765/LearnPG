@@ -1,6 +1,12 @@
-import { outLogin } from '../../backend/guard/ProtectLink'
+import { outLogin } from '../../../../backend/guard/ProtectLink'
 import { useNavigate } from 'react-router-dom'
-import { FaDatabase, AiFillHome, AiTwotoneSetting, BiSolidHelpCircle, FaPowerOff } from '../../backend/guard/Icons'
+import {
+	FaDatabase,
+	AiFillHome,
+	AiTwotoneSetting,
+	BiSolidHelpCircle,
+	FaPowerOff,
+} from '../../../../backend/guard/Icons'
 
 export function DashboardNav() {
 	const navigate = useNavigate()

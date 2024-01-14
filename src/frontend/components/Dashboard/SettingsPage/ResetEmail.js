@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import '../scss/_reset.scss'
-import { FaDatabase, AiOutlineClose } from '../../backend/guard/Icons'
+import '../../../scss/_reset.scss'
+import { FaDatabase, AiOutlineClose } from '../../../../backend/guard/Icons'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { useAuthNavigation } from '../../backend/guard/ProtectLink'
-import { checkCorrectEmail } from './../../backend/guard/Script'
+import { useAuthNavigation } from '../../../../backend/guard/ProtectLink'
+import { checkCorrectEmail } from '../../../../backend/guard/Script'
 import { useEffect } from 'react'
 
 function ResetEmail() {

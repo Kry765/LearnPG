@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import '../scss/_reset.scss'
-import { FaDatabase, AiOutlineClose } from '../../backend/guard/Icons'
+import '../../../scss/_reset.scss'
+import { FaDatabase, AiOutlineClose } from '../../../../backend/guard/Icons'
 import { useNavigate } from 'react-router-dom'
-import { useAuthNavigation } from '../../backend/guard/ProtectLink'
+import { useAuthNavigation } from '../../../../backend/guard/ProtectLink'
 import { useEffect } from 'react'
 
 export default function Form() {

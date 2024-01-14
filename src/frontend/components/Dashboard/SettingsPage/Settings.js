@@ -1,8 +1,8 @@
-import '../scss/_reset.scss'
+import '../../../scss/_reset.scss'
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
-import { useAuthNavigation } from '../../backend/guard/ProtectLink'
-import { DashboardNav } from './DashboardNav'
+import { useAuthNavigation } from '../../../../backend/guard/ProtectLink'
+import { DashboardNav } from '../StartPage/DashboardNav'
 
 function Dashboard() {
 	const navigate = useNavigate()
