@@ -1,25 +1,25 @@
 const Question = require('../models/open_question')
 
 const getOpenQuestion = app => {
-	app.post('/getopenquestion/:question_id', (req, res) => {
+	app.get('/getopenquestion/:question_id', (req, res) => {
 		const { question_id } = req.params
 
-		Question.findOne({
+		Question.findAll({
 			where: { question_id },
-			attributes: ['question_id', 'question', 'correct_answer'],
+			attributes: ['openquestion_id', 'question', 'correct_answer'],
 		})
-			.then(question => {
-				if (!question) {
-					return res.status(404).json({ error: 'Question not found' })
+			.then(questions => {
+				if (!questions || questions.length === 0) {
+					return res.status(404).json({ error: 'Questions not found' })
 				}
 
-				const questionData = {
-					question_id: question.question_id,
+				const questionsData = questions.map(question => ({
+					openquestion_id: question.openquestion_id,
 					question: question.question,
 					correct_answer: question.correct_answer,
-				}
+				}))
 
-				res.json(questionData)
+				res.json(questionsData)
 			})
 			.catch(err => {
 				console.log(err)
