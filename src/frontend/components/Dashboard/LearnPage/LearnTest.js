@@ -28,12 +28,17 @@ function LearnTest() {
 	const currentQuestion = questions[currentQuestionIndex]
 
 	const handleCheckAnswer = () => {
-		// Handle answer validation or other logic here
+		const userAnswer = answer.trim().toLowerCase() 
+		const correctAnswer = currentQuestion.correct_answer.trim().toLowerCase() 
 
-		// Move to the next question
+		if (userAnswer === correctAnswer) {
+			setOutput('Dobrze!')
+		} else {
+			setOutput('Źle!')
+		}
+
 		setCurrentQuestionIndex(prevIndex => prevIndex + 1)
 
-		// Clear the answer input
 		setAnswer('')
 	}
 
