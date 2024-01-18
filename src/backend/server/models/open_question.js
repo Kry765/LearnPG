@@ -1,5 +1,6 @@
-const db = require('../database')
 const { DataTypes } = require('sequelize')
+const db = require('../database')
+const Topic = require('./topic')
 
 const OpenQuestion = db.define(
 	'openquestions',
@@ -10,7 +11,11 @@ const OpenQuestion = db.define(
 			primaryKey: true,
 		},
 		question_id: {
-			type: DataTypes.STRING,
+			type: DataTypes.INTEGER,
+			allowNull: false,
+		},
+		nr_question_id: {
+			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
 		question: {
@@ -24,5 +29,7 @@ const OpenQuestion = db.define(
 	},
 	{ timestamps: false }
 )
+
+OpenQuestion.belongsTo(Topic, { foreignKey: 'question_id' })
 
 module.exports = OpenQuestion

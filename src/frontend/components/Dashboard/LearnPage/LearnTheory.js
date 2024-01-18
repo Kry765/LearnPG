@@ -13,8 +13,6 @@ import {
 	RxHamburgerMenu,
 } from '../../../../backend/guard/Icons'
 import LearnMenuTopics from './LearnMenuTopics'
-import LearnTestBtn from './LearnTestBtn'
-import LearnGetDescription from './LearnGetDescription'
 
 const LearnTheory = () => {
 	const API_URL = 'http://localhost:4000'
@@ -28,6 +26,13 @@ const LearnTheory = () => {
 	const handleLoggout = () => {
 		outLogin()
 		navigate('/Login')
+	}
+	const takeMeTest = () => {
+		if (handleTopic && handleTopic.question_id) {
+			navigate(`/Dashboard/Learn/LearnTest/${handleTopic.question_id}`)
+		} else {
+			console.log('handleTopic or handleTopic.question_id is false')
+		}
 	}
 
 	useEffect(() => {
@@ -127,13 +132,20 @@ const LearnTheory = () => {
 			<div className='learn__description'>
 				<h1>Rozpocznij nauke</h1>
 				<h3>Wybierz interesujące cię zagadnienie</h3>
-				<div>
-					<p>
-						<LearnGetDescription handleTopic={handleTopic} />
-					</p>
-				</div>
+
+				{handleTopic &&
+					handleTopic.topic_description.split('\n').map((line, index) => (
+						<div key={index} className='learn__description'>
+							{line}
+						</div>
+					))}
+
 				<div className='flex-center'>
-					<LearnTestBtn handleTopic={handleTopic} navigate={navigate} />
+					{handleTopic && (
+						<button className='learn__btn' onClick={takeMeTest}>
+							Sprawdź wiedzę
+						</button>
+					)}
 				</div>
 			</div>
 		</div>

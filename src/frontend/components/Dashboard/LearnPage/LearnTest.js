@@ -6,63 +6,44 @@ import { isLogin, outLogin } from '../../../../backend/guard/ProtectLink'
 
 function LearnTest() {
 	const API_URL = 'http://localhost:4000'
-	const [currentQuestion, setCurrentQuestion] = useState(1)
-	const [question, setQuestion] = useState({})
 	const [answer, setAnswer] = useState('')
-	const navigate = useNavigate()
+	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
 	const [output, setOutput] = useState('')
-	const { question_id } = useParams()
 	const [questions, setQuestions] = useState([])
+	const { question_id } = useParams()
 
 	useEffect(() => {
-		if (question_id) {
-			axios
-				.get(`${API_URL}/getopenquestion/${question_id}`)
-				.then(res => {
-					setQuestions(res.data)
-				})
-				.catch(err => {
-					console.error(err)
-				})
+		const fetchQuestions = async () => {
+			try {
+				const response = await axios.get(`${API_URL}/getopenquestions/${question_id}`)
+				setQuestions(response.data)
+			} catch (error) {
+				console.error(error)
+			}
 		}
-	}, [question_id, currentQuestion])
+
+		fetchQuestions()
+	}, [question_id])
+
+	const currentQuestion = questions[currentQuestionIndex]
 
 	const handleCheckAnswer = () => {
-		const currentAnswer = questions[currentQuestion - 1]?.answer
+		// Handle answer validation or other logic here
 
-		if (currentAnswer !== undefined) {
-			const userAnswer = answer.split(' ').join('').toLowerCase()
-			const correctAnswer = currentAnswer.split(' ').join('').toLowerCase()
+		// Move to the next question
+		setCurrentQuestionIndex(prevIndex => prevIndex + 1)
 
-			console.log('User Answer:', userAnswer)
-			console.log('Correct Answer:', correctAnswer)
-
-			if (userAnswer === correctAnswer) {
-				setOutput('Dobra odpowiedź!')
-			} else {
-				setOutput('Zła odpowiedź. Spróbuj ponownie.')
-			}
-		} else {
-			setOutput('Coś poszło nie tak. Spróbuj ponownie.')
-		}
-
-		if (currentQuestion < questions.length) {
-			const nextQuestion = currentQuestion + 1
-			setCurrentQuestion(nextQuestion)
-			setAnswer('')
-			navigate(`/Dashboard/Learn/LearnTest/${nextQuestion}`)
-		} else {
-			navigate('/Dashboard/Exam/ResultsCloseQuestion')
-		}
+		// Clear the answer input
+		setAnswer('')
 	}
 
 	return (
 		<div className='flex-exam'>
 			<DashboardNav className='navigation' />
 			<div className='exam'>
-				<h2 className='exam__header'>Ćwiczenie nr. {currentQuestion}/10</h2>
+				<h2 className='exam__header'>Ćwiczenie nr. {currentQuestionIndex + 1}/10</h2>
 				<div className='exam__exam-lists'>
-					<p className='exam__question'>{questions.length > 0 && questions[currentQuestion - 1]?.question}</p>
+					<p className='exam__question'>{currentQuestion && currentQuestion.question}</p>
 					<input type='text' className='exam__input' value={answer} onChange={e => setAnswer(e.target.value)} />
 					<button className='href__btn' onClick={handleCheckAnswer}>
 						Sprawdź
