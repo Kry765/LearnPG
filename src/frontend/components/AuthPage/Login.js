@@ -36,8 +36,10 @@ const Login = () => {
 			)
 
 			if (response.status === 200) {
-				const data = response.data
-				localStorage.setItem('token', data.token)
+				const token = response.data.token
+				document.cookie = `token=${token}; path=/;`
+				localStorage.setItem('token', token)
+				axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 				window.location.href = '/Dashboard'
 			} else {
 				return setOutput('Wystąpił błąd')

@@ -27,19 +27,44 @@ function LearnTest() {
 
 	const currentQuestion = questions[currentQuestionIndex]
 
-	const handleCheckAnswer = () => {
-		const userAnswer = answer.trim().toLowerCase() 
-		const correctAnswer = currentQuestion.correct_answer.trim().toLowerCase() 
+	const handleCheckAnswer = async () => {
+		const userAnswer = answer.trim().toLowerCase()
+		const correctAnswer = currentQuestion.correct_answer.trim().toLowerCase()
+		console.log('Cookies:', document.cookie)
+		console.log('Token:', localStorage.getItem('token'))
+		axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`
+		try {
+			const response = await axios.post(
+				`${API_URL}/addpoint`,
+				{},
+				{
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					withCredentials: true,
+				}
+			)
+			console.log('Authorization Header:', axios.defaults.headers.common['Authorization'])
 
-		if (userAnswer === correctAnswer) {
-			setOutput('Dobrze!')
-		} else {
-			setOutput('Źle!')
+			if (response.data && response.data.success) {
+				console.log(response.data)
+			} else {
+				console.error('Unexpected response:', response.data)
+			}
+		} catch (error) {
+			console.error(error)
+			if (error.response) {
+				console.error('Response data:', error.response.data)
+				console.error('Response status:', error.response.status)
+				console.error('Response headers:', error.response.headers)
+			} else if (error.request) {
+				// Zapytanie zostało wykonane, ale nie otrzymało odpowiedzi
+				console.error('No response received from the server')
+			} else {
+				// Wystąpił błąd podczas konfiguracji żądania
+				console.error('Error setting up the request:', error.message)
+			}
 		}
-
-		setCurrentQuestionIndex(prevIndex => prevIndex + 1)
-
-		setAnswer('')
 	}
 
 	return (

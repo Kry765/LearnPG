@@ -4,11 +4,25 @@ const app = express()
 const cors = require('cors')
 const port = 4000
 const cookieParser = require('cookie-parser')
+const postAddPoint = require('./controller/postAddPoint')
+const bodyParser = require('body-parser')
+const verifyUser = require('./controller/verifyUser')
 
 app.use(express.json())
+app.use(bodyParser.json())
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: true }))
-app.use(cors({ origin: 'http://localhost:3000' }))
+app.use(
+	cors({
+		origin: 'http://localhost:3000',
+		credentials: true,
+		methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+		headers: 'Content-Type,Authorization',
+		'Access-Control-Allow-Credentials': true,
+	})
+)
+
+app.use('/addpoint', verifyUser)
 
 db.authenticate()
 	.then(() => {
@@ -61,3 +75,4 @@ resetPasswordHandler(app)
 getMotivationsHandler(app)
 getUserPointHandler(app)
 getFaqHandler(app)
+postAddPoint(app)

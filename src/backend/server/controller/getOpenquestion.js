@@ -1,5 +1,6 @@
 const Question = require('../models/open_question')
 
+
 const getOpenQuestions = app => {
 	app.get('/getopenquestions/:question_id', async (req, res) => {
 		try {
