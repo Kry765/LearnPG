@@ -1,15 +1,38 @@
 import '../../../scss/_reset.scss'
 import { useNavigate } from 'react-router-dom'
-import { useEffect } from 'react'
-import { useAuthNavigation } from '../../../../backend/guard/ProtectLink'
 import { DashboardNav } from '../StartPage/DashboardNav'
+import axios from 'axios'
+
+const resetPoint = async () => {
+	const API_URL = 'http://localhost:4000'
+
+	try {
+		const response = await axios.post(
+			`${API_URL}/resetPoint`,
+			{},
+			{
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${localStorage.getItem('token')}`,
+				},
+				withCredentials: true,
+			}
+		)
+
+		console.log('Authorization Header:', axios.defaults.headers.common['Authorization'])
+
+		if (response.data && response.data.success) {
+			alert('Punkty zostały skasowane')
+		} else {
+			console.error('Unexpected response:', response.data)
+		}
+	} catch (error) {
+		console.error('Error:', error)
+	}
+}
 
 function Dashboard() {
 	const navigate = useNavigate()
-	const checkUser = useAuthNavigation()
-	useEffect(() => {
-		checkUser()
-	}, [])
 
 	return (
 		<div className='navigation'>
@@ -48,7 +71,9 @@ function Dashboard() {
 						</button>
 					</div>
 					<div>
-						<button className='href__btn'>Wyzeruj punkty</button>
+						<button className='href__btn' onClick={resetPoint}>
+							Wyzeruj punkty
+						</button>
 					</div>
 					<div>
 						<button

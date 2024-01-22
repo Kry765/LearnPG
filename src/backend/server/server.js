@@ -5,6 +5,7 @@ const cors = require('cors')
 const port = 4000
 const cookieParser = require('cookie-parser')
 const postAddPoint = require('./controller/postAddPoint')
+const resetPoint = require('./controller/resetPoint')
 const bodyParser = require('body-parser')
 const verifyUser = require('./controller/verifyUser')
 
@@ -23,6 +24,7 @@ app.use(
 )
 
 app.use('/addpoint', verifyUser)
+app.use('/resetPoint', verifyUser)
 
 db.authenticate()
 	.then(() => {
@@ -76,3 +78,4 @@ getMotivationsHandler(app)
 getUserPointHandler(app)
 getFaqHandler(app)
 postAddPoint(app)
+resetPoint(app)

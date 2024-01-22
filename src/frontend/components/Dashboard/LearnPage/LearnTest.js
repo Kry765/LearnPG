@@ -34,22 +34,26 @@ function LearnTest() {
 		console.log('Token:', localStorage.getItem('token'))
 		axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`
 		try {
-			const response = await axios.post(
-				`${API_URL}/addpoint`,
-				{},
-				{
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					withCredentials: true,
-				}
-			)
-			console.log('Authorization Header:', axios.defaults.headers.common['Authorization'])
+			if (userAnswer === correctAnswer) {
+				const response = await axios.post(
+					`${API_URL}/addpoint`,
+					{},
+					{
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						withCredentials: true,
+					}
+				)
 
-			if (response.data && response.data.success) {
-				console.log(response.data)
+				console.log('Authorization Header:', axios.defaults.headers.common['Authorization'])
+
+				if (response.data && response.data.success) {
+					console.log(response.data)
+					setOutput('Poprawna odpowiedź, otrzymujesz punkt!')
+				}
 			} else {
-				console.error('Unexpected response:', response.data)
+				setOutput('Błędna odpowiedź!')
 			}
 		} catch (error) {
 			console.error(error)
@@ -58,12 +62,19 @@ function LearnTest() {
 				console.error('Response status:', error.response.status)
 				console.error('Response headers:', error.response.headers)
 			} else if (error.request) {
-				// Zapytanie zostało wykonane, ale nie otrzymało odpowiedzi
 				console.error('No response received from the server')
 			} else {
-				// Wystąpił błąd podczas konfiguracji żądania
 				console.error('Error setting up the request:', error.message)
 			}
+			setTimeout(() => {
+				if (currentQuestionIndex + 1 < questions.length) {
+					setCurrentQuestionIndex(currentQuestionIndex + 1)
+					setAnswer('')
+					setOutput('')
+				} else {
+					console.log('No more questions')
+				}
+			}, 1000)
 		}
 	}
 
