@@ -22,12 +22,6 @@ function Exam() {
 		setSelectedAnswer(null)
 		setCurrentQuestion(prevQuestion => prevQuestion + 1)
 	}
-
-	const backQuestion = () => {
-		setSelectedAnswer(null)
-		setCurrentQuestion(prevQuestion => prevQuestion - 1)
-	}
-
 	const checkQuestion = () => {
 		if (selectedAnswer === null) {
 			setAnswer('Wybierz odpowiedź przed sprawdzeniem.')
@@ -143,8 +137,6 @@ function Exam() {
 						</div>
 						<div className='exam__exam-check'>
 							<input className='exam__exam-btn--next' type='button' value='sprawdź' onClick={checkQuestion} />
-							<input className='exam__exam-btn' type='button' value='cofnij' onClick={backQuestion} />
-							<input className='exam__exam-btn' type='button' value='dalej' onClick={nextQuestion} />
 						</div>
 						<div>{answer}</div>
 					</div>
