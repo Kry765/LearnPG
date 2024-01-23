@@ -1,4 +1,4 @@
-function ResultLabolatory() {
+function Result() {
 	return (
 		<div>
 			<h1>Wyniki Egzaminu</h1>
@@ -7,4 +7,4 @@ function ResultLabolatory() {
 	)
 }
 
-export default ResultLabolatory
+export default Result
