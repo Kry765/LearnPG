@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Link } from 'react-scroll'
 import { useNavigate } from 'react-router-dom'
 import { checkCorrectEmail, checkEmptyInput, sendEmail } from '../../backend/guard/Script'
-import '../scss/_main.scss'
 import {
 	RxHamburgerMenu,
 	FaDatabase,

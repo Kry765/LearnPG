@@ -207,7 +207,7 @@ a:hover {
 		min-height: 350px;
 		border-radius: 15px;
 		width: 200px;
-		background-color: $white;
+		background-color: rgb(231, 224, 224);
 	}
 
 	&__card::before {
@@ -289,6 +289,14 @@ a:hover {
 }
 
 @media (max-width: 992px) {
+	.header {
+		&__title-header {
+			margin-top: 100px;
+		}
+		&__arrow-down {
+			display: none;
+		}
+	}
 	.nav {
 		&__desktop-item {
 			display: none;

@@ -1,3 +1,4 @@
+//Components
 import StartingPage from './frontend/components/StartingPage'
 import Help from './frontend/components/Dashboard/Faq/Help'
 import Register from './frontend/components/AuthPage/Register'
@@ -13,6 +14,8 @@ import LearnTest from './frontend/components/Dashboard/LearnPage/LearnTest'
 import ResetPwd from './frontend/components/Dashboard/SettingsPage/ResetPwd'
 import DeleteUser from './frontend/components/Dashboard/SettingsPage/DeleteUser'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import './frontend/scss/_main.scss'
+
 
 function App() {
 	return (

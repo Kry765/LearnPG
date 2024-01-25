@@ -112,15 +112,16 @@ textarea:focus-visible {
 
 //decorate
 .belt-right {
-	position: fixed;
-	top: 90%;
+	position: absolute;
+	top: -10%;
 	left: 90%;
 	transform: rotate(45deg);
 	background-color: $green;
 	opacity: 0.8;
 	width: 400px;
 	height: 400px;
-	overflow: hidden;
+	overflow-y: hidden;
+	z-index: -5;
 }
 .belt-left {
 	position: absolute;
