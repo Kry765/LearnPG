@@ -207,7 +207,7 @@ a:hover {
 		min-height: 350px;
 		border-radius: 15px;
 		width: 200px;
-		background-color: rgb(231, 224, 224);
+		background-color: $contrast-white;
 	}
 
 	&__card::before {

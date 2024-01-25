@@ -52,21 +52,19 @@ const Login = () => {
 	return (
 		<div>
 			<div className='nav-auth'>
-				<div className='nav-auth__auth-items'>
-					<div className='nav-auth__auth-item'>
-						<FaDatabase
-							onClick={() => {
-								navigate('/')
-							}}
-						/>
-					</div>
-					<div className='nav-auth__auth-item--close'>
-						<AiOutlineClose
-							onClick={() => {
-								navigate('/')
-							}}
-						/>
-					</div>
+				<div className='nav-auth__auth-item'>
+					<FaDatabase
+						onClick={() => {
+							navigate('/')
+						}}
+					/>
+				</div>
+				<div className='nav-auth__auth-item--close'>
+					<AiOutlineClose
+						onClick={() => {
+							navigate('/')
+						}}
+					/>
 				</div>
 			</div>
 			<div className='flex-center'>
