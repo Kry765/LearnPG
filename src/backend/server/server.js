@@ -8,6 +8,7 @@ const postAddPoint = require('./controller/postAddPoint')
 const resetPoint = require('./controller/resetPoint')
 const bodyParser = require('body-parser')
 const verifyUser = require('./controller/verifyUser')
+const getUserPointHandler = require('./controller/getUserPoint')
 
 app.use(express.json())
 app.use(bodyParser.json())
@@ -25,6 +26,7 @@ app.use(
 
 app.use('/addpoint', verifyUser)
 app.use('/resetPoint', verifyUser)
+app.use('/getscore', verifyUser)
 
 db.authenticate()
 	.then(() => {
@@ -63,7 +65,6 @@ const ResetEmailHandler = require('./controller/resetEmail')
 const DeleteUser = require('./controller/deleteUser')
 const resetPasswordHandler = require('./controller/resetPassword')
 const getMotivationsHandler = require('./controller/getMotivations')
-const getUserPointHandler = require('./controller/getUserPoint')
 const getFaqHandler = require('./controller/getFaq')
 
 qetOpenQuestion(app)

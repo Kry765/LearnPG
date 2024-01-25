@@ -11,28 +11,34 @@ function Dashboard() {
 	const [Motivation, setMotivation] = useState('')
 	const [Author, setAuthor] = useState('')
 	const [point, setPoint] = useState(0)
-	const checkUser = useAuthNavigation()
 
 	useEffect(() => {
-		checkUser()
+		// Fetch motivations
 		axios
 			.get(API_URL + '/getmotivations')
-			.then(res => {
-				const randomMotivation = res.data[Math.floor(Math.random() * res.data.length)]
-
+			.then(motivationsResponse => {
+				const randomMotivation = motivationsResponse.data[Math.floor(Math.random() * motivationsResponse.data.length)]
 				setMotivation(randomMotivation.motivation_text)
 				setAuthor(randomMotivation.motivation_author)
 			})
-			.catch(err => {
-				console.log(err)
+			.catch(error => {
+				console.error('Error fetching motivations:', error)
 			})
+
+		// Fetch score
 		axios
-			.get(API_URL + '/getscore')
-			.then(res => {
-				setPoint(res.data[0].point)
+			.get(API_URL + '/getscore', {
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${localStorage.getItem('token')}`,
+				},
+				withCredentials: true,
 			})
-			.catch(err => {
-				console.log(err)
+			.then(scoreResponse => {
+				setPoint(scoreResponse.data.user_point)
+			})
+			.catch(error => {
+				console.error('Error fetching score:', error)
 			})
 	}, [])
 
@@ -56,7 +62,7 @@ function Dashboard() {
 					</div>
 					<div className='section__card--point'>
 						<p>Zdobyte punkty:</p>
-						<p>{point}/100</p>
+						<p>{point}</p>
 					</div>
 				</div>
 				<div className='section__right-box'>
