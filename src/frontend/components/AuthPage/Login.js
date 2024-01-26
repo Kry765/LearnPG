@@ -68,7 +68,7 @@ const Login = () => {
 				</div>
 			</div>
 			<div className='flex-center'>
-				<div className='flex-center box-auth'>
+				<div className='box-auth'>
 					<div className='belt-auth-right'></div>
 					<div className='belt-auth-left'></div>
 					<form onSubmit={handleSubmit}>

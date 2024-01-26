@@ -132,7 +132,8 @@ function Register() {
 									Zaloguj się
 								</span>
 							</div>
-							<div className='output'>{output}</div>
+							<span className='output'>{output}</span>
+							{/* <span className='output-err'>{outputErr}</span> */}
 						</div>
 					</form>
 				</div>
