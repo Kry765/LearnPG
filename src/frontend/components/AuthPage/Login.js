@@ -18,6 +18,7 @@ const Login = () => {
 	const [user_email, set_user_email] = useState('')
 	const [user_pwd, set_user_pwd] = useState('')
 	const [output, setOutput] = useState('')
+	const [outputErr, setOutputErr] = useState('')
 
 	const handleSubmit = async e => {
 		e.preventDefault()
@@ -42,10 +43,12 @@ const Login = () => {
 				axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 				window.location.href = '/Dashboard'
 			} else {
-				return setOutput('Wystąpił błąd')
+				setOutput('')
+				return setOutputErr('Wystąpił błąd')
 			}
 		} catch (error) {
-			setOutput('Nieprawidłowy adres E-mail lub hasło')
+			setOutput('')
+			setOutputErr('Nieprawidłowy adres E-mail lub hasło')
 		}
 	}
 
@@ -122,7 +125,7 @@ const Login = () => {
 									Zarejestruj się
 								</span>
 							</p>
-							<div className='output'>{output}</div>
+							<div className={`output ${outputErr ? 'output-err' : ''}`}>{outputErr || output}</div>
 						</div>
 					</form>
 				</div>
