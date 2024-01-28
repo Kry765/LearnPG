@@ -12,6 +12,7 @@ function Register() {
 	const [user_email, set_user_email] = useState('')
 	const [user_pwd, set_user_pwd] = useState('')
 	const [output, setOutput] = useState('')
+	const [outputErr, setOutputErr] = useState('')
 	const [password] = useState('')
 	const [repeat_pwd, set_repeat_pwd] = useState('')
 
@@ -21,7 +22,7 @@ function Register() {
 		const handleCheckPasword = checkRepeatPassword(user_pwd, repeat_pwd)
 		const handleCheckEmptyInput = checkEmptyInput(user_email, user_pwd, repeat_pwd)
 		if (handleCheckEmptyInput || handleCheckPasword || handleCheckEmail) {
-			return setOutput(handleCheckEmptyInput || handleCheckEmail || handleCheckPasword)
+			return setOutputErr(handleCheckEmptyInput || handleCheckEmail || handleCheckPasword)
 		}
 		const formData = { user_email, user_pwd }
 		try {
@@ -32,11 +33,14 @@ function Register() {
 			})
 
 			if (res.status === 201) {
+				setOutputErr('')
 				return setOutput('Konto zostało utworzone')
 			} else if (res.status === 200) {
-				return setOutput('Podany adres email jest już zajęty')
+				setOutput('')
+				return setOutputErr('Podany adres email jest już zajęty')
 			} else if (res.status === 500) {
-				return setOutput('Wystąpił błąd')
+				setOutput('')
+				return setOutputErr('Wystąpił błąd')
 			}
 		} catch (err) {
 			console.error(err)
@@ -132,8 +136,7 @@ function Register() {
 									Zaloguj się
 								</span>
 							</div>
-							<span className='output'>{output}</span>
-							{/* <span className='output-err'>{outputErr}</span> */}
+							<div className={`output ${outputErr ? 'output-err' : ''}`}>{outputErr || output}</div>
 						</div>
 					</form>
 				</div>

@@ -224,14 +224,11 @@ textarea:focus-visible {
 	text-align: center;
 	font-weight: bold;
 	padding: 1em;
+	color: $contrast-color;
 }
 
 .output-err {
 	color: #ff0000;
-}
-
-.output {
-	color: $contrast-color;
 }
 
 //navigation dashboard

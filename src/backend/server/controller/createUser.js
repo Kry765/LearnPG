@@ -7,7 +7,9 @@ const createUser = app => {
 			const { user_email, user_pwd } = req.body
 			const saltRounds = 5
 			const hash = await bcrypt.hash(user_pwd, saltRounds)
-			const existingUser = await User.findOne({ user_email })
+			const existingUser = await User.findOne({
+				where: { user_email },
+			})
 			if (existingUser) {
 				return res.status(200).json({ err: 'Account exists' })
 			} else {
