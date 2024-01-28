@@ -3,7 +3,7 @@ import '../../scss/_reset.scss'
 import axios from 'axios'
 import { FaDatabase, AiOutlineClose } from '../../../backend/guard/Icons'
 import { useNavigate } from 'react-router-dom'
-import { checkCorrectEmail, checkEmptyInput, checkRepeatPassword } from '../../../backend/guard/Script'
+import { checkCorrectEmail, checkEmptyInput, checkRepeatPassword, checkStrongPwd } from '../../../backend/guard/Script'
 
 const API_URL = 'http://localhost:4000/create'
 
@@ -21,8 +21,10 @@ function Register() {
 		const handleCheckEmail = checkCorrectEmail(user_email)
 		const handleCheckPasword = checkRepeatPassword(user_pwd, repeat_pwd)
 		const handleCheckEmptyInput = checkEmptyInput(user_email, user_pwd, repeat_pwd)
-		if (handleCheckEmptyInput || handleCheckPasword || handleCheckEmail) {
-			return setOutputErr(handleCheckEmptyInput || handleCheckEmail || handleCheckPasword)
+		const handleCheckStrongPwd = checkStrongPwd(user_pwd, repeat_pwd)
+
+		if (handleCheckEmptyInput || handleCheckPasword || handleCheckEmail || handleCheckStrongPwd !== null) {
+			return setOutputErr(handleCheckEmptyInput || handleCheckEmail || handleCheckPasword || handleCheckStrongPwd)
 		}
 		const formData = { user_email, user_pwd }
 		try {
@@ -34,6 +36,7 @@ function Register() {
 
 			if (res.status === 201) {
 				setOutputErr('')
+				clearInput('')
 				return setOutput('Konto zostało utworzone')
 			} else if (res.status === 200) {
 				setOutput('')
@@ -45,6 +48,12 @@ function Register() {
 		} catch (err) {
 			console.error(err)
 		}
+	}
+
+	const clearInput = () => {
+		set_user_email('')
+		set_user_pwd('')
+		set_repeat_pwd('')
 	}
 
 	return (
