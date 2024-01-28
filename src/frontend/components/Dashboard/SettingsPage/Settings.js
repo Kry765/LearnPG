@@ -44,7 +44,7 @@ function Dashboard() {
 						<button
 							className='href__btn'
 							onClick={() => {
-								navigate('./resetEmail')
+								navigate('resetemail')
 							}}
 						>
 							Zmień E-mail

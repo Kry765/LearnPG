@@ -221,10 +221,10 @@ textarea:focus-visible {
 
 .output,
 .output-err {
+	color: $contrast-color;
 	text-align: center;
 	font-weight: bold;
 	padding: 1em;
-	color: $contrast-color;
 }
 
 .output-err {
@@ -280,7 +280,7 @@ textarea:focus-visible {
 		justify-content: center;
 	}
 	&__menu-item {
-		margin: 2em 1em;
+		margin: 1em;
 		display: flex;
 		align-items: center;
 		color: $white;
@@ -289,7 +289,7 @@ textarea:focus-visible {
 		transition: color 0.7s;
 	}
 	&__menu-icons {
-		margin: 0em 10px;
+		margin: 0em 5px;
 	}
 }
 
@@ -347,7 +347,7 @@ textarea:focus-visible {
 	top: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
 	.box-auth {
 		margin-top: 30%;
 	}

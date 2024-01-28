@@ -21,6 +21,7 @@ function StartingPage() {
 	const [user_input, set_user_input] = useState('')
 	const [user_textarea, set_user_textarea] = useState('')
 	const [output, setOutput] = useState('')
+	const [outputErr, setOutputErr] = useState('')
 	const [openNav, setOpenNav] = useState('')
 	const [scroll] = useState(900)
 	const [changeIcon, setChangeIcon] = useState('')
@@ -31,7 +32,7 @@ function StartingPage() {
 		const checkInput = checkEmptyInput(user_email, user_input, user_textarea)
 
 		if (checkInput || checkEmail) {
-			setOutput(checkEmail || checkInput)
+			setOutputErr(checkEmail || checkInput)
 			return
 		}
 		try {
@@ -252,7 +253,7 @@ function StartingPage() {
 									}}
 								></textarea>
 								<p>Przed wysłaniem wiadomości uzupełnij pola</p>
-								{output}
+								<div className={`output ${outputErr ? 'output-err' : ''}`}>{outputErr || output}</div>
 								<button className='contact__contact-btn btn'>Wyślij</button>
 							</div>
 							<div className='contact__box-left'>
