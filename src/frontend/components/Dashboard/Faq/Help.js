@@ -39,12 +39,12 @@ function Help() {
 	}, [checkUser, faqs])
 
 	return (
-		<div>
-			<div className='navigation'>
-				<DashboardNav />
+		<div className='navigation'>
+			<DashboardNav />
+			<div className='section'>
 				<div className='href'>
 					<h3>FAQ</h3>
-					<div>
+					<div className='flex-column'>
 						{faqs.map((faq, index) => (
 							<button
 								key={index}
@@ -58,8 +58,8 @@ function Help() {
 							</button>
 						))}
 					</div>
-					<div>{isDescriptionVisible && <p>{getFaq()}</p>}</div>
 				</div>
+				<div className='navigation__faq-description'>{isDescriptionVisible && <p>{getFaq()}</p>}</div>
 			</div>
 		</div>
 	)

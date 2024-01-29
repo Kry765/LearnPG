@@ -8,7 +8,7 @@ a {
 }
 
 a:hover {
-	color: $green;
+	color: $contrast-color;
 }
 
 //header
@@ -96,6 +96,7 @@ a:hover {
 		font-size: 3rem;
 		display: none;
 		z-index: 4;
+		transition: color 1s;
 	}
 }
 
@@ -315,7 +316,6 @@ a:hover {
 			align-items: flex-start;
 			flex-direction: column;
 			font-weight: bold;
-			transition: 1s color;
 		}
 		&__burger-bar:hover {
 			cursor: pointer;
@@ -330,13 +330,14 @@ a:hover {
 			color: $strong-white;
 			transform: translateX(-5%);
 		}
-		&__mobile-items:hover {
+		&__mobile-item:hover {
 			cursor: pointer;
 			color: $contrast-color;
 		}
 		&__mobile-item {
 			display: flex;
 			justify-content: flex-end;
+			transition: 1s color;
 		}
 
 		&__logo {

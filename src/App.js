@@ -1,4 +1,3 @@
-//Components
 import StartingPage from './frontend/components/StartingPage'
 import Help from './frontend/components/Dashboard/Faq/Help'
 import Register from './frontend/components/AuthPage/Register'

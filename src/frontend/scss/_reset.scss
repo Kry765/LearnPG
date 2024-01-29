@@ -44,6 +44,14 @@ textarea:focus-visible {
 	align-items: center;
 }
 
+.flex-center-column {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	min-width: 80%;
+}
+
 .flex-end {
 	display: flex;
 	justify-content: flex-end;
@@ -233,6 +241,7 @@ textarea:focus-visible {
 
 //navigation dashboard
 .navigation {
+	position: relative;
 	display: flex;
 	min-height: 100%;
 	max-width: 100%;
@@ -280,16 +289,28 @@ textarea:focus-visible {
 		justify-content: center;
 	}
 	&__menu-item {
-		margin: 1em;
 		display: flex;
 		align-items: center;
 		color: $white;
-		padding: 1.4em;
-		font-size: 1rem;
+		padding: 0.6em 0;
+		font-size: 1.4rem;
+		margin: 1.2em 1em;
 		transition: color 0.7s;
 	}
 	&__menu-icons {
 		margin: 0em 5px;
+	}
+	&__faq-description {
+		position: absolute;
+		bottom: 0;
+		// transform: translate(-50%, -50%);
+		margin: 10px 50px;
+		max-height: 300px;
+		text-align: center;
+		padding: 1.4em 1em;
+		color: $contrast-color;
+		font-weight: bold;
+		overflow-y: auto;
 	}
 }
 
@@ -299,15 +320,14 @@ textarea:focus-visible {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	max-width: 100%;
-	max-height: 100%;
+	min-width: 80vw;
+	min-height: 15vh;
 	&__btn {
 		margin: 1em;
 		background-color: $green;
 		color: $white;
 		min-width: 75vw;
-		min-height: 40px;
-		height: 20px;
+		height: 40px;
 		border: none;
 		border-radius: 15px;
 		transition: background-color 0.7s;

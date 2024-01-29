@@ -12,7 +12,6 @@ function Dashboard() {
 	const [point, setPoint] = useState(0)
 
 	useEffect(() => {
-		// Fetch motivations
 		axios
 			.get(API_URL + '/getmotivations')
 			.then(motivationsResponse => {
@@ -24,7 +23,6 @@ function Dashboard() {
 				console.error('Error fetching motivations:', error)
 			})
 
-		// Fetch score
 		axios
 			.get(API_URL + '/getscore', {
 				headers: {

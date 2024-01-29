@@ -4,7 +4,6 @@ volumes:
     driver: local
     name: pg_docker
 
-# Postgresql
 services:
   db:
     image: postgres
@@ -17,7 +16,6 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
-  # Tools PgAdmin
   pgadmin:
     container_name: pgadmin4
     restart: always
@@ -28,7 +26,6 @@ services:
     ports:
       - '5050:80'
 
-  # Dockerfile
   app:
     build:
       context: .

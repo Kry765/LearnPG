@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken')
 const cookie = require('cookie')
-// const User = require('../mod els/user')
 
 const verifyUser = (req, res, next) => {
 	try {

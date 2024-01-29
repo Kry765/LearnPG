@@ -39,7 +39,7 @@ const Login = () => {
 			if (response.status === 200) {
 				const token = response.data.token
 				document.cookie = `token=${token}; path=/;`
-				// localStorage.setItem('token', token)
+				localStorage.setItem('token', token)
 				axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 				window.location.href = '/Dashboard'
 			} else {

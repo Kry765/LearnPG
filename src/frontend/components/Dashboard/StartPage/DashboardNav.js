@@ -47,6 +47,7 @@ export function DashboardNav() {
 						className='navigation__menu-item'
 						onClick={() => {
 							navigate('../dashboard/help')
+							console.log('FAQ link clicked')
 						}}
 					>
 						<BiSolidHelpCircle className='navigation__menu-icons' />
