@@ -3,57 +3,75 @@ import '../../../scss/_reset.scss'
 import '../../../scss/_exam.scss'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { AiFillHome, AiTwotoneSetting, BiSolidHelpCircle, FaPowerOff } from '../../../../backend/guard/Icons'
-// import { isLogin, outLogin } from '../../../../backend/guard/ProtectLink'
+import { DashboardNav } from '../StartPage/DashboardNav'
 
 function Exam() {
 	const API_URL = 'http://localhost:4000'
 	const [questions, setQuestions] = useState([])
 	const [currentQuestion, setCurrentQuestion] = useState(0)
+	const [points, setPoints] = useState(0)
 	const [selectedAnswer, setSelectedAnswer] = useState(null)
-	const [answer, setAnswer] = useState([])
+	const [output, setOutput] = useState([])
+	const [outputErr, setOutputErr] = useState('')
 	const navigate = useNavigate()
+	const [totalQuestions, setTotalQuestions] = useState(0)
 
-	// const handleLoggout = () => {
-	// 	outLogin()
-	// 	navigate('/Login')
-	// }
 	const nextQuestion = () => {
 		setSelectedAnswer(null)
 		setCurrentQuestion(prevQuestion => prevQuestion + 1)
 	}
 	const checkQuestion = () => {
-		if (selectedAnswer === null) {
-			setAnswer('Wybierz odpowiedź przed sprawdzeniem.')
-			return
-		}
+		// if (selectedAnswer === null) {
+		// 	setAnswer('Wybierz odpowiedź przed sprawdzeniem.')
+		// 	return
+		// }
 
 		if (questions[currentQuestion]) {
 			const correctAnswer = questions[currentQuestion].correct_answer
 			const selectedOption = String.fromCharCode(65 + selectedAnswer)
-			let isAnswerCorrect =
-				selectedOption === correctAnswer
-					? setAnswer('Poprawna odpowiedź! Otrzymujesz punkt.')
-					: setAnswer('Niestety, odpowiedź niepoprawna.')
+
+			if (selectedOption === correctAnswer && selectedOption !== null) {
+				try {
+					axios.post(
+						`${API_URL}/addpoint`,
+						{},
+						{
+							headers: {
+								'Content-Type': 'application/json',
+							},
+							withCredentials: true,
+						}
+					)
+
+					setPoints(prevPoints => prevPoints + 1)
+					setOutput('Poprawna odpowiedź! Otrzymujesz punkt.')
+				} catch (error) {
+					console.error(error)
+					setOutput('')
+					setOutputErr('Wystąpił błąd podczas dodawania punktu.')
+				}
+			} else {
+				setOutput('')
+				setOutputErr('Niestety, odpowiedź niepoprawna.')
+			}
 		}
 
 		if (currentQuestion + 1 === 10) {
-			navigate('/Dashboard/Exam/ResultsCloseQuestion')
+			navigate('/Dashboard/Result', { state: { points, totalQuestions } })
 		} else {
 			nextQuestion()
 		}
 	}
 
 	useEffect(() => {
-		// if (!isLogin()) {
-		// navigate('/Login')}
 		if (currentQuestion + 1 === 10) {
-			navigate('/Dashboard/Exam/ResultsCloseQuestion')
+			navigate('/Dashboard/Result')
 		} else {
-			axios
+			const response = axios
 				.get(API_URL + '/getclosequestion')
-				.then(res => {
-					setQuestions(res.data)
+				.then(response => {
+					setQuestions(response.data)
+					setTotalQuestions(response.data.length)
 				})
 				.catch(err => {
 					console.error(err)
@@ -62,35 +80,7 @@ function Exam() {
 	}, [currentQuestion])
 	return (
 		<div className='flex-exam'>
-			<div className='exam__menu'>
-				<div
-					className='dashboard__position-icon'
-					onClick={() => {
-						navigate('/dashboard')
-					}}
-				>
-					<AiFillHome />
-				</div>
-				<div
-					className='dashboard__position-icon'
-					onClick={() => {
-						navigate('/dashboard/settings')
-					}}
-				>
-					<AiTwotoneSetting />
-				</div>
-				<div
-					className='dashboard__position-icon'
-					onClick={() => {
-						navigate('/dashboard/help')
-					}}
-				>
-					<BiSolidHelpCircle />
-				</div>
-				{/* <div className='dashboard__position-icon' onClick={handleLoggout}> */}
-				{/* <FaPowerOff /> */}
-				{/* </div> */}
-			</div>
+			<DashboardNav />
 			<div className='exam'>
 				<h2 className='exam__header'>Egzamin</h2>
 				{questions.length > 0 && currentQuestion < questions.length && (
@@ -138,7 +128,7 @@ function Exam() {
 						<div className='exam__exam-check'>
 							<input className='exam__exam-btn--next' type='button' value='sprawdź' onClick={checkQuestion} />
 						</div>
-						<div>{answer}</div>
+						<div className={`output ${outputErr ? 'output-err' : ''}`}>{outputErr || output}</div>
 					</div>
 				)}
 			</div>

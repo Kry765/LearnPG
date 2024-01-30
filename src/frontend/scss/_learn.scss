@@ -12,13 +12,14 @@
 	&__mobile-setting {
 		display: none;
 	}
+
 	&__menu-item {
 		padding: 2em;
 		transition: 0.5s color;
 	}
 	&__menu-item:hover {
 		cursor: pointer;
-		color: $contrast-color;
+		// color: $contrast-color;
 	}
 	&__mobile-settings {
 		display: none;
@@ -64,13 +65,14 @@
 			background-color: $green;
 		}
 		&--sticky-section {
-			position: sticky;
+			position: relative;
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			flex-direction: column;
 			top: 0;
-			height: 100vh;
+			min-height: 100%;
+			overflow: hidden;
 			min-width: 5vw;
 			background-color: $gray;
 			color: $white;

@@ -14,7 +14,9 @@ import ResetPwd from './frontend/components/Dashboard/SettingsPage/ResetPwd'
 import DeleteUser from './frontend/components/Dashboard/SettingsPage/DeleteUser'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './frontend/scss/_main.scss'
-
+import './frontend/scss/_dashboard.scss'
+import './frontend/scss/_reset.scss'
+import './frontend/scss/_learn.scss'
 
 function App() {
 	return (

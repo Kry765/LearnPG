@@ -1,39 +1,23 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import '../../../scss/_dashboard.scss'
-import '../../../scss/_reset.scss'
-import '../../../scss/_learn.scss'
-// import { useAuthNavigation, outLogin } from '../../../../backend/guard/ProtectLink'
+import LearnMenuTopics from './LearnMenuTopics'
+import axios from 'axios'
 import {
+	FaDatabase,
 	AiFillHome,
 	AiTwotoneSetting,
 	BiSolidHelpCircle,
 	FaPowerOff,
 	RxHamburgerMenu,
 } from '../../../../backend/guard/Icons'
-import LearnMenuTopics from './LearnMenuTopics'
 
 const LearnTheory = () => {
 	const API_URL = 'http://localhost:4000'
-	const [topics, setTopics] = useState([])
 	const [handleTopic, setHandleTopic] = useState(null)
-	const [openSettings, setOpenSettings] = useState('')
-	const [openTopics, setOpenTopics] = useState('')
 	const navigate = useNavigate()
-	// const checkUser = useAuthNavigation()
-
-	// const handleLoggout = () => {
-	// outLogin()
-	// navigate('/Login')
-	// }
-	const takeMeTest = () => {
-		if (handleTopic && handleTopic.question_id) {
-			navigate(`/Dashboard/Learn/LearnTest/${handleTopic.question_id}`)
-		} else {
-			console.log('handleTopic or handleTopic.question_id is false')
-		}
-	}
+	const [openSettings, setOpenSettings] = useState('')
+	const [topics, setTopics] = useState([])
+	const [openTopics, setOpenTopics] = useState('')
 
 	useEffect(() => {
 		// checkUser()
@@ -48,6 +32,14 @@ const LearnTheory = () => {
 				})
 		}
 	}, [topics])
+
+	const takeMeTest = () => {
+		if (handleTopic && handleTopic.question_id) {
+			navigate(`/Dashboard/Learn/LearnTest/${handleTopic.question_id}`)
+		} else {
+			console.log('handleTopic or handleTopic.question_id is false')
+		}
+	}
 
 	const handleItem = index => {
 		setHandleTopic(topics[index])
@@ -125,9 +117,7 @@ const LearnTheory = () => {
 				>
 					Pomoc
 				</div>
-				{/* <div className='learn__mobile-setting' onClick={handleLoggout}> */}
-				{/* Wyloguj się */}
-				{/* </div> */}
+				<div className='learn__mobile-setting'>Wyloguj się</div>
 			</div>
 			<div className='learn__description'>
 				<h1>Rozpocznij nauke</h1>
