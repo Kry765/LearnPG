@@ -20,12 +20,22 @@ function Exam() {
 		setSelectedAnswer(null)
 		setCurrentQuestion(prevQuestion => prevQuestion + 1)
 	}
-	const checkQuestion = () => {
-		// if (selectedAnswer === null) {
-		// 	setAnswer('Wybierz odpowiedź przed sprawdzeniem.')
-		// 	return
-		// }
+	useEffect(() => {
+		const fetchQuestions = async () => {
+			const response = await axios
+				.get(API_URL + '/getclosequestion')
+				.then(response => {
+					setQuestions(response.data)
+					setTotalQuestions(response.data.length)
+				})
+				.catch(error => {
+					console.error(error)
+				})
+		}
+		fetchQuestions()
+	}, [currentQuestion])
 
+	const checkQuestion = () => {
 		if (questions[currentQuestion]) {
 			const correctAnswer = questions[currentQuestion].correct_answer
 			const selectedOption = String.fromCharCode(65 + selectedAnswer)
@@ -56,28 +66,13 @@ function Exam() {
 			}
 		}
 
-		if (currentQuestion + 1 === 10) {
+		if (currentQuestion + 1 === totalQuestions) {
 			navigate('/Dashboard/Result', { state: { points, totalQuestions } })
 		} else {
 			nextQuestion()
 		}
 	}
 
-	useEffect(() => {
-		if (currentQuestion + 1 === 10) {
-			navigate('/Dashboard/Result')
-		} else {
-			const response = axios
-				.get(API_URL + '/getclosequestion')
-				.then(response => {
-					setQuestions(response.data)
-					setTotalQuestions(response.data.length)
-				})
-				.catch(err => {
-					console.error(err)
-				})
-		}
-	}, [currentQuestion])
 	return (
 		<div className='flex-exam'>
 			<DashboardNav />
