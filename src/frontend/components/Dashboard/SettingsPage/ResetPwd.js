@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import '../../../scss/_reset.scss'
 import axios from 'axios'
 import { AiOutlineClose, FaDatabase } from '../../../../backend/guard/Icons'
+import { checkEmptyInput, checkRepeatPassword, checkStrongPwd } from '../../../../backend/guard/Script'
 import { useNavigate } from 'react-router-dom'
-// import { useAuthNavigation } from '../../../../backend/guard/ProtectLink'
-// import { useEffect } from 'react'
 
 function ResetPwd() {
 	const API_URL = 'http://localhost:4000'
@@ -12,22 +11,39 @@ function ResetPwd() {
 	const [user_pwd, set_user_pwd] = useState('')
 	const [repeat_pwd, set_repeat_pwd] = useState('')
 	const [output, setOutput] = useState('')
-	// const checkUser = useAuthNavigation()
-	// useEffect(() => {
-		// checkUser()
-	// }, [])
+	const [outputErr, setOutputErr] = useState('')
 
 	const handleSubmit = e => {
 		e.preventDefault()
+		const handleCheckInput = checkEmptyInput(user_pwd, repeat_pwd)
+		const handlecheckRepeatPassword = checkRepeatPassword(user_pwd, repeat_pwd)
+		const handlecheckStrongPwd = checkStrongPwd(user_pwd, repeat_pwd)
 
 		try {
-			if (repeat_pwd !== user_pwd) {
-				setOutput('Wprowadzone hasła są różne')
+			if (handleCheckInput) {
+				setOutput('')
+				setOutputErr('Uzupełnij brakujące pola')
+			} else if (handlecheckRepeatPassword) {
+				setOutput('')
+				setOutputErr('Wprowadzone hasła są różne')
+			} else if (handlecheckStrongPwd) {
+				setOutput('')
+				setOutputErr(
+					'Twoje hasło jest za słabe musi się składać z minimum 8 znaków, posiadać małe i duże litery, cyfry oraz znaki specialne'
+				)
 			} else {
-				axios.post(API_URL + '/resetuserpwd', {
-					user_pwd: user_pwd,
-				})
-				setOutput('Adres email został zaktualizowany')
+				axios.post(
+					API_URL + '/resetuserpwd',
+					{ user_pwd },
+					{
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						withCredentials: true,
+					}
+				)
+				setOutput('Hasło zostało zmienione')
+				navigate('/Login')
 			}
 		} catch (err) {
 			console.error(err)
@@ -89,7 +105,7 @@ function ResetPwd() {
 							<button className='btn-auth' type='submit'>
 								Zresetuj
 							</button>
-							<div className='output'>{output}</div>
+							<div className={`output ${outputErr ? 'output-err' : ''}`}>{outputErr || output}</div>
 						</div>
 					</form>
 				</div>
