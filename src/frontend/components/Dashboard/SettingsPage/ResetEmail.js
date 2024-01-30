@@ -4,36 +4,54 @@ import { FaDatabase, AiOutlineClose } from '../../../../backend/guard/Icons'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useAuthNavigation } from '../../../../backend/guard/ProtectLink'
-import { checkCorrectEmail } from '../../../../backend/guard/Script'
-import { useEffect } from 'react'
+import { checkCorrectEmail, checkEmptyInput } from '../../../../backend/guard/Script'
+// import { useEffect } from 'react'
 
 function ResetEmail() {
 	const API_URL = 'http://localhost:4000'
 	const navigate = useNavigate()
 	const [new_email, set_new_email] = useState('')
-	const [output, setOutput] = useState('')
-	const checkUser = useAuthNavigation()
+	const [outputErr, setOutputErr] = useState('')
 
-	useEffect(() => {
-		checkUser()
-	}, [])
+	// const checkUser = useAuthNavigation()
+
+	// useEffect(() => {
+	// checkUser()
+	// }, [])
 
 	const handleSubmit = async e => {
+		const handleCheckInput = checkEmptyInput(new_email)
 		const handleCheckEmail = checkCorrectEmail(new_email)
 
 		e.preventDefault()
-		if (handleCheckEmail) {
-			return setOutput(handleCheckEmail)
-		}
 
-		try {
-			await axios.post(API_URL + '/resetpwd', {
-				new_email: new_email,
-			})
-			setOutput('Adres email został zaktualizowany')
-		} catch (err) {
-			console.error(err)
-			setOutput('Wystąpił błąd podczas aktualizacji adresu email')
+		if (handleCheckInput) {
+			setOutputErr(handleCheckInput)
+		} else if (handleCheckEmail) {
+			setOutputErr(handleCheckEmail)
+		} else {
+			try {
+				const res = await axios.post(
+					`${API_URL}/resetuseremail`,
+					{ new_email },
+					{
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						withCredentials: true,
+					}
+				)
+
+				if (res.status === 200 && res.data && res.data.error) {
+					return setOutputErr('Podany adres E-mail jest zajęty')
+				} else {
+					// setOutputErr('Adres email został zaktualizowany')
+					navigate('/login')
+				}
+			} catch (err) {
+				console.error(err)
+				setOutputErr('Wystąpił błąd podczas aktualizacji adresu email')
+			}
 		}
 	}
 
@@ -81,7 +99,7 @@ function ResetEmail() {
 							<button className='btn-auth' type='submit'>
 								Zresetuj
 							</button>
-							<div className='output'>{output}</div>
+							<div className='output-err'>{outputErr}</div>
 						</div>
 					</form>
 				</div>

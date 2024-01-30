@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import '../../../scss/_reset.scss'
-import { useAuthNavigation } from '../../../../backend/guard/ProtectLink'
+// import { useAuthNavigation } from '../../../../backend/guard/ProtectLink'
 import { DashboardNav } from '../StartPage/DashboardNav'
 
 function Help() {
 	const API_URL = 'http://localhost:4000'
 	const [handleFaq, setHandleFaq] = useState(null)
-	const checkUser = useAuthNavigation()
+	// const checkUser = useAuthNavigation()
 	const [faqs, setFaqs] = useState([])
 	const [isDescriptionVisible, setIsDescriptionVisible] = useState(false)
 
@@ -24,7 +24,7 @@ function Help() {
 	}
 
 	useEffect(() => {
-		checkUser()
+		// checkUser()
 		if (faqs.length === 0) {
 			axios
 				.get(API_URL + '/getfaq')
@@ -36,7 +36,7 @@ function Help() {
 					console.log(err)
 				})
 		}
-	}, [checkUser, faqs])
+	}, [faqs])
 
 	return (
 		<div className='navigation'>

@@ -3,16 +3,16 @@ import axios from 'axios'
 import '../../scss/_reset.scss'
 import { AiOutlineClose, FaDatabase } from '../../../backend/guard/Icons'
 import { useNavigate } from 'react-router-dom'
-import { isLogin } from '../../../backend/guard/ProtectLink'
+// import { isLogin } from '../../../backend/guard/ProtectLink'
 
-const Login = () => {
-	useEffect(() => {
-		if (isLogin()) {
-			navigate('../Dashboard')
-		} else {
-			navigate('./')
-		}
-	}, [])
+function Login() {
+	// useEffect(() => {
+	// 	if (isLogin()) {
+	// 		navigate('../Dashboard')
+	// 	} else {
+	// 		navigate('./')
+	// 	}
+	// }, [])
 
 	const navigate = useNavigate()
 	const [user_email, set_user_email] = useState('')
@@ -39,7 +39,7 @@ const Login = () => {
 			if (response.status === 200) {
 				const token = response.data.token
 				document.cookie = `token=${token}; path=/;`
-				localStorage.setItem('token', token)
+				// localStorage.setItem('token', token)
 				axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 				window.location.href = '/Dashboard'
 			} else {

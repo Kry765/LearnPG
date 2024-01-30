@@ -4,7 +4,7 @@ import '../../../scss/_exam.scss'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AiFillHome, AiTwotoneSetting, BiSolidHelpCircle, FaPowerOff } from '../../../../backend/guard/Icons'
-import { isLogin, outLogin } from '../../../../backend/guard/ProtectLink'
+// import { isLogin, outLogin } from '../../../../backend/guard/ProtectLink'
 
 function Exam() {
 	const API_URL = 'http://localhost:4000'
@@ -14,10 +14,10 @@ function Exam() {
 	const [answer, setAnswer] = useState([])
 	const navigate = useNavigate()
 
-	const handleLoggout = () => {
-		outLogin()
-		navigate('/Login')
-	}
+	// const handleLoggout = () => {
+	// 	outLogin()
+	// 	navigate('/Login')
+	// }
 	const nextQuestion = () => {
 		setSelectedAnswer(null)
 		setCurrentQuestion(prevQuestion => prevQuestion + 1)
@@ -45,9 +45,9 @@ function Exam() {
 	}
 
 	useEffect(() => {
-		if (!isLogin()) {
-			navigate('/Login')
-		} else if (currentQuestion + 1 === 10) {
+		// if (!isLogin()) {
+		// navigate('/Login')}
+		if (currentQuestion + 1 === 10) {
 			navigate('/Dashboard/Exam/ResultsCloseQuestion')
 		} else {
 			axios
@@ -87,9 +87,9 @@ function Exam() {
 				>
 					<BiSolidHelpCircle />
 				</div>
-				<div className='dashboard__position-icon' onClick={handleLoggout}>
-					<FaPowerOff />
-				</div>
+				{/* <div className='dashboard__position-icon' onClick={handleLoggout}> */}
+				{/* <FaPowerOff /> */}
+				{/* </div> */}
 			</div>
 			<div className='exam'>
 				<h2 className='exam__header'>Egzamin</h2>

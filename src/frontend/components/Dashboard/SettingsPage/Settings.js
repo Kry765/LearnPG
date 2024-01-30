@@ -31,7 +31,7 @@ const resetPoint = async () => {
 	}
 }
 
-function Dashboard() {
+function Settings() {
 	const navigate = useNavigate()
 
 	return (
@@ -91,4 +91,4 @@ function Dashboard() {
 	)
 }
 
-export default Dashboard
+export default Settings

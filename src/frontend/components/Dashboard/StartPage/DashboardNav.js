@@ -10,10 +10,14 @@ import {
 
 export function DashboardNav() {
 	const navigate = useNavigate()
-	const handleLoggout = () => {
-		outLogin()
-		navigate('/Login')
+	const handleLogout = async () => {
+		try {
+			await outLogin(navigate)
+		} catch (error) {
+			console.error('Error during logout:', error)
+		}
 	}
+
 	return (
 		<div className='navigation__left-menu'>
 			<div className='navigation__icon'>
@@ -53,7 +57,7 @@ export function DashboardNav() {
 						<BiSolidHelpCircle className='navigation__menu-icons' />
 						<p className='navigation__menu-icon-description'>Pomoc</p>
 					</div>
-					<div className='navigation__menu-item' onClick={handleLoggout}>
+					<div className='navigation__menu-item' onClick={handleLogout}>
 						<FaPowerOff className='navigation__menu-icons' />
 						<p className='navigation__menu-icon-description'>Wyloguj się</p>
 					</div>

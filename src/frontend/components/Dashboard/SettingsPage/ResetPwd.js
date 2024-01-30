@@ -3,8 +3,8 @@ import '../../../scss/_reset.scss'
 import axios from 'axios'
 import { AiOutlineClose, FaDatabase } from '../../../../backend/guard/Icons'
 import { useNavigate } from 'react-router-dom'
-import { useAuthNavigation } from '../../../../backend/guard/ProtectLink'
-import { useEffect } from 'react'
+// import { useAuthNavigation } from '../../../../backend/guard/ProtectLink'
+// import { useEffect } from 'react'
 
 function ResetPwd() {
 	const API_URL = 'http://localhost:4000'
@@ -12,10 +12,10 @@ function ResetPwd() {
 	const [user_pwd, set_user_pwd] = useState('')
 	const [repeat_pwd, set_repeat_pwd] = useState('')
 	const [output, setOutput] = useState('')
-	const checkUser = useAuthNavigation()
-	useEffect(() => {
-		checkUser()
-	}, [])
+	// const checkUser = useAuthNavigation()
+	// useEffect(() => {
+		// checkUser()
+	// }, [])
 
 	const handleSubmit = e => {
 		e.preventDefault()

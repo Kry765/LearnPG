@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import '../../../scss/_dashboard.scss'
 import '../../../scss/_reset.scss'
 import '../../../scss/_learn.scss'
-import { useAuthNavigation, outLogin } from '../../../../backend/guard/ProtectLink'
+// import { useAuthNavigation, outLogin } from '../../../../backend/guard/ProtectLink'
 import {
 	AiFillHome,
 	AiTwotoneSetting,
@@ -21,12 +21,12 @@ const LearnTheory = () => {
 	const [openSettings, setOpenSettings] = useState('')
 	const [openTopics, setOpenTopics] = useState('')
 	const navigate = useNavigate()
-	const checkUser = useAuthNavigation()
+	// const checkUser = useAuthNavigation()
 
-	const handleLoggout = () => {
-		outLogin()
-		navigate('/Login')
-	}
+	// const handleLoggout = () => {
+	// outLogin()
+	// navigate('/Login')
+	// }
 	const takeMeTest = () => {
 		if (handleTopic && handleTopic.question_id) {
 			navigate(`/Dashboard/Learn/LearnTest/${handleTopic.question_id}`)
@@ -36,7 +36,7 @@ const LearnTheory = () => {
 	}
 
 	useEffect(() => {
-		checkUser()
+		// checkUser()
 		if (topics.length === 0) {
 			axios
 				.get(API_URL + '/gettopic')
@@ -47,7 +47,7 @@ const LearnTheory = () => {
 					console.log(err)
 				})
 		}
-	}, [topics, checkUser])
+	}, [topics])
 
 	const handleItem = index => {
 		setHandleTopic(topics[index])
@@ -88,7 +88,7 @@ const LearnTheory = () => {
 				>
 					<BiSolidHelpCircle />
 				</div>
-				<div className='learn__space-icon' onClick={handleLoggout}>
+				<div className='learn__space-icon'>
 					<FaPowerOff />
 				</div>
 			</div>
@@ -125,9 +125,9 @@ const LearnTheory = () => {
 				>
 					Pomoc
 				</div>
-				<div className='learn__mobile-setting' onClick={handleLoggout}>
-					Wyloguj się
-				</div>
+				{/* <div className='learn__mobile-setting' onClick={handleLoggout}> */}
+				{/* Wyloguj się */}
+				{/* </div> */}
 			</div>
 			<div className='learn__description'>
 				<h1>Rozpocznij nauke</h1>

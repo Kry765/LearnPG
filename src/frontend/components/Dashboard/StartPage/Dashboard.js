@@ -1,17 +1,20 @@
 import '../../../scss/_reset.scss'
 import axios from 'axios'
-import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import { DashboardNav } from './DashboardNav'
+import { inLogin } from '../../../../backend/guard/ProtectLink'
 
 function Dashboard() {
-	const API_URL = 'http://localhost:4000'
 	const navigate = useNavigate()
+	const API_URL = 'http://localhost:4000'
 	const [Motivation, setMotivation] = useState('')
 	const [Author, setAuthor] = useState('')
 	const [point, setPoint] = useState(0)
 
 	useEffect(() => {
+		// inLogin(navigate)
+
 		axios
 			.get(API_URL + '/getmotivations')
 			.then(motivationsResponse => {
@@ -37,7 +40,7 @@ function Dashboard() {
 			.catch(error => {
 				console.error('Error fetching score:', error)
 			})
-	}, [])
+	}, [navigate])
 
 	return (
 		<div className='navigation'>
