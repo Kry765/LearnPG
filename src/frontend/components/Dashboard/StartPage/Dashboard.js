@@ -3,7 +3,8 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { DashboardNav } from './DashboardNav'
-import { inLogin } from '../../../../backend/guard/ProtectLink'
+import { FaDatabase } from '../../../../backend/guard/Icons'
+// import { inLogin } from '../../../../backend/guard/ProtectLink'
 
 function Dashboard() {
 	const navigate = useNavigate()
@@ -44,6 +45,15 @@ function Dashboard() {
 
 	return (
 		<div className='navigation'>
+			<div className='nav-auth__auth-items'>
+				<div className='nav-auth__auth-item--close'>
+					<FaDatabase
+						onClick={() => {
+							navigate('/')
+						}}
+					/>
+				</div>
+			</div>
 			<DashboardNav />
 			<div className='section'>
 				<div className='belt-auth-right'></div>
