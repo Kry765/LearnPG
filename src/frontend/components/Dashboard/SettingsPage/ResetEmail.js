@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import '../../../scss/_reset.scss'
-import { FaDatabase, AiOutlineClose } from '../../../../backend/guard/Icons'
+import { AiOutlineClose } from '../../../../backend/guard/Icons'
 import { useNavigate } from 'react-router-dom'
+import { DashboardNav } from '../StartPage/DashboardNav'
 import axios from 'axios'
-import { useAuthNavigation } from '../../../../backend/guard/ProtectLink'
+// import { useAuthNavigation } from '../../../../backend/guard/ProtectLink'
 import { checkCorrectEmail, checkEmptyInput } from '../../../../backend/guard/Script'
 // import { useEffect } from 'react'
 
@@ -57,26 +58,18 @@ function ResetEmail() {
 
 	return (
 		<div>
-			<div className='nav-auth'>
-				<div className='nav-auth__auth-items'>
-					<div className='nav-auth__auth-item'>
-						<FaDatabase
-							onClick={() => {
-								navigate('/')
-							}}
-						/>
-					</div>
-					<div className='nav-auth__auth-item--close'>
-						<AiOutlineClose
-							onClick={() => {
-								navigate('/dashboard/settings')
-							}}
-						/>
-					</div>
+			<div className='nav-auth__auth-items'>
+				<div className='nav-auth__auth-item--close'>
+					<AiOutlineClose
+						onClick={() => {
+							navigate('/dashboard/settings')
+						}}
+					/>
 				</div>
 			</div>
-			<div className='flex-center'>
-				<div className='flex-center box-auth'>
+			<div className='navigation'>
+				<DashboardNav />
+				<div className='section'>
 					<div className='belt-auth-right'></div>
 					<div className='belt-auth-left'></div>
 					<form onSubmit={handleSubmit}>

@@ -58,6 +58,10 @@ textarea:focus-visible {
 	align-items: center;
 }
 
+.text-center {
+	text-align: center;
+}
+
 .flex-between {
 	display: flex;
 	justify-content: center;
@@ -187,6 +191,7 @@ textarea:focus-visible {
 			padding: 0.5em;
 			font-size: 2.4em;
 			transition: color 1s;
+			z-index: 200;
 		}
 		&--close:hover {
 			cursor: pointer;
@@ -255,6 +260,19 @@ textarea:focus-visible {
 		transition: color 0.5s;
 	}
 	&__icon:hover {
+		cursor: pointer;
+		color: $contrast-color;
+	}
+	&__close {
+		position: fixed;
+		right: 0%;
+		top: 0;
+		padding: 1em;
+		font-size: 2.4rem;
+		color: $gray;
+		transition: color 0.5s;
+	}
+	&__close:hover {
 		cursor: pointer;
 		color: $contrast-color;
 	}

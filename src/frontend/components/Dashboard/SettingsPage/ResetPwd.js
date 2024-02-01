@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import '../../../scss/_reset.scss'
 import axios from 'axios'
-import { AiOutlineClose, FaDatabase } from '../../../../backend/guard/Icons'
+import { AiOutlineClose } from '../../../../backend/guard/Icons'
 import { checkEmptyInput, checkRepeatPassword, checkStrongPwd } from '../../../../backend/guard/Script'
 import { useNavigate } from 'react-router-dom'
+import { DashboardNav } from '../StartPage/DashboardNav'
 
 function ResetPwd() {
 	const API_URL = 'http://localhost:4000'
@@ -53,24 +54,16 @@ function ResetPwd() {
 
 	return (
 		<div>
-			<div className='nav-auth__auth-items'>
-				<div className='nav-auth__auth-item'>
-					<FaDatabase
-						onClick={() => {
-							navigate('/')
-						}}
-					/>
-				</div>
-				<div className='nav-auth__auth-item--close'>
-					<AiOutlineClose
-						onClick={() => {
-							navigate('/dashboard/settings')
-						}}
-					/>
-				</div>
+			<div className='nav-auth__auth-item--close'>
+				<AiOutlineClose
+					onClick={() => {
+						navigate('/dashboard/settings')
+					}}
+				/>
 			</div>
-			<div className='flex-center'>
-				<div className='flex-center box-auth'>
+			<div className='navigation'>
+				<DashboardNav />
+				<div className='section'>
 					<div className='belt-auth-right'></div>
 					<div className='belt-auth-left'></div>
 					<form onSubmit={handleSubmit}>

@@ -46,6 +46,8 @@ function Dashboard() {
 		<div className='navigation'>
 			<DashboardNav />
 			<div className='section'>
+				<div className='belt-auth-right'></div>
+				<div className='belt-auth-left'></div>
 				<div className='section__hello-word'>
 					<h3>Witaj użytkowniku</h3>
 					<p>Od czego dziś zaczynamy</p>

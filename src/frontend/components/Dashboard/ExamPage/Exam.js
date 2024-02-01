@@ -77,6 +77,8 @@ function Exam() {
 		<div className='flex-exam'>
 			<DashboardNav />
 			<div className='exam'>
+				<div className='belt-auth-right'></div>
+				<div className='belt-auth-left'></div>
 				<h2 className='exam__header'>Egzamin</h2>
 				{questions.length > 0 && currentQuestion < questions.length && (
 					<div className='exam__exam-lists'>

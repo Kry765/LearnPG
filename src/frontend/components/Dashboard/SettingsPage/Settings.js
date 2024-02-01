@@ -38,6 +38,8 @@ function Settings() {
 		<div className='navigation'>
 			<DashboardNav />
 			<div className='section'>
+				<div className='belt-auth-right'></div>
+				<div className='belt-auth-left'></div>
 				<div className='href'>
 					<h3>Ustawienia</h3>
 					<div>

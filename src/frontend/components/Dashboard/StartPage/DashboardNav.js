@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import {
 	FaDatabase,
 	AiFillHome,
+	AiOutlineClose,
 	AiTwotoneSetting,
 	BiSolidHelpCircle,
 	FaPowerOff,
@@ -21,11 +22,11 @@ export function DashboardNav() {
 	return (
 		<div className='navigation__left-menu'>
 			<div className='navigation__icon'>
-				<FaDatabase
+				{/* <FaDatabase
 					onClick={() => {
 						navigate('/')
 					}}
-				/>
+				/> */}
 			</div>
 			<div className='navigation__menu'>
 				<div className='navigation__menu-items'>
