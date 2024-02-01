@@ -74,20 +74,20 @@ function Exam() {
 	}
 
 	return (
-		<div className='flex-exam'>
+		<div className='flex fd-row'>
 			<DashboardNav />
-			<div className='exam'>
+			<div className='section'>
 				<div className='belt-auth-right'></div>
 				<div className='belt-auth-left'></div>
-				<h2 className='exam__header'>Egzamin</h2>
+				<h2>Egzamin</h2>
 				{questions.length > 0 && currentQuestion < questions.length && (
-					<div className='exam__exam-lists'>
+					<div className='flex-column'>
 						<div className='exam__question-nr'>
-							Pytanie nr. {currentQuestion + 1}
+							Pytanie nr. {currentQuestion + 1}/{totalQuestions}
 							<div>{questions[currentQuestion].question}</div>
 						</div>
-						<div className='exam__exam-list'>
-							<label>
+						<label>
+							<div className='exam__exam-list'>
 								<input
 									className='exam__radio'
 									type='radio'
@@ -96,10 +96,10 @@ function Exam() {
 									onChange={e => setSelectedAnswer(Number(e.target.value))}
 								/>
 								A. {questions[currentQuestion].answer_a}
-							</label>
-						</div>
-						<div className='exam__exam-list'>
-							<label>
+							</div>
+						</label>
+						<label>
+							<div className='exam__exam-list'>
 								<input
 									className='exam__radio'
 									type='radio'
@@ -108,10 +108,10 @@ function Exam() {
 									onChange={e => setSelectedAnswer(Number(e.target.value))}
 								/>
 								B. {questions[currentQuestion].answer_b}
-							</label>
-						</div>
-						<div className='exam__exam-list'>
-							<label>
+							</div>
+						</label>
+						<label>
+							<div className='exam__exam-list'>
 								<input
 									className='exam__radio'
 									type='radio'
@@ -120,9 +120,9 @@ function Exam() {
 									onChange={e => setSelectedAnswer(Number(e.target.value))}
 								/>
 								C. {questions[currentQuestion].answer_c}
-							</label>
-						</div>
-						<div className='exam__exam-check'>
+							</div>
+						</label>
+						<div className='flex-center'>
 							<input className='exam__exam-btn--next' type='button' value='sprawdź' onClick={checkQuestion} />
 						</div>
 						<div className={`output ${outputErr ? 'output-err' : ''}`}>{outputErr || output}</div>

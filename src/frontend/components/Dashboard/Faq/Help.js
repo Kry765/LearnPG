@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import '../../../scss/_reset.scss'
 // import { useAuthNavigation } from '../../../../backend/guard/ProtectLink'
+import { FaDatabase } from '../../../../backend/guard/Icons'
 import { DashboardNav } from '../StartPage/DashboardNav'
+import { useNavigate } from 'react-router-dom'
 
 function Help() {
 	const API_URL = 'http://localhost:4000'
 	const [handleFaq, setHandleFaq] = useState(null)
+	const navigate = useNavigate()
 	// const checkUser = useAuthNavigation()
 	const [faqs, setFaqs] = useState([])
 	const [isDescriptionVisible, setIsDescriptionVisible] = useState(false)
@@ -40,6 +43,15 @@ function Help() {
 
 	return (
 		<div className='navigation'>
+			<div className='nav-auth__auth-items'>
+				<div className='nav-auth__auth-item--close'>
+					<FaDatabase
+						onClick={() => {
+							navigate('/')
+						}}
+					/>
+				</div>
+			</div>
 			<DashboardNav />
 			<div className='section'>
 				<div className='belt-auth-right'></div>

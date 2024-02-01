@@ -73,7 +73,7 @@
 			top: 0;
 			min-height: 100%;
 			overflow: hidden;
-			min-width: 5vw;
+			min-width: 15%;
 			background-color: $gray;
 			color: $white;
 			font-weight: bold;
@@ -101,6 +101,9 @@
 		&__description {
 			margin-top: 125px;
 		}
+		&__menu-item {
+			display: block;
+		}
 		&__mobile-settings {
 			position: fixed;
 			top: 10px;
@@ -117,6 +120,16 @@
 		}
 		&__mobile-icon {
 			z-index: 100;
+		}
+		&__mobile-items,
+		&__mobile-item {
+			display: none;
+		}
+		&__box__mobile {
+			display: none;
+			&--sticky-section {
+				display: none;
+			}
 		}
 		&__mobile-setting {
 			display: flex;

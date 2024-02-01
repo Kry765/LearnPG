@@ -1,6 +1,7 @@
 import '../../../scss/_reset.scss'
 import { useNavigate } from 'react-router-dom'
 import { DashboardNav } from '../StartPage/DashboardNav'
+import { FaDatabase } from '../../../../backend/guard/Icons'
 import axios from 'axios'
 
 const resetPoint = async () => {
@@ -37,6 +38,15 @@ function Settings() {
 	return (
 		<div className='navigation'>
 			<DashboardNav />
+			<div className='nav-auth__auth-items'>
+				<div className='nav-auth__auth-item--close'>
+					<FaDatabase
+						onClick={() => {
+							navigate('/')
+						}}
+					/>
+				</div>
+			</div>
 			<div className='section'>
 				<div className='belt-auth-right'></div>
 				<div className='belt-auth-left'></div>

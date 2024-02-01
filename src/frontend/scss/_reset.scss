@@ -37,11 +37,18 @@ textarea:focus-visible {
 	color: $gray;
 }
 
-//flex
+//position flex
 .flex-center {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.flex {
+	display: flex;
+}
+.fd-row {
+	flex-direction: row;
 }
 
 .flex-center-column {

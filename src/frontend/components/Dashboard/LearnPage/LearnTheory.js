@@ -17,7 +17,7 @@ const LearnTheory = () => {
 	const navigate = useNavigate()
 	const [openSettings, setOpenSettings] = useState('')
 	const [topics, setTopics] = useState([])
-	const [openTopics, setOpenTopics] = useState('')
+	const [openTopics, setOpenTopics] = useState('false')
 
 	useEffect(() => {
 		// checkUser()
@@ -87,6 +87,16 @@ const LearnTheory = () => {
 			<div className='learn__box--sticky-section'>
 				<div className='learn__menu-items'>
 					<LearnMenuTopics topics={topics} handleTopic={handleTopic} handleItem={handleItem} />
+				</div>
+			</div>
+			<div className='learn__box__mobile--sticky-section'>
+				<div className='learn__mobile-items'>
+					<LearnMenuTopics
+						className='learn__mobile-item'
+						topics={topics}
+						handleTopic={handleTopic}
+						handleItem={handleItem}
+					/>
 				</div>
 			</div>
 			<div className={openTopics ? 'learn__mobile-settings--close' : 'learn__mobile-settings'}>

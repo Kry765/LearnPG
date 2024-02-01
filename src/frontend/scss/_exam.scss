@@ -11,7 +11,7 @@
 	&__input {
 		margin-top: 1em;
 		border-radius: 15px;
-		width: 50vw;
+		min-width: 80%;
 		height: 5vh;
 		padding: 1em 2em;
 		font-size: 1.2rem;
@@ -20,23 +20,10 @@
 		font-size: 1.2rem;
 		font-weight: bold;
 	}
-	&__exam-lists {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
-	}
-	&__left-menu {
-		width: 50px;
-		height: 100vh;
-	}
 	&__question-nr {
 		font-weight: bold;
 	}
 
-	&__header {
-		margin: 3em;
-	}
 	&__menu {
 		background-color: $gray;
 		display: flex;
@@ -51,29 +38,26 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		background-color: $gray;
-		color: $white;
-		width: 50vw;
-		height: 50px;
+		background-color: $contrast-white;
+		color: $gray;
+		width: 70vw;
+		// max-width: 80%;
+		padding: 1em;
+		min-height: 10%;
 		margin: 2em 0;
 		border-radius: 15px;
 	}
 
-	&__exam-check {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-	&__radio {
-		display: flex;
-		position: absolute;
-		margin: 0 1em;
-		width: 20px;
-		height: 20px;
-		left: 0px;
-		border: none;
-		background-color: black;
-	}
+	// &__radio {
+	// 	display: flex;
+	// 	position: absolute;
+	// 	margin: 0 1em;
+	// 	width: 10px;
+	// 	height: 10px;
+	// 	left: 0px;
+	// 	border: none;
+	// 	background-color: $contrast-white;
+	// }
 
 	&__exam-btn {
 		background-color: $gray;
