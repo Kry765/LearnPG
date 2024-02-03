@@ -21,13 +21,6 @@ export function DashboardNav() {
 
 	return (
 		<div className='navigation__left-menu'>
-			<div className='navigation__icon'>
-				{/* <FaDatabase
-					onClick={() => {
-						navigate('/')
-					}}
-				/> */}
-			</div>
 			<div className='navigation__menu'>
 				<div className='navigation__menu-items'>
 					<div

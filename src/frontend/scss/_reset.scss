@@ -144,7 +144,7 @@ textarea:focus-visible {
 	width: 400px;
 	height: 400px;
 	overflow-y: hidden;
-	z-index: -5;
+	z-index: -20;
 }
 .belt-left {
 	position: absolute;
@@ -322,13 +322,15 @@ textarea:focus-visible {
 		align-items: center;
 		color: $white;
 		padding: 0.6em 0;
-		font-size: 1.4rem;
+		font-size: 1rem;
 		margin: 1.2em 1em;
 		transition: color 0.7s;
 	}
 	&__menu-icons {
-		margin: 0em 5px;
-	}
+		margin: 0 5px;
+		min-width: 10%;
+		min-height: 10%;
+	}	
 	&__faq-description {
 		position: absolute;
 		bottom: 0;
