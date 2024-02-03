@@ -3,11 +3,13 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { DashboardNav } from '../StartPage/DashboardNav'
 import { isLogin, outLogin } from '../../../../backend/guard/ProtectLink'
+import { AiOutlineClose } from '../../../../backend/guard/Icons'
 
 function LearnTest() {
 	const API_URL = 'http://localhost:4000'
 	const [answer, setAnswer] = useState('')
 	const [output, setOutput] = useState('')
+	const [outputErr, setOutputErr] = useState('')
 	const [questions, setQuestions] = useState([])
 	const { question_id } = useParams()
 	const navigate = useNavigate()
@@ -64,24 +66,33 @@ function LearnTest() {
 	}
 
 	return (
-		<div className='flex-exam'>
-			<DashboardNav className='navigation' />
-			<div className='exam'>
-				<h2 className='exam__header'>
-					Ćwiczenie nr. {currentQuestion + 1}/{totalQuestions}
-				</h2>
-				<div className='exam__exam-lists'>
-					<p className='exam__question'>{questions[currentQuestion]?.question}</p>
-					<input type='text' className='exam__input' value={answer} onChange={e => setAnswer(e.target.value)} />
-					<button
-						className='href__btn'
-						onClick={() => {
-							handleCheckAnswer()
-						}}
-					>
-						Sprawdź
-					</button>
-					<p>{output}</p>
+		<div>
+			<div className='nav-auth__auth-item--close'>
+				<AiOutlineClose
+					onClick={() => {
+						navigate('/Dashboard/Leartheory')
+					}}
+				/>
+			</div>
+			<div className='navigation'>
+				<DashboardNav />
+				<div className='section'>
+					<h2 className='exam__header'>
+						Ćwiczenie nr. {currentQuestion + 1}/{totalQuestions}
+					</h2>
+					<div className='flex-column'>
+						<p className='title-section'>{questions[currentQuestion]?.question}</p>
+						<input type='text' className='input-auth' value={answer} onChange={e => setAnswer(e.target.value)} />
+						<button
+							className='href__btn'
+							onClick={() => {
+								handleCheckAnswer()
+							}}
+						>
+							Sprawdź
+						</button>
+						<div className={`output ${outputErr ? 'output-err' : ''}`}>{outputErr || output}</div>
+					</div>
 				</div>
 			</div>
 		</div>

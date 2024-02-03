@@ -89,19 +89,6 @@ const LearnTheory = () => {
 					<LearnMenuTopics topics={topics} handleTopic={handleTopic} handleItem={handleItem} />
 				</div>
 			</div>
-			<div className='learn__box__mobile--sticky-section'>
-				<div className='learn__mobile-items'>
-					<LearnMenuTopics
-						className='learn__mobile-item'
-						topics={topics}
-						handleTopic={handleTopic}
-						handleItem={handleItem}
-					/>
-				</div>
-			</div>
-			<div className={openTopics ? 'learn__mobile-settings--close' : 'learn__mobile-settings'}>
-				<LearnMenuTopics topics={topics} handleTopic={handleTopic} handleItem={handleItem} />
-			</div>
 			<div className={openSettings ? 'learn__mobile-settings' : 'learn__mobile-settings--close'}>
 				<div
 					className='learn__mobile-setting'
