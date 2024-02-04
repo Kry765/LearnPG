@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import '../../scss/_reset.scss'
 import axios from 'axios'
 import { FaDatabase, AiOutlineClose } from '../../../backend/guard/Icons'
 import { useNavigate } from 'react-router-dom'

@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
-import '../../scss/_reset.scss'
 import { AiOutlineClose, FaDatabase } from '../../../backend/guard/Icons'
 import { useNavigate } from 'react-router-dom'
 
 function Login() {
-
 	const navigate = useNavigate()
 	const [user_email, set_user_email] = useState('')
 	const [user_pwd, set_user_pwd] = useState('')
@@ -68,7 +66,7 @@ function Login() {
 					<div className='belt-auth-left'></div>
 					<form onSubmit={handleSubmit}>
 						<h1 className='title-section'>Zaloguj się</h1>
-						<div className='flex-column'>
+						<div className='flex-center direction-column'>
 							<div className='space-auth'>
 								<label>
 									<p>
@@ -102,7 +100,7 @@ function Login() {
 								</label>
 							</div>
 						</div>
-						<div className='flex-column'>
+						<div className='flex-center direction-column'>
 							<button className='btn-auth' type='submit'>
 								Zaloguj się
 							</button>

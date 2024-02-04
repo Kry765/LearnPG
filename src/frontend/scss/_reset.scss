@@ -8,6 +8,8 @@
 	box-sizing: border-box;
 }
 
+//default
+
 body {
 	background-color: $strong-white;
 	color: $gray;
@@ -44,12 +46,39 @@ textarea:focus-visible {
 	align-items: center;
 }
 
+//---------------------------------------------------------
+
 .flex {
 	display: flex;
 }
-.fd-row {
+.justify-start {
+	justify-content: start;
+}
+
+.justify-center {
+	justify-content: center;
+}
+
+.justify-end {
+	justify-content: flex-end;
+}
+
+.direction-row {
 	flex-direction: row;
 }
+
+.direction-column {
+	flex-direction: column;
+}
+
+.align-center {
+	align-content: center;
+}
+
+.align-start {
+	align-items: flex-start;
+}
+//---------------------------------------------------------
 
 .flex-center-column {
 	display: flex;
@@ -57,10 +86,6 @@ textarea:focus-visible {
 	align-items: center;
 	flex-direction: column;
 	min-width: 80%;
-}
-
-.form-space {
-	width: 80vw;
 }
 
 .flex-end {
@@ -73,24 +98,22 @@ textarea:focus-visible {
 	text-align: center;
 }
 
-.flex-between {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: wrap;
-	flex-direction: column;
-}
-
-.title-section {
-	text-align: center;
-	padding: 1em;
-}
-
 .flex-column {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
+}
+
+//header
+
+.form-space {
+	width: 80vw;
+}
+
+.title-section {
+	text-align: center;
+	padding: 1em;
 }
 
 .complete {
@@ -330,7 +353,7 @@ textarea:focus-visible {
 		margin: 0 5px;
 		min-width: 10%;
 		min-height: 10%;
-	}	
+	}
 	&__faq-description {
 		position: absolute;
 		bottom: 0;

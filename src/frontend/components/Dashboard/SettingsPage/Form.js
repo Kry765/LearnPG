@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import '../../../scss/_reset.scss'
 import { AiOutlineClose } from '../../../../backend/guard/Icons'
 import { checkCorrectEmail, checkEmptyInput, sendEmail } from '../../../../backend/guard/Script'
 import { useNavigate } from 'react-router-dom'
@@ -42,7 +41,7 @@ export default function Form() {
 			</div>
 			<div className='navigation'>
 				<DashboardNav />
-				<div className='section'>
+				<div className='section flex-center'>
 					<div className='belt-auth-right'></div>
 					<div className='belt-auth-left'></div>
 					<form

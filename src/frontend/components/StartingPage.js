@@ -55,7 +55,7 @@ function StartingPage() {
 		<React.Fragment>
 			<nav>
 				<div className='nav'>
-					<div className='flex-end'>
+					<div className='flex justify-center justify-end'>
 						<div className='nav__desktop-item'>
 							<Link to='offerts' smooth={true} duration={500}>
 								Korzyści
@@ -93,7 +93,7 @@ function StartingPage() {
 								/>
 							) : (
 								<RxHamburgerMenu
-									className={openNav ? 'nav__mobile-items' : ''}
+									className={openNav ? 'nav__mobile-item' : ''}
 									onClick={() => {
 										setOpenNav(!openNav)
 										setChangeIcon(true)
@@ -102,7 +102,11 @@ function StartingPage() {
 							)}
 						</div>
 					</div>
-					<div className={openNav ? 'nav__mobile-items' : 'nav__close-mobile-items'}>
+					<div
+						className={
+							openNav ? 'nav__mobile-items flex justify-center align-start direction-column' : 'nav__close-mobile-items'
+						}
+					>
 						<div className='nav__mobile-item'>
 							<Link to='home' smooth={true} duration={500}>
 								Strona Główna
@@ -150,8 +154,8 @@ function StartingPage() {
 			</nav>
 			<main>
 				<section>
-					<div className='flex-center header' id='home'>
-						<div className='flex-center header__box'>
+					<div className='header flex-center flex justify-center direction-column align-center' id='home'>
+						<div className='flex-center direction-column'>
 							<div className='header__opactiy-box'></div>
 							<h1 className='header__title-header'>LearnPG</h1>
 							<p className='header__subtitle'>Ucz się na bieżąco PostgreSQL</p>

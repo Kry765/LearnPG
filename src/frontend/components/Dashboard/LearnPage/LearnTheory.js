@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import LearnMenuTopics from './LearnMenuTopics'
 import axios from 'axios'
 import {
-	FaDatabase,
 	AiFillHome,
 	AiTwotoneSetting,
 	BiSolidHelpCircle,
@@ -20,7 +18,6 @@ const LearnTheory = () => {
 	const [openTopics, setOpenTopics] = useState('false')
 
 	useEffect(() => {
-		// checkUser()
 		if (topics.length === 0) {
 			axios
 				.get(API_URL + '/gettopic')
@@ -84,9 +81,17 @@ const LearnTheory = () => {
 					<FaPowerOff />
 				</div>
 			</div>
-			<div className='learn__box--sticky-section'>
-				<div className='learn__menu-items'>
-					<LearnMenuTopics topics={topics} handleTopic={handleTopic} handleItem={handleItem} />
+			<div className=' flex-column learn__box--sticky-section'>
+				<div>
+					{topics.map((topic, index) => (
+						<div
+							key={index}
+							className={`learn__menu-item ${handleTopic === topic ? 'selected' : ''}`}
+							onClick={() => handleItem(index)}
+						>
+							{topic.topic_name}
+						</div>
+					))}
 				</div>
 			</div>
 			<div className={openSettings ? 'learn__mobile-settings' : 'learn__mobile-settings--close'}>

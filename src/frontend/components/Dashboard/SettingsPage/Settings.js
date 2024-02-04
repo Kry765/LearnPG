@@ -1,4 +1,3 @@
-import '../../../scss/_reset.scss'
 import { useNavigate } from 'react-router-dom'
 import { DashboardNav } from '../StartPage/DashboardNav'
 import { FaDatabase } from '../../../../backend/guard/Icons'
@@ -47,7 +46,7 @@ function Settings() {
 					/>
 				</div>
 			</div>
-			<div className='section'>
+			<div className='section flex-center direction-column'>
 				<div className='belt-auth-right'></div>
 				<div className='belt-auth-left'></div>
 				<div className='href'>

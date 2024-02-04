@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import '../../../scss/_reset.scss'
-// import { useAuthNavigation } from '../../../../backend/guard/ProtectLink'
 import { FaDatabase } from '../../../../backend/guard/Icons'
 import { DashboardNav } from '../StartPage/DashboardNav'
 import { useNavigate } from 'react-router-dom'
@@ -27,7 +25,6 @@ function Help() {
 	}
 
 	useEffect(() => {
-		// checkUser()
 		if (faqs.length === 0) {
 			axios
 				.get(API_URL + '/getfaq')
@@ -53,7 +50,7 @@ function Help() {
 				</div>
 			</div>
 			<DashboardNav />
-			<div className='section'>
+			<div className='section flex-center'>
 				<div className='belt-auth-right'></div>
 				<div className='belt-auth-left'></div>
 				<div className='href'>

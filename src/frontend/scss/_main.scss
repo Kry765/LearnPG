@@ -120,19 +120,14 @@ a:hover {
 	}
 	&__title,
 	&__subtitle {
-		padding: 1em 0;
+		padding: 1em 2em;
+		text-align: center;
+		font-size: 1.2rem;
 	}
 
 	&__title-header {
 		font-weight: bold;
 		font-size: 4rem;
-	}
-	&__subtitle {
-		text-align: center;
-		font-size: 1.2rem;
-	}
-	&__box {
-		flex-direction: column;
 	}
 
 	&__register-btn {
@@ -309,13 +304,8 @@ a:hover {
 				display: none;
 			}
 		}
-		&__burger-bar,
-		&__mobile-items {
-			display: flex;
-			justify-content: center;
-			align-items: flex-start;
-			flex-direction: column;
-			font-weight: bold;
+		&__burger-bar {
+			display: block;
 		}
 		&__burger-bar:hover {
 			cursor: pointer;
@@ -326,9 +316,9 @@ a:hover {
 			padding: 0 3em;
 			width: 85%;
 			height: 100%;
-			background-color: rgba(13, 115, 119, 0.9);
-			color: $strong-white;
+
 			transform: translateX(-5%);
+			font-weight: bold;
 		}
 		&__mobile-item:hover {
 			cursor: pointer;

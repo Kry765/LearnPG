@@ -16,6 +16,7 @@ function LearnTest() {
 	const [currentQuestion, setCurrentQuestion] = useState(0)
 	const [points, setPoints] = useState(0)
 	const [totalQuestions, setTotalQuestions] = useState(0)
+	
 
 	useEffect(() => {
 		const fetchQuestions = async () => {

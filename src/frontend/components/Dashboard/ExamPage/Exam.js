@@ -1,6 +1,4 @@
 import axios from 'axios'
-import '../../../scss/_reset.scss'
-import '../../../scss/_exam.scss'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { DashboardNav } from '../StartPage/DashboardNav'

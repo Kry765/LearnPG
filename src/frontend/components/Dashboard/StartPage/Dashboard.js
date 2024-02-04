@@ -1,10 +1,8 @@
-import '../../../scss/_reset.scss'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { DashboardNav } from './DashboardNav'
 import { FaDatabase } from '../../../../backend/guard/Icons'
-// import { inLogin } from '../../../../backend/guard/ProtectLink'
 
 function Dashboard() {
 	const navigate = useNavigate()
@@ -14,8 +12,6 @@ function Dashboard() {
 	const [point, setPoint] = useState(0)
 
 	useEffect(() => {
-		// inLogin(navigate)
-
 		axios
 			.get(API_URL + '/getmotivations')
 			.then(motivationsResponse => {
@@ -55,31 +51,31 @@ function Dashboard() {
 				</div>
 			</div>
 			<DashboardNav />
-			<div className='section'>
+			<div className='section flex-center direction-column'>
 				<div className='belt-auth-right'></div>
 				<div className='belt-auth-left'></div>
-				<div className='section__hello-word'>
+				<div className='section__hello-word flex direction-column align-start justify-center'>
 					<h3>Witaj użytkowniku</h3>
 					<p>Od czego dziś zaczynamy</p>
 				</div>
-				<div className='section__left-box'>
+				<div className='section__left-box flex-center'>
 					<div
-						className='section__card'
+						className='section__card flex-center direction-column'
 						onClick={() => {
 							navigate('/dashboard/Leartheory')
 						}}
 					>
 						Rozpocznij naukę
-						<div className='section__opacity-card'></div>
+						<div className='section__opacity-card '></div>
 					</div>
-					<div className='section__card--point'>
+					<div className='section__card--point flex-center direction-column'>
 						<p>Zdobyte punkty:</p>
 						<p>{point}</p>
 					</div>
 				</div>
-				<div className='section__right-box'>
+				<div className='section__right-box flex-center'>
 					<div
-						className='section__card'
+						className='section__card flex-center direction-column'
 						onClick={() => {
 							navigate('/dashboard/exam')
 						}}
@@ -87,7 +83,7 @@ function Dashboard() {
 						<div className='section__opacity-exam-card'></div>
 						<p>Rozpocznij egzamin</p>
 					</div>
-					<div className='section__card--gray'>
+					<div className='section__card--gray flex-center direction-column'>
 						<em className='section__motivate'>"{Motivation}"</em>
 						<em className='section__motivate'>{Author}</em>
 					</div>

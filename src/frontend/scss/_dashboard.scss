@@ -3,17 +3,9 @@
 
 .section {
 	min-width: 80%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
 	&__card {
 		overflow: hidden;
 		position: relative;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex-direction: column;
 		min-width: 40%;
 		height: 150px;
 		background-color: rgba(13, 115, 119, 0.5);
@@ -23,10 +15,6 @@
 		border-radius: 15px;
 		color: $white;
 		&--gray {
-			display: flex;
-			justify-content: center;
-			align-items: flex-start;
-			flex-direction: column;
 			width: 40%;
 			height: 150px;
 			margin: 2em;
@@ -36,10 +24,6 @@
 		}
 		&--point {
 			color: $white;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			flex-direction: column;
 			width: 40%;
 			height: 150px;
 			margin: 2em;
@@ -84,19 +68,12 @@
 	}
 	&__hello-word {
 		margin: 1.2em 0em;
-		display: flex;
-		justify-content: flex-start;
-		flex-direction: column;
-		align-items: flex-start;
 		width: 85%;
 	}
 	&__left-box,
 	&__right-box {
 		width: 100%;
-		display: flex;
 		flex-wrap: wrap;
-		justify-content: center;
-		align-items: center;
 	}
 	&__motivate {
 		padding: 1em;
