@@ -316,7 +316,8 @@ a:hover {
 			padding: 0 3em;
 			width: 85%;
 			height: 100%;
-
+			background-color: rgba(13, 115, 119, 0.9);
+			color: $white;
 			transform: translateX(-5%);
 			font-weight: bold;
 		}
