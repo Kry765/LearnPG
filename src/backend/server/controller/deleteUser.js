@@ -6,8 +6,6 @@ const deleteUserHandler = app => {
 		const { email } = req.body.user
 		const loggedInUserEmail = req.user.user_email
 
-		console.log('User Email:', email)
-
 		if (email !== loggedInUserEmail) {
 			return res.status(403).json({ message: 'Forbidden: Provided email does not match the authenticated user.' })
 		}

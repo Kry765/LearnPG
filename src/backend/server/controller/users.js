@@ -3,7 +3,6 @@ const express = require('express')
 const getUser = express.Router()
 
 getUser.get('/test', (req, res, next) => {
-	console.log('Received GET request at /test')
 	User.findAll()
 		.then(users => {
 			res.status(200).json({ users: users })

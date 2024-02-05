@@ -13,7 +13,6 @@ const resetPassword = app => {
 			const passwordMatch = await bcrypt.compare(user_pwd, user.user_pwd)
 
 			if (!passwordMatch) {
-				// Check if the new password is the same as the current password
 				const newPasswordMatch = await bcrypt.compare(user_pwd, user.user_pwd)
 				if (newPasswordMatch) {
 					return res.status(400).json({ error: 'New password must be different from the current password' })

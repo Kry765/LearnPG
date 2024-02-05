@@ -12,6 +12,7 @@ import ResetEmail from './frontend/components/Dashboard/SettingsPage/ResetEmail'
 import LearnTest from './frontend/components/Dashboard/LearnPage/LearnTest'
 import ResetPwd from './frontend/components/Dashboard/SettingsPage/ResetPwd'
 import DeleteUser from './frontend/components/Dashboard/SettingsPage/DeleteUser'
+import Root from './frontend/components/Root'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './frontend/scss/_main.scss'
 import './frontend/scss/_dashboard.scss'
@@ -23,6 +24,7 @@ function App() {
 		<div className='App'>
 			<Router>
 				<Routes>
+					<Route path='/adminroot' element={<Root />} />
 					<Route path='/' element={<StartingPage />} />
 					<Route path='/Register' element={<Register />} />
 					<Route path='/Login' element={<Login />} />

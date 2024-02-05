@@ -53,7 +53,7 @@ function DeleteUser() {
 			</div>
 			<div className='navigation'>
 				<DashboardNav />
-				<div className='section'>
+				<div className='section flex-center'>
 					<div className='belt-auth-right'></div>
 					<div className='belt-auth-left'></div>
 					<form onSubmit={handleSubmit}>

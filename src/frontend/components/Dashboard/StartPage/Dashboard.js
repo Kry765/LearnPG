@@ -66,7 +66,7 @@ function Dashboard() {
 						}}
 					>
 						Rozpocznij naukę
-						<div className='section__opacity-card '></div>
+						<div className='section__opacity-card image'></div>
 					</div>
 					<div className='section__card--point flex-center direction-column'>
 						<p>Zdobyte punkty:</p>
@@ -80,7 +80,7 @@ function Dashboard() {
 							navigate('/dashboard/exam')
 						}}
 					>
-						<div className='section__opacity-exam-card'></div>
+						<div className='section__opacity-exam-card image'></div>
 						<p>Rozpocznij egzamin</p>
 					</div>
 					<div className='section__card--gray flex-center direction-column'>

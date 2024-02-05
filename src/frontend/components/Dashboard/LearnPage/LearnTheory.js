@@ -43,18 +43,20 @@ const LearnTheory = () => {
 	}
 
 	return (
-		<div className='learn'>
-			<div className='learn__mobile-settings-menu'>
+		<div className='learn flex'>
+			{/*MOBILE*/}
+			<div className='learn__mobile-top-icon'>
 				<div>
-					<RxHamburgerMenu className='learn__mobile-icon' onClick={() => setOpenTopics(!openTopics)} />
+					<RxHamburgerMenu onClick={() => setOpenTopics(!openTopics)} />
 				</div>
 				<div>
-					<AiTwotoneSetting className='learn__mobile-icon' onClick={() => setOpenSettings(!openSettings)} />
+					<AiTwotoneSetting onClick={() => setOpenSettings(!openSettings)} />
 				</div>
 			</div>
-			<div className='learn__box--sticky-menu'>
+			{/*DESKTOP*/}
+			<div className='learn__navigation flex-center direction-column'>
 				<div
-					className='learn__space-icon'
+					className='learn__navigation-icon'
 					onClick={() => {
 						navigate('/dashboard')
 					}}
@@ -62,31 +64,32 @@ const LearnTheory = () => {
 					<AiFillHome />
 				</div>
 				<div
-					className='learn__space-icon'
+					className='learn__navigation-icon'
 					onClick={() => {
-						navigate('./settings')
+						navigate('/dashboard/setting')
 					}}
 				>
 					<AiTwotoneSetting />
 				</div>
 				<div
-					className='learn__space-icon'
+					className='learn__navigation-icon'
 					onClick={() => {
 						navigate('/dashboard/help')
 					}}
 				>
 					<BiSolidHelpCircle />
 				</div>
-				<div className='learn__space-icon'>
+				<div className='learn__navigation-icon'>
 					<FaPowerOff />
 				</div>
 			</div>
-			<div className=' flex-column learn__box--sticky-section'>
-				<div>
+			{/*DESKTOP*/}
+			<div className='learn__topics-section-desktop '>
+				<div className='flex-center direction-column'>
 					{topics.map((topic, index) => (
 						<div
 							key={index}
-							className={`learn__menu-item ${handleTopic === topic ? 'selected' : ''}`}
+							className={`learn__topics-section-desktop-item ${handleTopic === topic ? '' : ''}`}
 							onClick={() => handleItem(index)}
 						>
 							{topic.topic_name}
@@ -94,9 +97,20 @@ const LearnTheory = () => {
 					))}
 				</div>
 			</div>
-			<div className={openSettings ? 'learn__mobile-settings' : 'learn__mobile-settings--close'}>
+			{/*MOBILE*/}
+			<div className='learn__topics-section-mobile'>
+				<div className={openTopics ? '' : ''}>
+					{topics.map((topic, index) => (
+						<div key={index} className={` ${handleTopic === topic ? '' : ''}`} onClick={() => handleItem(index)}>
+							{topic.topic_name}
+						</div>
+					))}
+				</div>
+			</div>
+			{/*MOBILE*/}
+			<div className={`learn__mobile-top-settings openSettings ? '' : ''`}>
 				<div
-					className='learn__mobile-setting'
+					className=''
 					onClick={() => {
 						navigate('/dashboard')
 					}}
@@ -104,37 +118,36 @@ const LearnTheory = () => {
 					Panel Główny
 				</div>
 				<div
-					className='learn__mobile-setting'
+					className=''
 					onClick={() => {
-						navigate('./settings')
+						navigate('/dashboard/settings')
 					}}
 				>
 					Ustawienia
 				</div>
 				<div
-					className='learn__mobile-setting'
+					className=''
 					onClick={() => {
 						navigate('/dashboard/help')
 					}}
 				>
 					Pomoc
 				</div>
-				<div className='learn__mobile-setting'>Wyloguj się</div>
+				<div className=''>Wyloguj się</div>
 			</div>
 			<div className='learn__description'>
 				<h1>Rozpocznij nauke</h1>
 				<h3>Wybierz interesujące cię zagadnienie</h3>
-
 				{handleTopic &&
 					handleTopic.topic_description.split('\n').map((line, index) => (
-						<div key={index} className='learn__description'>
+						<div key={index} className=''>
 							{line}
 						</div>
 					))}
 
 				<div className='flex-center'>
 					{handleTopic && (
-						<button className='learn__btn' onClick={takeMeTest}>
+						<button className='btn-auth' onClick={takeMeTest}>
 							Sprawdź wiedzę
 						</button>
 					)}

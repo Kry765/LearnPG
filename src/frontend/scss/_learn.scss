@@ -3,168 +3,73 @@
 
 .learn {
 	position: relative;
-	display: flex;
-	&__space-icon {
+	&__mobile-top-icon {
+		display: none;
+	}
+	&__mobile-top-settings {
+		display: none;
+	}
+	&__navigation {
+		background-color: $green;
+		position: sticky;
+		top: 0;
+		height: 100vh;
+		width: 5vw;
+	}
+	&__navigation-icon {
 		color: $white;
 		padding: 2em 2em;
 		transition: color 1s;
 	}
-	&__mobile-setting {
-		display: none;
-	}
-
-	&__menu-item {
-		padding: 2em;
-		transition: 0.5s color;
-	}
-	&__menu-item:hover {
-		cursor: pointer;
-		color: $contrast-color;
-	}
-	&__mobile-settings {
-		display: none;
-	}
-
-	&__btn {
-		transition: 0.7s background-color;
-		padding: 1em;
-		background-color: $contrast-color;
-		color: $white;
-		border-radius: 15px;
-		border: none;
-		width: 50%;
-	}
-	&__btn:hover {
-		cursor: pointer;
-		background-color: $green;
-	}
-
-	&__space-icon:hover {
+	&__navigation-icon:hover {
 		cursor: pointer;
 		color: $green;
+	}
+	&__topics-section-desktop {
+		display: block;
+		background-color: $green;
+		position: sticky;
+		overflow: hidden;
+		min-width: 15%;
+		background-color: $gray;
+		color: $white;
+		font-weight: bold;
+	}
+	&__topics-section-desktop-item {
+		margin: 2em 0;
+		padding: 1em;
+	}
+	&__topics-section-mobile {
+		display: none;
+	}
+	&__description {
+		margin-top: 125px;
 	}
 	&__description {
 		max-width: 75%;
 		margin: 1em;
 	}
-	&__box {
-		background-color: $green;
-		&--sticky-menu {
-			position: sticky;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			flex-direction: column;
-			top: 0;
-			height: 100vh;
-			min-width: 5vw;
-			background-color: $green;
-		}
-		&--sticky-section {
-			position: relative;
-			display: flex;
-			// justify-content: center;
-			// align-items: center;
-			// flex-direction: column;
-			top: 0;
-			// max-height: 50%;
-			overflow: hidden;
-			min-width: 15%;
-			background-color: $gray;
-			color: $white;
-			font-weight: bold;
-		}
-	}
-	&__mobile-settings-menu {
-		display: none;
-	}
-
-	&__menu-settings-item {
-		padding: 2em;
-		display: none;
-	}
 }
 
 @media (max-width: 768px) {
 	.learn {
-		flex-direction: column;
-		&__box {
-			&--sticky-menu,
-			&--sticky-section {
-				display: none;
-			}
-		}
-		&__description {
-			margin-top: 125px;
-		}
-		&__mobile-settings {
-			position: fixed;
-			top: 10px;
-			display: block;
-			width: 100vw;
-			height: 108%;
-			margin-top: 50px;
+		margin-top: 100px;
+		display: flex;
+		justify-content: center;
+		&__mobile-top-icon {
 			background-color: $green;
-			color: #fff;
-
-			&--close {
-				display: none;
-			}
-		}
-		&__mobile-icon {
-			z-index: 100;
-		}
-		&__mobile-items,
-		&__mobile-item {
-			display: none;
-		}
-		&__box__mobile {
-			display: none;
-			&--sticky-section {
-				display: none;
-			}
-		}
-		&__mobile-setting {
-			display: flex;
-			justify-content: center;
-			align-items: flex-start;
-			flex-direction: column;
-			margin: 2em;
-			padding: 1em;
-			font-weight: bold;
-			transition: 1s color;
-		}
-		&__mobile-menu {
-			position: fixed;
-			background-color: $green;
-			width: 100%;
-			height: 50px;
-			padding: 1em;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-		}
-		&__mobile-item {
-			display: none;
-			font-size: 2em;
 			color: $white;
-			transition: 1s color;
-		}
-		&__mobile-item:hover {
-			color: $green;
-			cursor: pointer;
-		}
-		&__mobile-settings-menu {
 			position: fixed;
 			top: 0;
 			width: 100%;
-			background-color: $green;
-			color: $white;
-			display: block;
 			display: flex;
+			padding: 0.3em;
 			justify-content: space-between;
 			font-size: 3.2em;
-			padding: 0.2em;
+		}
+		&__topics-section-desktop,
+		&__navigation {
+			display: none;
 		}
 	}
 }

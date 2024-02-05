@@ -41,25 +41,18 @@
 		color: $white;
 	}
 	&__opacity-card {
-		color: $white;
-		z-index: -2;
-		position: absolute;
-		top: 0;
-		height: 100%;
 		background-image: url('../image/learnicon.jpg');
-		background-size: cover;
-		background-repeat: no-repeat;
-		background-position: center;
-		min-width: 100%;
-		border-radius: 15px;
 	}
 	&__opacity-exam-card {
+		background-image: url('../image/test_icon.jpg');
+	}
+
+	.image {
 		color: $white;
 		z-index: -2;
 		position: absolute;
 		top: 0;
 		height: 100%;
-		background-image: url('../image/test_icon.jpg');
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-position: center;
