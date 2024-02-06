@@ -38,7 +38,7 @@ function Result() {
 			<div className='nav-auth__auth-item--close'>
 				<AiOutlineClose
 					onClick={() => {
-						navigate('/dashboard/settings')
+						navigate('/dashboard')
 					}}
 				/>
 			</div>
@@ -47,7 +47,7 @@ function Result() {
 				<div className='section flex-center direction-column'>
 					<div className='belt-auth-right'></div>
 					<div className='belt-auth-left'></div>
-					<h1>Otrzymany wynik to:</h1>
+					<h1 className='text-center'>Otrzymany wynik to:</h1>
 					<p className='space-auth'>
 						{points}/{totalQuestions}/
 					</p>

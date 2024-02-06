@@ -1,80 +1,22 @@
 @use '_colors.scss' as *;
 @use '_reset.scss' as *;
 
-.flex-exam {
-	display: flex;
-	flex-direction: row;
-}
 .exam {
-	width: 100%;
-	padding: 2em;
-	&__input {
-		margin-top: 1em;
-		border-radius: 15px;
-		min-width: 80%;
-		height: 5vh;
-		padding: 1em 2em;
-		font-size: 1.2rem;
-	}
-	&__question {
-		font-size: 1.2rem;
-		font-weight: bold;
-	}
-	&__question-nr {
-		font-weight: bold;
-	}
-
-	&__menu {
-		background-color: $gray;
+	&__radio {
 		display: flex;
 		align-items: center;
-		justify-content: center;
-		flex-direction: column;
-		height: 100vh;
-	}
-
-	// &__exam-list {
-	// 	position: relative;
-	// 	display: flex;
-	// 	justify-content: center;
-	// 	align-items: center;
-	// 	background-color: $contrast-white;
-	// 	color: $gray;
-	// 	width: 70vw;
-	// 	// max-width: 80%;
-	// 	padding: 1em;
-	// 	min-height: 10%;
-	// 	margin: 2em 0;
-	// 	border-radius: 15px;
-	// }
-
-	// &__radio {
-	// 	display: flex;
-	// 	position: absolute;
-	// 	margin: 0 1em;
-	// 	width: 10px;
-	// 	height: 10px;
-	// 	left: 0px;
-	// 	border: none;
-	// 	background-color: $contrast-white;
-	// }
-
-	&__exam-btn {
 		background-color: $gray;
 		color: $white;
-		border: none;
-		margin: 1em 2em;
-		width: 200px;
-		height: 40px;
 		border-radius: 15px;
-		&--next {
-			background-color: $contrast-color;
-			color: $white;
-			border: none;
-			margin: 1em 2em;
-			width: 200px;
-			height: 40px;
-			border-radius: 15px;
-		}
+		padding: 1em;
+		margin: 0.7em;
+		min-width: 80%;
+		// min-height: 30%;
+	}
+	&__text-decorate {
+		font-weight: bold;
+	}
+	&__question-space {
+		padding: 1em;
 	}
 }

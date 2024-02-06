@@ -227,7 +227,7 @@ textarea:focus-visible {
 			padding: 0.5em;
 			font-size: 2.4em;
 			transition: color 1s;
-			z-index: 200;
+			z-index: 1000;
 		}
 		&--close:hover {
 			cursor: pointer;
@@ -317,11 +317,12 @@ textarea:focus-visible {
 		position: sticky;
 		top: 0;
 		max-width: 20%;
-		max-height: 100vh;
+		min-height: 100%;
 		top: 0;
 	}
 	&__menu {
 		max-width: 100%;
+		height: 100vh;
 		background-color: $green;
 		display: flex;
 		justify-content: center;
@@ -334,10 +335,10 @@ textarea:focus-visible {
 	}
 
 	&__menu-items {
-		position: sticky;
+		position: relative;
 		top: 0;
 		width: 25vh;
-		min-height: 100vh;
+		min-height: 100%;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -432,9 +433,6 @@ textarea:focus-visible {
 			font-size: 1.4rem;
 			padding: 1em;
 			transition: color 1s;
-			&--close {
-				display: none;
-			}
 		}
 		&__auth-item:hover {
 			cursor: pointer;

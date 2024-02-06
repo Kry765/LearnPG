@@ -10,6 +10,10 @@
 		display: none;
 	}
 	&__navigation {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
 		background-color: $green;
 		position: sticky;
 		top: 0;
@@ -77,10 +81,11 @@
 			justify-content: space-between;
 			font-size: 3.2em;
 		}
-		&__topics-section-desktop,
+		&__topics-section-desktop {
+			display: none;
+		}
 		&__navigation {
 			display: none;
-			position: fixed;
 		}
 		&__topics-section-mobile,
 		&__settings-menu {

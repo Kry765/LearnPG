@@ -45,13 +45,6 @@ const LearnTheory = () => {
 
 	return (
 		<div className='learn flex'>
-			<div className='nav-auth__auth-item--close'>
-				<AiOutlineClose
-					onClick={() => {
-						navigate('/dashboard')
-					}}
-				/>
-			</div>
 			{/*MOBILE*/}
 			<div className='learn__mobile-top-icon'>
 				<div>
@@ -104,7 +97,7 @@ const LearnTheory = () => {
 				<div className='learn__settings-section-item'>Wyloguj się</div>
 			</div>
 			{/*DESKTOP*/}
-			<div className='learn__navigation flex-center direction-column'>
+			<div className='learn__navigation'>
 				<div
 					className='learn__navigation-icon'
 					onClick={() => {
