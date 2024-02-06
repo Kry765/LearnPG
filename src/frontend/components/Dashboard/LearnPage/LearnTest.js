@@ -2,7 +2,6 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { DashboardNav } from '../StartPage/DashboardNav'
-import { isLogin, outLogin } from '../../../../backend/guard/ProtectLink'
 import { AiOutlineClose } from '../../../../backend/guard/Icons'
 
 function LearnTest() {
@@ -16,7 +15,6 @@ function LearnTest() {
 	const [currentQuestion, setCurrentQuestion] = useState(0)
 	const [points, setPoints] = useState(0)
 	const [totalQuestions, setTotalQuestions] = useState(0)
-	
 
 	useEffect(() => {
 		const fetchQuestions = async () => {
@@ -33,10 +31,12 @@ function LearnTest() {
 	}, [question_id, currentQuestion])
 
 	const handleCheckAnswer = async () => {
+		// Pobierz odpowiedź użytkownika i poprawną odpowiedź
 		const userAnswer = answer.trim().toLowerCase()
 		const correctAnswer = questions[currentQuestion]?.correct_answer.trim().toLowerCase()
 
-		if (userAnswer == correctAnswer) {
+		// Sprawdź, czy odpowiedź użytkownika jest poprawna
+		if (userAnswer === correctAnswer) {
 			try {
 				await axios.post(
 					`${API_URL}/addpoint`,
@@ -48,22 +48,66 @@ function LearnTest() {
 						withCredentials: true,
 					}
 				)
+				// Zwiększ punkty i ustaw komunikat
+				setPoints(prevPoints => prevPoints + 1)
+				setOutput('Dobrze!')
 			} catch (error) {
 				console.error(error)
 			}
-			setPoints(prevPoints => prevPoints + 1)
-			setOutput('Dobrze!')
-			setAnswer('')
 		} else {
+			// Ustaw komunikat w przypadku błędnej odpowiedzi
 			setOutput('Źle!')
-			setAnswer('')
 		}
 
-		if (currentQuestion < totalQuestions - 1) {
-			setCurrentQuestion(prevQuestion => prevQuestion + 1)
+		// Przekieruj użytkownika, jeśli to ostatnie pytanie
+		if (currentQuestion === totalQuestions - 1) {
+			navigateToResult()
 		} else {
-			navigate('/dashboard/result', { state: { points, totalQuestions } })
+			// Zwiększ numer bieżącego pytania
+			setCurrentQuestion(prevQuestion => prevQuestion + 1)
 		}
+
+		// Wyczyść pole odpowiedzi
+		setAnswer('')
+	}
+
+	const getAnswer = async () => {
+		const userAnswer = answer.trim().toLowerCase()
+		const correctAnswer = questions[currentQuestion]?.correct_answer.trim().toLowerCase()
+
+		if (userAnswer === correctAnswer) {
+			try {
+				await axios.post(
+					`${API_URL}/addpoint`,
+					{},
+					{
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						withCredentials: true,
+					}
+				)
+
+				setOutput('Dobrze!')
+				setPoints(prevPoints => prevPoints + 1)
+			} catch (error) {
+				console.error(error)
+			}
+		} else {
+			setOutput('Źle!')
+		}
+
+		if (currentQuestion === totalQuestions - 1) {
+			navigateToResult()
+		} else {
+			setCurrentQuestion(prevQuestion => prevQuestion + 1)
+		}
+		setAnswer('')
+	}
+
+	const navigateToResult = () => {
+		console.log('Navigating to result page...')
+		navigate('/dashboard/result', { state: { points, totalQuestions } })
 	}
 
 	return (
@@ -77,7 +121,7 @@ function LearnTest() {
 			</div>
 			<div className='navigation'>
 				<DashboardNav />
-				<div className='section'>
+				<div className='section flex-center direction-column'>
 					<h2 className='exam__header'>
 						Ćwiczenie nr. {currentQuestion + 1}/{totalQuestions}
 					</h2>

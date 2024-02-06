@@ -7,6 +7,7 @@ import {
 	BiSolidHelpCircle,
 	FaPowerOff,
 	RxHamburgerMenu,
+	AiOutlineClose,
 } from '../../../../backend/guard/Icons'
 
 const LearnTheory = () => {
@@ -44,6 +45,13 @@ const LearnTheory = () => {
 
 	return (
 		<div className='learn flex'>
+			<div className='nav-auth__auth-item--close'>
+				<AiOutlineClose
+					onClick={() => {
+						navigate('/dashboard')
+					}}
+				/>
+			</div>
 			{/*MOBILE*/}
 			<div className='learn__mobile-top-icon'>
 				<div>
@@ -66,9 +74,11 @@ const LearnTheory = () => {
 				))}
 			</div>
 			{/*MOBILE*/}
-			<div className={`learn__mobile-top-settings openSettings ? '' : ''`}>
+			<div
+				className={`learn__mobile-top-settings ${openSettings ? 'learn__settings-menu' : 'learn__settings-menu-close'}`}
+			>
 				<div
-					className=''
+					className='learn__settings-section-item'
 					onClick={() => {
 						navigate('/dashboard')
 					}}
@@ -76,7 +86,7 @@ const LearnTheory = () => {
 					Panel Główny
 				</div>
 				<div
-					className=''
+					className='learn__settings-section-item'
 					onClick={() => {
 						navigate('/dashboard/settings')
 					}}
@@ -84,14 +94,14 @@ const LearnTheory = () => {
 					Ustawienia
 				</div>
 				<div
-					className=''
+					className='learn__settings-section-item'
 					onClick={() => {
 						navigate('/dashboard/help')
 					}}
 				>
 					Pomoc
 				</div>
-				<div className=''>Wyloguj się</div>
+				<div className='learn__settings-section-item'>Wyloguj się</div>
 			</div>
 			{/*DESKTOP*/}
 			<div className='learn__navigation flex-center direction-column'>

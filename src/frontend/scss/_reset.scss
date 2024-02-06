@@ -140,7 +140,7 @@ textarea:focus-visible {
 
 .btn-auth {
 	margin: 1.5em;
-	min-width: 50%;
+	min-width: 100%;
 	min-height: 50px;
 	background-color: $contrast-color;
 	color: $white;
@@ -149,6 +149,7 @@ textarea:focus-visible {
 	font-weight: bold;
 	border: none;
 	margin: 1em 0;
+	padding: 1em 3em;
 	transition: 0.7s background-color;
 }
 
@@ -422,6 +423,24 @@ textarea:focus-visible {
 }
 
 @media (max-width: 992px) {
+	.nav-auth {
+		&__auth-item {
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 5;
+			font-size: 1.4rem;
+			padding: 1em;
+			transition: color 1s;
+			&--close {
+				display: none;
+			}
+		}
+		&__auth-item:hover {
+			cursor: pointer;
+			color: $green;
+		}
+	}
 	.box-auth {
 		margin-top: 30%;
 	}

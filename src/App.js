@@ -13,6 +13,8 @@ import LearnTest from './frontend/components/Dashboard/LearnPage/LearnTest'
 import ResetPwd from './frontend/components/Dashboard/SettingsPage/ResetPwd'
 import DeleteUser from './frontend/components/Dashboard/SettingsPage/DeleteUser'
 import Root from './frontend/components/Root'
+
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './frontend/scss/_main.scss'
 import './frontend/scss/_dashboard.scss'
@@ -23,23 +25,23 @@ function App() {
 	return (
 		<div className='App'>
 			<Router>
-				<Routes>
-					<Route path='/adminroot' element={<Root />} />
-					<Route path='/' element={<StartingPage />} />
-					<Route path='/Register' element={<Register />} />
-					<Route path='/Login' element={<Login />} />
-					<Route path='/Dashboard' element={<Dashboard />} />
-					<Route path='/Dashboard/Result' element={<Result />} />
-					<Route path='/Dashboard/Help' element={<Help />} />
-					<Route path='/Dashboard/Form' element={<Form />} />
-					<Route path='/Dashboard/Settings' element={<Settings />} />
-					<Route path='/Dashboard/Settings/ResetEmail' element={<ResetEmail />} />
-					<Route path='/Dashboard/Settings/DeleteUser' element={<DeleteUser />} />
-					<Route path='/Dashboard/Settings/ResetPwd' element={<ResetPwd />} />
-					<Route path='/Dashboard/Exam' element={<Exam />} />
-					<Route path='/Dashboard/Leartheory' element={<LearnTheory />} />
-					<Route path='/Dashboard/Learn/LearnTest/:question_id' element={<LearnTest />} />
-				</Routes>
+					<Routes>
+						<Route path='/adminroot' element={<Root />} />
+						<Route path='/' element={<StartingPage />} />
+						<Route path='/Register' element={<Register />} />
+						<Route path='/Login' element={<Login />} />
+						<Route path='/Dashboard' element={<Dashboard />} />
+						<Route path='/Dashboard/Result' element={<Result />} />
+						<Route path='/Dashboard/Help' element={<Help />} />
+						<Route path='/Dashboard/Form' element={<Form />} />
+						<Route path='/Dashboard/Settings' element={<Settings />} />
+						<Route path='/Dashboard/Settings/ResetEmail' element={<ResetEmail />} />
+						<Route path='/Dashboard/Settings/DeleteUser' element={<DeleteUser />} />
+						<Route path='/Dashboard/Settings/ResetPwd' element={<ResetPwd />} />
+						<Route path='/Dashboard/Exam' element={<Exam />} />
+						<Route path='/Dashboard/Leartheory' element={<LearnTheory />} />
+						<Route path='/Dashboard/Learn/LearnTest/:question_id' element={<LearnTest />} />
+					</Routes>
 			</Router>
 		</div>
 	)
