@@ -53,6 +53,46 @@ const LearnTheory = () => {
 					<AiTwotoneSetting onClick={() => setOpenSettings(!openSettings)} />
 				</div>
 			</div>
+			{/*MOBILE*/}
+			<div className={openTopics ? 'learn__topics-section-mobile-close' : 'learn__topics-section-mobile'}>
+				{topics.map((topic, index) => (
+					<div
+						key={index}
+						className={`learn__topic-section-item ${handleTopic === topic ? '' : ''}`}
+						onClick={() => handleItem(index)}
+					>
+						{topic.topic_name}
+					</div>
+				))}
+			</div>
+			{/*MOBILE*/}
+			<div className={`learn__mobile-top-settings openSettings ? '' : ''`}>
+				<div
+					className=''
+					onClick={() => {
+						navigate('/dashboard')
+					}}
+				>
+					Panel Główny
+				</div>
+				<div
+					className=''
+					onClick={() => {
+						navigate('/dashboard/settings')
+					}}
+				>
+					Ustawienia
+				</div>
+				<div
+					className=''
+					onClick={() => {
+						navigate('/dashboard/help')
+					}}
+				>
+					Pomoc
+				</div>
+				<div className=''>Wyloguj się</div>
+			</div>
 			{/*DESKTOP*/}
 			<div className='learn__navigation flex-center direction-column'>
 				<div
@@ -97,44 +137,7 @@ const LearnTheory = () => {
 					))}
 				</div>
 			</div>
-			{/*MOBILE*/}
-			<div className='learn__topics-section-mobile'>
-				<div className={openTopics ? '' : ''}>
-					{topics.map((topic, index) => (
-						<div key={index} className={` ${handleTopic === topic ? '' : ''}`} onClick={() => handleItem(index)}>
-							{topic.topic_name}
-						</div>
-					))}
-				</div>
-			</div>
-			{/*MOBILE*/}
-			<div className={`learn__mobile-top-settings openSettings ? '' : ''`}>
-				<div
-					className=''
-					onClick={() => {
-						navigate('/dashboard')
-					}}
-				>
-					Panel Główny
-				</div>
-				<div
-					className=''
-					onClick={() => {
-						navigate('/dashboard/settings')
-					}}
-				>
-					Ustawienia
-				</div>
-				<div
-					className=''
-					onClick={() => {
-						navigate('/dashboard/help')
-					}}
-				>
-					Pomoc
-				</div>
-				<div className=''>Wyloguj się</div>
-			</div>
+
 			<div className='learn__description'>
 				<h1>Rozpocznij nauke</h1>
 				<h3>Wybierz interesujące cię zagadnienie</h3>
