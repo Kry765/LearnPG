@@ -9,7 +9,6 @@ function Result() {
 	const {
 		points: receivedPoints,
 		totalQuestions: receivedTotalQuestions,
-		incorrectAnswers,
 	} = location.state || {
 		points: 0,
 		totalQuestions: 0,
@@ -49,7 +48,7 @@ function Result() {
 					<div className='belt-auth-left'></div>
 					<h1 className='text-center'>Otrzymany wynik to:</h1>
 					<p className='space-auth'>
-						{points}/{totalQuestions}/
+						{points}/{totalQuestions}
 					</p>
 					<div>
 						<button
