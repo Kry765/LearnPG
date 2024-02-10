@@ -1,22 +1,11 @@
-import { outLogin } from '../../../../backend/guard/ProtectLink'
 import { useNavigate } from 'react-router-dom'
-import {
-	FaDatabase,
-	AiFillHome,
-	AiOutlineClose,
-	AiTwotoneSetting,
-	BiSolidHelpCircle,
-	FaPowerOff,
-} from '../../../../backend/guard/Icons'
+import { AiFillHome, AiTwotoneSetting, BiSolidHelpCircle, FaPowerOff } from '../../../../backend/guard/Icons'
+import { logoutUser } from '../../../../backend/guard/Script'
 
 export function DashboardNav() {
 	const navigate = useNavigate()
 	const handleLogout = async () => {
-		try {
-			await outLogin(navigate)
-		} catch (error) {
-			console.error('Error during logout:', error)
-		}
+		logoutUser()
 	}
 
 	return (

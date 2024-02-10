@@ -1,4 +1,6 @@
 import emailjs from 'emailjs-com'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export const checkCorrectEmail = user_email => {
 	const validEmail = new RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$')
@@ -36,4 +38,22 @@ export const checkStrongPwd = (user_pwd, repeat_pwd) => {
 		return 'Twoje hasło jest za słabe musi się składać z minimum 8 znaków, posiadać małe i duże litery, cyfry oraz znaki specialne'
 	}
 	return null
+}
+
+export const LoggedInUser = () => {
+	const navigate = useNavigate()
+	const session = localStorage.getItem('token')
+
+	useEffect(() => {
+		if (!session) {
+			navigate('/login')
+		}
+	}, [session, navigate])
+
+	return null
+}
+
+export const logoutUser = () => {
+	localStorage.removeItem('token')
+	window.location.href = '/login'
 }

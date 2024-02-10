@@ -1,0 +1,8 @@
+# RUN FRONTEND
+FROM node:16 AS frontend
+WORKDIR /frontend
+COPY package*.json ./
+RUN npm install
+COPY . .
+CMD ["npm", "start"]
+EXPOSE 3000

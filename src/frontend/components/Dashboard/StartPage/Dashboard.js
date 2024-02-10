@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { DashboardNav } from './DashboardNav'
 import { FaDatabase } from '../../../../backend/guard/Icons'
+import { LoggedInUser } from '../../../../backend/guard/Script'
 
 function Dashboard() {
 	const navigate = useNavigate()
@@ -10,6 +11,8 @@ function Dashboard() {
 	const [Motivation, setMotivation] = useState('')
 	const [Author, setAuthor] = useState('')
 	const [point, setPoint] = useState(0)
+
+	LoggedInUser(navigate)
 
 	useEffect(() => {
 		axios
@@ -37,7 +40,7 @@ function Dashboard() {
 			.catch(error => {
 				console.error('Error fetching score:', error)
 			})
-	}, [navigate])
+	}, [])
 
 	return (
 		<div className='navigation'>

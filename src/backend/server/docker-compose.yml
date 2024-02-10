@@ -1,3 +1,4 @@
+# DOCKER-COMPOSE
 version: '3.9'
 volumes:
   pgdata:
@@ -29,7 +30,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: DockerApi
     container_name: node_api
     depends_on:
       - db
@@ -37,3 +38,12 @@ services:
       - '4000:4000'
     env_file:
       - './.env'
+
+  # react:
+  #   build:
+  #     context: ../../
+  #     dockerfile: DockerReact
+  #   container_name: learn_pg
+  #   restart: always
+  #   ports:
+  #     - '3000:3000'
