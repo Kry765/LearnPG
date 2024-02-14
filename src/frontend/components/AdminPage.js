@@ -7,12 +7,17 @@ export default function AdminPage() {
 	const [topicName, setTopicName] = useState('')
 	const [topicDescription, setTopicDescription] = useState('')
 	const [user_pwd, set_user_pwd] = useState('')
+	const [handleFaq, setHandleFaq] = useState('')
 	const [users, setUsers] = useState([])
+	const [topics, setTopics] = useState([])
+	const [faqs, setFaqs] = useState([])
 
 	const API_URL = 'http://localhost:4000'
 
 	useEffect(() => {
 		getUser()
+		getTopic()
+		getFaq()
 	}, [])
 
 	const checkEmail = () => {
@@ -41,6 +46,17 @@ export default function AdminPage() {
 			})
 			.catch(error => {
 				console.error('Błąd zapytania:', error)
+			})
+	}
+
+	const getTopic = () => {
+		axios
+			.get(API_URL + '/gettopic')
+			.then(res => {
+				setTopics(res.data)
+			})
+			.catch(err => {
+				console.log(err)
 			})
 	}
 
@@ -75,6 +91,20 @@ export default function AdminPage() {
 			}
 		} catch (err) {
 			console.error(err)
+		}
+	}
+
+	const getFaq = () => {
+		if (faqs.length === 0) {
+			axios
+				.get(API_URL + '/getfaq')
+				.then(res => {
+					setFaqs(res.data)
+					setHandleFaq(res.data[0])
+				})
+				.catch(err => {
+					console.log(err)
+				})
 		}
 	}
 
@@ -161,6 +191,38 @@ export default function AdminPage() {
 					))}
 				</div>
 				<h2>Lista działów:</h2>
+				<div>
+					{topics.map((topic, index) => (
+						<div key={index}>
+							<b>ID:</b>
+							<b>{topic.question_id}</b>
+							<br />
+							<br />
+							<b>Nazwa działu: </b>
+							<b>{topic.topic_name}</b>
+							<br />
+							<br />
+							<b>Treść działu: </b>
+							{topic.topic_description}
+						</div>
+					))}
+				</div>
+				<h2>Lista FAQ:</h2>
+				<div>
+					{faqs.map((faq, index) => (
+						<p key={index}>
+							<br />
+							<br />
+							{faq.faq_id}
+							<br />
+							<br />
+							{faq.faq_name}
+							<br />
+							<br />
+							{faq.faq_description}
+						</p>
+					))}
+				</div>
 			</div>
 		</div>
 	)

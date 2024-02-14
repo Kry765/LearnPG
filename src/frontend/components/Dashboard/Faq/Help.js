@@ -8,7 +8,6 @@ function Help() {
 	const API_URL = 'http://localhost:4000'
 	const [handleFaq, setHandleFaq] = useState(null)
 	const navigate = useNavigate()
-	// const checkUser = useAuthNavigation()
 	const [faqs, setFaqs] = useState([])
 	const [isDescriptionVisible, setIsDescriptionVisible] = useState(false)
 
