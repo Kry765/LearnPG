@@ -1,0 +1,16 @@
+@use './colors' as *;
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.root-users {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
