@@ -11,6 +11,8 @@ export default function ModifyUser() {
 	const [pointEmail, setPointEmail] = useState('')
 	const [currentEmail, setCurrentEmail] = useState('')
 	const [newPwd, setNewPwd] = useState('')
+	const [oldEmail, setOldEmail] = useState('')
+	const [newEmail, setNewEmail] = useState('')
 
 	useEffect(() => {
 		getUser()
@@ -120,6 +122,31 @@ export default function ModifyUser() {
 		}
 	}
 
+	const newUserEmail = async e => {
+		e.preventDefault()
+		const formData = { oldEmail, newEmail }
+		if (oldEmail === newEmail) {
+			return alert('E-mail jest taki sam jak poprzedni')
+		}
+		try {
+			const response = await axios.post(API_URL + '/rootchangeemail', formData, {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				withCredentials: true,
+			})
+			if (response.status === 200) {
+				alert('Email zmieniony')
+			} else if (response.status === 404) {
+				alert('Użytkownik nie został znaleziony')
+			} else {
+				alert('Wystąpił błąd')
+			}
+		} catch (error) {
+			alert('Wystąpił błąd')
+		}
+	}
+
 	return (
 		<div>
 			<div>
@@ -189,16 +216,39 @@ export default function ModifyUser() {
 								setCurrentEmail(event.target.value)
 							}}
 						/>
-						<input
-							type='text'
-							placeholder='hasło'
-							value={newPwd}
-							onChange={event => {
-								setNewPwd(event.target.value)
-							}}
-						/>
 					</label>
+					<input
+						type='text'
+						placeholder='hasło'
+						value={newPwd}
+						onChange={event => {
+							setNewPwd(event.target.value)
+						}}
+					/>
+
 					<button type='submit'>Ustaw hasło</button>
+				</form>
+			</div>
+			<div>
+				<label>Ustaw nowy adres E-mail</label>
+				<form onSubmit={newUserEmail}>
+					<input
+						type='text'
+						placeholder='stary adres-email'
+						value={oldEmail}
+						onChange={event => {
+							setOldEmail(event.target.value)
+						}}
+					/>
+					<input
+						type='text'
+						placeholder='nowy adres-email'
+						value={newEmail}
+						onChange={event => {
+							setNewEmail(event.target.value)
+						}}
+					/>
+					<button type='submit'>Ustaw nowy email</button>
 				</form>
 			</div>
 			<div className='root-users'>
