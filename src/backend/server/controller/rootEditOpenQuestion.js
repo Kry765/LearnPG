@@ -3,7 +3,7 @@ const OpenQuestion = require('../models/open_question')
 const rootEditOpenQuestion = app => {
 	app.post('/rooteditopenquestion', async (req, res) => {
 		const { editOpenQuestionId, editOpenQuestion, editCorrectAnswer } = req.body
-		const setOpenQuestion = await Topic.update(
+		const setOpenQuestion = await OpenQuestion.update(
 			{ question: editOpenQuestion, correct_answer: editCorrectAnswer },
 			{ where: { openquestion_id: editOpenQuestionId } }
 		)

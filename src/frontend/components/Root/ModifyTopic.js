@@ -161,7 +161,6 @@ export default function ModifyTopic() {
 				'Content-Type': 'application/json',
 			},
 		})
-		
 	}
 
 	return (
@@ -341,7 +340,7 @@ export default function ModifyTopic() {
 								/>
 							</label>
 						</label>
-						<button type='submit'>Skasuj otwarte pytanie</button>
+						<button type='submit'>Edytuj pytanie</button>
 					</form>
 				</div>
 			</div>
