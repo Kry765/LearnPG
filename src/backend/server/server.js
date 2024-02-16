@@ -46,6 +46,7 @@ db.authenticate()
 		const CloseQuestion = require('./models/close_question')
 		const MotivationHandler = require('./models/motivation')
 		const FaqHandler = require('./models/faq')
+		const handleRoot = require('./models/root')
 
 		User.sync()
 		Topic.sync()
@@ -53,6 +54,7 @@ db.authenticate()
 		CloseQuestion.sync()
 		MotivationHandler.sync()
 		FaqHandler.sync()
+		handleRoot.sync()
 
 		app.listen(port, () => {
 			console.log(`Server is running on port ${port}`)

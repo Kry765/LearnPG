@@ -16,16 +16,18 @@ services:
       - '5432:5432'
     volumes:
       - pgdata:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    command: ['postgres', '-c', 'log_statement=all']
 
-  pgadmin:
-    container_name: pgadmin4
-    restart: always
-    image: dpage/pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: root@root.com
-      PGADMIN_DEFAULT_PASSWORD: root
-    ports:
-      - '5050:80'
+  # pgadmin:
+  #   container_name: pgadmin4
+  #   restart: always
+  #   image: dpage/pgadmin4
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: root@root.com
+  #     PGADMIN_DEFAULT_PASSWORD: root
+  #   ports:
+  #     - '5050:80'
 
   app:
     build:
@@ -36,8 +38,13 @@ services:
       - db
     ports:
       - '4000:4000'
-    env_file:
-      - './.env'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST: db
+      POSTGRES_DB: postgresql_tutorial
+      POSTGRES_PORT: 5432
+    command: ['./wait-for-postgres.sh', 'db', '--', 'npm', 'start']
 
   # react:
   #   build:
