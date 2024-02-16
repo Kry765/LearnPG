@@ -1,0 +1,21 @@
+# Dockermerge
+FROM node:16 AS api
+RUN apt-get update && apt-get install -y postgresql-client
+WORKDIR /app
+COPY package.json package-lock.json ./
+COPY . .
+RUN npm install
+
+FROM node:16 AS react
+WORKDIR /frontend
+COPY package.json package-lock.json ./
+RUN npm install
+COPY . .
+
+FROM api AS api-build
+CMD ["node_modules/.bin/nodemon", "server.js"]
+EXPOSE 4000
+
+FROM react AS react-build
+CMD ["npm", "start"]
+EXPOSE 3000

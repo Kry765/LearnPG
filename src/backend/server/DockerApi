@@ -5,7 +5,5 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 COPY . .
 RUN npm install
-# RUN npm install -g nodemon
-# RUN npm install --save-dev nodemon
 CMD ["node_modules/.bin/nodemon", "server.js"]
 EXPOSE 4000

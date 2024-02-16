@@ -1,0 +1,21 @@
+# app:
+#   build:
+#     context: .
+#     dockerfile: DockerApi
+#   container_name: node_api
+#   depends_on:
+#     - db
+#   ports:
+#     - '4000:4000'
+#   env_file:
+#     - './.env'
+#   command: ['./wait-for-postgres.sh', 'db', '--', 'npm', 'start']
+
+# react:
+#   build:
+#     context: ../../../
+#     dockerfile: DockerReact
+#   container_name: learn_pg
+#   restart: always
+#   ports:
+#     - '3000:3000'
