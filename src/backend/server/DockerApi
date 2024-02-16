@@ -1,9 +1,11 @@
+#DockerApi
 FROM docker.io/node:16
 RUN apt-get update && apt-get install -y postgresql-client
 WORKDIR /app
 COPY package.json package-lock.json ./
 COPY . .
 RUN npm install
-RUN npm install -g nodemon
-CMD ["nodemon", "server.js"]
+# RUN npm install -g nodemon
+# RUN npm install --save-dev nodemon
+CMD ["node_modules/.bin/nodemon", "server.js"]
 EXPOSE 4000
