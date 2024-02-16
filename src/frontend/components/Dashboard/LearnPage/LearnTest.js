@@ -26,52 +26,15 @@ function LearnTest() {
 				console.error('Error fetching questions:', error)
 			}
 		}
+		const storedPoints = localStorage.getItem('points')
 
+		if (storedPoints === null) {
+			localStorage.setItem('points', '0')
+		}
 		fetchQuestions()
-	}, [question_id, currentQuestion])
+	}, [question_id])
 
 	const handleCheckAnswer = async () => {
-		// Pobierz odpowiedź użytkownika i poprawną odpowiedź
-		const userAnswer = answer.trim().toLowerCase()
-		const correctAnswer = questions[currentQuestion]?.correct_answer.trim().toLowerCase()
-
-		// Sprawdź, czy odpowiedź użytkownika jest poprawna
-		if (userAnswer === correctAnswer) {
-			try {
-				await axios.post(
-					`${API_URL}/addpoint`,
-					{},
-					{
-						headers: {
-							'Content-Type': 'application/json',
-						},
-						withCredentials: true,
-					}
-				)
-				// Zwiększ punkty i ustaw komunikat
-				setPoints(prevPoints => prevPoints + 1)
-				setOutput('Dobrze!')
-			} catch (error) {
-				console.error(error)
-			}
-		} else {
-			// Ustaw komunikat w przypadku błędnej odpowiedzi
-			setOutput('Źle!')
-		}
-
-		// Przekieruj użytkownika, jeśli to ostatnie pytanie
-		if (currentQuestion === totalQuestions - 1) {
-			navigateToResult()
-		} else {
-			// Zwiększ numer bieżącego pytania
-			setCurrentQuestion(prevQuestion => prevQuestion + 1)
-		}
-
-		// Wyczyść pole odpowiedzi
-		setAnswer('')
-	}
-
-	const getAnswer = async () => {
 		const userAnswer = answer.trim().toLowerCase()
 		const correctAnswer = questions[currentQuestion]?.correct_answer.trim().toLowerCase()
 
@@ -87,9 +50,10 @@ function LearnTest() {
 						withCredentials: true,
 					}
 				)
-
+				const updatedPoints = points + 1
+				localStorage.setItem('points', updatedPoints)
+				setPoints(updatedPoints)
 				setOutput('Dobrze!')
-				setPoints(prevPoints => prevPoints + 1)
 			} catch (error) {
 				console.error(error)
 			}
@@ -97,16 +61,16 @@ function LearnTest() {
 			setOutput('Źle!')
 		}
 
-		if (currentQuestion === totalQuestions - 1) {
+		const nextQuestionIndex = currentQuestion + 1
+		if (nextQuestionIndex === totalQuestions) {
 			navigateToResult()
 		} else {
-			setCurrentQuestion(prevQuestion => prevQuestion + 1)
+			setCurrentQuestion(nextQuestionIndex)
+			setAnswer('')
 		}
-		setAnswer('')
 	}
 
 	const navigateToResult = () => {
-		console.log('Navigating to result page...')
 		navigate('/dashboard/result', { state: { points, totalQuestions } })
 	}
 

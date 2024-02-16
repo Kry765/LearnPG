@@ -1,40 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { Navigate, useNavigate } from 'react-router-dom'
-
+import { useNavigate } from 'react-router-dom'
+import { AdminMenu } from './AdminMenu'
 export default function AdminPage() {
-	const Navigate = useNavigate()
 	return (
-		<div>
-			<h1>Panel Administracyjny</h1>
-			<p>Wykonaj zdarzenie na:</p>
-			<button
-				onClick={() => {
-					Navigate('./ModifyUser')
-				}}
-			>
-				Użytkownicy
-			</button>
-			<button
-				onClick={() => {
-					Navigate('./ModifyTopic')
-				}}
-			>
-				Dział Teoria
-			</button>
-			<button
-				onClick={() => {
-					Navigate('./ModifyFaq')
-				}}
-			>
-				Dział FAQ
-			</button>
-			<button
-				onClick={() => {
-					Navigate('./ModifyTest')
-				}}
-			>
-				Dział Praktyka
-			</button>
+		<div className='root'>
+			<div>
+				<AdminMenu />
+			</div>
+			<div>
+				<h1>Panel Administracyjny</h1>
+			</div>
 		</div>
 	)
 }

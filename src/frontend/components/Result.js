@@ -6,30 +6,12 @@ import { AiOutlineClose } from '../../backend/guard/Icons'
 function Result() {
 	const location = useLocation()
 	const navigate = useNavigate()
-	const {
-		points: receivedPoints,
-		totalQuestions: receivedTotalQuestions,
-	} = location.state || {
-		points: 0,
-		totalQuestions: 0,
-	}
-
-	const [points, setPoints] = useState(receivedPoints)
+	const { totalQuestions: receivedTotalQuestions = 0 } = location.state
 	const [totalQuestions, setTotalQuestions] = useState(receivedTotalQuestions)
-	const [dataReady, setDataReady] = useState(false)
+	const storedPoints = localStorage.getItem('points')
 
-	useEffect(() => {
-		if (receivedPoints > points) {
-			setPoints(receivedPoints)
-		}
-		if (receivedTotalQuestions > totalQuestions) {
-			setTotalQuestions(receivedTotalQuestions)
-		}
-		setDataReady(true)
-	}, [receivedPoints, receivedTotalQuestions])
-
-	if (!dataReady) {
-		return <div>Loading...</div>
+	const removePoint = () => {
+		localStorage.removeItem('points')
 	}
 
 	return (
@@ -37,6 +19,7 @@ function Result() {
 			<div className='nav-auth__auth-item--close'>
 				<AiOutlineClose
 					onClick={() => {
+						removePoint()
 						navigate('/dashboard')
 					}}
 				/>
@@ -48,12 +31,13 @@ function Result() {
 					<div className='belt-auth-left'></div>
 					<h1 className='text-center'>Otrzymany wynik to:</h1>
 					<p className='space-auth'>
-						{points}/{totalQuestions}
+						{storedPoints}/{totalQuestions}
 					</p>
 					<div>
 						<button
 							className='btn-auth'
 							onClick={() => {
+								removePoint()
 								navigate('/dashboard')
 							}}
 						>

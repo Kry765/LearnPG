@@ -1,6 +1,7 @@
 import { checkEmptyInput, checkCorrectEmail } from '../../../backend/guard/Script'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import { AdminMenu } from './AdminMenu'
 
 export default function ModifyUser() {
 	const API_URL = 'http://localhost:4000'
@@ -148,130 +149,135 @@ export default function ModifyUser() {
 	}
 
 	return (
-		<div>
+		<div className='root'>
 			<div>
-				<h2>Dodaj konto</h2>
-				<form onSubmit={addUser}>
-					<input
-						type='text'
-						placeholder='adres-email'
-						value={user_email}
-						onChange={event => {
-							set_user_email(event.target.value)
-						}}
-					/>
-					<input
-						type='text'
-						placeholder='hasło'
-						value={user_pwd}
-						onChange={event => {
-							set_user_pwd(event.target.value)
-						}}
-					/>
-
-					<button type='submit'>Dodaj konto</button>
-				</form>
+				<AdminMenu />
 			</div>
 			<div>
-				<h2>Skasuj konto</h2>
-				<form onSubmit={deleteUser}>
-					<input
-						type='text'
-						placeholder='adres-email'
-						value={deleteUserEmail}
-						onChange={event => {
-							setDeleteUserEmail(event.target.value)
-						}}
-					/>
-					<button type='submit'>Skasuj konto</button>
-				</form>
-			</div>
-			<div>
-				<h2>Wyzeruj punkty</h2>
-				<form onSubmit={clearPoint}>
-					<label>
-						Podaj maila użytkownika któremu mam wyzerować punkty:
-						<input
-							type='text'
-							placeholder='adres-email'
-							value={pointEmail}
-							onChange={event => {
-								setPointEmail(event.target.value)
-							}}
-						/>
-					</label>
-					<button type='submit'>Wyzeruj punkty</button>
-				</form>
-			</div>
-			<div>
-				<h2>Ustaw nowe hasło:</h2>
-				<form onSubmit={newPassword}>
-					<label>
-						Podaj maila użytkownika któremu chcesz ustawić nowe hasło
-						<input
-							type='text'
-							placeholder='adres-email'
-							value={currentEmail}
-							onChange={event => {
-								setCurrentEmail(event.target.value)
-							}}
-						/>
-					</label>
-					<input
-						type='text'
-						placeholder='hasło'
-						value={newPwd}
-						onChange={event => {
-							setNewPwd(event.target.value)
-						}}
-					/>
-
-					<button type='submit'>Ustaw hasło</button>
-				</form>
-			</div>
-			<div>
-				<label>Ustaw nowy adres E-mail</label>
-				<form onSubmit={newUserEmail}>
-					<input
-						type='text'
-						placeholder='stary adres-email'
-						value={oldEmail}
-						onChange={event => {
-							setOldEmail(event.target.value)
-						}}
-					/>
-					<input
-						type='text'
-						placeholder='nowy adres-email'
-						value={newEmail}
-						onChange={event => {
-							setNewEmail(event.target.value)
-						}}
-					/>
-					<button type='submit'>Ustaw nowy email</button>
-				</form>
-			</div>
-			<div className='root-users'>
-				<h2>Lista użytkowników:</h2>
 				<div>
-					<table>
-						<thead>
-							<tr>
-								<th>ID</th>
-								<th>E-Mail</th>
-								<th>Punkty</th>
-							</tr>
-						</thead>
-						<tbody>
-							{users.map((user, index) => (
-								<tr key={index}>
-									<td>{user.user_id}</td>
-									<td>{user.user_email}</td>
-									<td>{user.user_point}</td>
+					<h2>Dodaj konto</h2>
+					<form onSubmit={addUser}>
+						<input
+							type='text'
+							placeholder='adres-email'
+							value={user_email}
+							onChange={event => {
+								set_user_email(event.target.value)
+							}}
+						/>
+						<input
+							type='text'
+							placeholder='hasło'
+							value={user_pwd}
+							onChange={event => {
+								set_user_pwd(event.target.value)
+							}}
+						/>
+
+						<button type='submit'>Dodaj konto</button>
+					</form>
+				</div>
+				<div>
+					<h2>Skasuj konto</h2>
+					<form onSubmit={deleteUser}>
+						<input
+							type='text'
+							placeholder='adres-email'
+							value={deleteUserEmail}
+							onChange={event => {
+								setDeleteUserEmail(event.target.value)
+							}}
+						/>
+						<button type='submit'>Skasuj konto</button>
+					</form>
+				</div>
+				<div>
+					<h2>Wyzeruj punkty</h2>
+					<form onSubmit={clearPoint}>
+						<label>
+							Podaj maila użytkownika któremu mam wyzerować punkty:
+							<input
+								type='text'
+								placeholder='adres-email'
+								value={pointEmail}
+								onChange={event => {
+									setPointEmail(event.target.value)
+								}}
+							/>
+						</label>
+						<button type='submit'>Wyzeruj punkty</button>
+					</form>
+				</div>
+				<div>
+					<h2>Ustaw nowe hasło:</h2>
+					<form onSubmit={newPassword}>
+						<label>
+							Podaj maila użytkownika któremu chcesz ustawić nowe hasło
+							<input
+								type='text'
+								placeholder='adres-email'
+								value={currentEmail}
+								onChange={event => {
+									setCurrentEmail(event.target.value)
+								}}
+							/>
+						</label>
+						<input
+							type='text'
+							placeholder='hasło'
+							value={newPwd}
+							onChange={event => {
+								setNewPwd(event.target.value)
+							}}
+						/>
+
+						<button type='submit'>Ustaw hasło</button>
+					</form>
+				</div>
+				<div>
+					<label>Ustaw nowy adres E-mail</label>
+					<form onSubmit={newUserEmail}>
+						<input
+							type='text'
+							placeholder='stary adres-email'
+							value={oldEmail}
+							onChange={event => {
+								setOldEmail(event.target.value)
+							}}
+						/>
+						<input
+							type='text'
+							placeholder='nowy adres-email'
+							value={newEmail}
+							onChange={event => {
+								setNewEmail(event.target.value)
+							}}
+						/>
+						<button type='submit'>Ustaw nowy email</button>
+					</form>
+				</div>
+				<div className='root-users'>
+					<h2>Lista użytkowników:</h2>
+					<div>
+						<table>
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>E-Mail</th>
+									<th>Punkty</th>
 								</tr>
-							))}
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+								{users.map((user, index) => (
+									<tr key={index}>
+										<td>{user.user_id}</td>
+										<td>{user.user_email}</td>
+										<td>{user.user_point}</td>
+									</tr>
+								))}
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>

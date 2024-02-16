@@ -14,3 +14,25 @@
 	align-items: center;
 	flex-direction: column;
 }
+
+.root {
+	display: flex;
+	&__left-menu {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		width: 25vw;
+		height: 100vh;
+		background-color: $green;
+	}
+	&__left-menu-items {
+		color: $white;
+		font-weight: bsold;
+		margin: 2em;
+		transition: 0.7s color;
+	}
+	&__left-menu-items:hover {
+		cursor: pointer;
+		color: $contrast-color;
+	}
+}

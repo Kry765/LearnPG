@@ -35,7 +35,18 @@ services:
       - './.env'
     command: ['./wait-for-postgres.sh', 'db', '--', 'npm', 'start']
 
-  #  services:
+  pgadmin:
+    container_name: pgadmin4
+    restart: always
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: root@root.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - '5050:80'
+
+      
+#  services:
 #    db:
 #      image: postgres
 #      container_name: pg_db
@@ -52,7 +63,6 @@ services:
 #      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 #    command: ['postgres', '-c', 'log_statement=all']
 
-  # DOCKER-COMPOSE
 #dockerhub
 
 # react:
@@ -91,7 +101,7 @@ services:
 #      driver: local
 #      name: pg_docker
 #
-#  services:
+#
 #    db:
 #      image: postgres
 #      container_name: pg_db
