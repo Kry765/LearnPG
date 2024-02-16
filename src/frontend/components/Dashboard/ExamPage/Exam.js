@@ -30,39 +30,50 @@ function Exam() {
 				.catch(error => {
 					console.error(error)
 				})
+			const storedPoints = localStorage.getItem('points')
+			if (storedPoints === null) {
+				localStorage.setItem('points', '0')
+			}
 		}
 		fetchQuestions()
 	}, [currentQuestion])
 
 	const checkQuestion = () => {
-		if (questions[currentQuestion]) {
-			const correctAnswer = questions[currentQuestion].correct_answer
-			const selectedOption = String.fromCharCode(65 + selectedAnswer)
+		if (selectedAnswer !== null) {
+			// Sprawdzamy, czy użytkownik wybrał odpowiedź
+			if (questions[currentQuestion]) {
+				const correctAnswer = questions[currentQuestion].correct_answer
+				const selectedOption = String.fromCharCode(65 + selectedAnswer)
 
-			if (selectedOption === correctAnswer && selectedOption !== null) {
-				try {
-					axios.post(
-						`${API_URL}/addpoint`,
-						{},
-						{
-							headers: {
-								'Content-Type': 'application/json',
-							},
-							withCredentials: true,
-						}
-					)
-
-					setPoints(prevPoints => prevPoints + 1)
-					setOutput('Poprawna odpowiedź! Otrzymujesz punkt.')
-				} catch (error) {
-					console.error(error)
+				if (selectedOption === correctAnswer) {
+					try {
+						axios.post(
+							`${API_URL}/addpoint`,
+							{},
+							{
+								headers: {
+									'Content-Type': 'application/json',
+								},
+								withCredentials: true,
+							}
+						)
+						const updatedPoints = points + 1
+						localStorage.setItem('points', updatedPoints)
+						setPoints(prevPoints => prevPoints + 1)
+						setOutput('Poprawna odpowiedź! Otrzymujesz punkt.')
+					} catch (error) {
+						console.error(error)
+						setOutput('')
+						setOutputErr('Wystąpił błąd podczas dodawania punktu.')
+					}
+				} else {
 					setOutput('')
-					setOutputErr('Wystąpił błąd podczas dodawania punktu.')
+					setOutputErr('Niestety, odpowiedź niepoprawna.')
 				}
-			} else {
-				setOutput('')
-				setOutputErr('Niestety, odpowiedź niepoprawna.')
 			}
+		} else {
+			setOutput('')
+			setOutputErr('Niestety, odpowiedź niepoprawna.')
 		}
 
 		if (currentQuestion + 1 === totalQuestions) {
