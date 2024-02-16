@@ -22,7 +22,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: DockerApi
+      # dockerfile: DockerFinall
     container_name: node_api
     depends_on:
       - db
@@ -34,19 +34,20 @@ services:
 
   react:
     build:
-      context: ../../../
-      dockerfile: DockerReact
+      #context: ../../../
+      context: .
+      # dockerfile: DockerFinall
     container_name: learn_pg
     restart: always
     ports:
       - '3000:3000'
 
-  # pgadmin:
-  #   container_name: pgadmin4
-  #   restart: always
-  #   image: dpage/pgadmin4
-  #   environment:
-  #     PGADMIN_DEFAULT_EMAIL: root@root.com
-  #     PGADMIN_DEFAULT_PASSWORD: root
-  #   ports:
-  #     - '5050:80'
+  pgadmin:
+    container_name: pgadmin4
+    restart: always
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: root@root.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - '5050:80'
