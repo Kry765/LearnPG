@@ -43,39 +43,62 @@ export default function ModifyTest() {
 				},
 			})
 			if (res.status === 201) {
-				alert('Pomyślnie Dodano Użytkownika')
+				alert('Pomyślnie Dodano Użytkownika, wynik będzie widoczny po przeładowaniu strony')
 			} else {
 				alert('Wystąpił błąd')
 			}
 		} catch (err) {
 			alert('Wystąpił błąd')
+		}
+	}
+
+	const handleDeletCloseQuestion = async e => {
+		e.preventDefault()
+		const formData = { deleteCloseQuestion }
+
+		try {
+			const res = await axios.post(API_URL + '/rootdeleteclosequestion', formData, {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			})
+
+			if (res.status === 200) {
+				alert('Pytanie zamknięte zostało skasowane, przeładuj stronę')
+			} else if (res.status === 404) {
+				alert('Nie znaleziono pytania')
+			}
+		} catch (err) {
+			alert('Wystąpił błąd')
+			console.error('Błąd podczas usuwania pytania:', err)
+		}
+	}
+
+	const handleEditCloseQuestion = async e => {
+		e.preventDefault()
+		try {
+			const formData = {
+				editCorrectAnswer,
+				editCloseQuestionC,
+				editCloseQuestionB,
+				editCloseQuestionA,
+				editCloseQuestionName,
+				editCloseQuestionId,
+			}
+			const res = await axios.post(API_URL + '/rooteditclosequestion', formData, {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			})
+			if (res.status === 200) {
+				alert('Edycja ukończona, przeładuj strone')
+			} else if (res.status === 404) {
+				alert('Nie znaleziono pytania zamkniętego')
+			}
+		} catch (err) {
+			alert('Wystąpił błąd')
 			return
 		}
-	}
-
-	const handleDeletCloseQuestion = () => {
-		const formData = { deleteCloseQuestion }
-		axios.post(API_URL + '/rootdeleteclosequestion', formData, {
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		})
-	}
-
-	const handleEditCloseQuestion = () => {
-		const formData = {
-			editCorrectAnswer,
-			editCloseQuestionC,
-			editCloseQuestionB,
-			editCloseQuestionA,
-			editCloseQuestionName,
-			editCloseQuestionId,
-		}
-		axios.post(API_URL + '/rooteditclosequestion', formData, {
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		})
 	}
 
 	return (
@@ -227,7 +250,7 @@ export default function ModifyTest() {
 							/>
 						</label>
 						<label>
-							<p className='root__input-description'>Wprowadź poprawną odpowiedź</p>
+							<p className='root__input-description'>Wprowadź nową odpowiedź, można wpisać tylko A,B lub C:</p>
 							<input
 								className='root__input'
 								type='text'

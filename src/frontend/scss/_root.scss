@@ -64,6 +64,13 @@
 		height: 5vh;
 		min-width: 50vw;
 		padding: 1em;
+		&--textarea {
+			border-radius: 15px;
+			height: 5vh;
+			min-width: 50vw;
+			padding: 1em;
+			min-height: 50vh;
+		}
 	}
 	&__input-description {
 		padding: 1em;

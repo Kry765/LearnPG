@@ -23,7 +23,7 @@ export default function ModifyTopic() {
 	const [editOpenQuestion, setEditOpenQuestion] = useState('')
 
 	const handleNewTopic = async e => {
-		// e.preventDefault()
+		e.preventDefault()
 		const formTopics = { topicName, topicDescription }
 		const res = await axios.post(API_URL + '/addnewtopic', formTopics, {
 			headers: {
@@ -170,32 +170,44 @@ export default function ModifyTopic() {
 				<AdminMenu />
 			</div>
 			<div className='root__right-page'>
-				<div>
-					<form onSubmit={handleNewTopic} className='root__center-box'>
-						<h2>Dodaj nowy dział</h2>
-						<input
-							type='text'
-							placeholder='Nazwa działu'
-							onChange={event => {
-								setTopicName(event.target.value)
-							}}
-						/>
-						<textarea
-							placeholder='dodaj treść'
-							onChange={event => {
-								setTopicDescription(event.target.value)
-							}}
-						></textarea>
-						<button type='submit'>Dodaj nowe zagadnienie</button>
+				<div className='root__center-box'>
+					<h2 className='root__space-input'>Treść Labolatoria</h2>
+					<form onSubmit={handleNewTopic}>
+						<label className='root__space-input'>
+							<p className='root__input-description'>Dodaj nowy dział</p>
+							<input
+								className='root__input'
+								type='text'
+								placeholder='Nazwa działu'
+								onChange={event => {
+									setTopicName(event.target.value)
+								}}
+							/>
+						</label>
+						<label className='root__space-input'>
+							<p className='root__input-description'>Dodaj treść do nowego działu</p>
+							<textarea
+								className='root__input--textarea'
+								placeholder='Dodaj treść'
+								onChange={event => {
+									setTopicDescription(event.target.value)
+								}}
+							></textarea>
+						</label>
+						<div>
+							<button type='submit' className='root__btn'>
+								Dodaj nowe zagadnienie
+							</button>
+						</div>
 					</form>
 				</div>
-				<div>
-					<form onSubmit={handleDeleteTopic} className='root__center-box'>
-						{' '}
-						<h2>Usuń dział:</h2>
-						<label>
-							Wprowadź nazwę działu który chcesz usunąć
+				<div className='root__center-box'>
+					<h2>Usuń dział:</h2>
+					<form onSubmit={handleDeleteTopic}>
+						<label className='root__space-input'>
+							<p className='root__input-description'>Wprowadź nazwę działu który chcesz usunąć</p>
 							<input
+								className='root__input'
 								type='text'
 								value={dropTopic}
 								onChange={event => {
@@ -203,41 +215,52 @@ export default function ModifyTopic() {
 								}}
 							/>
 						</label>
-						<button type='submit'>Skasuj Dział</button>
+						<div>
+							<button type='submit' className='root__btn'>
+								Skasuj Dział
+							</button>
+						</div>
 					</form>
 				</div>
-				<div>
-					<form onSubmit={handleEditTopicName} className='root__center-box'>
-						{' '}
+				<div className='root__center-box'>
+					<form onSubmit={handleEditTopicName}>
 						<h2>Edytuj nazwę działu:</h2>
-						<label>
-							Wprowadź ID działu który chcesz edytować
+						<label className='root__space-input'>
+							<p className='root__input-description'>Wprowadź ID działu który chcesz edytować</p>
 							<input
+								className='root__input'
 								type='text'
 								value={idEditTopic}
 								onChange={event => {
 									setIdEditTopic(event.target.value)
 								}}
 							/>
+						</label>
+						<label className='root__space-input'>
+							<p className='root__input-description'>Wprowadź nową nazwę działu:</p>
 							<input
 								type='text'
+								className='root__input'
 								value={editTopic}
 								onChange={event => {
 									setEditTopic(event.target.value)
 								}}
 							/>
 						</label>
-						<button type='submit'>Zmień nazwę działu</button>
+						<div>
+							<button type='submit' className='root__btn'>
+								Zmień nazwę działu
+							</button>
+						</div>
 					</form>
 				</div>
-
-				<div>
-					<form onSubmit={handleEditTopicDesciption} className='root__center-box'>
-						{' '}
+				<div className='root__center-box'>
+					<form onSubmit={handleEditTopicDesciption}>
 						<h2>Edytuj treść działu:</h2>
-						<label>
-							Wprowadź ID działu który chcesz edytować
+						<label className='root__space-input'>
+							<p className='root__input-description'>Wprowadź ID działu który chcesz edytować</p>
 							<input
+								className='root__input'
 								type='text'
 								value={idEditTopicDescription}
 								onChange={event => {
@@ -245,20 +268,24 @@ export default function ModifyTopic() {
 								}}
 							/>
 						</label>
-						<label>
-							Wprowadź nową treść
+						<label className='root__space-input'>
+							<p className='root__input-description'>Wprowadź nową treść</p>
 							<textarea
 								type='text'
+								className='root__input--textarea'
 								value={editTopicDesription}
 								onChange={event => {
 									setEditTopicDesription(event.target.value)
 								}}
 							></textarea>
 						</label>
-						<button type='submit'>Zmień treść działu</button>
+						<div>
+							<button type='submit' className='root__btn'>
+								Zmień treść działu
+							</button>
+						</div>
 					</form>
 				</div>
-
 				<div>
 					<form onSubmit={handleAddNewOpenQuestion} className='root__center-box'>
 						<h2>
@@ -324,7 +351,6 @@ export default function ModifyTopic() {
 						<button type='submit'>Skasuj otwarte pytanie</button>
 					</form>
 				</div>
-				{/**/}
 				<div>
 					<div>
 						<form onSubmit={handleEditOpenQuestion} className='root__center-box'>
