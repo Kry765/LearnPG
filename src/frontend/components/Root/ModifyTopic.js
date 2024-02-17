@@ -69,13 +69,13 @@ export default function ModifyTopic() {
 				},
 			})
 			if (res.status === 200) {
-				alert('Dział został skasowany')
+				// alert('Dział został skasowany')
 			} else {
-				alert('Wystąpił błąd')
+				// alert('Wystąpił błąd')
 			}
 		} catch (error) {
 			console.error(error)
-			alert('Wystąpił błąd')
+			// alert('Wystąpił błąd')
 		}
 	}
 
@@ -89,9 +89,9 @@ export default function ModifyTopic() {
 				},
 			})
 			if (res.status === 200) {
-				alert('Nazwa tematu zmieniona')
+				// alert('Nazwa tematu zmieniona')
 			} else {
-				alert('Wystąpił błąd')
+				// alert('Wystąpił błąd')
 			}
 		} catch (error) {
 			console.error(error)
@@ -107,9 +107,9 @@ export default function ModifyTopic() {
 				},
 			})
 			if (res.status === 200) {
-				alert('Treść zmieniona')
+				// alert('Treść zmieniona')
 			} else {
-				alert('Wystąpił błąd')
+				// alert('Wystąpił błąd')
 			}
 		} catch (error) {
 			console.error(error)
@@ -126,9 +126,9 @@ export default function ModifyTopic() {
 				},
 			})
 			if (res.status === 200) {
-				alert('Zapytanie dodane')
+				// alert('Zapytanie dodane')
 			} else {
-				alert('Wystąpił błąd')
+				// alert('Wystąpił błąd')
 			}
 		} catch (error) {
 			console.log(error)
@@ -145,9 +145,9 @@ export default function ModifyTopic() {
 				},
 			})
 			if (res.status === 200) {
-				alert('Zapytanie dodane')
+				// alert('Zapytanie dodane')
 			} else {
-				alert('Wystąpił błąd')
+				// alert('Wystąpił błąd')
 			}
 		} catch (error) {
 			console.log(error)
@@ -171,8 +171,8 @@ export default function ModifyTopic() {
 			</div>
 			<div>
 				<div>
-					<h2>Dodaj nowy dział</h2>
-					<form onSubmit={handleNewTopic}>
+					<form onSubmit={handleNewTopic} className='root__center-box'>
+						<h2>Dodaj nowy dział</h2>
 						<input
 							type='text'
 							placeholder='Nazwa działu'
@@ -190,8 +190,9 @@ export default function ModifyTopic() {
 					</form>
 				</div>
 				<div>
-					<h2>Usuń dział:</h2>
-					<form onSubmit={handleDeleteTopic}>
+					<form onSubmit={handleDeleteTopic} className='root__center-box'>
+						{' '}
+						<h2>Usuń dział:</h2>
 						<label>
 							Wprowadź nazwę działu który chcesz usunąć
 							<input
@@ -206,8 +207,9 @@ export default function ModifyTopic() {
 					</form>
 				</div>
 				<div>
-					<h2>Edytuj nazwę działu:</h2>
-					<form onSubmit={handleEditTopicName}>
+					<form onSubmit={handleEditTopicName} className='root__center-box'>
+						{' '}
+						<h2>Edytuj nazwę działu:</h2>
 						<label>
 							Wprowadź ID działu który chcesz edytować
 							<input
@@ -230,8 +232,9 @@ export default function ModifyTopic() {
 				</div>
 
 				<div>
-					<h2>Edytuj treść działu:</h2>
-					<form onSubmit={handleEditTopicDesciption}>
+					<form onSubmit={handleEditTopicDesciption} className='root__center-box'>
+						{' '}
+						<h2>Edytuj treść działu:</h2>
 						<label>
 							Wprowadź ID działu który chcesz edytować
 							<input
@@ -241,6 +244,9 @@ export default function ModifyTopic() {
 									setIdEditTopicDescription(event.target.value)
 								}}
 							/>
+						</label>
+						<label>
+							Wprowadź nową treść
 							<textarea
 								type='text'
 								value={editTopicDesription}
@@ -254,11 +260,11 @@ export default function ModifyTopic() {
 				</div>
 
 				<div>
-					<h2>
-						Dodaj nowe zapytania, UWAGA!! dodawaj numer pytania chronologiczne, jeżeli to jest pierwsze pytanie, ustaw
-						jako 1:
-					</h2>
-					<form onSubmit={handleAddNewOpenQuestion}>
+					<form onSubmit={handleAddNewOpenQuestion} className='root__center-box'>
+						<h2>
+							Dodaj nowe zapytania, UWAGA!! dodawaj numer pytania chronologiczne, jeżeli to jest pierwsze pytanie, ustaw
+							jako 1:
+						</h2>
 						<label>
 							Podaj numer Sekcji do której chcesz dodać pytanie
 							<input
@@ -268,6 +274,8 @@ export default function ModifyTopic() {
 									setQuestionId(event.target.value)
 								}}
 							/>
+						</label>
+						<label>
 							Dodaj numer pytania, pamiętaj aby numeracja była chronologiczna
 							<input
 								type='text'
@@ -276,7 +284,8 @@ export default function ModifyTopic() {
 									setNrQuestionId(event.target.value)
 								}}
 							/>
-							Dodaj treść zapytania
+						</label>
+						<label>
 							<input
 								type='text'
 								value={questionName}
@@ -284,7 +293,9 @@ export default function ModifyTopic() {
 									setQuestionName(event.target.value)
 								}}
 							/>
-							Dodaj poprawną odpowiedź
+						</label>
+						<label>
+							Dodaj treść zapytania Dodaj poprawną odpowiedź
 							<input
 								type='text'
 								value={correctAnswer}
@@ -293,12 +304,13 @@ export default function ModifyTopic() {
 								}}
 							/>
 						</label>
+
 						<button type='submit'>Dodaj otwarte pytanie</button>
 					</form>
 				</div>
 				<div>
-					<h2>Kasowanie pytań otwartych</h2>
-					<form onSubmit={handleDeleteQuestionId}>
+					<form onSubmit={handleDeleteQuestionId} className='root__center-box'>
+						<h2>Kasowanie pytań otwartych</h2>
 						<label>
 							Podaj ID Pytania które chcesz skasować
 							<input
@@ -314,9 +326,9 @@ export default function ModifyTopic() {
 				</div>
 				{/**/}
 				<div>
-					<h2>Edycja pytań otwartych</h2>
 					<div>
-						<form onSubmit={handleEditOpenQuestion}>
+						<form onSubmit={handleEditOpenQuestion} className='root__center-box'>
+							<h2>Edycja pytań otwartych</h2>
 							<label>
 								Podaj ID Pytania które chcesz edytować
 								<input
@@ -326,24 +338,26 @@ export default function ModifyTopic() {
 										setEditOpenQuestionId(event.target.value)
 									}}
 								/>
-								<label>
-									Podaj treść pytania
-									<input
-										type='text'
-										value={editOpenQuestion}
-										onChange={event => {
-											setEditOpenQuestion(event.target.value)
-										}}
-									/>
-									Podaj poprawną odpowiedź
-									<input
-										type='text'
-										value={editCorrectAnswer}
-										onChange={event => {
-											setEditCorrectAnswer(event.target.value)
-										}}
-									/>
-								</label>
+							</label>
+							<label>
+								Podaj treść pytania
+								<input
+									type='text'
+									value={editOpenQuestion}
+									onChange={event => {
+										setEditOpenQuestion(event.target.value)
+									}}
+								/>
+							</label>
+							<label>
+								Podaj poprawną odpowiedź
+								<input
+									type='text'
+									value={editCorrectAnswer}
+									onChange={event => {
+										setEditCorrectAnswer(event.target.value)
+									}}
+								/>
 							</label>
 							<button type='submit'>Edytuj pytanie</button>
 						</form>
