@@ -40,6 +40,7 @@
 		color: $contrast-color;
 	}
 	&__center-box {
+		min-width: 100%;
 		background-color: $green;
 		color: $white;
 		display: flex;
@@ -85,5 +86,12 @@
 	&__btn:hover {
 		cursor: pointer;
 		background-color: $contrast-color;
+	}
+	table,
+	th,
+	td {
+		border: 1px solid $gray;
+		border-collapse: collapse;
+		padding: 10px;
 	}
 }

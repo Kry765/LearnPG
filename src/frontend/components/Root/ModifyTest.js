@@ -32,17 +32,24 @@ export default function ModifyTest() {
 			})
 	}
 
-	const handleAddCloseQuestion = () => {
+	const handleAddCloseQuestion = async e => {
+		e.preventDefault()
 		const formData = { closeQuestion, closeQuestionA, closeQuestionB, closeQuestionC, correctAnswer }
 
-		axios.post(API_URL + '/rootaddclosequestion', formData, {
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		})
 		try {
-		} catch (error) {
-			console.log(error)
+			const res = await axios.post(API_URL + '/rootaddclosequestion', formData, {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			})
+			if (res.status === 201) {
+				alert('Pomyślnie Dodano Użytkownika')
+			} else {
+				alert('Wystąpił błąd')
+			}
+		} catch (err) {
+			alert('Wystąpił błąd')
+			return
 		}
 	}
 
@@ -53,8 +60,6 @@ export default function ModifyTest() {
 				'Content-Type': 'application/json',
 			},
 		})
-		try {
-		} catch {}
 	}
 
 	const handleEditCloseQuestion = () => {
@@ -71,8 +76,6 @@ export default function ModifyTest() {
 				'Content-Type': 'application/json',
 			},
 		})
-		try {
-		} catch {}
 	}
 
 	return (
@@ -80,8 +83,10 @@ export default function ModifyTest() {
 			<div>
 				<AdminMenu />
 			</div>
+
 			<div className='root__right-page'>
 				<div>
+					<h2 className='root__space-input'>Pytania Zamknięte</h2>
 					<form onSubmit={handleAddCloseQuestion} className='root__center-box'>
 						<h2>Dodaj zapytanie zamknięte:</h2>
 						<label className='root__space-input'>
@@ -96,7 +101,7 @@ export default function ModifyTest() {
 							/>
 						</label>
 						<label className='root__space-input'>
-							<p className='root__input-description'>Dodaj Odpowiedź A</p>
+							<p className='root__input-description'>Dodaj Odpowiedź A:</p>
 							<input
 								className='root__input'
 								type='text'
@@ -107,7 +112,7 @@ export default function ModifyTest() {
 							/>
 						</label>
 						<label className='root__space-input'>
-							<p className='root__input-description'>Dodaj Odpowiedź B</p>
+							<p className='root__input-description'>Dodaj Odpowiedź B:</p>
 							<input
 								className='root__input'
 								type='text'
@@ -118,7 +123,7 @@ export default function ModifyTest() {
 							/>
 						</label>
 						<label className='root__space-input'>
-							<p className='root__input-description'>Dodaj Odpowiedź C</p>
+							<p className='root__input-description'>Dodaj Odpowiedź C:</p>
 							<input
 								type='text'
 								className='root__input'
@@ -129,7 +134,7 @@ export default function ModifyTest() {
 							/>
 						</label>
 						<label className='root__space-input'>
-							<p className='root__input-description'>Wprowadź poprawną odpowiedź</p>
+							<p className='root__input-description'>Wprowadź poprawną odpowiedź, można wpisać tylko A,B lub C:</p>
 							<input
 								type='text'
 								className='root__input'
@@ -146,26 +151,30 @@ export default function ModifyTest() {
 				</div>
 				<div>
 					<form onSubmit={handleDeletCloseQuestion} className='root__center-box'>
-						<h2>Kasowanie pytań zamkniętych:</h2>
-						<label>
-							Wprowadź ID pytania które chcesz usunąć
+						<h2>Usuń pytanie zamknięte:</h2>
+						<label className='root__space-input'>
+							<p className='root__input-description'>Wprowadź ID pytania które chcesz usunąć</p>
 							<input
 								type='text'
+								className='root__input'
 								value={deleteCloseQuestion}
 								onChange={event => {
 									setDeleteCloseQuestion(event.target.value)
 								}}
 							/>
-							<button type='submit'>Skasuj zapytanie</button>
 						</label>
+						<button type='submit' className='root__btn'>
+							Skasuj zapytanie
+						</button>
 					</form>
 				</div>
 				<div>
 					<form onSubmit={handleEditCloseQuestion} className='root__center-box'>
 						<h2>Edycja pytań zamkniętych:</h2>
-						<label>
-							Wprowadź ID pytania które chcesz edytować
+						<label className='root__space-input'>
+							<p className='root__input-description'>Wprowadź ID pytania które chcesz edytować</p>
 							<input
+								className='root__input'
 								type='text'
 								value={editCloseQuestionId}
 								onChange={event => {
@@ -174,8 +183,9 @@ export default function ModifyTest() {
 							/>
 						</label>
 						<label>
-							Wprowadź nową treść zapytania
+							<p className='root__input-description'>Wprowadź nową treść zapytania</p>
 							<input
+								className='root__input'
 								type='text'
 								value={editCloseQuestionName}
 								onChange={event => {
@@ -184,8 +194,9 @@ export default function ModifyTest() {
 							/>
 						</label>
 						<label>
-							Wprowadź nową odpowiedź A
+							<p className='root__input-description'>Wprowadź nową odpowiedź A</p>
 							<input
+								className='root__input'
 								type='text'
 								value={editCloseQuestionA}
 								onChange={event => {
@@ -194,8 +205,9 @@ export default function ModifyTest() {
 							/>
 						</label>
 						<label>
-							Wprowadź nową odpowiedź B
+							<p className='root__input-description'>Wprowadź nową odpowiedź B</p>
 							<input
+								className='root__input'
 								type='text'
 								value={editCloseQuestionB}
 								onChange={event => {
@@ -204,8 +216,9 @@ export default function ModifyTest() {
 							/>
 						</label>
 						<label>
-							Wprowadź nową odpowiedź C
+							<p className='root__input-description'>Wprowadź nową odpowiedź C</p>
 							<input
+								className='root__input'
 								type='text'
 								value={editCloseQuestionC}
 								onChange={event => {
@@ -214,8 +227,9 @@ export default function ModifyTest() {
 							/>
 						</label>
 						<label>
-							Wprowadź poprawną odpowiedź
+							<p className='root__input-description'>Wprowadź poprawną odpowiedź</p>
 							<input
+								className='root__input'
 								type='text'
 								value={editCorrectAnswer}
 								onChange={event => {
@@ -223,11 +237,13 @@ export default function ModifyTest() {
 								}}
 							/>
 						</label>
-						<button type='submit'>Edytuj zapytanie</button>
+						<button type='submit' className='root__btn'>
+							Edytuj zapytanie
+						</button>
 					</form>
 				</div>
 				<div className='root__box-center'>
-					<h2>Lista pytań zamknięte:</h2>
+					<h2 className='root__space-input'>Lista pytań zamknięte:</h2>
 					<table>
 						<thead>
 							<tr>
