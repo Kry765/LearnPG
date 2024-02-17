@@ -7,7 +7,7 @@ export function AdminMenu() {
 			<div
 				className='root__left-menu-items'
 				onClick={() => {
-					Navigate('./ModifyUser')
+					Navigate('../root/adminpage/ModifyUser')
 				}}
 			>
 				Użytkownicy
@@ -15,23 +15,23 @@ export function AdminMenu() {
 			<div
 				className='root__left-menu-items'
 				onClick={() => {
-					Navigate('./ModifyTopic')
+					Navigate('../root/adminpage/ModifyTopic')
 				}}
 			>
 				Dział Teoria
 			</div>
-			<div
+			{/* <div
 				className='root__left-menu-items'
 				onClick={() => {
-					Navigate('./ModifyFaq')
+					Navigate('../root/adminpage/ModifyFaq')
 				}}
 			>
 				Dział FAQ
-			</div>
+			</div> */}
 			<div
 				className='root__left-menu-items'
 				onClick={() => {
-					Navigate('./ModifyTest')
+					Navigate('../root/adminpage/ModifyTest')
 				}}
 			>
 				Dział Praktyka

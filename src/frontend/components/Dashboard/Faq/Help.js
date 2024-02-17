@@ -3,6 +3,7 @@ import axios from 'axios'
 import { FaDatabase } from '../../../../backend/guard/Icons'
 import { DashboardNav } from '../StartPage/DashboardNav'
 import { useNavigate } from 'react-router-dom'
+import { LoggedInUser } from '../../../../backend/guard/Script'
 
 function Help() {
 	const API_URL = 'http://localhost:4000'
@@ -10,6 +11,7 @@ function Help() {
 	const navigate = useNavigate()
 	const [faqs, setFaqs] = useState([])
 	const [isDescriptionVisible, setIsDescriptionVisible] = useState(false)
+	LoggedInUser(navigate)
 
 	const getFaq = () => {
 		if (handleFaq) {

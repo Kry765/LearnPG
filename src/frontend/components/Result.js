@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { DashboardNav } from './Dashboard/StartPage/DashboardNav'
 import { AiOutlineClose } from '../../backend/guard/Icons'
+import { LoggedInUser } from '../../backend/guard/Script'
 
 function Result() {
-	const location = useLocation()
 	const navigate = useNavigate()
+	LoggedInUser(navigate)
+	const location = useLocation()
 	const { totalQuestions: receivedTotalQuestions = 0 } = location.state
 	const [totalQuestions, setTotalQuestions] = useState(receivedTotalQuestions)
 	const storedPoints = localStorage.getItem('points')

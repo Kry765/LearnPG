@@ -4,12 +4,14 @@ import { useNavigate } from 'react-router-dom'
 import { DashboardNav } from '../StartPage/DashboardNav'
 import axios from 'axios'
 import { checkCorrectEmail, checkEmptyInput } from '../../../../backend/guard/Script'
+import { LoggedInUser } from '../../../../backend/guard/Script'
 
 function ResetEmail() {
 	const API_URL = 'http://localhost:4000'
 	const navigate = useNavigate()
 	const [new_email, set_new_email] = useState('')
 	const [outputErr, setOutputErr] = useState('')
+	LoggedInUser(navigate)
 
 	const handleSubmit = async e => {
 		const handleCheckInput = checkEmptyInput(new_email)

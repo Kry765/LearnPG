@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { DashboardNav } from '../StartPage/DashboardNav'
 import { AiOutlineClose } from '../../../../backend/guard/Icons'
+import { LoggedInUser } from '../../../../backend/guard/Script'
 
 function Exam() {
 	const API_URL = 'http://localhost:4000'
@@ -19,6 +20,9 @@ function Exam() {
 		setSelectedAnswer(null)
 		setCurrentQuestion(prevQuestion => prevQuestion + 1)
 	}
+
+	LoggedInUser(navigate)
+
 	useEffect(() => {
 		const fetchQuestions = async () => {
 			const response = await axios

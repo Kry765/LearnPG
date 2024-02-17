@@ -2,7 +2,7 @@ const db = require('../database')
 const { DataTypes } = require('sequelize')
 
 const Root = db.define(
-	'Root',
+	'root',
 	{
 		root_id: {
 			type: DataTypes.INTEGER,

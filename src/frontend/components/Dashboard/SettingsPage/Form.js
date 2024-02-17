@@ -3,6 +3,7 @@ import { AiOutlineClose } from '../../../../backend/guard/Icons'
 import { checkCorrectEmail, checkEmptyInput, sendEmail } from '../../../../backend/guard/Script'
 import { useNavigate } from 'react-router-dom'
 import { DashboardNav } from '../StartPage/DashboardNav'
+import { LoggedInUser } from '../../../../backend/guard/Script'
 
 export default function Form() {
 	const navigate = useNavigate()
@@ -11,6 +12,7 @@ export default function Form() {
 	const [user_textarea, set_user_textarea] = useState('')
 	const [outputErr, setOutputErr] = useState('')
 	const [output, setOutput] = useState('')
+	LoggedInUser(navigate)
 
 	const handleSendMessage = async form => {
 		const checkEmail = checkCorrectEmail(user_email)

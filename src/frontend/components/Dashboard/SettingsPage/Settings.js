@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { DashboardNav } from '../StartPage/DashboardNav'
 import { FaDatabase } from '../../../../backend/guard/Icons'
 import axios from 'axios'
+import { LoggedInUser } from '../../../../backend/guard/Script'
 
 const resetPoint = async () => {
 	const API_URL = 'http://localhost:4000'
@@ -33,7 +34,8 @@ const resetPoint = async () => {
 
 function Settings() {
 	const navigate = useNavigate()
-
+	LoggedInUser(navigate)
+	
 	return (
 		<div className='navigation'>
 			<DashboardNav />

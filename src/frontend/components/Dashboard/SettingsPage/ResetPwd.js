@@ -4,6 +4,7 @@ import { AiOutlineClose } from '../../../../backend/guard/Icons'
 import { checkEmptyInput, checkRepeatPassword, checkStrongPwd } from '../../../../backend/guard/Script'
 import { useNavigate } from 'react-router-dom'
 import { DashboardNav } from '../StartPage/DashboardNav'
+import { LoggedInUser } from '../../../../backend/guard/Script'
 
 function ResetPwd() {
 	const API_URL = 'http://localhost:4000'
@@ -12,6 +13,7 @@ function ResetPwd() {
 	const [repeat_pwd, set_repeat_pwd] = useState('')
 	const [output, setOutput] = useState('')
 	const [outputErr, setOutputErr] = useState('')
+	LoggedInUser(navigate)
 
 	const handleSubmit = e => {
 		e.preventDefault()

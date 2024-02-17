@@ -22,7 +22,7 @@
 		justify-content: center;
 		flex-direction: column;
 		width: 25vw;
-		height: 100vh;
+		height: 100%;
 		background-color: $green;
 	}
 	&__left-menu-items {
@@ -34,5 +34,16 @@
 	&__left-menu-items:hover {
 		cursor: pointer;
 		color: $contrast-color;
+	}
+	&__center-box {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		margin: 1em;
+		padding: 2em;
+	}
+	&__right-page {
+		width: 75vw;
 	}
 }

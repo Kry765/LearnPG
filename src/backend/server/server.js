@@ -12,6 +12,9 @@ const getUserPointHandler = require('./controller/getUserPoint')
 const ResetEmailHandler = require('./controller/resetEmail')
 const handleDeleteUser = require('./controller/deleteUser')
 const resetPasswordHandler = require('./controller/resetPassword')
+// const handleRootUser = require('./imports/inserRootUser')
+// const handleCreateUser = require('./imports/insertCreateUser')
+// const handleMotivationData = require('./imports/insertMotivations')
 
 app.use(express.json())
 app.use(bodyParser.json())
@@ -44,7 +47,7 @@ db.authenticate()
 		const Topic = require('./models/topic')
 		const OpenQuestion = require('./models/open_question')
 		const CloseQuestion = require('./models/close_question')
-		const MotivationHandler = require('./models/motivation')
+		const handleMotivation = require('./models/motivation')
 		const FaqHandler = require('./models/faq')
 		const handleRoot = require('./models/root')
 
@@ -52,10 +55,17 @@ db.authenticate()
 		Topic.sync()
 		OpenQuestion.sync()
 		CloseQuestion.sync()
-		MotivationHandler.sync()
+		handleMotivation.sync()
 		FaqHandler.sync()
 		handleRoot.sync()
 
+		// return Promise.all([
+		// 	handleMotivation.bulkCreate(handleMotivationData),
+		// 	User.bulkCreate(handleCreateUser),
+		// 	handleRoot.bulkCreate(handleRootUser),
+		// ])
+	})
+	.then(() => {
 		app.listen(port, () => {
 			console.log(`Server is running on port ${port}`)
 		})
@@ -65,6 +75,7 @@ db.authenticate()
 	})
 
 const createUser = require('./controller/createUser')
+const handleRootLogin = require('./controller/loginRoot')
 const loginUser = require('./controller/loginUser')
 const getTopic = require('./controller/getTopic')
 const qetOpenQuestion = require('./controller/getOpenquestion')
@@ -121,3 +132,4 @@ handleRootGetCloseQuestion(app)
 handleRootAddCloseQuestion(app)
 handleRootDeleteCloseQuestion(app)
 handleRootEditCloseQuestion(app)
+handleRootLogin(app)

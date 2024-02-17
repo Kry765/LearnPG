@@ -4,12 +4,14 @@ import axios from 'axios'
 import { DashboardNav } from '../StartPage/DashboardNav'
 import { AiOutlineClose } from '../../../../backend/guard/Icons'
 import { checkCorrectEmail, checkEmptyInput } from '../../../../backend/guard/Script'
+import { LoggedInUser } from '../../../../backend/guard/Script'
 
 function DeleteUser() {
 	const API_URL = 'http://localhost:4000'
 	const [email, setEmail] = useState('')
 	const [outputErr, setOutputErr] = useState('')
 	const navigate = useNavigate()
+	LoggedInUser(navigate)
 
 	const handleSubmit = async e => {
 		const handleCheckInput = checkEmptyInput(email)

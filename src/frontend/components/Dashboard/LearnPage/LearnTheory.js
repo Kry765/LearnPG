@@ -9,6 +9,7 @@ import {
 	RxHamburgerMenu,
 	AiOutlineClose,
 } from '../../../../backend/guard/Icons'
+import { LoggedInUser } from '../../../../backend/guard/Script'
 
 const LearnTheory = () => {
 	const API_URL = 'http://localhost:4000'
@@ -17,6 +18,7 @@ const LearnTheory = () => {
 	const [openSettings, setOpenSettings] = useState('')
 	const [topics, setTopics] = useState([])
 	const [openTopics, setOpenTopics] = useState('false')
+	LoggedInUser(navigate)
 
 	useEffect(() => {
 		if (topics.length === 0) {

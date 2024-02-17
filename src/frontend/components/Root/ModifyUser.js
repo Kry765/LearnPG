@@ -28,7 +28,7 @@ export default function ModifyUser() {
 	}
 
 	const addUser = async e => {
-		e.preventDefault()
+		// e.preventDefault()
 		const formData = { user_email, user_pwd }
 		if (checkInput()) {
 			alert('Podane pole jest puste')
@@ -68,7 +68,7 @@ export default function ModifyUser() {
 	}
 
 	const deleteUser = async e => {
-		e.preventDefault()
+		// e.preventDefault()
 		try {
 			const formData = { email: deleteUserEmail }
 			const response = await axios.post(API_URL + '/rootdeleteuser', formData, {
@@ -86,7 +86,7 @@ export default function ModifyUser() {
 	}
 
 	const clearPoint = async e => {
-		e.preventDefault()
+		// e.preventDefault()
 		try {
 			const formData = { email: pointEmail }
 			const response = await axios.post(API_URL + '/rootresetpoint', formData, {
@@ -104,7 +104,7 @@ export default function ModifyUser() {
 	}
 
 	const newPassword = async e => {
-		e.preventDefault()
+		// e.preventDefault()
 		const formData = { email: currentEmail, password: newPwd }
 		try {
 			const response = axios.post(API_URL + '/rootresetpassword', formData, {
@@ -124,7 +124,7 @@ export default function ModifyUser() {
 	}
 
 	const newUserEmail = async e => {
-		e.preventDefault()
+		// e.preventDefault()
 		const formData = { oldEmail, newEmail }
 		if (oldEmail === newEmail) {
 			return alert('E-mail jest taki sam jak poprzedni')

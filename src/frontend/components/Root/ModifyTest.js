@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import { AdminMenu } from './AdminMenu'
 
 export default function ModifyTest() {
 	const [questions, setQuestions] = useState([])
@@ -75,171 +76,176 @@ export default function ModifyTest() {
 	}
 
 	return (
-		<div>
+		<div className='root'>
 			<div>
-				<h2>Lista dodaj zapytanie zamknięte:</h2>
-				<form onSubmit={handleAddCloseQuestion}>
-					<label>
-						Dodaj Treść pytania
-						<input
-							type='text'
-							value={closeQuestion}
-							onChange={event => {
-								setCloseQuestion(event.target.value)
-							}}
-						/>
-					</label>
-					<label>
-						Dodaj Odpowiedź A
-						<input
-							type='text'
-							value={closeQuestionA}
-							onChange={event => {
-								setCloseQuestionA(event.target.value)
-							}}
-						/>
-					</label>
-					<label>
-						Dodaj Odpowiedź B
-						<input
-							type='text'
-							value={closeQuestionB}
-							onChange={event => {
-								setCloseQuestionB(event.target.value)
-							}}
-						/>
-					</label>
-					<label>
-						Dodaj Odpowiedź C
-						<input
-							type='text'
-							value={closeQuestionC}
-							onChange={event => {
-								setCloseQuestionC(event.target.value)
-							}}
-						/>
-					</label>
-					<label>
-						Wprowadź poprawną odpowiedź
-						<input
-							type='text'
-							value={correctAnswer}
-							onChange={event => {
-								setCorrectAnswer(event.target.value)
-							}}
-						/>
-					</label>
-					<button type='submit'>Dodaj zapytanie</button>
-				</form>
+				<AdminMenu />
 			</div>
-			<div>
-				<h2>Kasowanie pytań zamkniętych:</h2>
-				<form onSubmit={handleDeletCloseQuestion}>
-					<label>
-						Wprowadź ID pytania które chcesz usunąć
-						<input
-							type='text'
-							value={deleteCloseQuestion}
-							onChange={event => {
-								setDeleteCloseQuestion(event.target.value)
-							}}
-						/>
-						<button type='submit'>Skasuj zapytanie</button>
-					</label>
-				</form>
-			</div>
-			<div>
-				<h2>Edycja pytań zamkniętych:</h2>
-				<form onSubmit={handleEditCloseQuestion}>
-					<label>
-						Wprowadź ID pytania które chcesz edytować
-						<input
-							type='text'
-							value={editCloseQuestionId}
-							onChange={event => {
-								setEditCloseQuestionId(event.target.value)
-							}}
-						/>
-					</label>
-					<label>
-						Wprowadź nową treść zapytania
-						<input
-							type='text'
-							value={editCloseQuestionName}
-							onChange={event => {
-								setEditCloseQuestionName(event.target.value)
-							}}
-						/>
-					</label>
-					<label>
-						Wprowadź nową odpowiedź A
-						<input
-							type='text'
-							value={editCloseQuestionA}
-							onChange={event => {
-								setEditCloseQuestionA(event.target.value)
-							}}
-						/>
-					</label>
-					<label>
-						Wprowadź nową odpowiedź B
-						<input
-							type='text'
-							value={editCloseQuestionB}
-							onChange={event => {
-								setEditCloseQuestionB(event.target.value)
-							}}
-						/>
-					</label>
-					<label>
-						Wprowadź nową odpowiedź C
-						<input
-							type='text'
-							value={editCloseQuestionC}
-							onChange={event => {
-								setEditCloseQuestionC(event.target.value)
-							}}
-						/>
-					</label>
-					<label>
-						Wprowadź poprawną odpowiedź
-						<input
-							type='text'
-							value={editCorrectAnswer}
-							onChange={event => {
-								setEditCorrectAnswer(event.target.value)
-							}}
-						/>
-					</label>
-					<button type='submit'>Edytuj zapytanie</button>
-				</form>
-			</div>
-			<div>
-				<h2>Lista pytań zamknięte:</h2>
-				<table>
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Treść</th>
-							<th>odpowiedź A</th>
-							<th>odpowiedź B</th>
-							<th>odpowiedź C</th>
-							<th>Poprawna odpowiedź</th>
-						</tr>
-					</thead>
-					<tbody>
-						{questions.map((question, index) => (
-							<tr key={index}>
-								<td>{question.closequestion_id}</td>
-								<td>{question.question}</td>
-								<td>{question.answer_a}</td>
-								<td>{question.answer_b}</td>
-								<td>{question.answer_c}</td>
-								<td>{question.correct_answer}</td>
+			<div className='root__right-page'>
+				<div>
+					<form onSubmit={handleAddCloseQuestion} className='root__center-box'>
+						<h2>Lista dodaj zapytanie zamknięte:</h2>
+						<label>
+							Dodaj Treść pytania
+							<input
+								type='text'
+								value={closeQuestion}
+								onChange={event => {
+									setCloseQuestion(event.target.value)
+								}}
+							/>
+						</label>
+						<label>
+							Dodaj Odpowiedź A
+							<input
+								type='text'
+								value={closeQuestionA}
+								onChange={event => {
+									setCloseQuestionA(event.target.value)
+								}}
+							/>
+						</label>
+						<label>
+							Dodaj Odpowiedź B
+							<input
+								type='text'
+								value={closeQuestionB}
+								onChange={event => {
+									setCloseQuestionB(event.target.value)
+								}}
+							/>
+						</label>
+						<label>
+							Dodaj Odpowiedź C
+							<input
+								type='text'
+								value={closeQuestionC}
+								onChange={event => {
+									setCloseQuestionC(event.target.value)
+								}}
+							/>
+						</label>
+						<label>
+							Wprowadź poprawną odpowiedź
+							<input
+								type='text'
+								value={correctAnswer}
+								onChange={event => {
+									setCorrectAnswer(event.target.value)
+								}}
+							/>
+						</label>
+						<button type='submit'>Dodaj zapytanie</button>
+					</form>
+				</div>
+				<div>
+					<form onSubmit={handleDeletCloseQuestion} className='root__center-box'>
+						<h2>Kasowanie pytań zamkniętych:</h2>
+						<label>
+							Wprowadź ID pytania które chcesz usunąć
+							<input
+								type='text'
+								value={deleteCloseQuestion}
+								onChange={event => {
+									setDeleteCloseQuestion(event.target.value)
+								}}
+							/>
+							<button type='submit'>Skasuj zapytanie</button>
+						</label>
+					</form>
+				</div>
+				<div>
+					<form onSubmit={handleEditCloseQuestion} className='root__center-box'>
+						<h2>Edycja pytań zamkniętych:</h2>
+						<label>
+							Wprowadź ID pytania które chcesz edytować
+							<input
+								type='text'
+								value={editCloseQuestionId}
+								onChange={event => {
+									setEditCloseQuestionId(event.target.value)
+								}}
+							/>
+						</label>
+						<label>
+							Wprowadź nową treść zapytania
+							<input
+								type='text'
+								value={editCloseQuestionName}
+								onChange={event => {
+									setEditCloseQuestionName(event.target.value)
+								}}
+							/>
+						</label>
+						<label>
+							Wprowadź nową odpowiedź A
+							<input
+								type='text'
+								value={editCloseQuestionA}
+								onChange={event => {
+									setEditCloseQuestionA(event.target.value)
+								}}
+							/>
+						</label>
+						<label>
+							Wprowadź nową odpowiedź B
+							<input
+								type='text'
+								value={editCloseQuestionB}
+								onChange={event => {
+									setEditCloseQuestionB(event.target.value)
+								}}
+							/>
+						</label>
+						<label>
+							Wprowadź nową odpowiedź C
+							<input
+								type='text'
+								value={editCloseQuestionC}
+								onChange={event => {
+									setEditCloseQuestionC(event.target.value)
+								}}
+							/>
+						</label>
+						<label>
+							Wprowadź poprawną odpowiedź
+							<input
+								type='text'
+								value={editCorrectAnswer}
+								onChange={event => {
+									setEditCorrectAnswer(event.target.value)
+								}}
+							/>
+						</label>
+						<button type='submit'>Edytuj zapytanie</button>
+					</form>
+				</div>
+				<div className='root__box-center'>
+					<h2>Lista pytań zamknięte:</h2>
+					<table>
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Treść</th>
+								<th>odpowiedź A</th>
+								<th>odpowiedź B</th>
+								<th>odpowiedź C</th>
+								<th>Poprawna odpowiedź</th>
 							</tr>
-						))}
-					</tbody>
-				</table>
+						</thead>
+						<tbody>
+							{questions.map((question, index) => (
+								<tr key={index}>
+									<td>{question.closequestion_id}</td>
+									<td>{question.question}</td>
+									<td>{question.answer_a}</td>
+									<td>{question.answer_b}</td>
+									<td>{question.answer_c}</td>
+									<td>{question.correct_answer}</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	)

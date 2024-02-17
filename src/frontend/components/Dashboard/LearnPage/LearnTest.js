@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { DashboardNav } from '../StartPage/DashboardNav'
 import { AiOutlineClose } from '../../../../backend/guard/Icons'
+import { LoggedInUser } from '../../../../backend/guard/Script'
 
 function LearnTest() {
 	const API_URL = 'http://localhost:4000'
@@ -15,6 +16,7 @@ function LearnTest() {
 	const [currentQuestion, setCurrentQuestion] = useState(0)
 	const [points, setPoints] = useState(0)
 	const [totalQuestions, setTotalQuestions] = useState(0)
+	LoggedInUser(navigate)
 
 	useEffect(() => {
 		const fetchQuestions = async () => {
