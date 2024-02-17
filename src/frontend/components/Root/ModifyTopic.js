@@ -292,9 +292,10 @@ export default function ModifyTopic() {
 							Dodaj nowe zapytania, UWAGA!! dodawaj numer pytania chronologiczne, jeżeli to jest pierwsze pytanie, ustaw
 							jako 1:
 						</h2>
-						<label>
-							Podaj numer Sekcji do której chcesz dodać pytanie
+						<label className='root__input-space'>
+							<p className='root__input-description'>Podaj numer Sekcji do której chcesz dodać pytanie</p>
 							<input
+								className='root__input'
 								type='text'
 								value={questionId}
 								onChange={event => {
@@ -302,28 +303,32 @@ export default function ModifyTopic() {
 								}}
 							/>
 						</label>
-						<label>
-							Dodaj numer pytania, pamiętaj aby numeracja była chronologiczna
+						<label className='root__input-space'>
+							<p className='root__input-description'>Dodaj numer pytania, pamiętaj aby numeracja była chronologiczna</p>
 							<input
 								type='text'
+								className='root__input'
 								value={nrQuestionId}
 								onChange={event => {
 									setNrQuestionId(event.target.value)
 								}}
 							/>
 						</label>
-						<label>
+						<label className='root__input-space'>
+							<p className='root__input-description'>Dodaj treść zapytania</p>
 							<input
 								type='text'
+								className='root__input'
 								value={questionName}
 								onChange={event => {
 									setQuestionName(event.target.value)
 								}}
 							/>
 						</label>
-						<label>
-							Dodaj treść zapytania Dodaj poprawną odpowiedź
+						<label className='root__input-space'>
+							<p className='root__input-description'>Dodaj poprawną odpowiedź</p>
 							<input
+								className='root__input'
 								type='text'
 								value={correctAnswer}
 								onChange={event => {
@@ -331,61 +336,74 @@ export default function ModifyTopic() {
 								}}
 							/>
 						</label>
-
-						<button type='submit'>Dodaj otwarte pytanie</button>
+						<div>
+							<button type='submit' className='root__btn'>
+								Dodaj otwarte pytanie
+							</button>
+						</div>
 					</form>
 				</div>
-				<div>
-					<form onSubmit={handleDeleteQuestionId} className='root__center-box'>
+				<div className='root__center-box'>
+					<form onSubmit={handleDeleteQuestionId}>
 						<h2>Kasowanie pytań otwartych</h2>
-						<label>
-							Podaj ID Pytania które chcesz skasować
+						<label className='root__space-input'>
+							<p className='root__input-description'>Podaj ID Pytania które chcesz skasować</p>
 							<input
 								type='text'
+								className='root__input'
 								value={deleteQuestionId}
 								onChange={event => {
 									setDeleteQuestionId(event.target.value)
 								}}
 							/>
 						</label>
-						<button type='submit'>Skasuj otwarte pytanie</button>
+						<button type='submit' className='root__btn'>
+							Skasuj otwarte pytanie
+						</button>
 					</form>
 				</div>
 				<div>
-					<div>
-						<form onSubmit={handleEditOpenQuestion} className='root__center-box'>
+					<div className='root__center-box'>
+						<form onSubmit={handleEditOpenQuestion}>
 							<h2>Edycja pytań otwartych</h2>
-							<label>
-								Podaj ID Pytania które chcesz edytować
+							<label className='root__space-input'>
+								<p className='root__input-description'>Podaj ID Pytania które chcesz edytować</p>
 								<input
 									type='text'
+									className='root__input'
 									value={editOpenQuestionId}
 									onChange={event => {
 										setEditOpenQuestionId(event.target.value)
 									}}
 								/>
 							</label>
-							<label>
-								Podaj treść pytania
+							<label className='root__space-input'>
+								<p className='root__input-description'>Podaj treść pytania</p>
 								<input
 									type='text'
+									className='root__input'
 									value={editOpenQuestion}
 									onChange={event => {
 										setEditOpenQuestion(event.target.value)
 									}}
 								/>
 							</label>
-							<label>
-								Podaj poprawną odpowiedź
+							<label className='root__space-input'>
+								<p className='root__input-description'>Podaj poprawną odpowiedź</p>
 								<input
 									type='text'
+									className='root__input'
 									value={editCorrectAnswer}
 									onChange={event => {
 										setEditCorrectAnswer(event.target.value)
 									}}
 								/>
 							</label>
-							<button type='submit'>Edytuj pytanie</button>
+							<div>
+								<button type='submit' className='root__btn'>
+									Edytuj pytanie
+								</button>
+							</div>
 						</form>
 					</div>
 				</div>

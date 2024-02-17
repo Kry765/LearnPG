@@ -153,50 +153,70 @@ export default function ModifyUser() {
 			<div>
 				<AdminMenu />
 			</div>
-			<div>
-				<div>
+			<div className='root__right-page'>
+				<div className='root__center-box'>
 					<h2>Dodaj konto</h2>
 					<form onSubmit={addUser}>
-						<input
-							type='text'
-							placeholder='adres-email'
-							value={user_email}
-							onChange={event => {
-								set_user_email(event.target.value)
-							}}
-						/>
-						<input
-							type='text'
-							placeholder='hasło'
-							value={user_pwd}
-							onChange={event => {
-								set_user_pwd(event.target.value)
-							}}
-						/>
-
-						<button type='submit'>Dodaj konto</button>
+						<label className='root__space-input'>
+							<p className='root__input-description'>Wprowadź adres E-mail: </p>
+							<input
+								className='root__input'
+								type='text'
+								placeholder='adres-email'
+								value={user_email}
+								onChange={event => {
+									set_user_email(event.target.value)
+								}}
+							/>
+						</label>
+						<label>
+							<p className='root__input-description'>Wprowadź hasło: </p>
+							<input
+								className='root__input'
+								type='text'
+								placeholder='hasło'
+								value={user_pwd}
+								onChange={event => {
+									set_user_pwd(event.target.value)
+								}}
+							/>
+						</label>
+						<div>
+							<button type='submit' className='root__btn'>
+								Dodaj konto
+							</button>
+						</div>
 					</form>
 				</div>
-				<div>
+				<div className='root__center-box'>
 					<h2>Skasuj konto</h2>
 					<form onSubmit={deleteUser}>
-						<input
-							type='text'
-							placeholder='adres-email'
-							value={deleteUserEmail}
-							onChange={event => {
-								setDeleteUserEmail(event.target.value)
-							}}
-						/>
-						<button type='submit'>Skasuj konto</button>
+						<label>
+							<p className='root__input-description'>Wprowadź adres email konta które chcesz skasować: </p>
+							<input
+								className='root__input'
+								type='text'
+								placeholder='adres-email'
+								value={deleteUserEmail}
+								onChange={event => {
+									setDeleteUserEmail(event.target.value)
+								}}
+							/>
+						</label>
+						<div>
+							<button type='submit' className='root__btn'>
+								Skasuj konto
+							</button>
+						</div>
 					</form>
 				</div>
-				<div>
+				<div className='root__center-box'>
 					<h2>Wyzeruj punkty</h2>
 					<form onSubmit={clearPoint}>
-						<label>
-							Podaj maila użytkownika któremu mam wyzerować punkty:
+						<label className='root__space-input'>
+							<p className='root__input-description'>Podaj maila użytkownika któremu mam wyzerować punkty:</p>
 							<input
+								className='root__input'
 								type='text'
 								placeholder='adres-email'
 								value={pointEmail}
@@ -208,12 +228,13 @@ export default function ModifyUser() {
 						<button type='submit'>Wyzeruj punkty</button>
 					</form>
 				</div>
-				<div>
+				<div className='root__center-box'>
 					<h2>Ustaw nowe hasło:</h2>
 					<form onSubmit={newPassword}>
 						<label>
 							Podaj maila użytkownika któremu chcesz ustawić nowe hasło
 							<input
+								className='root__input'
 								type='text'
 								placeholder='adres-email'
 								value={currentEmail}
@@ -223,6 +244,7 @@ export default function ModifyUser() {
 							/>
 						</label>
 						<input
+							className='root__input'
 							type='text'
 							placeholder='hasło'
 							value={newPwd}
@@ -234,10 +256,11 @@ export default function ModifyUser() {
 						<button type='submit'>Ustaw hasło</button>
 					</form>
 				</div>
-				<div>
+				<div className='root__center-box'>
 					<label>Ustaw nowy adres E-mail</label>
 					<form onSubmit={newUserEmail}>
 						<input
+							className='root__input'
 							type='text'
 							placeholder='stary adres-email'
 							value={oldEmail}
@@ -246,6 +269,7 @@ export default function ModifyUser() {
 							}}
 						/>
 						<input
+							className='root__input'
 							type='text'
 							placeholder='nowy adres-email'
 							value={newEmail}
