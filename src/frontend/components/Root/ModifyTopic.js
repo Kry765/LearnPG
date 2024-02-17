@@ -169,7 +169,7 @@ export default function ModifyTopic() {
 			<div>
 				<AdminMenu />
 			</div>
-			<div>
+			<div className='root__right-page'>
 				<div>
 					<form onSubmit={handleNewTopic} className='root__center-box'>
 						<h2>Dodaj nowy dział</h2>

@@ -28,7 +28,7 @@ export default function ModifyUser() {
 	}
 
 	const addUser = async e => {
-		// e.preventDefault()
+		e.preventDefault()
 		const formData = { user_email, user_pwd }
 		if (checkInput()) {
 			alert('Podane pole jest puste')

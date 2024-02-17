@@ -18,13 +18,16 @@
 .root {
 	display: flex;
 	&__left-menu {
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		width: 25vw;
+		position: fixed;
+		top: 0;
+		left: 0;
 		height: 100%;
 		min-height: 100vh;
 		background-color: $green;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		width: 10vw;
 	}
 	&__left-menu-items {
 		color: $white;
@@ -37,18 +40,50 @@
 		color: $contrast-color;
 	}
 	&__center-box {
+		background-color: $green;
+		color: $white;
 		display: flex;
 		justify-content: center;
+		border-radius: 25px;
 		align-items: center;
 		flex-direction: column;
 		margin: 1em;
 		padding: 2em;
 	}
 	&__right-page {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
 		width: 75vw;
+		margin-left: 25vh;
 	}
 	&__input {
 		border-radius: 15px;
-		height: 10vh;
+		height: 5vh;
+		min-width: 50vw;
+		padding: 1em;
+	}
+	&__input-description {
+		padding: 1em;
+	}
+	&__space-input {
+		margin: 1em;
+	}
+	&__btn {
+		width: 150px;
+		height: 50px;
+		padding: 1em;
+		border-radius: 15px;
+		border: none;
+		margin: 1em;
+		background-color: $gray;
+		color: $white;
+		font-weight: bold;
+		transition: background-color 0.7s;
+	}
+	&__btn:hover {
+		cursor: pointer;
+		background-color: $contrast-color;
 	}
 }

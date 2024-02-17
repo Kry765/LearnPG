@@ -83,10 +83,11 @@ export default function ModifyTest() {
 			<div className='root__right-page'>
 				<div>
 					<form onSubmit={handleAddCloseQuestion} className='root__center-box'>
-						<h2>Lista dodaj zapytanie zamknięte:</h2>
-						<label>
-							Dodaj Treść pytania
+						<h2>Dodaj zapytanie zamknięte:</h2>
+						<label className='root__space-input'>
+							<p className='root__input-description'>Dodaj Treść pytania:</p>
 							<input
+								className='root__input'
 								type='text'
 								value={closeQuestion}
 								onChange={event => {
@@ -94,9 +95,10 @@ export default function ModifyTest() {
 								}}
 							/>
 						</label>
-						<label>
-							Dodaj Odpowiedź A
+						<label className='root__space-input'>
+							<p className='root__input-description'>Dodaj Odpowiedź A</p>
 							<input
+								className='root__input'
 								type='text'
 								value={closeQuestionA}
 								onChange={event => {
@@ -104,9 +106,10 @@ export default function ModifyTest() {
 								}}
 							/>
 						</label>
-						<label>
-							Dodaj Odpowiedź B
+						<label className='root__space-input'>
+							<p className='root__input-description'>Dodaj Odpowiedź B</p>
 							<input
+								className='root__input'
 								type='text'
 								value={closeQuestionB}
 								onChange={event => {
@@ -114,27 +117,31 @@ export default function ModifyTest() {
 								}}
 							/>
 						</label>
-						<label>
-							Dodaj Odpowiedź C
+						<label className='root__space-input'>
+							<p className='root__input-description'>Dodaj Odpowiedź C</p>
 							<input
 								type='text'
+								className='root__input'
 								value={closeQuestionC}
 								onChange={event => {
 									setCloseQuestionC(event.target.value)
 								}}
 							/>
 						</label>
-						<label>
-							Wprowadź poprawną odpowiedź
+						<label className='root__space-input'>
+							<p className='root__input-description'>Wprowadź poprawną odpowiedź</p>
 							<input
 								type='text'
+								className='root__input'
 								value={correctAnswer}
 								onChange={event => {
 									setCorrectAnswer(event.target.value)
 								}}
 							/>
 						</label>
-						<button type='submit'>Dodaj zapytanie</button>
+						<button type='submit' className='root__btn'>
+							Dodaj zapytanie
+						</button>
 					</form>
 				</div>
 				<div>

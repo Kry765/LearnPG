@@ -20,14 +20,14 @@ export function AdminMenu() {
 			>
 				Dział Teoria
 			</div>
-			{/* <div
+			<div
 				className='root__left-menu-items'
 				onClick={() => {
 					Navigate('../root/adminpage/ModifyFaq')
 				}}
 			>
 				Dział FAQ
-			</div> */}
+			</div>
 			<div
 				className='root__left-menu-items'
 				onClick={() => {
