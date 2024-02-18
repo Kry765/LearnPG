@@ -170,9 +170,9 @@ export default function ModifyTopic() {
 				<AdminMenu />
 			</div>
 			<div className='root__right-page'>
-				<div className='root__center-box'>
+				<div>
 					<h2 className='root__space-input'>Treść Labolatoria</h2>
-					<form onSubmit={handleNewTopic}>
+					<form onSubmit={handleNewTopic} className='root__center-box'>
 						<label className='root__space-input'>
 							<p className='root__input-description'>Dodaj nowy dział</p>
 							<input
@@ -194,16 +194,15 @@ export default function ModifyTopic() {
 								}}
 							></textarea>
 						</label>
-						<div>
-							<button type='submit' className='root__btn'>
-								Dodaj nowe zagadnienie
-							</button>
-						</div>
+
+						<button type='submit' className='root__btn'>
+							Dodaj nowe zagadnienie
+						</button>
 					</form>
 				</div>
-				<div className='root__center-box'>
-					<h2>Usuń dział:</h2>
-					<form onSubmit={handleDeleteTopic}>
+				<div>
+					<h2 className='root__space-input'>Usuń dział:</h2>
+					<form onSubmit={handleDeleteTopic} className='root__center-box'>
 						<label className='root__space-input'>
 							<p className='root__input-description'>Wprowadź nazwę działu który chcesz usunąć</p>
 							<input
@@ -215,16 +214,15 @@ export default function ModifyTopic() {
 								}}
 							/>
 						</label>
-						<div>
-							<button type='submit' className='root__btn'>
-								Skasuj Dział
-							</button>
-						</div>
+
+						<button type='submit' className='root__btn'>
+							Skasuj Dział
+						</button>
 					</form>
 				</div>
-				<div className='root__center-box'>
-					<form onSubmit={handleEditTopicName}>
-						<h2>Edytuj nazwę działu:</h2>
+				<div>
+					<form onSubmit={handleEditTopicName} className='root__center-box'>
+						<h2 className='root__space-input'>Edytuj nazwę działu:</h2>
 						<label className='root__space-input'>
 							<p className='root__input-description'>Wprowadź ID działu który chcesz edytować</p>
 							<input
@@ -247,16 +245,15 @@ export default function ModifyTopic() {
 								}}
 							/>
 						</label>
-						<div>
-							<button type='submit' className='root__btn'>
-								Zmień nazwę działu
-							</button>
-						</div>
+
+						<button type='submit' className='root__btn'>
+							Zmień nazwę działu
+						</button>
 					</form>
 				</div>
-				<div className='root__center-box'>
-					<form onSubmit={handleEditTopicDesciption}>
-						<h2>Edytuj treść działu:</h2>
+				<div>
+					<form onSubmit={handleEditTopicDesciption} className='root__center-box'>
+						<h2 className='root__space-input'>Edytuj treść działu:</h2>
 						<label className='root__space-input'>
 							<p className='root__input-description'>Wprowadź ID działu który chcesz edytować</p>
 							<input
@@ -279,19 +276,16 @@ export default function ModifyTopic() {
 								}}
 							></textarea>
 						</label>
-						<div>
-							<button type='submit' className='root__btn'>
-								Zmień treść działu
-							</button>
-						</div>
+
+						<button type='submit' className='root__btn'>
+							Zmień treść działu
+						</button>
 					</form>
 				</div>
 				<div>
 					<form onSubmit={handleAddNewOpenQuestion} className='root__center-box'>
-						<h2>
-							Dodaj nowe zapytania, UWAGA!! dodawaj numer pytania chronologiczne, jeżeli to jest pierwsze pytanie, ustaw
-							jako 1:
-						</h2>
+						<h2 className='root__space-input'>Dodaj nowe pytania pod konkretny dział</h2>
+						<h4>UWAGA!! dodawaj numer pytania chronologiczne, jeżeli to jest pierwsze pytanie, ustaw jako 1:</h4>
 						<label className='root__input-space'>
 							<p className='root__input-description'>Podaj numer Sekcji do której chcesz dodać pytanie</p>
 							<input
@@ -336,15 +330,14 @@ export default function ModifyTopic() {
 								}}
 							/>
 						</label>
-						<div>
-							<button type='submit' className='root__btn'>
-								Dodaj otwarte pytanie
-							</button>
-						</div>
+
+						<button type='submit' className='root__btn'>
+							Dodaj otwarte pytanie
+						</button>
 					</form>
 				</div>
-				<div className='root__center-box'>
-					<form onSubmit={handleDeleteQuestionId}>
+				<div>
+					<form onSubmit={handleDeleteQuestionId} className='root__center-box'>
 						<h2>Kasowanie pytań otwartych</h2>
 						<label className='root__space-input'>
 							<p className='root__input-description'>Podaj ID Pytania które chcesz skasować</p>
@@ -363,8 +356,8 @@ export default function ModifyTopic() {
 					</form>
 				</div>
 				<div>
-					<div className='root__center-box'>
-						<form onSubmit={handleEditOpenQuestion}>
+					<div>
+						<form onSubmit={handleEditOpenQuestion} className='root__center-box'>
 							<h2>Edycja pytań otwartych</h2>
 							<label className='root__space-input'>
 								<p className='root__input-description'>Podaj ID Pytania które chcesz edytować</p>
@@ -399,11 +392,9 @@ export default function ModifyTopic() {
 									}}
 								/>
 							</label>
-							<div>
-								<button type='submit' className='root__btn'>
-									Edytuj pytanie
-								</button>
-							</div>
+							<button type='submit' className='root__btn'>
+								Edytuj pytanie
+							</button>
 						</form>
 					</div>
 				</div>
