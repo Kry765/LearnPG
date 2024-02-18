@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
+import { AdminMenu } from './AdminMenu'
 
 export default function ModifyFaq() {
 	const [handleFaq, setHandleFaq] = useState('')
@@ -18,22 +19,14 @@ export default function ModifyFaq() {
 			})
 	}
 	return (
-		<div>
-			<h2>Lista FAQ:</h2>
+		<div className='root'>
 			<div>
-				{faqs.map((faq, index) => (
-					<p key={index}>
-						<br />
-						<br />
-						{faq.faq_id}
-						<br />
-						<br />
-						{faq.faq_name}
-						<br />
-						<br />
-						{faq.faq_description}
-					</p>
-				))}
+				<AdminMenu />
+			</div>
+			<div className='root__right-page'>
+				<div>
+					<h2 className='root__space-input'>FAQ</h2>
+				</div>
 			</div>
 		</div>
 	)

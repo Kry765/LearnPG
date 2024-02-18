@@ -153,10 +153,12 @@ export default function ModifyUser() {
 			<div>
 				<AdminMenu />
 			</div>
+
 			<div className='root__right-page'>
 				<div>
-					<h2 className='root__space-input'>Dodaj konto</h2>
+					<h2 className='root__space-input'>Użytkownicy</h2>
 					<form onSubmit={addUser} className='root__center-box'>
+						<h2 className='root__space-input'>Dodaj konto</h2>
 						<label className='root__space-input'>
 							<p className='root__input-description'>Wprowadź adres E-mail: </p>
 							<input
@@ -187,8 +189,8 @@ export default function ModifyUser() {
 					</form>
 				</div>
 				<div>
-					<h2 className='root__space-input'>Skasuj konto</h2>
 					<form onSubmit={deleteUser} className='root__center-box'>
+						<h2 className='root__space-input'>Skasuj konto</h2>
 						<label className='root__space-input'>
 							<p className='root__input-description'>Wprowadź adres email konta które chcesz skasować: </p>
 							<input
@@ -201,15 +203,14 @@ export default function ModifyUser() {
 								}}
 							/>
 						</label>
-
 						<button type='submit' className='root__btn'>
 							Skasuj konto
 						</button>
 					</form>
 				</div>
 				<div>
-					<h2 className='root__space-input'>Wyzeruj punkty</h2>
 					<form onSubmit={clearPoint} className='root__center-box'>
+						<h2 className='root__space-input'>Wyzeruj punkty</h2>
 						<label className='root__space-input'>
 							<p className='root__input-description'>Podaj maila użytkownika któremu mam wyzerować punkty:</p>
 							<input
@@ -222,15 +223,14 @@ export default function ModifyUser() {
 								}}
 							/>
 						</label>
-
 						<button type='submit' className='root__btn'>
 							Wyzeruj punkty
 						</button>
 					</form>
 				</div>
 				<div>
-					<h2 className='root__space-input'>Ustaw nowe hasło:</h2>
 					<form onSubmit={newPassword} className='root__center-box'>
+						<h2 className='root__space-input'>Ustaw nowe hasło:</h2>
 						<label className='root__space-input'>
 							<p className='root__input-description'>Podaj maila użytkownika któremu chcesz ustawić nowe hasło</p>
 							<input
@@ -261,8 +261,8 @@ export default function ModifyUser() {
 					</form>
 				</div>
 				<div>
-					<h2 className='root__space-input'>Ustaw nowy adres E-mail</h2>
 					<form onSubmit={newUserEmail} className='root__center-box'>
+						<h2 className='root__space-input'>Ustaw nowy adres E-mail</h2>
 						<label className='root__space-input'>
 							<p className='root__input-description'>Podaj stary adres E-mail: </p>
 							<input

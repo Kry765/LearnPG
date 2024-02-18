@@ -171,8 +171,9 @@ export default function ModifyTopic() {
 			</div>
 			<div className='root__right-page'>
 				<div>
-					<h2 className='root__space-input'>Treść Labolatoria</h2>
+					<h2 className='root__space-input'>Dział Labolatoria</h2>
 					<form onSubmit={handleNewTopic} className='root__center-box'>
+						<h2 className='root__space-input'>Treść Labolatoria</h2>
 						<label className='root__space-input'>
 							<p className='root__input-description'>Dodaj nowy dział</p>
 							<input
@@ -201,8 +202,8 @@ export default function ModifyTopic() {
 					</form>
 				</div>
 				<div>
-					<h2 className='root__space-input'>Usuń dział:</h2>
 					<form onSubmit={handleDeleteTopic} className='root__center-box'>
+						<h2 className='root__space-input'>Usuń dział:</h2>
 						<label className='root__space-input'>
 							<p className='root__input-description'>Wprowadź nazwę działu który chcesz usunąć</p>
 							<input
