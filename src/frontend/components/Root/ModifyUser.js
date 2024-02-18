@@ -169,7 +169,7 @@ export default function ModifyUser() {
 								}}
 							/>
 						</label>
-						<label>
+						<label className='root__space-input'>
 							<p className='root__input-description'>Wprowadź hasło: </p>
 							<input
 								className='root__input'
@@ -191,7 +191,7 @@ export default function ModifyUser() {
 				<div className='root__center-box'>
 					<h2>Skasuj konto</h2>
 					<form onSubmit={deleteUser}>
-						<label>
+						<label className='root__space-input'>
 							<p className='root__input-description'>Wprowadź adres email konta które chcesz skasować: </p>
 							<input
 								className='root__input'
@@ -225,14 +225,18 @@ export default function ModifyUser() {
 								}}
 							/>
 						</label>
-						<button type='submit'>Wyzeruj punkty</button>
+						<div>
+							<button type='submit' className='root__btn'>
+								Wyzeruj punkty
+							</button>
+						</div>
 					</form>
 				</div>
 				<div className='root__center-box'>
 					<h2>Ustaw nowe hasło:</h2>
 					<form onSubmit={newPassword}>
-						<label>
-							Podaj maila użytkownika któremu chcesz ustawić nowe hasło
+						<label className='root__space-input'>
+							<p className='root__input-description'>Podaj maila użytkownika któremu chcesz ustawić nowe hasło</p>
 							<input
 								className='root__input'
 								type='text'
@@ -243,41 +247,58 @@ export default function ModifyUser() {
 								}}
 							/>
 						</label>
-						<input
-							className='root__input'
-							type='text'
-							placeholder='hasło'
-							value={newPwd}
-							onChange={event => {
-								setNewPwd(event.target.value)
-							}}
-						/>
-
-						<button type='submit'>Ustaw hasło</button>
+						<label className='root__space-input'>
+							<p className='root__input-description'>Podaj hasło</p>
+							<input
+								className='root__input'
+								type='text'
+								placeholder='hasło'
+								value={newPwd}
+								onChange={event => {
+									setNewPwd(event.target.value)
+								}}
+							/>
+						</label>
+						<div>
+							<button type='submit' className='root__btn'>
+								Ustaw hasło
+							</button>
+						</div>
 					</form>
 				</div>
 				<div className='root__center-box'>
-					<label>Ustaw nowy adres E-mail</label>
+					<h2>Ustaw nowy adres E-mail</h2>
 					<form onSubmit={newUserEmail}>
-						<input
-							className='root__input'
-							type='text'
-							placeholder='stary adres-email'
-							value={oldEmail}
-							onChange={event => {
-								setOldEmail(event.target.value)
-							}}
-						/>
-						<input
-							className='root__input'
-							type='text'
-							placeholder='nowy adres-email'
-							value={newEmail}
-							onChange={event => {
-								setNewEmail(event.target.value)
-							}}
-						/>
-						<button type='submit'>Ustaw nowy email</button>
+						<label className='root__space-input'>
+							<p className='root__input-description'>Podaj stary adres E-mail: </p>
+							<input
+								className='root__input'
+								type='text'
+								placeholder='stary adres-email'
+								value={oldEmail}
+								onChange={event => {
+									setOldEmail(event.target.value)
+								}}
+							/>
+						</label>
+						<label className='root__space-input'>
+							<p className='root__input-description'>Podaj nowy adres E-mail: </p>
+
+							<input
+								className='root__input'
+								type='text'
+								placeholder='nowy adres-email'
+								value={newEmail}
+								onChange={event => {
+									setNewEmail(event.target.value)
+								}}
+							/>
+						</label>
+						<div>
+							<button type='submit' className='root__btn'>
+								Ustaw nowy email
+							</button>
+						</div>
 					</form>
 				</div>
 				<div className='root-users'>
