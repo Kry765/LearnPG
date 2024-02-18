@@ -1,4 +1,4 @@
-const Root = require('../models/root')
+const Root = require('../models/admin')
 const dotenv = require('dotenv')
 dotenv.config()
 const jwt = require('jsonwebtoken')

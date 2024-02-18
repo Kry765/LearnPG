@@ -75,10 +75,14 @@ const motivationData = [
 	},
 ]
 
-Motivation.bulkCreate(motivationData)
-	.then(() => {
-		console.log('Dane zostały pomyślnie dodane do bazy.')
-	})
-	.catch(error => {
+const createMotivation = async () => {
+	try {
+		for (const motivation of motivationData) {
+			await Motivation.create(motivation)
+			console.log('Motywacja dodana:')
+		}
+	} catch (error) {
 		console.error('Błąd podczas dodawania danych:', error)
-	})
+	}
+}
+module.exports = createMotivation

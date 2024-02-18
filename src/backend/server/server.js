@@ -12,9 +12,9 @@ const getUserPointHandler = require('./controller/getUserPoint')
 const ResetEmailHandler = require('./controller/resetEmail')
 const handleDeleteUser = require('./controller/deleteUser')
 const resetPasswordHandler = require('./controller/resetPassword')
-// const handleRootUser = require('./imports/inserRootUser')
-// const handleCreateUser = require('./imports/insertCreateUser')
-// const handleMotivationData = require('./imports/insertMotivations')
+const handleAdminAccound = require('./imports/insertAdminUser')
+const handleCreateUser = require('./imports/insertCreateUser')
+const handleMotivationData = require('./imports/insertMotivations')
 
 app.use(express.json())
 app.use(bodyParser.json())
@@ -42,28 +42,26 @@ db.authenticate()
 		console.log('Database connected')
 		return db.sync()
 	})
-	.then(() => {
+	.then(async () => {
 		const User = require('./models/user')
 		const Topic = require('./models/topic')
 		const OpenQuestion = require('./models/open_question')
 		const CloseQuestion = require('./models/close_question')
 		const handleMotivation = require('./models/motivation')
 		const FaqHandler = require('./models/faq')
-		const handleRoot = require('./models/root')
+		const handleAdmin = require('./models/admin')
 
-		User.sync()
-		Topic.sync()
-		OpenQuestion.sync()
-		CloseQuestion.sync()
-		handleMotivation.sync()
-		FaqHandler.sync()
-		handleRoot.sync()
+		await User.sync()
+		await Topic.sync()
+		await OpenQuestion.sync()
+		await CloseQuestion.sync()
+		await handleMotivation.sync()
+		await FaqHandler.sync()
+		await handleAdmin.sync()
 
-		// return Promise.all([
-		// 	handleMotivation.bulkCreate(handleMotivationData),
-		// 	User.bulkCreate(handleCreateUser),
-		// 	handleRoot.bulkCreate(handleRootUser),
-		// ])
+		await handleAdminAccound()
+		await handleCreateUser()
+		await handleMotivationData()
 	})
 	.then(() => {
 		app.listen(port, () => {

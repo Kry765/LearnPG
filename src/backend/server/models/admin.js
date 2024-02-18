@@ -1,19 +1,19 @@
 const db = require('../database')
 const { DataTypes } = require('sequelize')
 
-const Root = db.define(
-	'root',
+const Admin = db.define(
+	'admin',
 	{
-		root_id: {
+		admin_id: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
 			primaryKey: true,
 		},
-		root_email: {
+		admin_email: {
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
-		root_pwd: {
+		admin_pwd: {
 			type: DataTypes.STRING(80),
 			allowNull: false,
 		},
@@ -21,4 +21,4 @@ const Root = db.define(
 	{ timestamps: false }
 )
 
-module.exports = Root
+module.exports = Admin
