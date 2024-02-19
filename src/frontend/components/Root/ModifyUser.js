@@ -34,12 +34,19 @@ export default function ModifyUser() {
 	const checkClearInput = () => {
 		return checkEmptyInput(pointEmail)
 	}
+	const checkNewPassword = () => {
+		return checkEmptyInput(currentEmail, newPwd)
+	}
 
-	const addUser = async () => {
+	const checkNewEmail = () => {
+		return checkEmptyInput(oldEmail, newEmail)
+	}
+
+	const addUser = async e => {
+		e.preventDefault()
 		const formData = { user_email, user_pwd }
 		if (checkInput()) {
-			alert('Podane pole jest puste')
-			return
+			return alert('Podane pole jest puste')
 		} else if (checkEmail()) {
 			alert('Nieprawidłowy adres email')
 			return
@@ -74,32 +81,31 @@ export default function ModifyUser() {
 			})
 	}
 
-	const deleteUser = async () => {
+	const deleteUser = async e => {
+		e.preventDefault()
 		if (checkDeleteInput()) {
-			alert('Podane pole jest puste')
-			return
-		} else {
-			try {
-				const formData = { email: deleteUserEmail }
-				const res = await axios.post(API_URL + '/rootdeleteuser', formData, {
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					withCredentials: true,
-				})
-				if (res.status === 200) {
-					alert('Konto skasowane')
-				}
-			} catch (error) {
-				alert('Wystąpił błąd')
+			return alert('Podane pole jest puste')
+		}
+		try {
+			const formData = { email: deleteUserEmail }
+			const res = await axios.post(API_URL + '/rootdeleteuser', formData, {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				withCredentials: true,
+			})
+			if (res.status === 200) {
+				alert('Konto skasowane')
 			}
+		} catch (error) {
+			alert('Wystąpił błąd')
 		}
 	}
 
 	const clearPoint = async e => {
 		if (checkClearInput()) {
 			e.preventDefault()
-			alert('Podane pole jest puste')
+			alert('Wprowadź dane')
 			return
 		}
 		try {
@@ -119,7 +125,11 @@ export default function ModifyUser() {
 		}
 	}
 
-	const newPassword = async () => {
+	const newPassword = async e => {
+		e.preventDefault()
+		if (checkNewPassword()) {
+			return alert(checkNewPassword())
+		}
 		const formData = { email: currentEmail, password: newPwd }
 		try {
 			const res = await axios.post(API_URL + '/rootresetpassword', formData, {
@@ -138,7 +148,11 @@ export default function ModifyUser() {
 		}
 	}
 
-	const newUserEmail = async () => {
+	const newUserEmail = async e => {
+		e.preventDefault()
+		if (checkNewEmail()) {
+			return alert('Wprowadź dane')
+		}
 		const formData = { oldEmail, newEmail }
 		if (oldEmail === newEmail) {
 			return alert('E-mail jest taki sam jak poprzedni')
