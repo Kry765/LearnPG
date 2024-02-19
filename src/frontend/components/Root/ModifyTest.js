@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { AdminMenu } from './AdminMenu'
+import { checkEmptyInput } from '../../../backend/guard/Script'
 
 export default function ModifyTest() {
 	const [questions, setQuestions] = useState([])
@@ -17,9 +18,18 @@ export default function ModifyTest() {
 	const [editCloseQuestionC, setEditCloseQuestionC] = useState('')
 	const [editCloseQuestionName, setEditCloseQuestionName] = useState('')
 	const [editCorrectAnswer, setEditCorrectAnswer] = useState('')
+	const [inputValue, setInputValue] = useState('')
+
 	useEffect(() => {
 		getCloseQuestion()
 	}, [])
+
+	const checkABC = inputValue => {
+		if (!['A', 'B', 'C'].includes(inputValue.toUpperCase())) {
+			return false
+		}
+		return true
+	}
 
 	const getCloseQuestion = () => {
 		axios
@@ -32,10 +42,31 @@ export default function ModifyTest() {
 			})
 	}
 
+	const checkAddCloseQuestion = () => {
+		return checkEmptyInput(closeQuestion, closeQuestionA, closeQuestionB, closeQuestionC, correctAnswer)
+	}
+
+	const checkDeletCloseQuestion = () => {
+		return checkEmptyInput(deleteCloseQuestion)
+	}
+
+	const checkEditCloseQuestion = () => {
+		return checkEmptyInput(
+			editCorrectAnswer,
+			editCloseQuestionC,
+			editCloseQuestionB,
+			editCloseQuestionA,
+			editCloseQuestionName,
+			editCloseQuestionId
+		)
+	}
+
 	const handleAddCloseQuestion = async e => {
 		e.preventDefault()
+		if (checkAddCloseQuestion()) {
+			return alert('Wprowadź dane')
+		}
 		const formData = { closeQuestion, closeQuestionA, closeQuestionB, closeQuestionC, correctAnswer }
-
 		try {
 			const res = await axios.post(API_URL + '/rootaddclosequestion', formData, {
 				headers: {
@@ -44,18 +75,20 @@ export default function ModifyTest() {
 			})
 			if (res.status === 201) {
 				alert('Pomyślnie Dodano Użytkownika, wynik będzie widoczny po przeładowaniu strony')
-			} else {
-				alert('Wystąpił błąd')
 			}
-		} catch (err) {
-			alert('Wystąpił błąd')
+		} catch (error) {
+			console.error(error)
+			alert('Wystąpił błąd, upewnij się że wprowadziłeś w ostatnim polu A,B lub C')
+			return
 		}
 	}
 
 	const handleDeletCloseQuestion = async e => {
 		e.preventDefault()
 		const formData = { deleteCloseQuestion }
-
+		if (checkDeletCloseQuestion()) {
+			return alert('Wprowadź dane')
+		}
 		try {
 			const res = await axios.post(API_URL + '/rootdeleteclosequestion', formData, {
 				headers: {
@@ -76,6 +109,9 @@ export default function ModifyTest() {
 
 	const handleEditCloseQuestion = async e => {
 		e.preventDefault()
+		if (checkEditCloseQuestion()) {
+			return alert('Wprowadź dane')
+		}
 		try {
 			const formData = {
 				editCorrectAnswer,
@@ -92,10 +128,9 @@ export default function ModifyTest() {
 			})
 			if (res.status === 200) {
 				alert('Edycja ukończona, przeładuj strone')
-			} else if (res.status === 404) {
-				alert('Nie znaleziono pytania zamkniętego')
 			}
-		} catch (err) {
+		} catch (error) {
+			console.error(error)
 			alert('Wystąpił błąd')
 			return
 		}
@@ -161,12 +196,20 @@ export default function ModifyTest() {
 							<input
 								type='text'
 								className='root__input'
+								maxLength={1}
 								value={correctAnswer}
+								onKeyDown={event => {
+									if (!checkABC(event.key)) {
+										event.preventDefault()
+									}
+								}}
 								onChange={event => {
-									setCorrectAnswer(event.target.value)
+									const inputValue = event.target.value.toUpperCase()
+									setCorrectAnswer(inputValue)
 								}}
 							/>
 						</label>
+
 						<button type='submit' className='root__btn'>
 							Dodaj zapytanie
 						</button>
@@ -178,7 +221,7 @@ export default function ModifyTest() {
 						<label className='root__space-input'>
 							<p className='root__input-description'>Wprowadź ID pytania które chcesz usunąć</p>
 							<input
-								type='text'
+								type='number'
 								className='root__input'
 								value={deleteCloseQuestion}
 								onChange={event => {
@@ -198,7 +241,7 @@ export default function ModifyTest() {
 							<p className='root__input-description'>Wprowadź ID pytania które chcesz edytować</p>
 							<input
 								className='root__input'
-								type='text'
+								type='number'
 								value={editCloseQuestionId}
 								onChange={event => {
 									setEditCloseQuestionId(event.target.value)
@@ -255,8 +298,16 @@ export default function ModifyTest() {
 								className='root__input'
 								type='text'
 								value={editCorrectAnswer}
+								maxLength={1}
+								onKeyDown={event => {
+									if (!checkABC(event.key)) {
+										event.preventDefault()
+									}
+								}}
 								onChange={event => {
-									setEditCorrectAnswer(event.target.value)
+									const inputValue = event.target.value.toUpperCase()
+									setInputValue(inputValue)
+									setEditCorrectAnswer(inputValue)
 								}}
 							/>
 						</label>
