@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom'
 
 function Root() {
 	const navigate = useNavigate()
-	const [root_email, set_root_email] = useState('')
-	const [root_pwd, set_root_pwd] = useState('')
+	const [admin_email, set_admin_email] = useState('')
+	const [admin_pwd, set_admin_pwd] = useState('')
 	const [output, setOutput] = useState('')
 	const [outputErr, setOutputErr] = useState('')
 	const handleSubmit = async e => {
@@ -15,8 +15,8 @@ function Root() {
 			const response = await axios.post(
 				'http://localhost:4000/rootlogin',
 				{
-					root_email,
-					root_pwd,
+					admin_email,
+					admin_pwd,
 				},
 				{
 					headers: {
@@ -30,7 +30,7 @@ function Root() {
 				document.cookie = `token=${token}; path=/;`
 				localStorage.setItem('token', token)
 				axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
-				window.location.href = '/Dashboard'
+				window.location.href = '/Adminpage'
 			} else {
 				setOutput('')
 				return setOutputErr('Wystąpił błąd')
@@ -75,9 +75,9 @@ function Root() {
 										className='input-auth'
 										type='text'
 										placeholder='Podaj swój adres email'
-										value={root_email}
+										value={admin_email}
 										onChange={event => {
-											set_root_email(event.target.value)
+											set_admin_email(event.target.value)
 										}}
 									/>
 								</label>
@@ -91,9 +91,9 @@ function Root() {
 										className='input-auth'
 										type='password'
 										placeholder='Podaj hasło'
-										value={root_pwd}
+										value={admin_pwd}
 										onChange={event => {
-											set_root_pwd(event.target.value)
+											set_admin_pwd(event.target.value)
 										}}
 									/>
 								</label>

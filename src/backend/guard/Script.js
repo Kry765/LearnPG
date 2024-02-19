@@ -57,3 +57,8 @@ export const logoutUser = () => {
 	localStorage.removeItem('token')
 	window.location.href = '/login'
 }
+
+export const logoutRoot = () => {
+	localStorage.removeItem('token')
+	window.location.href = '/root'
+}

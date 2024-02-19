@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { AdminMenu } from './AdminMenu'
+import { checkEmptyInput } from '../../../backend/guard/Script'
 
 export default function ModifyTopic() {
 	const API_URL = 'http://localhost:4000'
@@ -22,16 +23,6 @@ export default function ModifyTopic() {
 	const [editOpenQuestionId, setEditOpenQuestionId] = useState('')
 	const [editOpenQuestion, setEditOpenQuestion] = useState('')
 
-	const handleNewTopic = async e => {
-		e.preventDefault()
-		const formTopics = { topicName, topicDescription }
-		const res = await axios.post(API_URL + '/addnewtopic', formTopics, {
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		})
-	}
-
 	useEffect(() => {
 		getTopic()
 		getOpenQuestion()
@@ -48,6 +39,121 @@ export default function ModifyTopic() {
 			})
 	}
 
+	const checkDeleteTopic = () => {
+		return checkEmptyInput(dropTopic)
+	}
+
+	const checkCreateTopic = () => {
+		return checkEmptyInput(topicName, topicDescription)
+	}
+
+	const checkEditTopicName = () => {
+		return checkEmptyInput(idEditTopic, editTopic)
+	}
+
+	const checkEditTopicDescription = () => {
+		return checkEmptyInput(idEditTopicDescription, editTopicDesription)
+	}
+
+	const checkAddNewOpenQuestion = () => {
+		return checkEmptyInput(questionId, nrQuestionId, questionName, correctAnswer)
+	}
+
+	const checkDeleteQuestionId = () => {
+		return checkEmptyInput(deleteQuestionId)
+	}
+
+	const checkEditOpenQuestion = () => {
+		return checkEmptyInput(editOpenQuestionId, editOpenQuestion, editCorrectAnswer)
+	}
+
+	const handleNewTopic = async e => {
+		e.preventDefault()
+		const formTopics = { topicName, topicDescription }
+		if (checkCreateTopic()) {
+			alert('Wprowadź dane')
+			return
+		}
+		try {
+			const res = await axios.post(API_URL + '/addnewtopic', formTopics, {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			})
+			if (res.status === 201) {
+				await alert('Dział dodany, przeładuj stronę')
+			}
+		} catch (error) {
+			alert('Wystąpił błąd')
+			console.error(error)
+		}
+	}
+
+	const handleDeleteTopic = async e => {
+		e.preventDefault()
+		const formData = { dropTopic }
+		if (checkDeleteTopic()) {
+			return alert('Wprowadź dane')
+		}
+		try {
+			const res = await axios.post(API_URL + '/droptopic', formData, {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			})
+			if (res.status === 200) {
+				alert('Dział został skasowany, przeładuj strone')
+			} else {
+				alert('Wystąpił błąd')
+			}
+		} catch (error) {
+			console.error(error)
+			alert('Wystąpił błąd')
+		}
+	}
+
+	const handleEditTopicName = async e => {
+		e.preventDefault()
+		if (checkEditTopicName()) {
+			return alert('Wprowadź dane')
+		}
+		const formData = { idEditTopic, editTopic }
+		try {
+			const res = await axios.post(API_URL + '/edittopicname', formData, {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			})
+			if (res.status === 200) {
+				alert('Nazwa tematu zmieniona, przeładuj strone')
+			}
+		} catch (error) {
+			alert('Wystąpił błąd')
+			console.error(error)
+		}
+	}
+
+	const handleEditTopicDesciption = async e => {
+		e.preventDefault()
+		if (checkEditTopicDescription()) {
+			return alert('Wprowadź dane')
+		}
+		const formData = { idEditTopicDescription, editTopicDesription }
+		try {
+			const res = await axios.post(API_URL + '/edittopicdescription', formData, {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			})
+			if (res.status === 200) {
+				alert('Treść zmieniona, przeładuj strone')
+			}
+		} catch (error) {
+			alert('Wystąpił błąd')
+			console.error(error)
+		}
+	}
+
 	const getOpenQuestion = () => {
 		axios
 			.get(API_URL + '/rootgetopenquestion')
@@ -59,109 +165,71 @@ export default function ModifyTopic() {
 			})
 	}
 
-	const handleDeleteTopic = async e => {
-		// e.preventDefault()
-		const formData = { dropTopic }
-		try {
-			const res = await axios.post(API_URL + '/droptopic', formData, {
-				headers: {
-					'Content-Type': 'application/json',
-				},
-			})
-			if (res.status === 200) {
-				// alert('Dział został skasowany')
-			} else {
-				// alert('Wystąpił błąd')
-			}
-		} catch (error) {
-			console.error(error)
-			// alert('Wystąpił błąd')
-		}
-	}
-
-	const handleEditTopicName = async e => {
-		// e.preventDefault()
-		const formData = { idEditTopic, editTopic }
-		try {
-			const res = await axios.post(API_URL + '/edittopicname', formData, {
-				headers: {
-					'Content-Type': 'application/json',
-				},
-			})
-			if (res.status === 200) {
-				// alert('Nazwa tematu zmieniona')
-			} else {
-				// alert('Wystąpił błąd')
-			}
-		} catch (error) {
-			console.error(error)
-		}
-	}
-	const handleEditTopicDesciption = async e => {
-		// e.preventDefault()
-		const formData = { idEditTopicDescription, setIdEditTopicDescription }
-		try {
-			const res = await axios.post(API_URL + '/edittopicdescription', formData, {
-				headers: {
-					'Content-Type': 'application/json',
-				},
-			})
-			if (res.status === 200) {
-				// alert('Treść zmieniona')
-			} else {
-				// alert('Wystąpił błąd')
-			}
-		} catch (error) {
-			console.error(error)
-		}
-	}
-
 	const handleAddNewOpenQuestion = async e => {
-		// e.preventDefault()
+		e.preventDefault()
+		if (checkAddNewOpenQuestion()) {
+			return alert('Wprowadź dane')
+		}
 		const formData = { questionId, nrQuestionId, questionName, correctAnswer }
 		try {
-			const res = axios.post(API_URL + '/rootaddopenquestion', formData, {
+			const res = await axios.post(API_URL + '/rootaddopenquestion', formData, {
 				headers: {
 					'Content-Type': 'application/json',
 				},
 			})
-			if (res.status === 200) {
-				// alert('Zapytanie dodane')
-			} else {
-				// alert('Wystąpił błąd')
+			if (res.status === 201) {
+				alert('Zapytanie dodane, przeładuj strone')
 			}
 		} catch (error) {
 			console.log(error)
+			alert('Podana sekcja nie istnieje, lub numer pytania jest nieprawidłowy')
+			return
 		}
 	}
 
 	const handleDeleteQuestionId = async e => {
-		// e.preventDefault()
+		e.preventDefault()
+		if (checkDeleteQuestionId()) {
+			return alert('Wprowadz dane')
+		}
 		const formData = { deleteQuestionId }
 		try {
-			const res = axios.post(API_URL + '/rootdeleteopenquestion', formData, {
+			const res = await axios.post(API_URL + '/rootdeleteopenquestion', formData, {
 				headers: {
 					'Content-Type': 'application/json',
 				},
 			})
 			if (res.status === 200) {
-				// alert('Zapytanie dodane')
-			} else {
-				// alert('Wystąpił błąd')
+				alert('Pytanie otwarte zostało skasowane, przeładuj strone')
 			}
 		} catch (error) {
 			console.log(error)
+			alert('Wystąpił błąd')
+			return
 		}
 	}
 
 	const handleEditOpenQuestion = async e => {
-		// e.preventDefault()
+		e.preventDefault()
+		if (checkEditOpenQuestion()) {
+			return alert('Wprowadź dane')
+		}
 		const formData = { editOpenQuestionId, editOpenQuestion, editCorrectAnswer }
-		axios.post(API_URL + '/rooteditopenquestion', formData, {
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		})
+
+		try {
+			const res = await axios.post(API_URL + '/rooteditopenquestion', formData, {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			})
+			if (res.status === 200) {
+				alert('Pytanie otwarte zostało edytowane, przeładuj strone')
+			}
+		} catch (error) {
+			console.error(error)
+			alert('Wystąpił błąd')
+			return
+		}
 	}
 
 	return (

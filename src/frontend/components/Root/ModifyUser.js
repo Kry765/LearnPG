@@ -27,32 +27,39 @@ export default function ModifyUser() {
 		return checkEmptyInput(user_email, user_pwd)
 	}
 
-	const addUser = async e => {
-		e.preventDefault()
+	const checkDeleteInput = () => {
+		return checkEmptyInput(deleteUserEmail)
+	}
+
+	const checkClearInput = () => {
+		return checkEmptyInput(pointEmail)
+	}
+
+	const addUser = async () => {
 		const formData = { user_email, user_pwd }
 		if (checkInput()) {
 			alert('Podane pole jest puste')
 			return
-		}
-		if (checkEmail()) {
+		} else if (checkEmail()) {
 			alert('Nieprawidłowy adres email')
 			return
-		}
-		try {
-			const res = await axios.post(API_URL + '/create', formData, {
-				headers: {
-					'Content-Type': 'application/json',
-				},
-			})
-			if (res.status === 201) {
-				alert('Konto stworzone')
-			} else if (res.status === 200) {
-				alert('Już istnieje adres Email')
-			} else if (res.status === 500) {
-				alert('Wystąpił błąd')
+		} else {
+			try {
+				const res = await axios.post(API_URL + '/create', formData, {
+					headers: {
+						'Content-Type': 'application/json',
+					},
+				})
+				if (res.status === 201) {
+					return alert('Konto stworzone')
+				} else if (res.status === 200) {
+					alert('Już istnieje adres Email')
+				} else if (res.status === 500) {
+					alert('Wystąpił błąd')
+				}
+			} catch (err) {
+				console.error(err)
 			}
-		} catch (err) {
-			console.error(err)
 		}
 	}
 
@@ -67,53 +74,61 @@ export default function ModifyUser() {
 			})
 	}
 
-	const deleteUser = async e => {
-		// e.preventDefault()
-		try {
-			const formData = { email: deleteUserEmail }
-			const response = await axios.post(API_URL + '/rootdeleteuser', formData, {
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				withCredentials: true,
-			})
-			if (response.status === 200) {
-				alert('Konto skasowane')
+	const deleteUser = async () => {
+		if (checkDeleteInput()) {
+			alert('Podane pole jest puste')
+			return
+		} else {
+			try {
+				const formData = { email: deleteUserEmail }
+				const res = await axios.post(API_URL + '/rootdeleteuser', formData, {
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					withCredentials: true,
+				})
+				if (res.status === 200) {
+					alert('Konto skasowane')
+				}
+			} catch (error) {
+				alert('Wystąpił błąd')
 			}
-		} catch (error) {
-			alert('Wystąpił błąd')
 		}
 	}
 
 	const clearPoint = async e => {
-		// e.preventDefault()
+		if (checkClearInput()) {
+			e.preventDefault()
+			alert('Podane pole jest puste')
+			return
+		}
 		try {
 			const formData = { email: pointEmail }
-			const response = await axios.post(API_URL + '/rootresetpoint', formData, {
+			const res = await axios.post(API_URL + '/rootresetpoint', formData, {
 				headers: {
 					'Content-Type': 'application/json',
 				},
 				withCredentials: true,
 			})
-			if (response.status === 200) {
+			if (res.status === 200) {
 				alert('Punkty wyczyszczone')
 			}
 		} catch (error) {
 			alert('Wystąpił błąd')
+			e.preventDefault()
 		}
 	}
 
-	const newPassword = async e => {
-		// e.preventDefault()
+	const newPassword = async () => {
 		const formData = { email: currentEmail, password: newPwd }
 		try {
-			const response = axios.post(API_URL + '/rootresetpassword', formData, {
+			const res = await axios.post(API_URL + '/rootresetpassword', formData, {
 				headers: {
 					'Content-Type': 'application/json',
 				},
 				withCredentials: true,
 			})
-			if (response.status === 200) {
+			if (res.status === 200) {
 				alert('Hasło zmienione')
 			} else {
 				alert('Wystąpił błąd')
@@ -123,8 +138,7 @@ export default function ModifyUser() {
 		}
 	}
 
-	const newUserEmail = async e => {
-		// e.preventDefault()
+	const newUserEmail = async () => {
 		const formData = { oldEmail, newEmail }
 		if (oldEmail === newEmail) {
 			return alert('E-mail jest taki sam jak poprzedni')
@@ -153,7 +167,6 @@ export default function ModifyUser() {
 			<div>
 				<AdminMenu />
 			</div>
-
 			<div className='root__right-page'>
 				<div>
 					<h2 className='root__space-input'>Użytkownicy</h2>
@@ -164,7 +177,7 @@ export default function ModifyUser() {
 							<input
 								className='root__input'
 								type='text'
-								placeholder='adres-email'
+								placeholder='Adres E-mail'
 								value={user_email}
 								onChange={event => {
 									set_user_email(event.target.value)
@@ -176,16 +189,14 @@ export default function ModifyUser() {
 							<input
 								className='root__input'
 								type='text'
-								placeholder='hasło'
+								placeholder='Hasło'
 								value={user_pwd}
 								onChange={event => {
 									set_user_pwd(event.target.value)
 								}}
 							/>
 						</label>
-						<button type='submit' className='root__btn'>
-							Dodaj konto
-						</button>
+						<input type='submit' className='root__btn' value='Dodaj konto' />
 					</form>
 				</div>
 				<div>

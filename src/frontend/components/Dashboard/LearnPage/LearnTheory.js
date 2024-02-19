@@ -147,7 +147,7 @@ const LearnTheory = () => {
 				<h1>Rozpocznij nauke</h1>
 				<h3>Wybierz interesujące cię zagadnienie</h3>
 				{handleTopic &&
-					handleTopic.topic_description.split('\n').map((line, index) => (
+					handleTopic.topic_description.split('||').map((line, index) => (
 						<div key={index} className=''>
 							{line}
 						</div>

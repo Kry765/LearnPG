@@ -7,7 +7,7 @@ export function AdminMenu() {
 			<div
 				className='root__left-menu-items'
 				onClick={() => {
-					Navigate('../root/adminpage/ModifyUser')
+					Navigate('../adminpage/ModifyUser')
 				}}
 			>
 				Użytkownicy
@@ -15,7 +15,7 @@ export function AdminMenu() {
 			<div
 				className='root__left-menu-items'
 				onClick={() => {
-					Navigate('../root/adminpage/ModifyTopic')
+					Navigate('../adminpage/ModifyTopic')
 				}}
 			>
 				Dział Teoria
@@ -23,7 +23,7 @@ export function AdminMenu() {
 			<div
 				className='root__left-menu-items'
 				onClick={() => {
-					Navigate('../root/adminpage/ModifyFaq')
+					Navigate('../adminpage/ModifyFaq')
 				}}
 			>
 				Dział FAQ
@@ -31,7 +31,7 @@ export function AdminMenu() {
 			<div
 				className='root__left-menu-items'
 				onClick={() => {
-					Navigate('../root/adminpage/ModifyTest')
+					Navigate('../adminpage/ModifyTest')
 				}}
 			>
 				Dział Praktyka

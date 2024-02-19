@@ -33,11 +33,11 @@ function App() {
 			<Router>
 				<Routes>
 					<Route path='/root' element={<Root />} />
-					<Route path='/root/Adminpage' element={<AdminPage />} />
-					<Route path='/root/Adminpage/ModifyUser' element={<ModifyUser />} />
-					<Route path='/root/Adminpage/ModifyFaq' element={<ModifyFaq />} />
-					<Route path='/root/Adminpage/ModifyTopic' element={<ModifyTopic />} />
-					<Route path='/root/Adminpage/ModifyTest' element={<ModifyTest />} />
+					<Route path='/Adminpage' element={<AdminPage />} />
+					<Route path='/Adminpage/ModifyUser' element={<ModifyUser />} />
+					<Route path='/Adminpage/ModifyFaq' element={<ModifyFaq />} />
+					<Route path='/Adminpage/ModifyTopic' element={<ModifyTopic />} />
+					<Route path='/Adminpage/ModifyTest' element={<ModifyTest />} />
 					<Route path='/' element={<StartingPage />} />
 					<Route path='/Register' element={<Register />} />
 					<Route path='/Login' element={<Login />} />
