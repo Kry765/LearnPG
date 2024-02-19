@@ -7,6 +7,13 @@ const rootEditOpenQuestion = app => {
 			{ question: editOpenQuestion, correct_answer: editCorrectAnswer },
 			{ where: { openquestion_id: editOpenQuestionId } }
 		)
+		const existingQuestion = await OpenQuestion.findOne({
+			where: { openquestion_id: editOpenQuestionId },
+		})
+
+		if (!existingQuestion) {
+			return res.status(404).json({ message: 'Pytanie o otwartą odpowiedź nie zostało znalezione' })
+		}
 		try {
 			if (!setOpenQuestion) {
 				return res.status(404).json({ message: 'Open Question not found' })

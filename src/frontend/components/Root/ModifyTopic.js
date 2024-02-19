@@ -222,8 +222,10 @@ export default function ModifyTopic() {
 					'Content-Type': 'application/json',
 				},
 			})
-			if (res.status === 200) {
+			if (res.status === 400) {
 				alert('Pytanie otwarte zostało edytowane, przeładuj strone')
+			} else if ((res.status = 400)) {
+				alert('Nie znaleziono pytania')
 			}
 		} catch (error) {
 			console.error(error)
@@ -296,7 +298,7 @@ export default function ModifyTopic() {
 							<p className='root__input-description'>Wprowadź ID działu który chcesz edytować</p>
 							<input
 								className='root__input'
-								type='text'
+								type='number'
 								value={idEditTopic}
 								onChange={event => {
 									setIdEditTopic(event.target.value)
@@ -359,7 +361,7 @@ export default function ModifyTopic() {
 							<p className='root__input-description'>Podaj numer Sekcji do której chcesz dodać pytanie</p>
 							<input
 								className='root__input'
-								type='text'
+								type='number'
 								value={questionId}
 								onChange={event => {
 									setQuestionId(event.target.value)
@@ -369,7 +371,7 @@ export default function ModifyTopic() {
 						<label className='root__input-space'>
 							<p className='root__input-description'>Dodaj numer pytania, pamiętaj aby numeracja była chronologiczna</p>
 							<input
-								type='text'
+								type='number'
 								className='root__input'
 								value={nrQuestionId}
 								onChange={event => {
@@ -411,7 +413,7 @@ export default function ModifyTopic() {
 						<label className='root__space-input'>
 							<p className='root__input-description'>Podaj ID Pytania które chcesz skasować</p>
 							<input
-								type='text'
+								type='number'
 								className='root__input'
 								value={deleteQuestionId}
 								onChange={event => {
@@ -431,7 +433,7 @@ export default function ModifyTopic() {
 							<label className='root__space-input'>
 								<p className='root__input-description'>Podaj ID Pytania które chcesz edytować</p>
 								<input
-									type='text'
+									type='number'
 									className='root__input'
 									value={editOpenQuestionId}
 									onChange={event => {
