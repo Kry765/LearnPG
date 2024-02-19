@@ -10,6 +10,10 @@ const rootEditCloseQuestion = app => {
 			editCloseQuestionName,
 			editCloseQuestionId,
 		} = req.body
+		const existingQuestion = await CloseQuestion.findOne({ where: { closequestion_id: editCloseQuestionId } })
+		if (!existingQuestion) {
+			return res.status(404).json({ message: 'Close Question not found' })
+		}
 		const setNewCloseQuestion = await CloseQuestion.update(
 			{
 				question: editCloseQuestionName,
@@ -21,9 +25,7 @@ const rootEditCloseQuestion = app => {
 			{ where: { closequestion_id: editCloseQuestionId } }
 		)
 		try {
-			if (!setNewCloseQuestion) {
-				return res.status(404).json({ message: 'Close Question not found' })
-			} else {
+			if (setNewCloseQuestion) {
 				return res.status(200).json({ message: 'Close Question cahnge complete' })
 			}
 		} catch (error) {
