@@ -12,8 +12,8 @@ const rootDeleteCloseQuestion = app => {
 
 			await DeleteQuestion.destroy()
 			return res.status(200).json({ message: 'Topic deleted successfully' })
-		} catch (err) {
-			console.log(err)
+		} catch (error) {
+			console.log(error)
 			res.status(500).json({ message: 'Server Error' })
 		}
 	})

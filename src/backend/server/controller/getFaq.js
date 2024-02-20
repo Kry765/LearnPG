@@ -1,4 +1,4 @@
-const Faq = require('../models/faq')
+const Faq = require('../models/faq_table')
 
 const getFaq = app => {
 	app.get('/getfaq', (req, res) => {
