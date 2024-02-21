@@ -44,7 +44,6 @@ function Exam() {
 
 	const checkQuestion = () => {
 		if (selectedAnswer !== null) {
-			// Sprawdzamy, czy użytkownik wybrał odpowiedź
 			if (questions[currentQuestion]) {
 				const correctAnswer = questions[currentQuestion].correct_answer
 				const selectedOption = String.fromCharCode(65 + selectedAnswer)
@@ -65,6 +64,7 @@ function Exam() {
 						localStorage.setItem('points', updatedPoints)
 						setPoints(prevPoints => prevPoints + 1)
 						setOutput('Poprawna odpowiedź! Otrzymujesz punkt.')
+						setOutputErr('')
 					} catch (error) {
 						console.error(error)
 						setOutput('')
