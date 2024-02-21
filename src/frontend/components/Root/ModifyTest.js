@@ -142,7 +142,7 @@ export default function ModifyTest() {
 				<AdminMenu />
 			</div>
 
-			<div className='root__right-page'>
+			<div className='root__bottom-page'>
 				<div>
 					<h2 className='root__space-input'>Pytania Zamknięte</h2>
 					<form onSubmit={handleAddCloseQuestion} className='root__center-box'>

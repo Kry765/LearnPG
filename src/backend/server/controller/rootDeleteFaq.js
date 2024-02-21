@@ -9,11 +9,13 @@ const rootDeleteFaq = app => {
 					faq_id: idFaqDelete,
 				},
 			})
+			if (deleteFaq) {
+				await deleteFaq.destroy()
+				return res.status(200).json({ message: 'Faq deleted successfully' })
+			}
 			if (!deleteFaq) {
 				return res.status(404).json({ message: 'Faq not found.' })
 			}
-			await deleteFaq.destroy()
-			return res.status(200).json({ message: 'Faq deleted successfully' })
 		} catch (error) {
 			console.error(error)
 			res.status(500).json({ message: 'Server Error' })

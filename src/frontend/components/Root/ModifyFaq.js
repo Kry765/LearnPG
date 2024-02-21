@@ -55,19 +55,22 @@ export default function ModifyFaq() {
 		}
 	}
 
-	const deleteFaq = () => {
+	const deleteFaq = async e => {
+		e.preventDefault()
 		const formData = { idFaqDelete }
 		try {
-			const res = axios.post('/rootdeletefaq', formData, {
+			const res = await axios.post(API_URL + '/rootdeletefaq', formData, {
 				headers: {
 					'Content-Type': 'application/json',
 				},
 			})
+
 			if (res.status === 200) {
-				alert('Konto zostało skasowane')
+				alert('FaQ skasowane, przeładuj strone')
 			}
 		} catch (error) {
 			console.log(error)
+			return alert('Nie znaleziono Faq o podanym ID')
 		}
 	}
 
@@ -76,13 +79,13 @@ export default function ModifyFaq() {
 			<div>
 				<AdminMenu />
 			</div>
-			<div className='root__right-page'>
+			<div className='root__bottom-page'>
 				<div>
 					<h2 className='root__space-input'>FAQ</h2>
 				</div>
 				<div>
 					<form onSubmit={addFaq} className='root__center-box'>
-						<h2 className='root__space-input'>Dodaj konto</h2>
+						<h2 className='root__space-input'>Dodaj FaQ</h2>
 						<label className='root__space-input'>
 							<p className='root__input-description'>Wprowadź tytuł FaQ: </p>
 							<input
@@ -112,12 +115,12 @@ export default function ModifyFaq() {
 				</div>
 				<div>
 					<form onSubmit={deleteFaq} className='root__center-box'>
-						<h2 className='root__space-input'>Usuń konto</h2>
+						<h2 className='root__space-input'>Usuń Faq</h2>
 						<label className='root__space-input'>
 							<p className='root__input-description'>Wprowadź ID FaQ: </p>
 							<input
 								className='root__input'
-								type='text'
+								type='number'
 								placeholder='ID FaQ'
 								value={idFaqDelete}
 								onChange={event => {

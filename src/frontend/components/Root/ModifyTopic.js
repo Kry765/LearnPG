@@ -239,7 +239,7 @@ export default function ModifyTopic() {
 			<div>
 				<AdminMenu />
 			</div>
-			<div className='root__right-page'>
+			<div className='root__bottom-page'>
 				<div>
 					<h2 className='root__space-input'>Dział Labolatoria</h2>
 					<form onSubmit={handleNewTopic} className='root__center-box'>

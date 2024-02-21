@@ -7,8 +7,9 @@ export default function AdminPage() {
 			<div>
 				<AdminMenu />
 			</div>
-			<div>
+			<div className='root__welcome'>
 				<h1>Panel Administracyjny</h1>
+				<p>Wybierz sekcje</p>
 			</div>
 		</div>
 	)

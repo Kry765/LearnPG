@@ -1,4 +1,6 @@
-@use './colors' as *;
+@use './_colors' as *;
+@use './_reset' as *;
+@use './animations' as *;
 
 *,
 *::before,
@@ -15,49 +17,105 @@
 	flex-direction: column;
 }
 
+.root-nav {
+	background-color: $green;
+	position: fixed;
+	top: 0;
+	min-height: 10%;
+	min-width: 100%;
+	opacity: 2;
+	padding: 0.5em;
+	z-index: 5;
+}
+
 .root {
-	display: flex;
-	&__left-menu {
+	&__desktop-item {
+		display: block;
+		margin: 1em;
+		font-size: 1rem;
+		padding: 0.5em 2em;
+		transition: color 0.5s;
+		font-weight: bold;
+		color: $white;
+	}
+	&__mobile-items {
+		position: fixed;
+		top: 0;
+		display: none;
+	}
+
+	&__close-mobile-items {
+		display: none;
+	}
+	&__mobile-item {
+		padding: 2em 0;
+	}
+	&__logo {
 		position: fixed;
 		top: 0;
 		left: 0;
-		height: 100%;
-		min-height: 100vh;
+		display: block;
+		padding: 1em;
+		font-size: 1.8rem;
+		transition: color 0.5s;
+	}
+	&__desktop-item:hover,
+	&__logo:hover {
+		cursor: pointer;
+		color: $sky;
+	}
+	&__burger-bar {
+		padding: 0.3em;
+		font-size: 3rem;
+		display: none;
+		z-index: 4;
+		transition: color 1s;
+	}
+	&__top-menu {
+		position: fixed;
+		top: 0;
+		left: 0;
+		min-height: 10vh;
 		background-color: $green;
 		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		width: 10vw;
+		justify-content: flex-end;
+		width: 100%;
 	}
-	&__left-menu-items {
+	&__menu-items {
 		color: $white;
-		font-weight: bsold;
 		margin: 2em;
 		transition: 0.7s color;
 	}
-	&__left-menu-items:hover {
+	&__menu-items:hover {
 		cursor: pointer;
 		color: $contrast-color;
 	}
 	&__center-box {
-		min-width: 100%;
-		background-color: $green;
-		color: $white;
+		text-align: center;
+		min-width: 100vw;
 		display: flex;
 		justify-content: center;
 		border-radius: 25px;
 		align-items: center;
 		flex-direction: column;
-		margin: 1em;
+		margin: 4em 0;
 		padding: 2em;
 	}
-	&__right-page {
+
+	&__welcome {
+		margin-top: 10%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	&__bottom-page {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
-		width: 75vw;
-		margin-left: 25vh;
+		width: 100%;
 	}
 	&__input {
 		border-radius: 15px;
@@ -97,8 +155,61 @@
 	table,
 	th,
 	td {
+		margin: 2em 0;
 		border: 1px solid $gray;
 		border-collapse: collapse;
 		padding: 10px;
+	}
+}
+@media (max-width: 992px) {
+	.root-nav {
+		background-color: $green;
+		position: fixed;
+		top: 0;
+		min-height: 10%;
+		min-width: 100%;
+		opacity: 2;
+		padding: 0.5em;
+		z-index: 5;
+		&__mobile-items {
+			animation: moveMenuRight 1s ease-in-out;
+			padding: 0 3em;
+			width: 85%;
+			height: 100%;
+			background-color: rgba(13, 115, 119, 0.9);
+			color: $white;
+			transform: translateX(-5%);
+			font-weight: bold;
+		}
+		&__mobile-item:hover {
+			cursor: pointer;
+			color: $contrast-color;
+		}
+		&__mobile-item {
+			display: flex;
+			justify-content: flex-end;
+			transition: 1s color;
+		}
+	}
+	.root {
+		&__desktop-item {
+			display: none;
+		}
+		&__burger-bar {
+			display: block;
+		}
+		&__burger-bar:hover {
+			cursor: pointer;
+			color: $green;
+		}
+
+		&__logo {
+			display: none;
+		}
+		&__close-icon {
+			&--active {
+				display: block;
+			}
+		}
 	}
 }
