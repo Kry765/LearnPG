@@ -1,7 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
+import { LoggedInRoot } from '../../../backend/guard/Script'
 import { useNavigate } from 'react-router-dom'
 import { AdminMenu } from './AdminMenu'
+
 export default function AdminPage() {
+	const navigate = useNavigate()
+	LoggedInRoot(navigate)
+
 	return (
 		<div className='root'>
 			<div>

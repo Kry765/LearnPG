@@ -2,6 +2,8 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { AdminMenu } from './AdminMenu'
 import { checkEmptyInput } from '../../../backend/guard/Script'
+import { LoggedInRoot } from '../../../backend/guard/Script'
+import { useNavigate } from 'react-router-dom'
 
 export default function ModifyTest() {
 	const [questions, setQuestions] = useState([])
@@ -19,6 +21,8 @@ export default function ModifyTest() {
 	const [editCloseQuestionName, setEditCloseQuestionName] = useState('')
 	const [editCorrectAnswer, setEditCorrectAnswer] = useState('')
 	const [inputValue, setInputValue] = useState('')
+	const Navigate = useNavigate
+	LoggedInRoot(Navigate)
 
 	useEffect(() => {
 		getCloseQuestion()

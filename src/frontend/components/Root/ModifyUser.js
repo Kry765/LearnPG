@@ -1,4 +1,6 @@
 import { checkEmptyInput, checkCorrectEmail } from '../../../backend/guard/Script'
+import { LoggedInRoot } from '../../../backend/guard/Script'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { AdminMenu } from './AdminMenu'
@@ -14,6 +16,8 @@ export default function ModifyUser() {
 	const [newPwd, setNewPwd] = useState('')
 	const [oldEmail, setOldEmail] = useState('')
 	const [newEmail, setNewEmail] = useState('')
+	const Navigate = useNavigate
+	LoggedInRoot(Navigate)
 
 	useEffect(() => {
 		getUser()
@@ -217,11 +221,11 @@ export default function ModifyUser() {
 					<form onSubmit={deleteUser} className='root__center-box'>
 						<h2 className='root__space-input'>Skasuj konto</h2>
 						<label className='root__space-input'>
-							<p className='root__input-description'>Wprowadź adres email konta które chcesz skasować: </p>
+							<p className='root__input-description'>Wprowadź adres E-mail konta które chcesz skasować: </p>
 							<input
 								className='root__input'
 								type='text'
-								placeholder='adres-email'
+								placeholder='Adres E-mail'
 								value={deleteUserEmail}
 								onChange={event => {
 									setDeleteUserEmail(event.target.value)
@@ -237,11 +241,11 @@ export default function ModifyUser() {
 					<form onSubmit={clearPoint} className='root__center-box'>
 						<h2 className='root__space-input'>Wyzeruj punkty</h2>
 						<label className='root__space-input'>
-							<p className='root__input-description'>Podaj maila użytkownika któremu mam wyzerować punkty:</p>
+							<p className='root__input-description'>Podaj E-mail użytkownika któremu chcesz skasować punkty:</p>
 							<input
 								className='root__input'
 								type='text'
-								placeholder='adres-email'
+								placeholder='Adres E-mail'
 								value={pointEmail}
 								onChange={event => {
 									setPointEmail(event.target.value)
@@ -261,7 +265,7 @@ export default function ModifyUser() {
 							<input
 								className='root__input'
 								type='text'
-								placeholder='adres-email'
+								placeholder='Adres E-mail'
 								value={currentEmail}
 								onChange={event => {
 									setCurrentEmail(event.target.value)
@@ -273,7 +277,7 @@ export default function ModifyUser() {
 							<input
 								className='root__input'
 								type='text'
-								placeholder='hasło'
+								placeholder='Hasło'
 								value={newPwd}
 								onChange={event => {
 									setNewPwd(event.target.value)
@@ -289,11 +293,11 @@ export default function ModifyUser() {
 					<form onSubmit={newUserEmail} className='root__center-box'>
 						<h2 className='root__space-input'>Ustaw nowy adres E-mail</h2>
 						<label className='root__space-input'>
-							<p className='root__input-description'>Podaj stary adres E-mail: </p>
+							<p className='root__input-description'>Podaj obecny adres E-mail: </p>
 							<input
 								className='root__input'
 								type='text'
-								placeholder='stary adres-email'
+								placeholder='Obecny adres E-mail'
 								value={oldEmail}
 								onChange={event => {
 									setOldEmail(event.target.value)
@@ -305,7 +309,7 @@ export default function ModifyUser() {
 							<input
 								className='root__input'
 								type='text'
-								placeholder='nowy adres-email'
+								placeholder='Nowy Adres E-mail'
 								value={newEmail}
 								onChange={event => {
 									setNewEmail(event.target.value)
@@ -314,7 +318,7 @@ export default function ModifyUser() {
 						</label>
 						<div>
 							<button type='submit' className='root__btn'>
-								Ustaw nowy email
+								Ustaw E-mail
 							</button>
 						</div>
 					</form>

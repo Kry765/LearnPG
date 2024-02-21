@@ -34,10 +34,10 @@ function App() {
 				<Routes>
 					<Route path='/root' element={<Root />} />
 					<Route path='/Adminpage' element={<AdminPage />} />
-					<Route path='/Adminpage/ModifyUser' element={<ModifyUser />} />
-					<Route path='/Adminpage/ModifyFaq' element={<ModifyFaq />} />
-					<Route path='/Adminpage/ModifyTopic' element={<ModifyTopic />} />
-					<Route path='/Adminpage/ModifyTest' element={<ModifyTest />} />
+					<Route path='/ModifyUser' element={<ModifyUser />} />
+					<Route path='/ModifyFaq' element={<ModifyFaq />} />
+					<Route path='/ModifyTopic' element={<ModifyTopic />} />
+					<Route path='/ModifyTest' element={<ModifyTest />} />
 					<Route path='/' element={<StartingPage />} />
 					<Route path='/Register' element={<Register />} />
 					<Route path='/Login' element={<Login />} />

@@ -6,6 +6,7 @@
 	&__card {
 		overflow: hidden;
 		position: relative;
+
 		min-width: 40%;
 		height: 150px;
 		background-color: rgba(13, 115, 119, 0.5);
@@ -15,6 +16,7 @@
 		border-radius: 15px;
 		color: $white;
 		&--gray {
+			z-index: 10;
 			width: 40%;
 			height: 150px;
 			margin: 2em;

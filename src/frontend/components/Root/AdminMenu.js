@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { RxHamburgerMenu, AiOutlineClose, FaDatabase } from '../../../backend/guard/Icons'
+import { RxHamburgerMenu, AiOutlineClose } from '../../../backend/guard/Icons'
+import { logoutRoot } from '../../../backend/guard/Script'
 
 export function AdminMenu() {
 	const [changeIcon, setChangeIcon] = useState('')
@@ -20,7 +21,7 @@ export function AdminMenu() {
 					<div className='root__desktop-item'>
 						<div
 							onClick={() => {
-								Navigate('../adminpage/ModifyUser')
+								Navigate('/ModifyUser')
 							}}
 						>
 							Uzytkownicy
@@ -29,7 +30,7 @@ export function AdminMenu() {
 					<div className='root__desktop-item'>
 						<div
 							onClick={() => {
-								Navigate('../adminpage/ModifyTopic')
+								Navigate('/ModifyTopic')
 							}}
 						>
 							Teoria
@@ -38,7 +39,7 @@ export function AdminMenu() {
 					<div
 						className='root__desktop-item'
 						onClick={() => {
-							Navigate('../adminpage/ModifyTest')
+							Navigate('/ModifyTest')
 						}}
 					>
 						Test
@@ -46,7 +47,7 @@ export function AdminMenu() {
 					<div
 						className='root__desktop-item'
 						onClick={() => {
-							Navigate('../adminpage/ModifyFaq')
+							Navigate('/ModifyFaq')
 						}}
 					>
 						FaQ
@@ -54,7 +55,7 @@ export function AdminMenu() {
 					<div
 						className='root__desktop-item'
 						onClick={() => {
-							Navigate('../adminpage/ModifyFaq')
+							logoutRoot(Navigate)
 						}}
 					>
 						Wyloguj się
@@ -87,7 +88,7 @@ export function AdminMenu() {
 					<div className='nav__mobile-item'>
 						<div
 							onClick={() => {
-								Navigate('../adminpage/ModifyUser')
+								Navigate('/ModifyUser')
 							}}
 						>
 							Użytkownicy
@@ -97,7 +98,7 @@ export function AdminMenu() {
 					<div className='nav__mobile-item'>
 						<div
 							onClick={() => {
-								Navigate('../adminpage/ModifyTopic')
+								Navigate('/ModifyTopic')
 							}}
 						>
 							Teoria
@@ -107,7 +108,7 @@ export function AdminMenu() {
 					<div className='nav__mobile-item'>
 						<div
 							onClick={() => {
-								Navigate('../adminpage/ModifyTest')
+								Navigate('/ModifyTest')
 							}}
 						>
 							Test
@@ -117,7 +118,7 @@ export function AdminMenu() {
 					<div
 						className='nav__mobile-item'
 						onClick={() => {
-							Navigate('../adminpage/ModifyFaq')
+							Navigate('/ModifyFaq')
 						}}
 					>
 						FaQ

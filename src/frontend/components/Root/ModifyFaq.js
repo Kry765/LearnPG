@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { AdminMenu } from './AdminMenu'
 import { checkEmptyInput } from '../../../backend/guard/Script'
+import { LoggedInRoot } from '../../../backend/guard/Script'
+import { useNavigate } from 'react-router-dom'
 
 export default function ModifyFaq() {
 	const [handleFaq, setHandleFaq] = useState('')
@@ -12,8 +14,9 @@ export default function ModifyFaq() {
 	const [idFaqEdit, setIdFaqEdit] = useState('')
 	const [nameFaqEdit, setNameFaqEdit] = useState('')
 	const [DescriptionFaqEdit, setDescriptionNameFaqEdit] = useState('')
-
 	const API_URL = 'http://localhost:4000'
+	const Navigate = useNavigate
+	LoggedInRoot(Navigate)
 
 	useEffect(() => {
 		getFaq()
@@ -181,15 +184,15 @@ export default function ModifyFaq() {
 						</label>
 						<label className='root__space-input'>
 							<p className='root__input-description'>Wprowadź treść Edytowanego FaQ: </p>
-							<input
-								className='root__input'
+							<textarea
+								className='root__input-textarea'
 								type='number'
 								placeholder='Nowa Treść FaQ'
 								value={DescriptionFaqEdit}
 								onChange={event => {
 									setDescriptionNameFaqEdit(event.target.value)
 								}}
-							/>
+							></textarea>
 						</label>
 						<input type='submit' className='root__btn' value='Edytuj Faq' />
 					</form>

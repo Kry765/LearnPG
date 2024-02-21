@@ -2,6 +2,8 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { AdminMenu } from './AdminMenu'
 import { checkEmptyInput } from '../../../backend/guard/Script'
+import { LoggedInRoot } from '../../../backend/guard/Script'
+import { useNavigate } from 'react-router-dom'
 
 export default function ModifyTopic() {
 	const API_URL = 'http://localhost:4000'
@@ -22,6 +24,8 @@ export default function ModifyTopic() {
 	const [editCorrectAnswer, setEditCorrectAnswer] = useState('')
 	const [editOpenQuestionId, setEditOpenQuestionId] = useState('')
 	const [editOpenQuestion, setEditOpenQuestion] = useState('')
+	const Navigate = useNavigate
+	LoggedInRoot(Navigate)
 
 	useEffect(() => {
 		getTopic()
