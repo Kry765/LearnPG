@@ -103,6 +103,7 @@ const handleRootEditCloseQuestion = require('./controller/rootEditCloseQuestion'
 const handleRootGetFaq = require('./controller/rootGetFaq')
 const handleRootAddFaq = require('./controller/rootAddFaq')
 const handleRootDeleteFaq = require('./controller/rootDeleteFaq')
+const handleRootEditFaq = require('./controller/rootEditFaq')
 
 qetOpenQuestion(app)
 getCloseQuestion(app)
@@ -139,3 +140,4 @@ handleRootLogin(app)
 handleRootGetFaq(app)
 handleRootAddFaq(app)
 handleRootDeleteFaq(app)
+handleRootEditFaq(app)

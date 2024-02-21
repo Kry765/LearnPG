@@ -53,6 +53,19 @@ export const LoggedInUser = () => {
 	return null
 }
 
+export const LoggedInRoot = () => {
+	const navigate = useNavigate()
+	const session = localStorage.getItem('token')
+
+	useEffect(() => {
+		if (!session) {
+			navigate('/root')
+		}
+	}, [session, navigate])
+
+	return null
+}
+
 export const logoutUser = () => {
 	localStorage.removeItem('token')
 	window.location.href = '/login'

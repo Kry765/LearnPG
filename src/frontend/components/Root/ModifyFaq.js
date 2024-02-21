@@ -9,6 +9,10 @@ export default function ModifyFaq() {
 	const [faqDescription, setFaqDescription] = useState('')
 	const [faqs, setFaqs] = useState([])
 	const [idFaqDelete, setIdFaqDelete] = useState('')
+	const [idFaqEdit, setIdFaqEdit] = useState('')
+	const [nameFaqEdit, setNameFaqEdit] = useState('')
+	const [DescriptionFaqEdit, setDescriptionNameFaqEdit] = useState('')
+
 	const API_URL = 'http://localhost:4000'
 
 	useEffect(() => {
@@ -74,6 +78,23 @@ export default function ModifyFaq() {
 		}
 	}
 
+	const EditFaq = async e => {
+		e.preventDefault()
+		const formData = { idFaqEdit, nameFaqEdit, DescriptionFaqEdit }
+		try {
+			const res = await axios.post('/rooteditfaq', formData, {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			})
+			if (res.status === 200) {
+				alert('FaQ zmienione')
+			}
+		} catch (error) {
+			console.log(error)
+		}
+	}
+
 	return (
 		<div className='root'>
 			<div>
@@ -100,15 +121,15 @@ export default function ModifyFaq() {
 						</label>
 						<label className='root__space-input'>
 							<p className='root__input-description'>Wprowadź opis FaQ: </p>
-							<input
-								className='root__input'
+							<textarea
+								className='root__input--textarea '
 								type='text'
 								placeholder='ID FaQ'
 								value={faqDescription}
 								onChange={event => {
 									setFaqDescription(event.target.value)
 								}}
-							/>
+							></textarea>
 						</label>
 						<input type='submit' className='root__btn' value='Dodaj Faq' />
 					</form>
@@ -129,6 +150,48 @@ export default function ModifyFaq() {
 							/>
 						</label>
 						<input type='submit' className='root__btn' value='Skasuj Faq' />
+					</form>
+				</div>
+				<div>
+					<form onSubmit={EditFaq} className='root__center-box'>
+						<h2 className='root__space-input'>Edytuj Faq</h2>
+						<label className='root__space-input'>
+							<p className='root__input-description'>Wprowadź ID Edytowanego FaQ: </p>
+							<input
+								className='root__input'
+								type='number'
+								placeholder='ID FaQ'
+								value={idFaqEdit}
+								onChange={event => {
+									setIdFaqEdit(event.target.value)
+								}}
+							/>
+						</label>
+						<label className='root__space-input'>
+							<p className='root__input-description'>Wprowadź tytuł Edytowanego FaQ: </p>
+							<input
+								className='root__input'
+								type='number'
+								placeholder='Nazwa FaQ'
+								value={nameFaqEdit}
+								onChange={event => {
+									setNameFaqEdit(event.target.value)
+								}}
+							/>
+						</label>
+						<label className='root__space-input'>
+							<p className='root__input-description'>Wprowadź treść Edytowanego FaQ: </p>
+							<input
+								className='root__input'
+								type='number'
+								placeholder='Nowa Treść FaQ'
+								value={DescriptionFaqEdit}
+								onChange={event => {
+									setDescriptionNameFaqEdit(event.target.value)
+								}}
+							/>
+						</label>
+						<input type='submit' className='root__btn' value='Edytuj Faq' />
 					</form>
 				</div>
 				<div>
