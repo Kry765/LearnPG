@@ -150,6 +150,7 @@ const LearnTheory = () => {
 					handleTopic.topic_description.split('\n').map((line, index) => (
 						<div key={index} className=''>
 							{line}
+							<br />
 						</div>
 					))}
 
