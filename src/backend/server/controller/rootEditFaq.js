@@ -13,7 +13,7 @@ const rootEditFaq = app => {
 				faq_name: nameFaqEdit,
 				faq_description: DescriptionFaqEdit,
 			},
-			{ where: { closequestion_id: idFaqEdit } }
+			{ where: { faq_id: idFaqEdit } }
 		)
 		try {
 			if (setNewFaq) {

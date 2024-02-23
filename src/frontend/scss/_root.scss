@@ -129,6 +129,7 @@
 			min-width: 50vw;
 			padding: 1em;
 			min-height: 50vh;
+			resize: none;
 		}
 	}
 	&__input-description {
@@ -156,7 +157,7 @@
 	table,
 	th,
 	td {
-		margin: 2em 0;
+		margin: 3em 2em;
 		border: 1px solid $gray;
 		border-collapse: collapse;
 		padding: 10px;

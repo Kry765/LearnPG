@@ -473,8 +473,8 @@ export default function ModifyTopic() {
 						</form>
 					</div>
 				</div>
-				<div>
-					<h2>Lista działów:</h2>
+				<div className='root__space-input'>
+					<h2 className='root__space-input'>Lista działów:</h2>
 					<div>
 						{topics.map((topic, index) => (
 							<div key={index}>
@@ -493,7 +493,7 @@ export default function ModifyTopic() {
 					</div>
 				</div>
 				<div>
-					<h2>Lista pytań otwartych:</h2>
+					<h2 className='root__space-input'>Lista pytań otwartych:</h2>
 					<table>
 						<thead>
 							<tr>

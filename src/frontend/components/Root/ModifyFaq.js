@@ -25,6 +25,12 @@ export default function ModifyFaq() {
 	const checkAddFaq = () => {
 		return checkEmptyInput(faqName, faqDescription)
 	}
+	const checkDeleteFaq = () => {
+		return checkEmptyInput(idFaqDelete)
+	}
+	const checkEditFaq = () => {
+		return checkEmptyInput(idFaqEdit, nameFaqEdit, DescriptionFaqEdit)
+	}
 
 	const getFaq = () => {
 		axios
@@ -64,6 +70,9 @@ export default function ModifyFaq() {
 
 	const deleteFaq = async e => {
 		e.preventDefault()
+		if (checkDeleteFaq()) {
+			return alert('Podane pole jest puste')
+		}
 		const formData = { idFaqDelete }
 		try {
 			const res = await axios.post(API_URL + '/rootdeletefaq', formData, {
@@ -83,9 +92,12 @@ export default function ModifyFaq() {
 
 	const EditFaq = async e => {
 		e.preventDefault()
+		if (checkEditFaq()) {
+			return alert('Podane pole jest puste')
+		}
 		const formData = { idFaqEdit, nameFaqEdit, DescriptionFaqEdit }
 		try {
-			const res = await axios.post('/rooteditfaq', formData, {
+			const res = await axios.post(API_URL + '/rooteditfaq', formData, {
 				headers: {
 					'Content-Type': 'application/json',
 				},
@@ -174,7 +186,7 @@ export default function ModifyFaq() {
 							<p className='root__input-description'>Wprowadź tytuł Edytowanego FaQ: </p>
 							<input
 								className='root__input'
-								type='number'
+								type='text'
 								placeholder='Nazwa FaQ'
 								value={nameFaqEdit}
 								onChange={event => {
@@ -185,8 +197,8 @@ export default function ModifyFaq() {
 						<label className='root__space-input'>
 							<p className='root__input-description'>Wprowadź treść Edytowanego FaQ: </p>
 							<textarea
-								className='root__input-textarea'
-								type='number'
+								className='root__input--textarea'
+								type='text'
 								placeholder='Nowa Treść FaQ'
 								value={DescriptionFaqEdit}
 								onChange={event => {
