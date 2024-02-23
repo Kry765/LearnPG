@@ -66,6 +66,14 @@ export const LoggedInRoot = () => {
 	return null
 }
 
+export const alreadyLogin = () => {
+	const token = localStorage.getItem('token')
+
+	if (token) {
+		window.location.href = '/dashboard'
+	}
+}
+
 export const logoutUser = () => {
 	localStorage.removeItem('token')
 	window.location.href = '/login'

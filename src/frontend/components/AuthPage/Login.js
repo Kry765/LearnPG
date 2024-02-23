@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { AiOutlineClose, FaDatabase } from '../../../backend/guard/Icons'
+import { alreadyLogin } from '../../../backend/guard/Script'
 import { useNavigate } from 'react-router-dom'
 
 function Login() {
@@ -9,6 +10,8 @@ function Login() {
 	const [user_pwd, set_user_pwd] = useState('')
 	const [output, setOutput] = useState('')
 	const [outputErr, setOutputErr] = useState('')
+
+	alreadyLogin()
 
 	const handleSubmit = async e => {
 		e.preventDefault()

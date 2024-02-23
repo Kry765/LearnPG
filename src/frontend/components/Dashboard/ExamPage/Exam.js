@@ -103,7 +103,7 @@ function Exam() {
 				<DashboardNav />
 				<div className='section flex-center direction-column'>
 					<h2 className='title-section'>Egzamin</h2>
-					<div className='flex-column form-space'>
+					<div className='flex-column form-space space-div '>
 						{questions.length > 0 && currentQuestion < questions.length && (
 							<div>
 								<div className='exam__question-space'>
@@ -114,35 +114,41 @@ function Exam() {
 								</div>
 								<label>
 									<div className='exam__radio'>
+										A.{' '}
 										<input
 											type='radio'
 											value='0'
+											className='exam__radio-space'
 											checked={selectedAnswer === 0}
 											onChange={e => setSelectedAnswer(Number(e.target.value))}
 										/>
-										A. {questions[currentQuestion].answer_a}
+										{questions[currentQuestion].answer_a}
 									</div>
 								</label>
 								<label>
 									<div className='exam__radio'>
+										B.{' '}
 										<input
+											className='exam__radio-space'
 											type='radio'
 											value='1'
 											checked={selectedAnswer === 1}
 											onChange={e => setSelectedAnswer(Number(e.target.value))}
 										/>
-										B. {questions[currentQuestion].answer_b}
+										{questions[currentQuestion].answer_b}
 									</div>
 								</label>
 								<label>
 									<div className='exam__radio'>
+										C.{' '}
 										<input
+											className='exam__radio-space'
 											type='radio'
 											value='2'
 											checked={selectedAnswer === 2}
 											onChange={e => setSelectedAnswer(Number(e.target.value))}
 										/>
-										C. {questions[currentQuestion].answer_c}
+										{questions[currentQuestion].answer_c}
 									</div>
 								</label>
 								<div>

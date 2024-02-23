@@ -30,8 +30,11 @@ services:
       - db
     ports:
       - '4000:4000'
-    env_file:
-      - './.env'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST=db
+      - POSTGRES_DB=postgresql_tutorial
     command: ['./wait-for-postgres.sh', 'db', '--', 'npm', 'start']
 
   pgadmin:
@@ -43,76 +46,57 @@ services:
       PGADMIN_DEFAULT_PASSWORD: root
     ports:
       - '5050:80'
+# version: '3.9'
 
-      
-#  services:
-#    db:
-#      image: postgres
-#      container_name: pg_db
-#      restart: always
-#      environment:
-#        - POSTGRES_USER=postgres
-#        - POSTGRES_PASSWORD=postgres
-#        - POSTGRES_HOST=db
-#        - POSTGRES_DB=postgresql_tutorial
-#    ports:
-#      - '5432:5432'
-#    volumes:
-#      - pgdata:/var/lib/postgresql/data
-#      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-#    command: ['postgres', '-c', 'log_statement=all']
+# services:
+#   db:
+#     image: postgres
+#     container_name: pg_db
+#     restart: always
+#     environment:
+#       - POSTGRES_USER=postgres
+#       - POSTGRES_PASSWORD=postgres
+#       - POSTGRES_HOST=db
+#       - POSTGRES_DB=postgresql_tutorial
+#     ports:
+#       - '5432:5432'
+#     volumes:
+#       - pgdata:/var/lib/postgresql/data
+#       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+#     command: ['postgres', '-c', 'log_statement=all']
 
-#dockerhub
+#   react:
+#     image: kry7654/learnsql:frontend
+#     container_name: learn_pg
+#     restart: always
+#     ports:
+#       - '3000:3000'
 
-# react:
-#  image: kry7654/learnsql:frontend
-# container_name: learn_pg
-#restart: always
-#ports:
-# - '3000:3000'
+#   app:
+#     image: kry7654/learnsql:backend
+#     container_name: node_api
+#     depends_on:
+#       - db
+#     ports:
+#       - '4000:4000'
+#     environment:
+#       - POSTGRES_USER=postgres
+#       - POSTGRES_PASSWORD=postgres
+#       - POSTGRES_HOST=db
+#       - POSTGRES_DB=postgresql_tutorial
+#     command: ['./wait-for-postgres.sh', 'db', '--', 'npm', 'start']
 
-#  app:
-#    image: kry7654/learnsql:backend
-#    container_name: node_api
-#    depends_on:
-#      - db
-#    ports:
-#      - '4000:4000'
-#    environment:
-#      - POSTGRES_USER=postgres
-#      - POSTGRES_PASSWORD=postgres
-#      - POSTGRES_HOST=db
-#      - POSTGRES_DB=postgresql_tutorial
-#    command: ['./wait-for-postgres.sh', 'db', '--', 'npm', 'start']
-#
-#  pgadmin:
-#    container_name: pgadmin4
-#    restart: always
-#    image: dpage/pgadmin4
-#    environment:
-#      PGADMIN_DEFAULT_EMAIL: root@root.com
-#      PGADMIN_DEFAULT_PASSWORD: root
-#    ports:
-#      - '5050:80'
-#  version: '3.9'
-#  volumes:
-#    pgdata:
-#      driver: local
-#      name: pg_docker
-#
-#
-#    db:
-#      image: postgres
-#      container_name: pg_db
-#      restart: always
-#      environment:
-#        - POSTGRES_USER=postgres
-#        - POSTGRES_PASSWORD=postgres
-#        - POSTGRES_HOST=db
-#        - POSTGRES_DB=postgresql_tutorial
-#    ports:
-#      - '5432:5432'
-#    volumes:
-#      - pgdata:/var/lib/postgresql/data
-#      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-#    command: ['postgres', '-c', 'log_statement=all']
+#   pgadmin:
+#     container_name: pgadmin4
+#     restart: always
+#     image: dpage/pgadmin4
+#     environment:
+#       PGADMIN_DEFAULT_EMAIL: root@root.com
+#       PGADMIN_DEFAULT_PASSWORD: root
+#     ports:
+#       - '5050:80'
+
+# volumes:
+#   pgdata:
+#     driver: local
+#     name: pg_docker

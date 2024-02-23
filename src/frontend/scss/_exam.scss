@@ -11,12 +11,20 @@
 		padding: 1em;
 		margin: 0.7em;
 		min-width: 80%;
-		// min-height: 30%;
+		margin-left: 10%;
 	}
+
 	&__text-decorate {
 		font-weight: bold;
 	}
 	&__question-space {
 		padding: 1em;
 	}
+	&__radio-space {
+		margin: 0 20px;
+	}
+}
+
+.space-div {
+	margin-left: 20px;
 }
